@@ -1,0 +1,11 @@
+.login {
+     position: fixed;
+     top: 28px;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-image: linear-gradient(to right bottom, #000000, #10080e, #15111a, #121926, #032130);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
