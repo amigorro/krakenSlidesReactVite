@@ -12,3 +12,9 @@
 .undraggable {
     -webkit-app-region: no-drag;
   }
+
+body{
+  -webkit-user-select: none;
+	cursor: default;
+}
+  
