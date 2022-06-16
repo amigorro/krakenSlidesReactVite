@@ -16,7 +16,7 @@ function AppBar() {
 
   return (
     <>
-      <div className="py-0.5 flex justify-between draggable bg-purple-900">
+      <div className="py-0.5 flex justify-between draggable bg-gray-900">
         <div className="inline-flex  "  >
           {/*<img className="h-6 lg:-ml-2" src={Icon} alt="Icon of Electron" />*/}
           <div className=" px-2 text-slate-100 font-bold "> K </div>

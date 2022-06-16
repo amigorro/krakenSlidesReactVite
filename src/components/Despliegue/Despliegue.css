@@ -1,0 +1,625 @@
+@font-face {
+	font-family: 'Nunito';
+	src: url(../assets/fonts/Nunito-Medium.ttf);
+}
+
+.cntProyectos {
+     font-family: 'Nunito';
+     position: fixed;
+     top: 28px;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: #040404;
+     color: #dadada;
+   }
+   .cntProyectos-menu {
+     width: 350px;
+     height: 100vh;
+     background-color: #111827;
+   }
+   .cntProyectos-menu-cntlogo {
+     width: 100%;
+     height: 200px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: center;
+     -moz-box-pack: center;
+     -o-box-pack: center;
+     -ms-flex-pack: center;
+     -webkit-justify-content: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+   }
+   .cntProyectos-menu-logoKrk {
+     width: 83%;
+   }
+   .cntProyectos-menu-cont {
+     width: 300px;
+     margin: 60px auto;
+   }
+   .cntProyectos-menu-cont-section1 {
+     margin-bottom: 40px;
+   }
+   .cntProyectos-menu-cont-tlt {
+     font-weight: 300;
+     margin-bottom: 2px;
+   }
+   .cntProyectos-menu-cont-reg {
+     border-top: solid 0.5px #444;
+     border-left: solid 0.5px #444;
+     border-right: solid 0.5px #444;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     height: 40px;
+   }
+   .cntProyectos-menu-cont-reg-ico {
+     height: 40px;
+     width: 50px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: center;
+     -moz-box-pack: center;
+     -o-box-pack: center;
+     -ms-flex-pack: center;
+     -webkit-justify-content: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+   }
+   .cntProyectos-menu-cont-reg-txt {
+     height: 40px;
+     width: 100%;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+     padding-left: 15px;
+     -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+     -o-transition: all 1s ease;
+     -ms-transition: all 1s ease;
+     transition: all 1s ease;
+   }
+   .cntProyectos-menu-cont-reg-txt:hover {
+     color: #125887;
+     background: #d6d6d6;
+     font-weight: 900;
+     -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+     -o-transition: all 1s ease;
+     -ms-transition: all 1s ease;
+     transition: all 1s ease;
+   }
+   .cntProyectos-menu-cont-regBorderB {
+     border-bottom: solid 0.5px #444;
+   }
+   .cntProyectos-despliegue {
+     position: fixed;
+     top: 28px;
+     right: 0;
+     background-color: #dadada;
+     width: calc(100vw - 350px);
+     height: 100vh;
+     color: #040404;
+   }
+   .cntProyectos-despliegue-tlt {
+     font-size: 24px;
+     font-weight: 600;
+     padding: 17px;
+     width: 100%;
+     height: 50px;
+   }
+   .icolor {
+     background: -webkit-linear-gradient(left, transparent 50%, rgba(23,121,248,0.308) 50%);
+     background: -moz-linear-gradient(left, transparent 50%, rgba(23,121,248,0.308) 50%);
+     background: -o-linear-gradient(left, transparent 50%, rgba(23,121,248,0.308) 50%);
+     background: -ms-linear-gradient(left, transparent 50%, rgba(23,121,248,0.308) 50%);
+     background: linear-gradient(to right, transparent 50%, rgba(23,121,248,0.308) 50%);
+     -webkit-background-size: 200% 100%;
+     -moz-background-size: 200% 100%;
+     background-size: 200% 100%;
+     background-position: left bottom;
+     -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+     -o-transition: all 1s ease;
+     -ms-transition: all 1s ease;
+     transition: all 1s ease;
+   }
+   .cntProyectos-menu-cont-reg:hover .icolor {
+     background-position: right bottom;
+   }
+   .despCardsPry {
+     width: 98%;
+     height: calc(100vh - 100px);
+     margin: 7px auto;
+     overflow-y: auto;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-lines: multiple;
+     -moz-box-lines: multiple;
+     -o-box-lines: multiple;
+     -webkit-flex-wrap: wrap;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap;
+     -webkit-box-pack: distribute;
+     -moz-box-pack: distribute;
+     -o-box-pack: distribute;
+     -ms-flex-pack: distribute;
+     -webkit-justify-content: space-around;
+     justify-content: space-around;
+     -ms-flex-line-pack: start;
+     -webkit-align-content: flex-start;
+     align-content: flex-start;
+     overflow-x: hidden;
+   }
+   /** Tarjetas de proyectos */
+   .cardpry {
+     background-color: #fff;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-lines: multiple;
+     -moz-box-lines: multiple;
+     -o-box-lines: multiple;
+     -webkit-flex-wrap: wrap;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap;
+     width: 450px;
+     height: 200px;
+     margin: 10px 1px;
+     -webkit-box-orient: vertical;
+     -moz-box-orient: vertical;
+     -o-box-orient: vertical;
+     -webkit-flex-direction: column;
+     -ms-flex-direction: column;
+     flex-direction: column;
+     position: relative;
+     -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+   }
+   .cardpry-img {
+     width: 90px;
+     height: 115px;
+     background-color: #fff;
+     position: absolute;
+     top: 30px;
+     left: 15px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: center;
+     -moz-box-pack: center;
+     -o-box-pack: center;
+     -ms-flex-pack: center;
+     -webkit-justify-content: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+     border: 0.2px solid #333;
+     -webkit-box-shadow: 1px 1px 5px 0px rgba(15,73,70,0.75);
+     box-shadow: 1px 1px 5px 0px rgba(15,73,70,0.75);
+   }
+   .cardpry-img-pic {
+     width: 97%;
+   }
+   .cardpry-infoPry {
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     width: 100%;
+     height: 90px;
+     background-color: #282828;
+     -webkit-box-lines: multiple;
+     -moz-box-lines: multiple;
+     -o-box-lines: multiple;
+     -webkit-flex-wrap: wrap;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap;
+     -webkit-box-pack: end;
+     -moz-box-pack: end;
+     -o-box-pack: end;
+     -ms-flex-pack: end;
+     -webkit-justify-content: flex-end;
+     justify-content: flex-end;
+   }
+   .cardpry-name {
+     width: 70%;
+     color: #fff;
+     padding: 10px 10px 2px 10px;
+     font-weight: 300;
+     position: relative;
+     top: 0;
+     right: 0;
+     font-size: 16px;
+   }
+   .cardpry-figura {
+     padding: 10px 10px 2px 10px;
+     color: #888;
+     width: 70%;
+   }
+   .cardpry-hr {
+     height: 2px;
+     width: 97%;
+     border-top: 1px solid #ccc;
+     border-bottom: 0px;
+     border-left: 0px;
+     border-right: 0px;
+   }
+   .cardpry-footer {
+     width: 98%;
+     height: 97px;
+     margin: 3px auto;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-lines: single;
+     -moz-box-lines: single;
+     -o-box-lines: single;
+     -webkit-flex-wrap: nowrap;
+     -ms-flex-wrap: nowrap;
+     flex-wrap: nowrap;
+     -webkit-box-pack: justify;
+     -moz-box-pack: justify;
+     -o-box-pack: justify;
+     -ms-flex-pack: justify;
+     -webkit-justify-content: space-between;
+     justify-content: space-between;
+     padding-bottom: 5px;
+     position: relative;
+   }
+   .cardpry-footer-ss {
+     width: 100px;
+     font-size: 12px;
+     padding-left: 3px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-orient: vertical;
+     -moz-box-orient: vertical;
+     -o-box-orient: vertical;
+     -webkit-flex-direction: column;
+     -ms-flex-direction: column;
+     flex-direction: column;
+     -webkit-align-self: flex-end;
+     align-self: flex-end;
+     -ms-flex-item-align: end;
+   }
+   .cardpry-footer-ss-b {
+     font-weight: 900;
+   }
+   .cardpry-footer-fecha {
+     color: #676767;
+     position: absolute;
+     right: 5px;
+     bottom: 1px;
+     font-size: 10px;
+   }
+   .cardpry-footer-buttons {
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-orient: vertical;
+     -moz-box-orient: vertical;
+     -o-box-orient: vertical;
+     -webkit-flex-direction: column;
+     -ms-flex-direction: column;
+     flex-direction: column;
+     width: calc(100% - 120px);
+     margin: 4px auto;
+   }
+   .cardpry-footer-buttons-01 {
+     height: 40px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: distribute;
+     -moz-box-pack: distribute;
+     -o-box-pack: distribute;
+     -ms-flex-pack: distribute;
+     -webkit-justify-content: space-around;
+     justify-content: space-around;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+   }
+   .cardpry-footer-buttons-01-item {
+     width: 30px;
+     height: 30px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: center;
+     -moz-box-pack: center;
+     -o-box-pack: center;
+     -ms-flex-pack: center;
+     -webkit-justify-content: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+     -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+     -o-transition: 0.5s;
+     -ms-transition: 0.5s;
+     transition: 0.5s;
+     color: #282828;
+     border: 1px solid #fff;
+   }
+   .cardpry-footer-buttons-01-item:hover {
+     border: 1px solid #238953;
+     -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+     -o-transition: 0.5s;
+     -ms-transition: 0.5s;
+     transition: 0.5s;
+     font-weight: 900;
+     color: #238953;
+   }
+   .cardpry-footer-buttons-02 {
+     height: 40px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: start;
+     -moz-box-pack: start;
+     -o-box-pack: start;
+     -ms-flex-pack: start;
+     -webkit-justify-content: flex-start;
+     justify-content: flex-start;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+     margin-top: 5px;
+   }
+   .cardpry-footer-buttons-02-btnIni {
+     border: 3px solid #238953;
+     width: 100px;
+     height: 30px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: center;
+     -moz-box-pack: center;
+     -o-box-pack: center;
+     -ms-flex-pack: center;
+     -webkit-justify-content: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+     margin-left: 7px;
+     font-weight: 900;
+     text-transform: uppercase;
+   }
+   .cardpry-footer-buttons-02-btnConf {
+     margin-left: 10px;
+   }
+   /** Versión de la app */
+   .version {
+     position: fixed;
+     bottom: 5px;
+     right: 5px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-align: center;
+     -moz-box-align: center;
+     -o-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+     align-items: center;
+     -webkit-box-lines: single;
+     -moz-box-lines: single;
+     -o-box-lines: single;
+     -webkit-flex-wrap: nowrap;
+     -ms-flex-wrap: nowrap;
+     flex-wrap: nowrap;
+     width: 290px;
+     height: 25px;
+     -webkit-animation-duration: 4s;
+     -moz-animation-duration: 4s;
+     -o-animation-duration: 4s;
+     -ms-animation-duration: 4s;
+     animation-duration: 4s;
+   }
+   .version-app {
+     width: 125px;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: justify;
+     -moz-box-pack: justify;
+     -o-box-pack: justify;
+     -ms-flex-pack: justify;
+     -webkit-justify-content: space-between;
+     justify-content: space-between;
+     font-weight: 900;
+     color: #125887;
+   }
+   .version-kraken {
+     margin: 0 5px;
+   }
+   .version-fecha {
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: center;
+     -moz-box-pack: center;
+     -o-box-pack: center;
+     -ms-flex-pack: center;
+     -webkit-justify-content: center;
+     justify-content: center;
+     width: 90%;
+     color: #888;
+   }
+   /** Mascara de captura - NUEVO PROYECTO */
+   .nuevoProyecto {
+     position: fixed;
+     top: 0;
+     right: 0;
+     width: calc(100vw - 350px);
+     height: 100vh;
+     background-color: #d6d6d6;
+     color: #282828;
+     border-left: 0.5px solid #040404;
+   }
+   .nuevoProyecto-marcoCont {
+     width: 90%;
+   }
+   .nuevoProyecto-marcoContDesp {
+     width: 900px;
+     margin: 50px auto;
+   }
+   .nuevoProyecto-tlt {
+     padding: 50px 50px 20px 50px;
+     font-size: 28px;
+     font-weight: 900;
+   }
+   .nuevoProyecto-tlt-hr {
+     width: 90%;
+     margin: 0 auto;
+     border-left: 0px;
+     border-top: 0px;
+     border-right: 0px;
+     border-bottom: 0.5px solid #040404;
+   }
+   .nuevoProyecto-Cname {
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+   }
+   .nuevoProyecto-nombre {
+     width: 130px;
+     margin: 70px 10px 10px 80px;
+     text-align: right;
+   }
+   .nuevoProyecto-nombre-input {
+     width: 600px;
+     height: 20px;
+     margin-top: 65px;
+     padding-left: 20px;
+   }
+   .nuevoProyecto-nombre-input2 {
+     width: 580px;
+     height: 20px;
+     margin-top: 65px;
+     padding-left: 20px;
+   }
+   .nuevoProyecto-botones {
+     width: 60%;
+     margin: 120px auto;
+     display: -webkit-box;
+     display: -moz-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: box;
+     display: flex;
+     -webkit-box-pack: distribute;
+     -moz-box-pack: distribute;
+     -o-box-pack: distribute;
+     -ms-flex-pack: distribute;
+     -webkit-justify-content: space-around;
+     justify-content: space-around;
+   }
+   .np_despVal {
+     position: fixed;
+     bottom: 20px;
+     right: 0;
+     width: 440px;
+     min-height: 60px;
+     background: #ad3434;
+     color: #fff;
+   }
+   

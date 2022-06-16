@@ -17,4 +17,8 @@ body{
   -webkit-user-select: none;
 	cursor: default;
 }
-  
+
+@font-face {
+	font-family: 'Nunito';
+	src: url(./src/assets/fonts/Nunito-Medium.ttf);
+}
