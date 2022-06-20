@@ -4,6 +4,7 @@ import './index.css';
 import Login from './components/login/Login';
 import precarga from './precarga.js';
 import Despliegue from './components/Despliegue/Despliegue';
+import AreaDeTrabajo from './components/AreaDeTrabajo/AreaDeTrabajo';
 
 precarga();
 
@@ -23,6 +24,7 @@ div.addEventListener('drop', (e) => {
 
 root.render(
   <React.StrictMode>
-    <Despliegue />
+    <AreaDeTrabajo />
+    {/**  <Despliegue />  */}
   </React.StrictMode>
 );
