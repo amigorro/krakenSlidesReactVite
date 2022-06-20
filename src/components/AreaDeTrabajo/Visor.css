@@ -1,0 +1,12 @@
+.VisorCont {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  width: 100%;
+  height: 80%;
+  overflow: auto;
+  background-color: #fafafa;
+  margin-top: 10%;
+}

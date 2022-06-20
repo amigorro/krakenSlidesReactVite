@@ -24,7 +24,7 @@ div.addEventListener('drop', (e) => {
 
 root.render(
   <React.StrictMode>
-    {/**  <AreaDeTrabajo /> */}
-      <Despliegue />  
+    <AreaDeTrabajo />
+    {/*<Despliegue />*/}
   </React.StrictMode>
 );

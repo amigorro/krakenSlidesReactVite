@@ -4,6 +4,16 @@
      align-items: center;     
      width: 100%;
      height: calc(100vh - 28px);     
-     background-color: #e47070;
+     background-color: #334155;
+     overflow-y: hidden;
+     overflow-x: hidden;
+}
+
+.ADT_cont-cards {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     height: calc(100vh - 28px);     
      overflow-y: auto;
 }
