@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../fontawesome.css'
 
 import Icon from './assets/icons/Icon-Electron.png';
 
@@ -19,7 +20,7 @@ function AppBar() {
       <div className="py-0.5 flex justify-between draggable bg-gray-900">
         <div className="inline-flex  "  >
           {/*<img className="h-6 lg:-ml-2" src={Icon} alt="Icon of Electron" />*/}
-          <div className=" px-2 text-slate-100 font-bold "> K </div>
+          <div className=" px-2 text-slate-100 font-bold "> <i className="fa-brands fa-octopus-deploy"></i> </div>
           <p className="text-xs md:pt-1 text-purple-200 font-semibold pl-6 md:-ml-1 lg:-ml-2">Kraken Slides 3.3 - React Vite </p>
         </div>
         <div className="inline-flex -mt-1">
