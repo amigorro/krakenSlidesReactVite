@@ -21,3 +21,8 @@ body{
 	font-family: 'Nunito';
 	src: url(./src/assets/fonts/Nunito-Medium.ttf);
 }
+
+input, select{
+  outline: none;
+}
+	

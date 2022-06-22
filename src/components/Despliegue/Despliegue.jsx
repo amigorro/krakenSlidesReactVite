@@ -50,9 +50,9 @@ const Despliegue = () => {
           </div>
       
           <div className="cntProyectos-despliegue">
-               <div className="cntProyectos-despliegue-tlt">Proyectos:</div>
-               <div className="despCardsPry" id="despCardsPry" >               
-                    <Routes>                    
+                             
+                    <Routes>      
+                         <Route path='/' element={<ProyectosActivos />} />              
                          <Route path='/nuevo' element={<NuevoProyecto />} />
                          <Route path='/activos' element={<ProyectosActivos />} />                         
                     </Routes>   
@@ -60,6 +60,7 @@ const Despliegue = () => {
                
                </div>
 
+               {/*}
                <div className="version" >
                     <div className="version-app">
                          <div className="version-kraken"> KrakenSlides </div>
@@ -67,7 +68,7 @@ const Despliegue = () => {
                     </div>
                     <div id="dat_fechaVersion" className="version-fecha" >[05-Sep-2022]</div>
                </div>
-          </div>
+               */}
           </BrowserRouter>
 
     </>

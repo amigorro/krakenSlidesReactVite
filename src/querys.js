@@ -1,4 +1,10 @@
-const db = getDatabase();
+
+const getDatabase = () =>{	
+		return openDatabase('KRAKEN-SLIDES-3.2','1.0','KRK-SLD 1.0', 100);
+};
+
+const db=getDatabase;
+
 
 function select(nombreTabla, jsonProp){
 	console.log('Generando consulta..')
@@ -332,4 +338,6 @@ function getCondiciones(json, nombreTabla){
 	}
 }
 
-module.exports = { select, insert, update, deleteReg};
+//module.exports = { select, insert, update, deleteReg};
+
+export {select, insert, update, deleteReg}

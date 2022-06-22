@@ -599,7 +599,33 @@ function precarga() {
             //tx.executeSql(' insert into APP_DISENOS values ("diapo_opc_5","<div class=\'titulo\' id=\'v-titulo\'>  </div>  <div class=\'cont-fila\'>  <div class=\'cont-columna celdas2\'>  <div class=\'parrafo\' id=\'v-texto\'>  </div>    <div class=\'menu celdas2\' id=\'v-opcionesMenu1\'>   </div> </div>   <img class=\'generico\' id=\'v-imagen\' /> </div>"); ');
             // Modificar este contenedor y clases para asignar el tamaño de las opciones del menú y el tipo flex del contenedor
            tx.executeSql(' insert into APP_DISENOS values ("diapo_opc_3","<div class=\'titulo\' id=\'v-titulo\' ></div><div class=\'parrafo\' id=\'v-texto\'></div><div class=\'parrafo contenedorMenuDosColumnas\' id=\'v-opcionesMenu1\'></div>"); ');
-   
+            
+
+
+            /** Borrar estas precargas */
+            tx.executeSql(`INSERT INTO APP_PROYECTOS VALUES (1,'Capacitación del líder de proyecto',1,'20-06-2022',1,1,1),
+(2,'Capacitación del Coordinador de zona',1,'20-06-2022',2,1,1),
+(3,'Capacitación del Coordinador municipal',1,'20-06-2022',3,1,1),
+(4,'Capacitación del Responsable de área',1,'20-06-2022',1,1,1),
+(5,'Capacitación del Supervisor de entrevistadores',1,'20-06-2022',2,1,1),
+(6,'Capacitación del Entrevistador de básico',1,'20-06-2022',3,1,1),
+(7,'Capacitación del Entrevistador de ampliado',1,'20-06-2022',1,1,1),
+(8,'Capacitación del Responsable de verificación',1,'20-06-2022',2,1,1),
+(9,'Capacitación del Supervisor de verificación',1,'20-06-2022',3,1,1),
+(10,'Capacitación del Verificador',1,'20-06-2022',1,1,1),
+(11,'Capacitación del Responsable de operativos especiales',1,'20-06-2022',2,1,1),
+(12,'Capacitación del Supervisor de entrevistadores de operativos especiales',1,'20-06-2022',3,1,1),
+(13,'Capacitación del Entrevistador de operativos especiales',1,'20-06-2022',1,1,1),
+(14,'Capacitación del Responsable de posenumeración',1,'20-06-2022',2,1,1),
+(15,'Capacitación del Supervisor de posenumeración',1,'20-06-2022',3,1,1),
+(16,'Capacitación del Entrevistador de posenumeración',1,'20-06-2022',1,1,1),
+(17,'Capacitación del cuestionario básico emergente',1,'20-06-2022',2,1,1),
+(18,'Capacitación del cuestionario ampliado emergente',1,'20-06-2022',3,1,1),
+(19,'Capacitación del Resposable de área para la planeación',1,'20-06-2022',1,1,1),
+(20,'Capacitación del Verificador del básico',1,'20-06-2022',2,1,1);`); 
+
+
+
    
                  }
            });

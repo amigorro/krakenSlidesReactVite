@@ -9,34 +9,48 @@ const AreaDeTrabajo = () => {
      <>
           <AppBar />
           <div id='ADT_cont' className='ADT_cont' >
-               <header id='ADT_header' className='h-16 bg-slate-900 w-screen text-slate-500' > 
-                    <img src="" alt="" />
-                    <div> Info Proyecto </div>
+               <header id='ADT_header' className='ADT_cont-header' > 
+                    <img  src="../../../assets/logos/logo.png" className="ADT_cont-header-logo" alt=""></img>
+                    <div> 
+                         <div> Productos cartográficos </div>
+                         <div> Instructor de operativos especiales</div>
+                    </div>
                     <div> Tarjeta usuario </div>
                </header>
                <div id='ADT_contenido' className='grid grid-cols-5  gap-4 w-screen' > 
+                    
                     <div className='bg-gray-900   ADT_cont-cards col-start-1 col-span-1 ' >
-                         <div>
-                              sesion 1
+                         <div className='ADT_cont-cards-select'>
+                              <select  className='ADT_cont-cards-select-inp' >
+                                   <option value="1" className='ADT_cont-cards-select-inp-item'>Sesión 1</option>
+                                   <option value="2" className='ADT_cont-cards-select-inp-item'>Sesión 2</option>
+                                   <option value="3" className='ADT_cont-cards-select-inp-item'>Sesión 3</option>
+                                   <option value="4" className='ADT_cont-cards-select-inp-item'>Sesión 4</option>
+                              </select>
+                              <div className='ADT_cont-cards-select-add'>
+                                   <i className="fa-solid fa-circle-plus "></i>
+                              </div>
                          </div>
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
-                         <Cardpry />
+                         <div className='ADT_cont-cards-despl' >
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                              <Cardpry />
+                         </div>
                     </div>
                     <div className='   h-full col-start-2 col-span-2 ' >
                          <Visor/>

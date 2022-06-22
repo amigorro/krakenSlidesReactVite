@@ -544,25 +544,25 @@
    /** Mascara de captura - NUEVO PROYECTO */
    .nuevoProyecto {
      position: fixed;
-     top: 0;
+     top: 28px;
      right: 0;
      width: calc(100vw - 350px);
      height: 100vh;
-     background-color: #d6d6d6;
-     color: #282828;
+     background-color: #334155;
+     color: #e2e8f0;
      border-left: 0.5px solid #040404;
    }
    .nuevoProyecto-marcoCont {
      width: 90%;
    }
    .nuevoProyecto-marcoContDesp {
-     width: 900px;
-     margin: 50px auto;
+     width: 600px;
+     margin: 50px auto;         
    }
    .nuevoProyecto-tlt {
      padding: 50px 50px 20px 50px;
      font-size: 28px;
-     font-weight: 900;
+     font-weight: 700;
    }
    .nuevoProyecto-tlt-hr {
      width: 90%;
@@ -570,7 +570,7 @@
      border-left: 0px;
      border-top: 0px;
      border-right: 0px;
-     border-bottom: 0.5px solid #040404;
+     border-bottom: 0.5px solid #475569;
    }
    .nuevoProyecto-Cname {
      display: -webkit-box;
@@ -578,24 +578,38 @@
      display: -webkit-flex;
      display: -ms-flexbox;
      display: box;
-     display: flex;
+     display: flex;          
+     flex-direction: column;
+     margin: 0 auto;
    }
    .nuevoProyecto-nombre {
-     width: 130px;
-     margin: 70px 10px 10px 80px;
-     text-align: right;
+     width: 170px;
+     margin: 10px 0 0 0;
+     text-align: left;     
    }
    .nuevoProyecto-nombre-input {
-     width: 600px;
-     height: 20px;
-     margin-top: 65px;
+     width: 400px;
+     height: 35px;
+     margin: 4px 0 70px 0;
      padding-left: 20px;
+     border-radius: 2px;
+     color: #111827;
+     font-weight: 600;
+     background-color: rgba(255, 255, 255, 0.308);
    }
    .nuevoProyecto-nombre-input2 {
      width: 580px;
-     height: 20px;
-     margin-top: 65px;
+     height: 35px;
+     border-radius: 2px;
+     margin-top: 4px;
+     margin-bottom: 70px;
      padding-left: 20px;
+     padding-bottom: 2px;
+     color: #111827;
+     font-weight: 600;
+     display: flex;
+     align-items: center;
+     background-color: rgba(255, 255, 255, 0.308);
    }
    .nuevoProyecto-botones {
      width: 60%;
