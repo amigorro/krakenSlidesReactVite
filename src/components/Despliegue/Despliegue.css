@@ -127,7 +127,7 @@
      position: fixed;
      top: 28px;
      right: 0;
-     background-color: #dadada;
+     background-color: #334155;
      width: calc(100vw - 350px);
      height: 100vh;
      color: #040404;
@@ -275,14 +275,18 @@
      padding: 10px 10px 2px 10px;
      font-weight: 300;
      position: relative;
+     -webkit-line-clamp: 2;
      top: 0;
      right: 0;
      font-size: 16px;
+     text-overflow: ellipsis;
    }
    .cardpry-figura {
-     padding: 10px 10px 2px 10px;
+     padding: 5px 10px 2px 10px;
      color: #888;
-     width: 70%;
+     width: 70%;     
+     display: flex;
+     align-items: flex-end;
    }
    .cardpry-hr {
      height: 2px;
@@ -612,8 +616,9 @@
      background-color: rgba(255, 255, 255, 0.308);
    }
    .nuevoProyecto-botones {
-     width: 60%;
-     margin: 120px auto;
+     width: 280px;
+     height: 50px;
+     margin: 10px auto;
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
@@ -625,8 +630,22 @@
      -o-box-pack: distribute;
      -ms-flex-pack: distribute;
      -webkit-justify-content: space-around;
-     justify-content: space-around;
+     justify-content: space-around;     
    }
+
+   .boton1{
+      width: 220px;
+      height: 40px;
+      background-color: #159999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      font-weight: 700;
+   }
+   
    .np_despVal {
      position: fixed;
      bottom: 20px;

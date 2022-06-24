@@ -603,6 +603,7 @@ function precarga() {
 
 
             /** Borrar estas precargas */
+            
             tx.executeSql(`INSERT INTO APP_PROYECTOS VALUES (1,'Capacitación del líder de proyecto',1,'20-06-2022',1,1,1),
 (2,'Capacitación del Coordinador de zona',1,'20-06-2022',2,1,1),
 (3,'Capacitación del Coordinador municipal',1,'20-06-2022',3,1,1),
@@ -614,7 +615,7 @@ function precarga() {
 (9,'Capacitación del Supervisor de verificación',1,'20-06-2022',3,1,1),
 (10,'Capacitación del Verificador',1,'20-06-2022',1,1,1),
 (11,'Capacitación del Responsable de operativos especiales',1,'20-06-2022',2,1,1),
-(12,'Capacitación del Supervisor de entrevistadores de operativos especiales',1,'20-06-2022',3,1,1),
+(12,'Capacitación del Supervisor de entrevistadores de operativos especiales Productos cartográficos para usar en campo',1,'20-06-2022',3,1,1),
 (13,'Capacitación del Entrevistador de operativos especiales',1,'20-06-2022',1,1,1),
 (14,'Capacitación del Responsable de posenumeración',1,'20-06-2022',2,1,1),
 (15,'Capacitación del Supervisor de posenumeración',1,'20-06-2022',3,1,1),
