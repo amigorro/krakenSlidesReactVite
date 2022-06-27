@@ -6,7 +6,96 @@
   flex-basis: auto;
   width: 100%;
   height: 80%;
-  overflow: auto;
-  background-color: #fafafa;
+  overflow: auto;  
   margin-top: 10%;
+}
+.areaTrabajo-cont-visor {
+  width: 40vw;
+  height: 98%;
+  border-left: 0.5px solid rgba(82,82,82,0.643);
+  border-right: 0.5px solid rgba(82,82,82,0.643);
+  margin: 0 auto;
+}
+.areaTrabajo-cont-visor-display {
+  width: 80%;
+  height: calc(100% - 48% - 5vh);
+  background-color: #fff;
+  margin: 20px auto;
+  -webkit-box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.945);
+  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.945);
+}
+.areaTrabajo-cont-visor-btns {
+  width: 80%;
+  height: 50px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -moz-box-pack: end;
+  -o-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+.areaTrabajo-cont-visor-btns-item {
+  width: 45px;
+  height: 45px;
+  background-color: #007878;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-left: 10px;
+}
+.areaTrabajo-cont-visor-msgRev {
+  width: 80%;
+  height: auto;
+  margin: 40px auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 300;
+  color: #d6d6d6;
+  background-color: rgba(83,113,133,0.459);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  padding: 10px;
+  border-radius: 5px;
 }

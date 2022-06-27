@@ -3,6 +3,7 @@ import './AreaDeTrabajo.css'
 import AppBar from '../AppBar/AppBar'
 import Cardpry from './Cardpry'
 import Visor from './Visor'
+import InfoGestionSlide from './InfoGestionSlide'
 
 const AreaDeTrabajo = () => {
   return (
@@ -55,7 +56,9 @@ const AreaDeTrabajo = () => {
                     <div className='   h-full col-start-2 col-span-2 ' >
                          <Visor/>
                     </div>
-                    <div className=' h-full end col-span-2 ' >c</div>
+                    <div className=' h-full end col-span-2 ' >
+                         <InfoGestionSlide/>
+                    </div>
                </div>
           </div>
      </>
