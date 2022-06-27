@@ -8,6 +8,9 @@
      background-color: #334155;
      overflow-y: hidden;
      overflow-x: hidden;
+     position: absolute;
+     top:28px;
+     left: 0;
 }
 .ADT_cont-header{
      width: 100vw;

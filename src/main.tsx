@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client'
 import './index.css';
 import './fontawesome.css';
@@ -6,6 +6,8 @@ import Login from './components/login/Login';
 import precarga from './precarga.js';
 import Despliegue from './components/Despliegue/Despliegue';
 import AreaDeTrabajo from './components/AreaDeTrabajo/AreaDeTrabajo';
+import MenuPrincipal from './components/MenuPrincipal/MenuPrincipal'
+import Routeo from './components/Routeo'
 
 precarga();
 
@@ -25,7 +27,8 @@ div.addEventListener('drop', (e) => {
 
 root.render(
   <React.StrictMode>
-    <AreaDeTrabajo />
-    {/*<Despliegue />*/}
+    {/*<AreaDeTrabajo />*/}   
+      <Routeo />
+    {/*<MenuPrincipal />*/}
   </React.StrictMode>
 );

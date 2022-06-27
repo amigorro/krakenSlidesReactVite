@@ -12,8 +12,9 @@ import {
     Outlet
 } from "react-router-dom";
 import './ProyectosActivos.css'
+import Routeo from '../Routeo.jsx';
 
-const ProyectosActivos = () => {
+const ProyectosActivos = ({setModulo}) => {
     
     const [proyectos, setProyectos] = useState([])
 
@@ -49,7 +50,10 @@ const ProyectosActivos = () => {
         
     } 
 
-
+    const abrirAreaDeTrabajo = (id) =>{
+        setModulo("AreaTrabajo")
+        return <Routeo/>
+    }
 
     
   return (
@@ -89,7 +93,12 @@ const ProyectosActivos = () => {
                                     <div className="cardpry-footer-buttons-01-item" ><i className="fa-duotone fa-spell-check"></i></div>
                                     </div>
                                     <div className="cardpry-footer-buttons-02" >
-                                    <div className="cardpry-footer-buttons-02-btnIni" name="${row.id_proyecto}" >Go !!</div>
+                                    <div className="cardpry-footer-buttons-02-btnIni" 
+                                         name="${row.id_proyecto}" 
+                                         onClick={ () => abrirAreaDeTrabajo() }
+                                    >Go !!
+                                         
+                                    </div>
                                     <div className="cardpry-footer-buttons-02-btnConf"><i className="fa-duotone fa-ellipsis"></i></div>
                                     </div>
                                 </div>                                
