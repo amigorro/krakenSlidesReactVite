@@ -37,13 +37,13 @@ const ProyectosActivos = () => {
           });	
         
         const listado = proyectos.map(function(num) {
-            return {Math.sqrt(num);}
+            return {/*Math.sqrt(num);*/  }
         });
     
   } 
 
   const imprimetarjeta = (nombrePry) =>{
-        console.log(`nombre del proyecto ${}`)
+        console.log(`nombre del proyecto `)
   }
 
 
