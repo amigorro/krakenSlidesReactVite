@@ -3,14 +3,28 @@ import './AreaDeTrabajo.css'
 import AppBar from '../AppBar/AppBar'
 import Cardpry from './Cardpry'
 import Visor from './Visor'
+import InfoGestionSlide from './InfoGestionSlide'
+import Routeo from '../Routeo'
 
-const AreaDeTrabajo = () => {
+const AreaDeTrabajo = ({setModulo}) => {
+  
+     const regresaMenu = ()=>{
+          setModulo("MenuPrincipal")
+          return(<Routeo/>)
+     }
+  
+  
+  
   return (
      <>
           <AppBar />
           <div id='ADT_cont' className='ADT_cont' >
                <header id='ADT_header' className='ADT_cont-header' > 
-                    <img  src="../../../assets/logos/logo.png" className="ADT_cont-header-logo" alt=""></img>
+                    <img src="../../../assets/logos/logo.png" 
+                         className="ADT_cont-header-logo" 
+                         alt=""
+                         onClick={ () => regresaMenu() }
+                    />
                     <div> 
                          <div> Productos cartográficos </div>
                          <div> Instructor de operativos especiales</div>
@@ -55,7 +69,9 @@ const AreaDeTrabajo = () => {
                     <div className='   h-full col-start-2 col-span-2 ' >
                          <Visor/>
                     </div>
-                    <div className=' h-full end col-span-2 ' >c</div>
+                    <div className=' h-full end col-span-2 ' >
+                         <InfoGestionSlide/>
+                    </div>
                </div>
           </div>
      </>
