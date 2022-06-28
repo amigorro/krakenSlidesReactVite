@@ -21,7 +21,7 @@ const div = document.querySelector('div')
 
 div.addEventListener('drop', (e) => {
   e.preventDefault()
-})
+}) 
 
 root.render(
   <React.StrictMode>
