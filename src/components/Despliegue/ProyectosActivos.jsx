@@ -32,7 +32,7 @@ const ProyectosActivos = ({setModulo}) => {
         localStorage.removeItem("proyectosActivos");
         const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function (tx) {
-            const query = "SELECT * FROM APP_PROYECTOS ;";
+            const query = "SELECT * FROM APP_PROYECTOS WHERE status=1 ;";
             tx.executeSql(query, [],function (tx, resultSet) {        
                 let peli;
                 for(var x = 0; x < resultSet.rows.length; x++) {                        

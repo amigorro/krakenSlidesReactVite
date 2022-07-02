@@ -40,8 +40,9 @@ const MenuPrincipal = ({setModulo}) => {
                                              <NavLink to="/activos">
                                                   <div className="cntProyectos-menu-cont-reg"><div className="cntProyectos-menu-cont-reg-ico"><i className="fa-duotone fa-folder-open"></i></div><div className="cntProyectos-menu-cont-reg-txt">Proyectos Activos</div></div>
                                              </NavLink>
-                                             <div className="cntProyectos-menu-cont-reg cntProyectos-menu-cont-regBorderB"><div className="cntProyectos-menu-cont-reg-ico"><i className="fa-duotone fa-box-archive"></i></div><div className="cntProyectos-menu-cont-reg-txt">Archivados</div></div>
-
+                                             <NavLink to="/archivados">
+                                                  <div className="cntProyectos-menu-cont-reg cntProyectos-menu-cont-regBorderB"><div className="cntProyectos-menu-cont-reg-ico"><i className="fa-duotone fa-box-archive"></i></div><div className="cntProyectos-menu-cont-reg-txt">Archivados</div></div>
+                                             </NavLink>
                                         </section>
                                         <div className="cntProyectos-menu-cont-reg"><div className="cntProyectos-menu-cont-reg-ico"><i className="fa-duotone fa-clouds"></i></div> <div className="cntProyectos-menu-cont-reg-txt">Nube</div> </div>
                                         <div className="cntProyectos-menu-cont-reg"><div className="cntProyectos-menu-cont-reg-ico icolor"><i className="fa-duotone fa-gears"></i></div> <div className="cntProyectos-menu-cont-reg-txt">Configuración</div></div>
@@ -56,7 +57,8 @@ const MenuPrincipal = ({setModulo}) => {
                               <Routes>      
                                    <Route path='/' element={<ProyectosActivos setModulo={setModulo} />} />              
                                    <Route path='/nuevo' element={<NuevoProyecto />} />
-                                   <Route path='/activos' element={<ProyectosActivos setModulo={setModulo} />} />                             
+                                   <Route path='/activos' element={<ProyectosActivos setModulo={setModulo} />} />
+                                   <Route path='/archivados' element={<ProyectosArchivados     />}/>                             
                               </Routes>   
                     </div>
 

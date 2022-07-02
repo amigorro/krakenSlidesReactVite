@@ -228,8 +228,27 @@ function precarga() {
              tx.executeSql('INSERT INTO TBL_CONTROL_SYNC  VALUES (0,"B-1.0.0.0","19-05-2022","DIABLO");    ');
    
              // TBL_FIGURA
-             tx.executeSql('insert into TBL_FIGURA values(51,"Instructor municipal"); ');
-             tx.executeSql('insert into TBL_FIGURA values(52,"Responsable de área"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(11,"Instructor de: Instructor municipal"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(12,"Instructor de: Supervisor de entrevistadores"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(13,"Instructor de: Entrevistador de cuestionario básico"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(14,"Instructor de: Entrevistador de cuestionario ampliado"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(15,"Instructor de: Supervisor de entrevistadores de operativos especiales"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(16,"Instructor de: Entrevistador de operativos especiales"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(17,"Instructor de: Supervisor de verificadores"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(18,"Instructor de: Verificador"); '); 
+
+              tx.executeSql('insert into TBL_FIGURA values(51,"Instructor municipal"); ');
+              tx.executeSql('insert into TBL_FIGURA values(52,"Responsable de área"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(53,"Supervisor de entrevistadores"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(54,"Entrevistador de cuestionario básico"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(55,"Entrevistador de cuestionario ampliado"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(56,"Supervisor de entrevistadores de operativos especiales"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(57,"Entrevistador de operativos especiales"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(58,"Supervisor de verificadores"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(59,"Verificador"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(60,"Responsable de posenumeración"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(61,"Supervisor de posenumeración"); '); 
+              tx.executeSql('insert into TBL_FIGURA values(62,"Entrevistador de posenumeración"); '); 
              
              //usuarios
              tx.executeSql(' insert into usuarios values (0,"PHILIP ANSELMO","kraken",2,"kraken",4000)');
@@ -604,26 +623,26 @@ function precarga() {
 
             /** Borrar estas precargas */
             
-            tx.executeSql(`INSERT INTO APP_PROYECTOS VALUES (1,'Capacitación del líder de proyecto',1,'20-06-2022',1,1,1),
-(2,'Capacitación del Coordinador de zona',1,'20-06-2022',2,1,1),
-(3,'Capacitación del Coordinador municipal',1,'20-06-2022',3,1,1),
-(4,'Capacitación del Responsable de área',1,'20-06-2022',1,1,1),
-(5,'Capacitación del Supervisor de entrevistadores',1,'20-06-2022',2,1,1),
-(6,'Capacitación del Entrevistador de básico',1,'20-06-2022',3,1,1),
-(7,'Capacitación del Entrevistador de ampliado',1,'20-06-2022',1,1,1),
-(8,'Capacitación del Responsable de verificación',1,'20-06-2022',2,1,1),
-(9,'Capacitación del Supervisor de verificación',1,'20-06-2022',3,1,1),
-(10,'Capacitación del Verificador',1,'20-06-2022',1,1,1),
-(11,'Capacitación del Responsable de operativos especiales',1,'20-06-2022',2,1,1),
-(12,'Capacitación del Supervisor de entrevistadores de operativos especiales Productos cartográficos para usar en campo',1,'20-06-2022',3,1,1),
-(13,'Capacitación del Entrevistador de operativos especiales',1,'20-06-2022',1,1,1),
-(14,'Capacitación del Responsable de posenumeración',1,'20-06-2022',2,1,1),
-(15,'Capacitación del Supervisor de posenumeración',1,'20-06-2022',3,1,1),
-(16,'Capacitación del Entrevistador de posenumeración',1,'20-06-2022',1,1,1),
-(17,'Capacitación del cuestionario básico emergente',1,'20-06-2022',2,1,1),
-(18,'Capacitación del cuestionario ampliado emergente',1,'20-06-2022',3,1,1),
-(19,'Capacitación del Resposable de área para la planeación',1,'20-06-2022',1,1,1),
-(20,'Capacitación del Verificador del básico',1,'20-06-2022',2,1,1);`); 
+            tx.executeSql(`INSERT INTO APP_PROYECTOS VALUES (1,'Capacitación del líder de proyecto',1,'20-06-2022',51,1,1),
+(2,'Capacitación del Coordinador de zona',1,'20-06-2022',52,1,1),
+(3,'Capacitación del Coordinador municipal',1,'20-06-2022',53,1,1),
+(4,'Capacitación del Responsable de área',1,'20-06-2022',54,1,1),
+(5,'Capacitación del Supervisor de entrevistadores',1,'20-06-2022',52,1,1),
+(6,'Capacitación del Entrevistador de básico',2,'20-06-2022',53,1,1),
+(7,'Capacitación del Entrevistador de ampliado',2,'20-06-2022',55,1,1),
+(8,'Capacitación del Responsable de verificación',2,'20-06-2022',56,1,1),
+(9,'Capacitación del Supervisor de verificación',2,'20-06-2022',57,1,1),
+(10,'Capacitación del Verificador',2,'20-06-2022',58,1,1),
+(11,'Capacitación del Responsable de operativos especiales',2,'20-06-2022',59,1,1),
+(12,'Capacitación del Supervisor de entrevistadores de operativos especiales Productos cartográficos para usar en campo',1,'20-06-2022',53,1,1),
+(13,'Capacitación del Entrevistador de operativos especiales',2,'20-06-2022',51,1,1),
+(14,'Capacitación del Responsable de posenumeración',2,'20-06-2022',52,1,1),
+(15,'Capacitación del Supervisor de posenumeración',2,'20-06-2022',53,1,1),
+(16,'Capacitación del Entrevistador de posenumeración',2,'20-06-2022',51,1,1),
+(17,'Capacitación del cuestionario básico emergente',2,'20-06-2022',52,1,1),
+(18,'Capacitación del cuestionario ampliado emergente',2,'20-06-2022',53,1,1),
+(19,'Capacitación del Resposable de área para la planeación',2,'20-06-2022',51,1,1),
+(20,'Capacitación del Verificador del básico',2,'20-06-2022',52,1,1);`); 
 
 
 
