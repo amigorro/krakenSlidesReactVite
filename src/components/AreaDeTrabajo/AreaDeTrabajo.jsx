@@ -20,7 +20,7 @@ const AreaDeTrabajo = ({setModulo}) => {
           <AppBar />
           <div id='ADT_cont' className='ADT_cont' >
                <header id='ADT_header' className='ADT_cont-header' > 
-                    <img src="../../../assets/logos/logo.png" 
+                    <img src="./assets/logos/logo.png" 
                          className="ADT_cont-header-logo" 
                          alt=""
                          onClick={ () => regresaMenu() }

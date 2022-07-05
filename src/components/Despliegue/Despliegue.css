@@ -24,8 +24,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: center;
      -moz-box-pack: center;
@@ -61,8 +60,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      height: 40px;
    }
@@ -72,8 +70,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: center;
      -moz-box-pack: center;
@@ -94,8 +91,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-align: center;
      -moz-box-align: center;
@@ -166,8 +162,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-lines: multiple;
      -moz-box-lines: multiple;
@@ -192,8 +187,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-lines: multiple;
      -moz-box-lines: multiple;
@@ -224,8 +218,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: center;
      -moz-box-pack: center;
@@ -250,8 +243,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      width: 100%;
      height: 90px;
@@ -303,8 +295,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-lines: single;
      -moz-box-lines: single;
@@ -328,8 +319,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-orient: vertical;
      -moz-box-orient: vertical;
@@ -355,8 +345,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-orient: vertical;
      -moz-box-orient: vertical;
@@ -372,8 +361,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: distribute;
      -moz-box-pack: distribute;
@@ -394,8 +382,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: center;
      -moz-box-pack: center;
@@ -432,8 +419,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: start;
      -moz-box-pack: start;
@@ -456,8 +442,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: center;
      -moz-box-pack: center;
@@ -486,8 +471,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-align: center;
      -moz-box-align: center;
@@ -514,8 +498,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: justify;
      -moz-box-pack: justify;
@@ -533,8 +516,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: center;
      -moz-box-pack: center;
@@ -580,8 +562,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;          
      flex-direction: column;
      margin: 0 auto;
@@ -622,8 +603,7 @@
      display: -webkit-box;
      display: -moz-box;
      display: -webkit-flex;
-     display: -ms-flexbox;
-     display: box;
+     display: -ms-flexbox;     
      display: flex;
      -webkit-box-pack: distribute;
      -moz-box-pack: distribute;

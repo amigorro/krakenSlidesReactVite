@@ -23,7 +23,7 @@ const MenuPrincipal = ({setModulo}) => {
                     <div id="proyectos" className="cntProyectos" >
                          <div className="cntProyectos-menu" >
                               <div className="cntProyectos-menu-cntlogo">
-                                   <img  src="../../../assets/logos/logo.png" className="cntProyectos-menu-logoKrk" alt=""></img>
+                                   <img  src="./assets/logos/logo.png" className="cntProyectos-menu-logoKrk" alt=""></img>
                               </div>
                               <div>
                                    <div className="cntProyectos-menu-cont" >

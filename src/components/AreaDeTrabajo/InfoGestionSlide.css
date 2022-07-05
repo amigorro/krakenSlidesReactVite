@@ -8,5 +8,48 @@
      height: 90%;
      overflow: auto;  
      margin-top: 10%;
-     background-color: #212299;
-   }
+     
+}
+
+.areaTrabajo-cont-gestion-nombreSlide{
+    background-color: #787777;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.areaTrabajo-cont-gestion-nombreSlide-inp{
+  width: 500px;
+  padding-left: 10px;
+}
+
+.areaTrabajo-cont-gestion-paginacion{
+  width: 500px;
+  margin: 0 auto;
+  background-color: #454499;
+}
+
+.areaTrabajo-cont-gestion-paginacion-txt{
+  margin: 10px 0 0 0;  
+}
+
+.areaTrabajo-cont-gestion-paginacion-inp{
+  width: 60px;
+  text-align: center;
+}
+
+.areaTrabajo-cont-gestion-paginacion-inp::-webkit-outer-spin-button,
+.areaTrabajo-cont-gestion-paginacion-inp::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.areaTrabajo-cont-gestion-avanzaRetrocede{
+  width: 500px;
+  display: flex;
+  margin: 20px auto;
+  justify-content: space-around;
+}
+
+.areaTrabajo-cont-gestion-avanzaRetrocede-btn{
+  background-color: #228845;
+  width: 140px;
+}
