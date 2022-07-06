@@ -12,29 +12,50 @@
 }
 
 .areaTrabajo-cont-gestion-nombreSlide{
-    background-color: #787777;
-    margin: 0 auto;
+  margin: 2vh auto 2vh auto;    
     width: 500px;
+    color:rgb(195, 211, 208);
+    font-weight: 600;
 }
 
 .areaTrabajo-cont-gestion-nombreSlide-inp{
-  width: 500px;
-  padding-left: 10px;
+  width: 500px;  
+  height: 36px;
+  border-radius: 2px;
+  margin-top: 4px;  
+  padding-left: 20px;
+  padding-bottom: 2px;
+  color: #111827;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.308);
+  border-bottom: 2px solid #3ab183;
 }
 
 .areaTrabajo-cont-gestion-paginacion{
   width: 500px;
-  margin: 0 auto;
-  background-color: #454499;
+  margin: 2vh auto 2vh auto;  
 }
 
 .areaTrabajo-cont-gestion-paginacion-txt{
   margin: 10px 0 0 0;  
+  color:rgb(195, 211, 208);
+    font-weight: 600;
 }
 
 .areaTrabajo-cont-gestion-paginacion-inp{
   width: 60px;
   text-align: center;
+  height: 36px;
+  border-radius: 2px;
+  margin-top: 4px;  
+  color: #111827;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.308);
+  border-bottom: 2px solid #3ab183;
 }
 
 .areaTrabajo-cont-gestion-paginacion-inp::-webkit-outer-spin-button,
@@ -50,6 +71,34 @@
 }
 
 .areaTrabajo-cont-gestion-avanzaRetrocede-btn{
-  background-color: #228845;
+  background-color: rgba(255, 255, 255, 0.308);
+  border-bottom: 2px solid #3ab183;
   width: 140px;
+  height: 30px;
+  padding: 2px 15px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.btn-gestion{
+  width: 250px;
+  height: 40px;  
+  background-color: rgba(255, 255, 255, 0.308);
+  border-bottom: 2px solid #3ab183;
+  display: flex;
+  margin: 10px auto;
+  padding-left: 20px;
+  align-items: center;
+  color: #fff;  
+  border-radius: 2px;
+}
+
+.btn-eliminarSlide{
+  background-color: #c74848;
+}
+
+.btn-nuevoSlide{
+  background-color: #3ab183;
 }

@@ -20,35 +20,41 @@ const ProyectosActivos = ({setModulo}) => {
 
     useEffect( () =>{
         console.log("iniciando este rollo")
-        getDataProyectosBD()
+        getDataProyectosBD(1)
     }, []  )
 
-    const obtenerListadoProyectos = () =>{
-        let proyectosAct = JSON.parse(localStorage.getItem("proyectosActivos"))
-        setProyectos(proyectosAct)
-    }
+ 
 
-    const getDataProyectosBD = async (id_usuario) =>{	
-        localStorage.removeItem("proyectosActivos");
+
+    const getDataProyectosBD = async (id_usuario) =>{
+        //
         const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
-        db.transaction(function (tx) {
-            const query = "SELECT * FROM APP_PROYECTOS WHERE status=1 ;";
-            tx.executeSql(query, [],function (tx, resultSet) {        
-                let peli;
-                for(var x = 0; x < resultSet.rows.length; x++) {                        
-                        //setProyectos(proys => [...proyectos, resultSet.rows.item(x).nombre_proyecto] )
-                        peli = {
-                            id: resultSet.rows.item(x).id_proyecto,
-                            nombre: resultSet.rows.item(x).nombre_proyecto                            
-                        }
-                        GuardarEnStorage("proyectosActivos", peli )
-                }
-                
-            })
-            obtenerListadoProyectos()
+        db.transaction(function(tx) {
+             tx.executeSql('SELECT * FROM APP_PROYECTOS WHERE status=1 AND id_usuario = ?', [id_usuario], function(tx, results) {
+                  //console.log('results', results)
+                  let len = results.rows.length, i;
+                  let pry;
+                  console.log("len: " + len)
+                  if(len > 0){
+                       let archivados = []
+                       for (i = 0; i < len; i++){
+                            if (i==0){localStorage.removeItem("proyectosActivos");}
+                            archivados.push(results.rows.item(i))
+                            pry={
+                                 id: results.rows.item(i).id_proyecto,
+                                 nombre: results.rows.item(i).nombre_proyecto,
+                            }
+                            GuardarEnStorage('proyectosActivos', pry)
+                       }
+                       
+                       let proyectosAct = JSON.parse(localStorage.getItem("proyectosActivos"))
+                        setProyectos(proyectosAct)
+                  }
+             }, null);
         });
         
-    } 
+   }
+
 
     const abrirAreaDeTrabajo = (id) =>{
         setModulo("AreaTrabajo")

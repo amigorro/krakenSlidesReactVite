@@ -38,14 +38,6 @@ const NuevoProyecto = () => {
   });
   }
 
-
-
-
-
-
-
-
-
   return (
           <div className="nuevoProyecto" >
             <div className="nuevoProyecto-marcoCont">
