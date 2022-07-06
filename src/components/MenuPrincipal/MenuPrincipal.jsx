@@ -10,7 +10,8 @@ import {
      Routes,
      Link,
      NavLink,
-     Outlet
+     Outlet,
+     HashRouter
 } from "react-router-dom";
 
 
@@ -19,11 +20,11 @@ const MenuPrincipal = ({setModulo}) => {
      return (
           <>
                <AppBar />
-               <BrowserRouter>                
+               <HashRouter>                
                     <div id="proyectos" className="cntProyectos" >
                          <div className="cntProyectos-menu" >
                               <div className="cntProyectos-menu-cntlogo">
-                                   <img  src="./assets/logos/logo.png" className="cntProyectos-menu-logoKrk" alt=""></img>
+                                   {/*<img  src="./logos/logo.png" className="cntProyectos-menu-logoKrk" alt=""></img>*/}
                               </div>
                               <div>
                                    <div className="cntProyectos-menu-cont" >
@@ -71,7 +72,7 @@ const MenuPrincipal = ({setModulo}) => {
                               <div id="dat_fechaVersion" className="version-fecha" >[05-Sep-2022]</div>
                          </div>
                          */}
-                    </BrowserRouter>
+                    </HashRouter>
           </>
      )
 }

@@ -19,7 +19,7 @@ body{
 
 @font-face {
 	font-family: 'Nunito';
-	src: url(./src/assets/fonts/Nunito-Medium.ttf);
+	src: url('./assets/fonts/Nunito-Medium.ttf');
 }
 
 input, select{

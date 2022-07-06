@@ -71,7 +71,8 @@ input, select{
                align-items: center;
                padding-left: 15px;
                color: #98a9b4;
-               font-family: Nunito;}
+               font-family: Nunito;
+          }
           
 .login-inputs-btn
                {background-color: #537185;
