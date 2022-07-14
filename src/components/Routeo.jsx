@@ -1,32 +1,38 @@
 import React, { useState } from 'react'
+import { ContextAreaDeTrabajo } from '../context/ContextAreaDeTrabajo'
 import AreaDeTrabajo from './AreaDeTrabajo/AreaDeTrabajo'
 import MenuPrincipal from './MenuPrincipal/MenuPrincipal'
 
 const Routeo = () => {
   
      const [modulo, setModulo] = useState("MenuPrincipal")
-  
+     const [idProyectoActual, setIdProyectoActual] = useState({})
+     const [idUsuario, setIdUsuario] = useState(1)
      
+
      const dirigir = ()=>{
           console.log("jello")
          
-
+          
           switch (modulo){
                case "MenuPrincipal":     
-                    return <MenuPrincipal setModulo={setModulo} />
+                    return <MenuPrincipal/>
                break;
                case "AreaTrabajo":
-                    return <AreaDeTrabajo setModulo={setModulo}/>
+                    return <AreaDeTrabajo/>
                break;
 
           }
-
-
+         
      }
 
 
      return (
-          <> { dirigir() } </>
+          <> 
+               <ContextAreaDeTrabajo.Provider value={{modulo, setModulo, idProyectoActual, setIdProyectoActual,idUsuario, setIdUsuario}}>
+                         { dirigir() } 
+               </ContextAreaDeTrabajo.Provider>
+          </>
   )
 }
 

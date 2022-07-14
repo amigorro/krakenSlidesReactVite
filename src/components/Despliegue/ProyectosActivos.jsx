@@ -1,7 +1,4 @@
-import React from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { select, insert, update,  deleteReg } from '../../querys.js'
+import React, { useContext, useState, useEffect } from 'react'
 import { GuardarEnStorage } from '../helpers/GuardarEnStorage.jsx';
 import {
     BrowserRouter ,     
@@ -13,10 +10,14 @@ import {
 } from "react-router-dom";
 import './ProyectosActivos.css'
 import Routeo from '../Routeo.jsx';
+import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 
-const ProyectosActivos = ({setModulo}) => {
+const ProyectosActivos = () => {
     
     const [proyectos, setProyectos] = useState([])
+
+    const {modulo, setModulo} = useContext(ContextAreaDeTrabajo);
+    
 
     useEffect( () =>{
         console.log("iniciando este rollo")
@@ -27,7 +28,7 @@ const ProyectosActivos = ({setModulo}) => {
 
 
     const getDataProyectosBD = async (id_usuario) =>{
-        //
+        
         const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
              tx.executeSql('SELECT * FROM APP_PROYECTOS WHERE status=1 AND id_usuario = ?', [id_usuario], function(tx, results) {
@@ -57,8 +58,10 @@ const ProyectosActivos = ({setModulo}) => {
 
 
     const abrirAreaDeTrabajo = (id) =>{
-        setModulo("AreaTrabajo")
-        return <Routeo/>
+        setModulo("AreaTrabajo");
+        //setIdProyectoActual(1);
+        console.log("id proyecto seleccionado: " + id)
+        return <Routeo />
     }
 
     
@@ -101,7 +104,9 @@ const ProyectosActivos = ({setModulo}) => {
                                     <div className="cardpry-footer-buttons-02" >
                                     <div className="cardpry-footer-buttons-02-btnIni" 
                                          name="${row.id_proyecto}" 
-                                         onClick={ () => abrirAreaDeTrabajo() }
+                                         onClick={                                             
+                                            () => abrirAreaDeTrabajo(proy.id) 
+                                        }
                                     >Go !!
                                          
                                     </div>

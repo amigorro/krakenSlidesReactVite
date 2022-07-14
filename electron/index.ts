@@ -5,6 +5,7 @@ import { join } from 'path';
 import { BrowserWindow, app, ipcMain, IpcMainEvent } from 'electron';
 import isDev from 'electron-is-dev';
 
+
 const height = 770;
 const width = 1360;
 
@@ -31,6 +32,7 @@ function createWindow() {
   // and load the index.html of the app.
   if (isDev) {
     window?.loadURL(url);
+    
   } else {
     window?.loadFile(url);
   }

@@ -38,16 +38,16 @@
 }
 
 .ADT_cont-cards-select{
-     width: 100%;     
+     width: 95%;     
      height: 90px;
      display: flex;
      justify-content: space-around;
      align-items: center;
 }
 .ADT_cont-cards-select-inp{
-     width: 50%;     
+     width: 35%;     
      height: 40px;
-     padding-left: 20px;
+     padding-left: 4px;
      border-radius: 2px;
      color: #e2e8f0;
      font-weight: 600;
@@ -59,7 +59,7 @@
      text-transform: capitalize;
      width: 100%;
      height: 30px;
-     padding: 0 15px;
+     padding: 0 5px;
      line-height: 30px;
      cursor: pointer;
      background-color: rgba(63, 157, 160, 0.849);
@@ -74,8 +74,8 @@
 
 
 .ADT_cont-cards-select-add{
-     width: 60px;     
-     height: 60px;
+     width: 30px;     
+     height: 30px;
      font-size: 30px;
      color: #fff;
      display: flex;
@@ -89,4 +89,37 @@
      overflow-y: auto;
      overflow-x: hidden;
      background-color: #111827;
+}
+
+.textoCentrado{
+     width: 100%;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 18px;
+     color: #fff;
+     font-weight: 600;
+}
+
+.addSesionInitial{
+     width: 100%;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+}
+
+.txtAddSesion{
+     color: #FFF;
+     width: 100%;
+     display: flex;
+     justify-content: center;     
+}
+
+.inputAddSesion{
+     width: 80px;
+     height: 30px;
+     margin: 4px auto;
 }
