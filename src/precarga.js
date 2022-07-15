@@ -32,7 +32,7 @@ function precarga() {
                    id_usuario int
                );`);
          
-         tx.executeSql(` CREATE TABLE IF NOT EXISTS DATOS_INTRODUCIDOS (
+        tx.executeSql(` CREATE TABLE IF NOT EXISTS DATOS_INTRODUCIDOS (
                    id_usuario int,
                    id_proyecto int,  
                    sesion int,
@@ -81,8 +81,41 @@ function precarga() {
                    primary key(slide,slide,id_proyecto,id_usuario)
                    );`);
    
+        tx.executeSql(`CREATE TABLE IF NOT EXISTS PLANTILLAS( 
+                    id_plantilla varchar(20),
+                    nombre_plantilla varchar(20),
+                    tipo varchar(15),
+                    miniatura varchar(20),
+                    titulo int,
+                    subtitulo int,
+                    texto1 int,
+                    texto2 int,
+                    texto3 int,
+                    texto4 int,
+                    texto5 int,
+                    texto6 int,
+                    imagen1 int,
+                    imagen2 int,
+                    imagen3 int,
+                    imagen4 int,
+                    imagen5 int,
+                    imagen6 int,
+                    imagen7 int,
+                    imagen8 int,
+                    audio int,
+                    video int,
+                    primary key(id_plantilla));`);
    
-   
+
+          /**
+           * 
+           * 
+           * 
+           * 
+           */
+
+
+
            //Tabla Figura
            tx.executeSql(`CREATE TABLE IF NOT EXISTS TBL_FIGURA(
                                id_figura int primary key,
@@ -227,6 +260,25 @@ function precarga() {
              //TBL_CONTROL_SYNC
              tx.executeSql('INSERT INTO TBL_CONTROL_SYNC  VALUES (0,"B-1.0.0.0","19-05-2022","DIABLO");    ');
    
+             tx.executeSql(`insert into PLANTILLAS values
+                      (1,"ryyurk",1,"diapo3.png",1,1,null,1,null,null,null,null,null,null,null,null,null,null,null,null,1,null),
+                      (2,"juyrfj",1,"diapo6.png",1,null,1,1,1,1,null,null,1,null,null,null,null,null,null,null,null,null),
+                      (3,"efwr",1,"diapo7.png",1,1,null,null,null,null,null,null,1,1,1,null,null,null,null,null,null,null),
+                      (4,"hjhhhj",1,"diapo8.png",1,null,1,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null),
+                      (5,"gdfsg",1,"diapo9.png",1,1,null,null,null,null,null,null,1,1,1,1,1,1,1,1,null,null),
+                      (6,"htrjyt",2,"diapo10.png",1,null,null,1,null,null,null,null,1,1,null,null,null,null,null,null,null,null),
+                      (7,"kiulu",2,"diapo11.png",null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
+                      (8,"kuyyh",3,"diapo14.png",1,null,null,1,1,null,null,null,1,1,null,null,null,null,null,null,null,null),
+                      (9,"nnvrty",3,"diapo16.png",1,1,null,null,null,null,null,null,1,1,1,null,null,null,null,null,null,null),
+                      (10,"rtju",4,"diapo20.png",1,null,1,1,1,null,null,null,1,1,null,null,null,null,null,null,null,1)
+            `); 
+
+
+
+
+
+
+
              // TBL_FIGURA
               tx.executeSql('insert into TBL_FIGURA values(11,"Instructor de: Instructor municipal"); '); 
               tx.executeSql('insert into TBL_FIGURA values(12,"Instructor de: Supervisor de entrevistadores"); '); 

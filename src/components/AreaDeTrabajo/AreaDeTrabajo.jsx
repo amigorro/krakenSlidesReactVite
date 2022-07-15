@@ -28,7 +28,7 @@ const AreaDeTrabajo = () => {
      useEffect( () =>{
           console.log("revisando slides del proyecto, por si hay, sacar las sesiones")
           getSlides()
-     }, []  )
+     }, [modalTipoSlide]  )
 
 
      
@@ -170,7 +170,7 @@ const AreaDeTrabajo = () => {
                     }
                     </div>
                     {
-                         modalTipoSlide ?  <CatalogoSlides/> : null
+                         modalTipoSlide ?  <CatalogoSlides setModalTipoSlide={setModalTipoSlide} /> : null
                     }
                </div>
           </div>
