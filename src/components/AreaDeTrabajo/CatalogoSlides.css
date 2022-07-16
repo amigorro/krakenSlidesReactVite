@@ -82,3 +82,19 @@
 .CatalogoSlides-mins-item:hover{        
      border: 3px solid #156666;
 }
+
+.plantillaSelectBorder{
+     border: 3px solid #c43b23;
+}
+
+.CatalogoSlides-btn-add{
+     width: 200px;
+     height: 40px;
+     background-color: #2ebea6;
+     border: none;
+     border-radius: 5px;
+     color: white;
+     font-size: 18px;
+     font-weight: 600;
+     cursor: default ;
+}

@@ -39,25 +39,22 @@ function precarga() {
                    slide int,
                    
                    figura int,
-                   id_pregunta int, 
-                   t_pregunta varchar(100),
-                   tx_pregunta varchar(250),
-                   instruccion varchar(250),
+                   id_pregunta varchar(10),                   
                    num_checks_sel int,
    
                    tipo_contenido varchar(20),
-                   subtipo varchar(50),
+                   plantilla varchar(50),
    
                    nombre_lamina varchar(50),
                    
                    titulo varchar(200),
-                   subtitulo1 varchar(200),
-                   subtitulo2 varchar(200),
-                   
+                   subtitulo1 varchar(200),                   
                    texto1 varchar(1200),
                    texto2 varchar(1200),
                    texto3 varchar(1200),
                    texto4 varchar(1200),
+                   texto5 varchar(1200),
+                   texto6 varchar(1200),
                    imagen1 varchar(100),                
                    imagen2 varchar(100),
                    imagen3 varchar(100),
@@ -66,19 +63,15 @@ function precarga() {
                    imagen6 varchar(100),
                    imagen7 varchar(100),
                    imagen8 varchar(100),
-                   
-                   lista1 varchar(100),
-                   lista2 varchar(100),
-                   lista3 varchar(100),
-                   lista4 varchar(100),
-                   
+                   audio varchar(100),
+                   video varchar(100),
                    tabla varchar(200),
                    
-                   slideAnterior int,
-                   slideSiguiente int,
+                   anterior int,
+                   siguiente int,
                    orden real,
                    paginacion real,
-                   primary key(slide,slide,id_proyecto,id_usuario)
+                   primary key(slide,sesion,id_proyecto,id_usuario)
                    );`);
    
         tx.executeSql(`CREATE TABLE IF NOT EXISTS PLANTILLAS( 

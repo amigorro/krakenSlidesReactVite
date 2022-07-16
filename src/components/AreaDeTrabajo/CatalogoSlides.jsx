@@ -1,16 +1,18 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import './CatalogoSlides.css'
 import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
+import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo'
+import { nanoid } from 'nanoid'
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
 
-
+  const {sesion,setSesion} = useContext(ContextAreaDeTrabajo);
   const [plantillas, setPlantillas] = useState([])
   const [categoriaSel, setCategoriaSel] = useState(1)
   const [plantillaSeleccionada, setPlantillaSeleccionada] = useState()
 
-  useEffect( () =>{ 
-    console.log("revisando plantillas uwu");
+
+  useEffect( () =>{     
     getPlantillas()
   }  , [categoriaSel]  )
 
@@ -21,8 +23,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
              tx.executeSql('SELECT * FROM PLANTILLAS', [], function(tx, results) {
                   //console.log('results', results)
                   let len = results.rows.length, i;
-                  let plant;
-                  console.log("plantillas #: " + len)
+                  let plant;                 
                   
                        let archivados = []
                        for (i = 0; i < len; i++){                            
@@ -67,6 +68,30 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
     setPlantillaSeleccionada(null)
   }
 
+  const seleccionarPlantilla = (plantilla) => {
+    setPlantillaSeleccionada(plantilla)
+    
+  }
+
+  const cerrarModal = () =>{
+    console.error("plantillaSeleccionada: " + plantillaSeleccionada)
+    console.error("Sesión actual: " + sesion)    
+    setModalTipoSlide(false)
+
+    /* Ingresamos el registro en la base de datos */
+    const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+        db.transaction(function(tx) {
+          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide) VALUES (?,?,?,?)', [1,1,sesion,nanoid(10)], function(tx, results) {
+            console.log('results', results)
+            //limpiarPlantillaSel()
+          }, null);
+        })
+
+
+
+  }
+
+
   return (
     <>
       
@@ -89,7 +114,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                       </ul>
                   </div>                  
               </header>
-              <div className='CatalogoSlides-mins' >
+              <div className='CatalogoSlides-mins'  >
                   {
                     
                     plantillas.filter( (plantilla) => {
@@ -97,7 +122,13 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                     }
                     ).map( (plantilla,index) => {
                       return (
-                        <div     className='CatalogoSlides-mins-item' name={plantilla.miniatura} key={index} onClick={ () => setPlantillaSeleccionada(plantilla.id)   } >
+                          <div  className={plantillaSeleccionada == plantilla.id ? 'CatalogoSlides-mins-item plantillaSelectBorder': 'CatalogoSlides-mins-item'} 
+                                name={plantilla.miniatura} 
+                                key={index} 
+                                id={plantilla.id}
+                                onClick={ () => seleccionarPlantilla(plantilla.id)   }
+                                
+                          >
                               <div className='CatalogoSlides-mins-img' >
                                   <img src={'./assets/plantillas/'+plantilla.miniatura} alt='miniatura' />
                               </div>                              
@@ -109,9 +140,11 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
               </div>
 
               {
-                plantillaSeleccionada ? (<button 
-                  className='CatalogoSlides-btn-add' 
-                >Seleccionar</button>)
+                plantillaSeleccionada ? (
+                  <button 
+                    className='CatalogoSlides-btn-add' 
+                    onClick={ () => cerrarModal() }
+                  >Seleccionar plantilla</button>)
                 : null
               }
               

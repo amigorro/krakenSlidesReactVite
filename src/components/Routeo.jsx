@@ -8,7 +8,7 @@ const Routeo = () => {
      const [modulo, setModulo] = useState("MenuPrincipal")
      const [idProyectoActual, setIdProyectoActual] = useState({})
      const [idUsuario, setIdUsuario] = useState(1)
-     
+     const [sesion, setSesion] = useState(1)
 
      const dirigir = ()=>{
           console.log("jello")
@@ -29,7 +29,13 @@ const Routeo = () => {
 
      return (
           <> 
-               <ContextAreaDeTrabajo.Provider value={{modulo, setModulo, idProyectoActual, setIdProyectoActual,idUsuario, setIdUsuario}}>
+               <ContextAreaDeTrabajo.Provider 
+                    value={{
+                              modulo, setModulo, 
+                              idProyectoActual, setIdProyectoActual,
+                              idUsuario, setIdUsuario,
+                              sesion, setSesion
+                         }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>
           </>

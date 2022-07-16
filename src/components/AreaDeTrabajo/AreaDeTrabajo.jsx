@@ -5,19 +5,21 @@ import Cardpry from './Cardpry'
 import Visor from './Visor'
 import InfoGestionSlide from './InfoGestionSlide'
 import CatalogoSlides from './CatalogoSlides'
-
+import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
 
 import Routeo from '../Routeo'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 
 const AreaDeTrabajo = () => {
      
-     const {setModulo,idProyectoActual} = useContext(ContextAreaDeTrabajo);
-     const [sesion, setSesion] = useState(1)
+     const {sesion, setSesion,setModulo,idProyectoActual} = useContext(ContextAreaDeTrabajo);     
      const [slide, setSlide] = useState(null)
      const [existeSesiones, setExisteSesiones] = useState(false)
      const [modalTipoSlide, setModalTipoSlide] = useState(false)
      const [modalAddSesion, setModalAddSesion] = useState(false)
+
+     const [slides, setSlides] = useState([])
+
 
      const regresaMenu = ()=>{
           setModulo("MenuPrincipal")
@@ -27,7 +29,8 @@ const AreaDeTrabajo = () => {
 
      useEffect( () =>{
           console.log("revisando slides del proyecto, por si hay, sacar las sesiones")
-          getSlides()
+          getSlides()   
+          getSlidesBD()       
      }, [modalTipoSlide]  )
 
 
@@ -37,8 +40,17 @@ const AreaDeTrabajo = () => {
           db.transaction(function(tx) {
                tx.executeSql('SELECT COUNT(*) AS existe FROM "DATOS_INTRODUCIDOS" WHERE id_usuario=1 AND id_proyecto = ?', [idProyectoActual], function(tx, results) {
                     console.log('total de sesiones del proyecto:', results.rows.item(0).existe)
-                    setExisteSesiones(results.rows.item(0).existe)
-                    setModalAddSesion(false)
+                    
+                    if(results.rows.item(0).existe > 0){
+                         setExisteSesiones(true)
+                         
+                    } else {
+                         setExisteSesiones(false)
+                         setModalAddSesion(false)
+                    }
+                    
+                    
+                    
                }, null);
           });
      }
@@ -78,7 +90,34 @@ const AreaDeTrabajo = () => {
      */ 
 
 
-
+     const getSlidesBD = async () =>{
+          console.warn("Entrando a getSlidesBD")
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = 1 AND sesion = 22   ', [], function(tx, results) {
+                    //console.log('results', results)
+                    let len = results.rows.length, i;
+                    let pry;
+                    console.log("Sesiones en el proyecto: " + len)
+                    if(len > 0){
+                         let slidesDeLaSesion = []
+                         for (i = 0; i < len; i++){
+                              if (i==0){localStorage.removeItem("slidesEnSesion");}
+                              slidesDeLaSesion.push(results.rows.item(i))
+                              pry={
+                                   id: results.rows.item(i).slide,
+                                   nombre: results.rows.item(i).nombre_lamina,
+                              }
+                              GuardarEnStorage('slidesEnSesion', pry)
+                         }
+                         
+                         let slidesAct = JSON.parse(localStorage.getItem("slidesEnSesion"))
+                              setSlides(slidesAct)
+                    }
+               }, null);
+          });
+          
+     }
 
 
      //console.log("idProyecto seleccionado: " + idProyectoActual)
@@ -140,22 +179,7 @@ const AreaDeTrabajo = () => {
 
                          </div>
                          <div className='ADT_cont-cards-despl' >
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
-                              <Cardpry />
+                              
                               <Cardpry />
                               <Cardpry />
                          </div>
@@ -165,7 +189,7 @@ const AreaDeTrabajo = () => {
                     </div>
                     <div className=' h-full end col-span-2 ' >
                     {
-                         existeSesiones && modalTipoSlide ?    <InfoGestionSlide/>
+                         existeSesiones && !modalTipoSlide ?    <InfoGestionSlide/>
                          : <div className='textoCentrado' >Agrega una sesión para continuar</div>
                     }
                     </div>
