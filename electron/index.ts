@@ -4,6 +4,15 @@ import { join } from 'path';
 // Packages
 import { BrowserWindow, app, ipcMain, IpcMainEvent } from 'electron';
 import isDev from 'electron-is-dev';
+import { protocol } from "electron";
+
+app.whenReady().then(() => {
+  protocol.registerFileProtocol('file', (request, callback) => {
+    const pathname = decodeURI(request.url.replace('file:///', ''));
+    callback(pathname);
+  });
+});
+
 
 
 const height = 770;
@@ -20,7 +29,8 @@ function createWindow() {
     resizable: true,
     fullscreenable: true,
     webPreferences: {
-      preload: join(__dirname, 'preload.js')
+      preload: join(__dirname, 'preload.js'),
+      webSecurity: false,
     }
   });
 
@@ -28,7 +38,7 @@ function createWindow() {
   const url = isDev ? `http://localhost:${port}` : join(__dirname, '../src/out/index.html');
 
   process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
-
+  
   // and load the index.html of the app.
   if (isDev) {
     window?.loadURL(url);
