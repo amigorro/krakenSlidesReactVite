@@ -16,7 +16,7 @@ const ProyectosActivos = () => {
     
     const [proyectos, setProyectos] = useState([])
 
-    const {modulo, setModulo} = useContext(ContextAreaDeTrabajo);
+    const {modulo, setModulo,idProyectoActual, setIdProyectoActual,} = useContext(ContextAreaDeTrabajo);
     
 
     useEffect( () =>{
@@ -59,7 +59,7 @@ const ProyectosActivos = () => {
 
     const abrirAreaDeTrabajo = (id) =>{
         setModulo("AreaTrabajo");
-        //setIdProyectoActual(1);
+        setIdProyectoActual(id);
         console.log("id proyecto seleccionado: " + id)
         return <Routeo />
     }

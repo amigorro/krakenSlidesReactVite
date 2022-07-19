@@ -12,28 +12,64 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 
 const AreaDeTrabajo = () => {
      
-     const {sesion, setSesion,setModulo,idProyectoActual} = useContext(ContextAreaDeTrabajo);     
+     const {sesion, setSesion,setModulo,idProyectoActual,modalTipoSlide, setModalTipoSlide} = useContext(ContextAreaDeTrabajo);     
      const [slide, setSlide] = useState(null)
      const [existeSesiones, setExisteSesiones] = useState(false)
-     const [modalTipoSlide, setModalTipoSlide] = useState(false)
+     
      const [modalAddSesion, setModalAddSesion] = useState(false)
 
      const [slides, setSlides] = useState([])
+     const [sesiones, setSesiones] = useState([])
 
 
      const regresaMenu = ()=>{
           setModulo("MenuPrincipal")
           return(<Routeo/>)
      }
-  
+
 
      useEffect( () =>{
           console.log("revisando slides del proyecto, por si hay, sacar las sesiones")
           getSlides()   
-          getSlidesBD()       
+          getSlidesBD()     
+          getSesiones()
      }, [modalTipoSlide]  )
 
 
+     useEffect( () =>{
+          getSlides()   
+          getSlidesBD()  
+     }, [sesion]  )
+
+
+     const getSesiones = async () =>{
+          console.warn("Entrando a getSesiones")
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+               tx.executeSql('SELECT DISTINCT sesion FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ?  ', [idProyectoActual], function(tx, results) {
+                    //console.log('results', results)
+                    let len = results.rows.length, i;
+                    let pry;
+                    
+                    if(len > 0){
+                         let sesionesEnElProyecto = []
+                         for (i = 0; i < len; i++){
+                              if (i==0){localStorage.removeItem("sesionesEnProyecto");}
+                              sesionesEnElProyecto.push(results.rows.item(i))
+                              pry={
+                                   sesion: results.rows.item(i).sesion
+                                   
+                              }
+                              GuardarEnStorage('sesionesEnProyecto', pry)
+                         }
+                         
+                         let slidesAct = JSON.parse(localStorage.getItem("sesionesEnProyecto"))
+                         setSesiones(slidesAct)
+                    }
+               }, null);
+          });
+          
+     }
      
      const getSlides = async () =>{
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -68,33 +104,14 @@ const AreaDeTrabajo = () => {
      }
 
 
-     /*
-     
-          Sacar un count de slides del proyecto para saber si hay slides
 
-          Hacer varios useEffect, el primero para sacar las sesiones
-          El segundo para sacar los slides de la sesión mas baja
-
-
-
-
-          Plan de trabajo:
-               Crear un estado para saber si la sesión tiene o no slides.
-                    Si tiene slides, cargar el primero del arreglo.
-                    Si no tiene slides, abrir modal de selección de tipo de slide
-
-               Utilizar librería de creción de id para guardar en automático el slide sin contennido
-               Asignar al estado de slideActual el slide creado o seleccionado
-               mostrar el área de gestión del slide.
-
-     */ 
 
 
      const getSlidesBD = async () =>{
           console.warn("Entrando a getSlidesBD")
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
-               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = 1 AND sesion = 22   ', [], function(tx, results) {
+               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?   ', [idProyectoActual,sesion], function(tx, results) {
                     //console.log('results', results)
                     let len = results.rows.length, i;
                     let pry;
@@ -120,8 +137,19 @@ const AreaDeTrabajo = () => {
      }
 
 
-     //console.log("idProyecto seleccionado: " + idProyectoActual)
-  
+     const imprimeSelectSesiones = () =>{
+          let sesionesEnElProyecto = JSON.parse(localStorage.getItem("sesionesEnProyecto"))
+          let sesiones = []
+          const numAscending = [...sesionesEnElProyecto].sort((a, b) => a.sesion - b.sesion);
+          numAscending.map( (item,index) =>{
+               sesiones.push(<option className='ADT_cont-cards-select-inp-item' key={index} value={item.sesion}> {item.sesion}</option>)
+          } )
+          return sesiones
+
+     }
+
+
+
   return (
      <>
           <AppBar />
@@ -145,11 +173,11 @@ const AreaDeTrabajo = () => {
                               {
                                    existeSesiones ?
                                         <>
-                                             <select  className='ADT_cont-cards-select-inp' >
-                                                  <option value="1" className='ADT_cont-cards-select-inp-item'>Sesión 1</option>
-                                                  <option value="2" className='ADT_cont-cards-select-inp-item'>Sesión 2</option>
-                                                  <option value="3" className='ADT_cont-cards-select-inp-item'>Sesión 3</option>
-                                                  <option value="4" className='ADT_cont-cards-select-inp-item'>Sesión 4</option>
+                                             <select  
+                                                  className='ADT_cont-cards-select-inp' 
+                                                  onChange={ (e) => {  setSesion(e.target.value)  } }
+                                                  >
+                                                  { imprimeSelectSesiones()}
                                              </select>
                                              <div className='ADT_cont-cards-select-add'>
                                                   <i className="fa-solid fa-circle-plus "></i>
@@ -179,9 +207,32 @@ const AreaDeTrabajo = () => {
 
                          </div>
                          <div className='ADT_cont-cards-despl' >
+                              {
+                                   slides != null ?
+                                        slides.map( (slide, index) => {
+                                             return(                                                  
+                                                  <div className='CardCont' key={index} >
+                                                       <div className='CardCont-Tipo'> </div>
+                                                       <div className='CardCont-Tipo-Info' >
+                                                            <div className='CardCont-Tipo-Info-Name' >Nombre del slide</div>
+                                                            <div className='CardCont-Tipo-Info-icons' >
+                                                                 <div className='CardCont-Tipo-Info-icons-ico' ><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
+                                                                 <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
+                                                                 <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-message-check CardCont-ico "></i></div>
+                                                                 <div className='CardCont-Tipo-Info-icons-order'>{slide.id}</div>
+                                                            </div>
+                                                       </div>
+                                             </div>
+                                             )
+                                        }
+                                        )
+                                        :
+                                        <h2>No hay slides</h2>
+
+                                   /*<Cardpry />
+                                   <Cardpry />*/
+                              }
                               
-                              <Cardpry />
-                              <Cardpry />
                          </div>
                     </div>
                     <div className='   h-full col-start-2 col-span-2 ' >

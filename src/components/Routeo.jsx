@@ -6,9 +6,10 @@ import MenuPrincipal from './MenuPrincipal/MenuPrincipal'
 const Routeo = () => {
   
      const [modulo, setModulo] = useState("MenuPrincipal")
-     const [idProyectoActual, setIdProyectoActual] = useState({})
+     const [idProyectoActual, setIdProyectoActual] = useState()
      const [idUsuario, setIdUsuario] = useState(1)
      const [sesion, setSesion] = useState(1)
+     const [modalTipoSlide, setModalTipoSlide] = useState(false)
 
      const dirigir = ()=>{
           console.log("jello")
@@ -34,7 +35,8 @@ const Routeo = () => {
                               modulo, setModulo, 
                               idProyectoActual, setIdProyectoActual,
                               idUsuario, setIdUsuario,
-                              sesion, setSesion
+                              sesion, setSesion,
+                              modalTipoSlide, setModalTipoSlide
                          }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>

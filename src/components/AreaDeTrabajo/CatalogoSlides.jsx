@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid'
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
 
-  const {sesion,setSesion} = useContext(ContextAreaDeTrabajo);
+  const {sesion, setSesion,setModulo,idProyectoActual} = useContext(ContextAreaDeTrabajo);
   const [plantillas, setPlantillas] = useState([])
   const [categoriaSel, setCategoriaSel] = useState(1)
   const [plantillaSeleccionada, setPlantillaSeleccionada] = useState()
@@ -81,7 +81,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
     /* Ingresamos el registro en la base de datos */
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
-          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide) VALUES (?,?,?,?)', [1,1,sesion,nanoid(10)], function(tx, results) {
+          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide) VALUES (?,?,?,?)', [1,idProyectoActual,sesion,nanoid(10)], function(tx, results) {
             console.log('results', results)
             //limpiarPlantillaSel()
           }, null);

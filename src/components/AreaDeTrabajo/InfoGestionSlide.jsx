@@ -1,11 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState,useContext} from 'react'
 import EditarSlide from './EditarSlide'
 import './InfoGestionSlide.css'
+import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
+
 
 const InfoGestionSlide = () => {
 
      const [edicion, setEdicion] = useState(false)
-
+     const {modalTipoSlide, setModalTipoSlide} = useContext(ContextAreaDeTrabajo);     
 
   return (
     <div className='gestionCont' >
@@ -34,7 +36,10 @@ const InfoGestionSlide = () => {
                     onClick={() => setEdicion(true)}
                >Editar</button>              
                <div className="areaTrabajo-cont-gestion-btn btn-gestion btn-eliminarSlide">Eliminar Slide</div>          
-               <div className="areaTrabajo-cont-gestion-btn btn-gestion btn-nuevoSlide quitarMarginTop">Nuevo slide</div>
+               <div 
+                    className="areaTrabajo-cont-gestion-btn btn-gestion btn-nuevoSlide quitarMarginTop"
+                    onClick={() => setModalTipoSlide(true)}
+               >Nuevo slide</div>
           
           {
                edicion === true ?
