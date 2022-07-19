@@ -12,14 +12,16 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 
 const AreaDeTrabajo = () => {
      
-     const {sesion, setSesion,setModulo,idProyectoActual,modalTipoSlide, setModalTipoSlide} = useContext(ContextAreaDeTrabajo);     
+     const {sesion, setSesion,setModulo,idProyectoActual,modalTipoSlide, setModalTipoSlide,slideSelected, setSlideSelected,slides, setSlides} = useContext(ContextAreaDeTrabajo);     
      const [slide, setSlide] = useState(null)
+     
      const [existeSesiones, setExisteSesiones] = useState(false)
      
      const [modalAddSesion, setModalAddSesion] = useState(false)
 
-     const [slides, setSlides] = useState([])
+     
      const [sesiones, setSesiones] = useState([])
+     const [nuevaSesion, setNuevaSesion] = useState(false)
 
 
      const regresaMenu = ()=>{
@@ -28,8 +30,7 @@ const AreaDeTrabajo = () => {
      }
 
 
-     useEffect( () =>{
-          console.log("revisando slides del proyecto, por si hay, sacar las sesiones")
+     useEffect( () =>{            
           getSlides()   
           getSlidesBD()     
           getSesiones()
@@ -43,7 +44,7 @@ const AreaDeTrabajo = () => {
 
 
      const getSesiones = async () =>{
-          console.warn("Entrando a getSesiones")
+          
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
                tx.executeSql('SELECT DISTINCT sesion FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ?  ', [idProyectoActual], function(tx, results) {
@@ -75,7 +76,6 @@ const AreaDeTrabajo = () => {
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
                tx.executeSql('SELECT COUNT(*) AS existe FROM "DATOS_INTRODUCIDOS" WHERE id_usuario=1 AND id_proyecto = ?', [idProyectoActual], function(tx, results) {
-                    console.log('total de sesiones del proyecto:', results.rows.item(0).existe)
                     
                     if(results.rows.item(0).existe > 0){
                          setExisteSesiones(true)
@@ -94,12 +94,11 @@ const AreaDeTrabajo = () => {
 
      const esEnter = (e) =>{
           e.preventDefault()
-          if(e.keyCode == 13){               
-               console.log("enter")               
-               console.warn(parseInt(e.target.value))
+          if(e.keyCode == 13){                                             
                setSesion(e.target.value)
                setExisteSesiones(true) 
                setModalTipoSlide(true)
+               setNuevaSesion(false)
           }
      }
 
@@ -107,15 +106,14 @@ const AreaDeTrabajo = () => {
 
 
 
-     const getSlidesBD = async () =>{
-          console.warn("Entrando a getSlidesBD")
+     const getSlidesBD = async () =>{          
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
                tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?   ', [idProyectoActual,sesion], function(tx, results) {
                     //console.log('results', results)
                     let len = results.rows.length, i;
                     let pry;
-                    console.log("Sesiones en el proyecto: " + len)
+                    
                     if(len > 0){
                          let slidesDeLaSesion = []
                          for (i = 0; i < len; i++){
@@ -138,13 +136,31 @@ const AreaDeTrabajo = () => {
 
 
      const imprimeSelectSesiones = () =>{
-          let sesionesEnElProyecto = JSON.parse(localStorage.getItem("sesionesEnProyecto"))
-          let sesiones = []
-          const numAscending = [...sesionesEnElProyecto].sort((a, b) => a.sesion - b.sesion);
-          numAscending.map( (item,index) =>{
-               sesiones.push(<option className='ADT_cont-cards-select-inp-item' key={index} value={item.sesion}> {item.sesion}</option>)
-          } )
-          return sesiones
+          const tamSesiones = localStorage.getItem("sesionesEnProyecto")
+          console.log("tamSesiones: " + tamSesiones)
+
+          if(tamSesiones == null || tamSesiones == "" || !tamSesiones){
+               return(
+                    <div className="selectSesiones">
+                         <div className="selectSesiones_texto">
+                              <p>No hay sesiones en el proyecto</p>
+                         </div>
+                    </div>
+               )
+          }else if( tamSesiones.length > 0 || tamSesiones != null){               
+               let sesionesEnElProyecto = JSON.parse(localStorage.getItem("sesionesEnProyecto"))
+               let sesiones = []
+               const numAscending = [...sesionesEnElProyecto].sort((a, b) => a.sesion - b.sesion);
+               numAscending.map( (item,index) =>{
+                    sesiones.push(<option className='ADT_cont-cards-select-inp-item' key={index} value={item.sesion}> {item.sesion}</option>)
+               } )
+               return sesiones     
+          }
+          
+          else {
+               return(<option className='ADT_cont-cards-select-inp-item' value="">No hay sesiones</option>)
+          }
+          
 
      }
 
@@ -173,18 +189,47 @@ const AreaDeTrabajo = () => {
                               {
                                    existeSesiones ?
                                         <>
-                                             <select  
-                                                  className='ADT_cont-cards-select-inp' 
-                                                  onChange={ (e) => {  setSesion(e.target.value)  } }
-                                                  >
-                                                  { imprimeSelectSesiones()}
-                                             </select>
-                                             <div className='ADT_cont-cards-select-add'>
-                                                  <i className="fa-solid fa-circle-plus "></i>
-                                             </div>
-                                             <div className='ADT_cont-cards-select-add'>
-                                                  <i className="fa-solid fa-circle-plus "></i>
-                                             </div>
+                                             {
+                                                  nuevaSesion ?(
+                                                       <div className='addSesionInitial' >
+                                                            <div className='txtAddSesion' >Ingresa el número de sesión</div>
+                                                            <input 
+                                                                 type="number" 
+                                                                 name="addSesion"
+                                                                 className='inputAddSesion'
+                                                                 onKeyUp={ e => esEnter(e)  }                                             
+                                                            />
+                                                            <div
+                                                                 onClick={ () => setNuevaSesion(false) }     
+                                                                 >[ X ]
+                                                            </div>
+                                                       </div>
+                                                  )
+                                                  :
+                                                  (
+                                                       <>
+                                                       <select  
+                                                            className='ADT_cont-cards-select-inp' 
+                                                            onChange={ (e) => {  setSesion(e.target.value)  } }
+                                                            value={
+                                                                 sesion
+                                                            }
+                                                            >
+                                                            { imprimeSelectSesiones()}
+                                                       </select>
+                                                       <div 
+                                                            className='ADT_cont-cards-select-add'
+                                                            onClick={ () => setNuevaSesion(true) }
+                                                            >
+                                                            <i className="fa-solid fa-circle-plus "></i>
+                                                       </div>
+                                                       <div className='ADT_cont-cards-select-add'>
+                                                            <i className="fa-solid fa-circle-plus "></i>
+                                                       </div>
+                                                       </>
+                                                  )
+                                             }
+                                             
                                         </>
                                         :    
                                         <div className='addSesionInitial' >
@@ -211,10 +256,22 @@ const AreaDeTrabajo = () => {
                                    slides != null ?
                                         slides.map( (slide, index) => {
                                              return(                                                  
-                                                  <div className='CardCont' key={index} >
+                                                  <div 
+                                                       className={ slideSelected.id == slide.id ? 'CardCont slideSelected' : 'CardCont' }
+                                                       
+                                                       key={index}  
+                                                       onClick={ () => { 
+                                                            setSlideSelected({
+                                                                 id : slide.id,
+                                                                 nombre: slide.nombre
+                                                            }) 
+                                                            
+                                                            console.log('slideSelected', slideSelected.id)
+                                                       } }
+                                                       >
                                                        <div className='CardCont-Tipo'> </div>
                                                        <div className='CardCont-Tipo-Info' >
-                                                            <div className='CardCont-Tipo-Info-Name' >Nombre del slide</div>
+                                                            <div className='CardCont-Tipo-Info-Name' >{slideSelected.id == slide.id ? slideSelected.nombre : slide.nombre }</div>
                                                             <div className='CardCont-Tipo-Info-icons' >
                                                                  <div className='CardCont-Tipo-Info-icons-ico' ><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
                                                                  <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
@@ -229,8 +286,6 @@ const AreaDeTrabajo = () => {
                                         :
                                         <h2>No hay slides</h2>
 
-                                   /*<Cardpry />
-                                   <Cardpry />*/
                               }
                               
                          </div>

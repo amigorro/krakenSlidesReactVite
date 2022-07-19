@@ -123,3 +123,8 @@
      height: 30px;
      margin: 4px auto;
 }
+
+
+.slideSelected{
+     background-color: #1a9b69 !important;
+}

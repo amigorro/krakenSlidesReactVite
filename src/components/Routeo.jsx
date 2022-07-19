@@ -10,10 +10,11 @@ const Routeo = () => {
      const [idUsuario, setIdUsuario] = useState(1)
      const [sesion, setSesion] = useState(1)
      const [modalTipoSlide, setModalTipoSlide] = useState(false)
+     const [slideSelected, setSlideSelected] = useState({})
+     const [slides, setSlides] = useState([])
+     const [edicion, setEdicion] = useState(false)
 
      const dirigir = ()=>{
-          console.log("jello")
-         
           
           switch (modulo){
                case "MenuPrincipal":     
@@ -36,7 +37,10 @@ const Routeo = () => {
                               idProyectoActual, setIdProyectoActual,
                               idUsuario, setIdUsuario,
                               sesion, setSesion,
-                              modalTipoSlide, setModalTipoSlide
+                              modalTipoSlide, setModalTipoSlide,
+                              slideSelected, setSlideSelected,
+                              slides,setSlides,
+                              edicion, setEdicion
                          }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>

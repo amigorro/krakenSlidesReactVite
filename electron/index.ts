@@ -53,6 +53,14 @@ function createWindow() {
   ipcMain.on('close', () => {
     window.close();
   });
+
+
+
+
+
+
+
+
 }
 
 // This method will be called when Electron has finished

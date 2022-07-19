@@ -1,8 +1,22 @@
 .EditarSlide{
-     width: 400px;
-     height: 600px;
+     width: 40vw;
+     height: calc(100% - 150px);
      background-color: #784444;
      position: fixed;
-     top: 0;
-     left: 0;
+     bottom:  0;
+     right: 0;
+}
+
+
+.editorQuill{
+     width:95%;
+     height: 100%;
+     max-height: 200px ;
+     margin: 0 auto;
+     background-color: #fff;
+     border-radius: 5px;     
+}
+
+.editorQuillItem{
+     background-color: #fff;
 }

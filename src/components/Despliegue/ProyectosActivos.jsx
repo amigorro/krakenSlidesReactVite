@@ -19,8 +19,7 @@ const ProyectosActivos = () => {
     const {modulo, setModulo,idProyectoActual, setIdProyectoActual,} = useContext(ContextAreaDeTrabajo);
     
 
-    useEffect( () =>{
-        console.log("iniciando este rollo")
+    useEffect( () =>{        
         getDataProyectosBD(1)
     }, []  )
 
