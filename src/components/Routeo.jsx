@@ -13,6 +13,13 @@ const Routeo = () => {
      const [slideSelected, setSlideSelected] = useState({})
      const [slides, setSlides] = useState([])
      const [edicion, setEdicion] = useState(false)
+     const [plantillaSeleccionada, setPlantillaSeleccionada] = useState()
+
+     /* Elementos de las plantillas */
+     const [plnTitulo, setPlnTitulo] = useState('Titulo')
+
+
+
 
      const dirigir = ()=>{
           
@@ -40,7 +47,9 @@ const Routeo = () => {
                               modalTipoSlide, setModalTipoSlide,
                               slideSelected, setSlideSelected,
                               slides,setSlides,
-                              edicion, setEdicion
+                              edicion, setEdicion,
+                              plantillaSeleccionada, setPlantillaSeleccionada,
+                              plnTitulo, setPlnTitulo
                          }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>

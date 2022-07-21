@@ -100,6 +100,7 @@
      font-size: 18px;
      color: #fff;
      font-weight: 600;
+     flex-direction: column;
 }
 
 .addSesionInitial{
@@ -127,4 +128,10 @@
 
 .slideSelected{
      background-color: #1a9b69 !important;
+}
+
+.idExplode{
+     font-family: 'Courier New' !important;
+     font-size: 10px !important;
+     color: #e65656;
 }

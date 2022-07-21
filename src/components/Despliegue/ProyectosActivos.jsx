@@ -17,7 +17,7 @@ const ProyectosActivos = () => {
     
     const [proyectos, setProyectos] = useState([])
 
-    const {modulo, setModulo,idProyectoActual, setIdProyectoActual,} = useContext(ContextAreaDeTrabajo);
+    const {modulo, setModulo,idProyectoActual, setIdProyectoActual,setSlideSelected,setSesion} = useContext(ContextAreaDeTrabajo);
     
 
     useEffect( () =>{        
@@ -60,6 +60,8 @@ const ProyectosActivos = () => {
     const abrirAreaDeTrabajo = (id) =>{
         setModulo("AreaTrabajo");
         setIdProyectoActual(id);
+        setSlideSelected({});
+        setSesion()
         console.log("id proyecto seleccionado: " + id)
         return <Routeo />
     }
@@ -75,7 +77,7 @@ const ProyectosActivos = () => {
                         return(
 
                             <div key={proy.id} className="cardpry" >
-                                <div className="cardpry-img" ><img src={window.location.origin + './assets/pry_censo2020.png'} alt="Censo2020" className="cardpry-img-pic" /></div>
+                                <div className="cardpry-img" ><img src='./assets/megaproyectos/pry_censo2020.png' alt="Censo2020" className="cardpry-img-pic" /></div>
                                 <div className="cardpry-infoPry" >
                                     <div className="cardpry-name" >{
                                         

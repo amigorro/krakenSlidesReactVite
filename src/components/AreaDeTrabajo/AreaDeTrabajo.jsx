@@ -12,7 +12,16 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 
 const AreaDeTrabajo = () => {
      
-     const {sesion, setSesion,setModulo,idProyectoActual,modalTipoSlide, setModalTipoSlide,slideSelected, setSlideSelected,slides, setSlides} = useContext(ContextAreaDeTrabajo);     
+     const {
+               sesion, setSesion,
+               setModulo,
+               idProyectoActual,
+               modalTipoSlide, setModalTipoSlide,
+               slideSelected, setSlideSelected,
+               slides, setSlides,
+               plantillaSeleccionada, setPlantillaSeleccionada
+          } = useContext(ContextAreaDeTrabajo);
+
      const [slide, setSlide] = useState(null)
      
      const [existeSesiones, setExisteSesiones] = useState(false)
@@ -26,20 +35,26 @@ const AreaDeTrabajo = () => {
 
      const regresaMenu = ()=>{
           setModulo("MenuPrincipal")
+          setSesion()
+          setSlideSelected({})
+          
+          setSlides([])
+          localStorage.removeItem("slidesEnSesion")
+
           return(<Routeo/>)
      }
 
 
      useEffect( () =>{            
-          getSlides()   
-          getSlidesBD()     
-          getSesiones()
+          getSlides();   
+          getSlidesBD();     
+          getSesiones();
      }, [modalTipoSlide]  )
 
 
      useEffect( () =>{
-          getSlides()   
-          getSlidesBD()  
+          getSlides();   
+          getSlidesBD();  
      }, [sesion]  )
 
 
@@ -122,6 +137,8 @@ const AreaDeTrabajo = () => {
                               pry={
                                    id: results.rows.item(i).slide,
                                    nombre: results.rows.item(i).nombre_lamina,
+                                   tipo_contenido: results.rows.item(i).tipo_contenido,
+                                   plantilla: results.rows.item(i).plantilla,
                               }
                               GuardarEnStorage('slidesEnSesion', pry)
                          }
@@ -141,11 +158,7 @@ const AreaDeTrabajo = () => {
 
           if(tamSesiones == null || tamSesiones == "" || !tamSesiones){
                return(
-                    <div className="selectSesiones">
-                         <div className="selectSesiones_texto">
-                              <p>No hay sesiones en el proyecto</p>
-                         </div>
-                    </div>
+                    <option className='ADT_cont-cards-select-inp-item' value="">No hay sesiones</option>
                )
           }else if( tamSesiones.length > 0 || tamSesiones != null){               
                let sesionesEnElProyecto = JSON.parse(localStorage.getItem("sesionesEnProyecto"))
@@ -210,7 +223,11 @@ const AreaDeTrabajo = () => {
                                                        <>
                                                        <select  
                                                             className='ADT_cont-cards-select-inp' 
-                                                            onChange={ (e) => {  setSesion(e.target.value)  } }
+                                                            onChange={ (e) => {  
+                                                                 setSesion(e.target.value)  
+                                                                 setSlideSelected({})
+                                                                 setSlides([])
+                                                            } }
                                                             value={
                                                                  sesion
                                                             }
@@ -256,8 +273,8 @@ const AreaDeTrabajo = () => {
                                    slides != null ?
                                         slides.map( (slide, index) => {
                                              return(                                                  
-                                                  <div 
-                                                       className={ slideSelected.id == slide.id ? 'CardCont slideSelected' : 'CardCont' }
+                                                  <li 
+                                                       className={ slideSelected.id == slide.id  ? 'CardCont slideSelected' : 'CardCont ' }
                                                        
                                                        key={index}  
                                                        onClick={ () => { 
@@ -265,7 +282,7 @@ const AreaDeTrabajo = () => {
                                                                  id : slide.id,
                                                                  nombre: slide.nombre
                                                             }) 
-                                                            
+                                                            setPlantillaSeleccionada(slide.plantilla)
                                                             console.log('slideSelected', slideSelected.id)
                                                        } }
                                                        >
@@ -273,13 +290,13 @@ const AreaDeTrabajo = () => {
                                                        <div className='CardCont-Tipo-Info' >
                                                             <div className='CardCont-Tipo-Info-Name' >{slideSelected.id == slide.id ? slideSelected.nombre : slide.nombre }</div>
                                                             <div className='CardCont-Tipo-Info-icons' >
-                                                                 <div className='CardCont-Tipo-Info-icons-ico' ><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
+                                                                 <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
                                                                  <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
                                                                  <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-message-check CardCont-ico "></i></div>
-                                                                 <div className='CardCont-Tipo-Info-icons-order'>{slide.id}</div>
+                                                                 <div className='CardCont-Tipo-Info-icons-order idExplode'>{slide.id}</div>
                                                             </div>
                                                        </div>
-                                             </div>
+                                                  </li>
                                              )
                                         }
                                         )
@@ -295,8 +312,29 @@ const AreaDeTrabajo = () => {
                     </div>
                     <div className=' h-full end col-span-2 ' >
                     {
-                         existeSesiones && !modalTipoSlide ?    <InfoGestionSlide/>
-                         : <div className='textoCentrado' >Agrega una sesión para continuar</div>
+                         existeSesiones && !modalTipoSlide && sesion && slideSelected.id ?    <InfoGestionSlide/>
+                         : 
+                              existeSesiones &&  sesion ?
+                                   <>
+                                        <div className='textoCentrado' >
+                                             <div>     Selecciona o crea un slide para continuar</div>
+                                        <br/>
+                                        <div 
+                                             className="areaTrabajo-cont-gestion-btn btn-gestion btn-nuevoSlide quitarMarginTop"
+                                             onClick={() => setModalTipoSlide(true)}
+                                        >Nuevo slide</div>
+                                        </div>
+                                        
+                                   </>
+                              :
+                                   existeSesiones && !sesion ?
+                                        <div className='textoCentrado' >Selecciona una sesión para continuar</div>
+                                        :
+                                             <div className='textoCentrado'   >Agrega una sesión para continuar</div>
+                              
+
+                         
+                         
                     }
                     </div>
                     {

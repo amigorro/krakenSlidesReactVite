@@ -254,16 +254,16 @@ function precarga() {
              tx.executeSql('INSERT INTO TBL_CONTROL_SYNC  VALUES (0,"B-1.0.0.0","19-05-2022","DIABLO");    ');
    
              tx.executeSql(`insert into PLANTILLAS values
-                      (1,"ryyurk",1,"diapo3.png",1,1,null,1,null,null,null,null,null,null,null,null,null,null,null,null,1,null),
-                      (2,"juyrfj",1,"diapo6.png",1,null,1,1,1,1,null,null,1,null,null,null,null,null,null,null,null,null),
-                      (3,"efwr",1,"diapo7.png",1,1,null,null,null,null,null,null,1,1,1,null,null,null,null,null,null,null),
-                      (4,"hjhhhj",1,"diapo8.png",1,null,1,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null),
-                      (5,"gdfsg",1,"diapo9.png",1,1,null,null,null,null,null,null,1,1,1,1,1,1,1,1,null,null),
-                      (6,"htrjyt",2,"diapo10.png",1,null,null,1,null,null,null,null,1,1,null,null,null,null,null,null,null,null),
-                      (7,"kiulu",2,"diapo11.png",null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
-                      (8,"kuyyh",3,"diapo14.png",1,null,null,1,1,null,null,null,1,1,null,null,null,null,null,null,null,null),
-                      (9,"nnvrty",3,"diapo16.png",1,1,null,null,null,null,null,null,1,1,1,null,null,null,null,null,null,null),
-                      (10,"rtju",4,"diapo20.png",1,null,1,1,1,null,null,null,1,1,null,null,null,null,null,null,null,1)
+                      (1,"disenio1",1,"diapo3.png",1,1,null,1,null,null,null,null,null,null,null,null,null,null,null,null,1,null),
+                      (2,"disenio2",1,"diapo6.png",1,null,1,1,1,1,null,null,1,null,null,null,null,null,null,null,null,null),
+                      (3,"disenio3",1,"diapo7.png",1,1,null,null,null,null,null,null,1,1,1,null,null,null,null,null,null,null),
+                      (4,"disenio4",1,"diapo8.png",1,null,1,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null),
+                      (5,"disenio5",1,"diapo9.png",1,1,null,null,null,null,null,null,1,1,1,1,1,1,1,1,null,null),
+                      (6,"disenio6",2,"diapo10.png",1,null,null,1,null,null,null,null,1,1,null,null,null,null,null,null,null,null),
+                      (7,"disenio7",2,"diapo11.png",null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
+                      (8,"disenio8",3,"diapo14.png",1,null,null,1,1,null,null,null,1,1,null,null,null,null,null,null,null,null),
+                      (9,"disenio9",3,"diapo16.png",1,1,null,null,null,null,null,null,1,1,1,null,null,null,null,null,null,null),
+                      (10,"disenio10",4,"diapo20.png",1,null,1,1,1,null,null,null,1,1,null,null,null,null,null,null,null,1)
             `); 
 
 

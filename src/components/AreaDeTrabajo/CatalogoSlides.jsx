@@ -3,13 +3,17 @@ import './CatalogoSlides.css'
 import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo'
 import { nanoid } from 'nanoid'
+import  diapo3  from '../../assets/plantillas/diapo3.png'
+
+
+
+
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
 
-  const {sesion, setSesion,setModulo,idProyectoActual} = useContext(ContextAreaDeTrabajo);
+  const {sesion, setSesion,setModulo,idProyectoActual,setSlideSelected, slidesAct,plantillaSeleccionada, setPlantillaSeleccionada} = useContext(ContextAreaDeTrabajo);
   const [plantillas, setPlantillas] = useState([])
   const [categoriaSel, setCategoriaSel] = useState(1)
-  const [plantillaSeleccionada, setPlantillaSeleccionada] = useState()
 
 
   useEffect( () =>{     
@@ -31,6 +35,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                         plant={
                                  id: results.rows.item(i).id_plantilla,
                                  tipo: results.rows.item(i).tipo,
+                                 nombre_plantilla: results.rows.item(i).nombre_plantilla,
                                  miniatura: results.rows.item(i).miniatura,
                                  titulo: results.rows.item(i).titulo,
                                  subtitulo: results.rows.item(i).subtitulo,
@@ -77,17 +82,20 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
     console.error("plantillaSeleccionada: " + plantillaSeleccionada)
     console.error("Sesión actual: " + sesion)    
     setModalTipoSlide(false)
+    
 
-    /* Ingresamos el registro en la base de datos */
+    /* Ingresamos el registro en la ba  se de datos */
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
-          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide) VALUES (?,?,?,?)', [1,idProyectoActual,sesion,nanoid(10)], function(tx, results) {
+          let id_plantilla = nanoid(10)
+          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla) VALUES (?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada], function(tx, results) {
             console.log('results', results)
+            setSlideSelected({
+              id : id_plantilla
+         }) 
             //limpiarPlantillaSel()
           }, null);
         })
-
-
 
   }
 
