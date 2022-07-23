@@ -5,16 +5,30 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 const Visor = () => {
 
   const {    
+    idProyectoActual,sesion,
+    slideSelected,
     plantillaSeleccionada, setPlantillaSeleccionada,
-    plnTitulo
+    plnTitulo,plnTexto1,
+    
+    valPlant_Titulo, setValPlant_Titulo,
+    valoresBDslide, setValoresBDslide
   } = useContext(ContextAreaDeTrabajo);
 
 
   const cargaElementosPlantilla = () => {
     console.log("plantillaSeleccionada"+plantillaSeleccionada)
+    
       switch (plantillaSeleccionada){
         case "1":
-          return <div className="v-titulo">{plnTitulo}</div>
+          return <div className="v-titulo">{valPlant_Titulo}</div>
+        break;
+        case "2":
+          return  <>
+                    <div className="contSlide" >
+                      <div className="titulo" >{valPlant_Titulo}</div>
+                      <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+                    </div>
+                  </>
         break;
       }
 
@@ -23,11 +37,16 @@ const Visor = () => {
 
 
 
+
+
+
+
+
   return (
     <div className='VisorCont' >      
         <div className="areaTrabajo-cont-visor-display" >
               {
-                plantillaSeleccionada ?
+                plantillaSeleccionada ? 
                   cargaElementosPlantilla()                    
                 :
                     <div className="areaTrabajo-cont-visor-display-no-plantilla">

@@ -17,9 +17,9 @@ const Routeo = () => {
 
      /* Elementos de las plantillas */
      const [plnTitulo, setPlnTitulo] = useState('Titulo')
-
-
-
+     const [plnTexto1, setPlnTexto1] = useState('Texto 1')
+     const [valPlant_Titulo, setValPlant_Titulo] = useState('')
+     const [valoresBDslide, setValoresBDslide] = useState({})
 
      const dirigir = ()=>{
           
@@ -49,7 +49,9 @@ const Routeo = () => {
                               slides,setSlides,
                               edicion, setEdicion,
                               plantillaSeleccionada, setPlantillaSeleccionada,
-                              plnTitulo, setPlnTitulo
+                              plnTitulo, setPlnTitulo,
+                              valPlant_Titulo, setValPlant_Titulo,
+                              valoresBDslide, setValoresBDslide
                          }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>
