@@ -11,7 +11,7 @@ import {
 import './ProyectosActivos.css'
 import Routeo from '../Routeo.jsx';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
-
+import { motion } from 'framer-motion';
 
 const ProyectosActivos = () => {
     
@@ -69,7 +69,18 @@ const ProyectosActivos = () => {
     
   return (
     <div className='despPryCont' >
-        <div className='despPryCont-tlt' >Proyectos activos</div>
+        <motion.h1 className='despPryCont-tlt' 
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ 
+                duration: 0.7,
+                ease: "easeInOut",
+                type: "spring",
+                delay: 0.2
+            }}
+        >
+            Proyectos activos
+        </motion.h1>
         
         {
             proyectos != null ?

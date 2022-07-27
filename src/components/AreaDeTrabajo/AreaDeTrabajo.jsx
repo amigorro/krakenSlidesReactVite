@@ -9,6 +9,29 @@ import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
 
 import Routeo from '../Routeo'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
+import { motion, AnimatePresence,Reorder, useDragControls  } from 'framer-motion';
+import { PruebaOrder } from './PruebaOrder'
+
+const variants = {
+     hidden: {
+          opacity: 0,
+     },
+     visible: (delay) => ( {
+          opacity: 1,
+          transition: {
+               delay,
+               ease: 'easeInOut',
+          },
+     }),
+     exit: {
+          opacity: 0,
+          transition: {
+               ease: 'easeInOut',
+          },
+     },
+}
+
+
 
 const AreaDeTrabajo = () => {
      
@@ -22,7 +45,9 @@ const AreaDeTrabajo = () => {
                slides, setSlides,
                valPlant_Titulo, setValPlant_Titulo,
                plantillaSeleccionada, setPlantillaSeleccionada,
-               setValoresBDslide
+               setValoresBDslide,
+               ordenSlides, setOrdenSlides,
+               ordenPrueba, setOrdenPrueba
           } = useContext(ContextAreaDeTrabajo);
 
      const [slide, setSlide] = useState(null)
@@ -34,7 +59,8 @@ const AreaDeTrabajo = () => {
      
      const [sesiones, setSesiones] = useState([])
      const [nuevaSesion, setNuevaSesion] = useState(false)
-
+     
+     
 
      const regresaMenu = ()=>{
           setModulo("MenuPrincipal")
@@ -60,6 +86,11 @@ const AreaDeTrabajo = () => {
           getSlidesBD();  
      }, [sesion]  )
 
+     useEffect( () =>{
+          console.log('ordenSlides', ordenSlides)
+     }, [ordenSlides]  )
+
+
 
      const getSesiones = async () =>{
           
@@ -79,11 +110,14 @@ const AreaDeTrabajo = () => {
                                    sesion: results.rows.item(i).sesion
                                    
                               }
+                              
                               GuardarEnStorage('sesionesEnProyecto', pry)
+                              
                          }
                          
                          let slidesAct = JSON.parse(localStorage.getItem("sesionesEnProyecto"))
                          setSesiones(slidesAct)
+                         
                     }
                }, null);
           });
@@ -120,7 +154,7 @@ const AreaDeTrabajo = () => {
           }
      }
 
-
+ 
 
 
 
@@ -132,22 +166,35 @@ const AreaDeTrabajo = () => {
                     let len = results.rows.length, i;
                     let pry;
                     
+                    
                     if(len > 0){
                          let slidesDeLaSesion = []
+                         let registrosCard = []
+                         setOrdenPrueba([])
                          for (i = 0; i < len; i++){
-                              if (i==0){localStorage.removeItem("slidesEnSesion");}
+                              if (i==0){
+                                   localStorage.removeItem("slidesEnSesion");
+                                   localStorage.removeItem("orden");
+                                   
+                              }
                               slidesDeLaSesion.push(results.rows.item(i))
                               pry={
-                                   id: results.rows.item(i).slide,
+                                   id: results.rows.item(i).slide,                                   
                                    nombre: results.rows.item(i).nombre_lamina,
                                    tipo_contenido: results.rows.item(i).tipo_contenido,
                                    plantilla: results.rows.item(i).plantilla,
+                                   orden: i,
                               }
+                              
+                              registrosCard.push(results.rows.item(i).slide)
                               GuardarEnStorage('slidesEnSesion', pry)
+                              GuardarEnStorage('orden', i)
                          }
                          
                          let slidesAct = JSON.parse(localStorage.getItem("slidesEnSesion"))
+                              setOrdenPrueba(registrosCard)
                               setSlides(slidesAct)
+                              
                     }
                }, null);
           });
@@ -157,7 +204,7 @@ const AreaDeTrabajo = () => {
 
      const imprimeSelectSesiones = () =>{
           const tamSesiones = localStorage.getItem("sesionesEnProyecto")
-          console.log("tamSesiones: " + tamSesiones)
+          //console.log("tamSesiones: " + tamSesiones)
 
           if(tamSesiones == null || tamSesiones == "" || !tamSesiones){
                return(
@@ -226,7 +273,12 @@ const AreaDeTrabajo = () => {
      }
 
 
+     const actualizaArregloSlides =()=>{
+          console.log("ACTUALIZA ARREGLO SLIDES")
+     }
 
+     const controls = useDragControls()
+     
 
   return (
      <>
@@ -317,15 +369,24 @@ const AreaDeTrabajo = () => {
 
 
                          </div>
-                         <div className='ADT_cont-cards-despl' >
+                         
+                         <Reorder.Group axis='y' layoutScroll values={ slides } onReorder={ (  setSlides   ) } className='ADT_cont-cards-despl' >
+                              
                               {
-                                   slides != null ?
+                                   slides != null && slides ==25 ?
                                         slides.map( (slide, index) => {
-                                             return(                                                  
-                                                  <li 
+                                             return(     
+                                                  <Reorder.Item 
+                                                       custom={{ delay: (index + 1) * 5.7 }}
+                                                       variants={ variants }
+                                                       initial='hidden'
+                                                       animate='visible'
+                                                       layoutId={ index }
+                                                       key={index} 
+                                                       layout
+                                                  >                                             
+                                                  <motion.div 
                                                        className={ slideSelected.id == slide.id  ? 'CardCont slideSelected' : 'CardCont ' }
-                                                       
-                                                       key={index}  
                                                        onClick={ () => { 
                                                             setSlideSelected({
                                                                  id : slide.id,
@@ -336,8 +397,8 @@ const AreaDeTrabajo = () => {
                                                             cargaValoresSlide(slide.id)
                                                             console.log('slideSelected', slideSelected.id)
                                                        } }
-                                                       >
-                                                       <div className='CardCont-Tipo'> </div>
+                                                  >
+                                                       <div className='CardCont-Tipo' onPointerDown={(e) => controls.start(e)} > </div>
                                                        <div className='CardCont-Tipo-Info' >
                                                             <div className='CardCont-Tipo-Info-Name' >{slideSelected.id == slide.id ? slideSelected.nombre : slide.nombre }</div>
                                                             <div className='CardCont-Tipo-Info-icons' >
@@ -347,7 +408,9 @@ const AreaDeTrabajo = () => {
                                                                  <div className='CardCont-Tipo-Info-icons-order idExplode'>{slide.id}</div>
                                                             </div>
                                                        </div>
-                                                  </li>
+                                                  </motion.div>
+                                                  </Reorder.Item>
+                                                  
                                              )
                                         }
                                         )
@@ -356,9 +419,11 @@ const AreaDeTrabajo = () => {
 
                               }
                               
-                         </div>
+                         </Reorder.Group>
+                         
                     </div>
                     <div className='   h-full col-start-2 col-span-2 ' >
+                                                                                                        { ordenPrueba ?  <PruebaOrder /> : null }
                          <Visor/>
                     </div>
                     <div className=' h-full end col-span-2 ' >
@@ -391,6 +456,9 @@ const AreaDeTrabajo = () => {
                     {
                          modalTipoSlide ?  <CatalogoSlides setModalTipoSlide={setModalTipoSlide} /> : null
                     }
+                         
+                                         
+
                </div>
           </div>
      </>

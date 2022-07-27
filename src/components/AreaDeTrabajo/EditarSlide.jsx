@@ -4,6 +4,8 @@ import './quill.css'
 //import Quill from 'quill';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { useQuill } from 'react-quilljs';
+//import { readFile} from './fsExtra';
+
 
 const EditarSlide = () => {
 
@@ -144,7 +146,7 @@ const EditarSlide = () => {
     <div className='EditarSlide'>
 
         <div
-            onClick={()=>{ setEdicion(false) }} 
+            onClick={() => console.log("jelou") }
             >Cerrar
         </div>
         {
