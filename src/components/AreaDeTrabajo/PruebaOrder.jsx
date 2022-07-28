@@ -1,6 +1,7 @@
 import React, {useState, useContext,useEffect} from 'react'
 import { motion, AnimatePresence,Reorder, useDragControls  } from 'framer-motion';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
+import { CardNombreSlide } from './CardNombreSlide';
 
 
 const variants = {
@@ -67,8 +68,26 @@ export const PruebaOrder = () => {
      }, [ordenPrueba]  )
 
 
+     const propsCardSlide = (id) =>{
+          let nombreSlide = "";
+          
+          slides.forEach(slide =>{ 
+               
+               if(slide.id === id){
+                    nombreSlide = slide.nombre;
+                    console.warn(slide.id+" | "+id+" SON IGUALES "+slide.nombre)
+                    return nombreSlide;
+               } 
+           })
+           
+     }
+     const folito = () =>{
+          return (<div>hola</div>)
+     }
+
+
      const ImprimeTarjetasOrdenables = () => {
-          //const [items, setItems] = useState(ordenPrueba)
+          
           return(
                <Reorder.Group values={ordenPrueba} onReorder={  setOrdenPrueba  }>
                          { 
@@ -82,16 +101,30 @@ export const PruebaOrder = () => {
                                         key={item} 
                                         layout
                                         value={item}
-                                   >                                             
+                                   >                    
+                                        
                                         <motion.div 
-                                             className={ 'CardCont ' }
+                                             className={  slideSelected.id == item  ? 'CardCont slideSelected' : 'CardCont ' }
                                              onClick={ () => {                                              
-                                                  console.log('orden prueba:')
+                                                  setSlideSelected({
+                                                       id : item
+                                                  }) 
+                                                  setEdicion(false)
+                                                  //cargaValoresSlide(item)
+                                                  
+                                                  slides.map( (slide, index) => {
+                                                       if(slide.id === item){                    
+                                                            setPlantillaSeleccionada(slide.plantilla)
+                                                       }
+                                                  })
+
+
+
                                              } }
                                         >
                                              <div className='CardCont-Tipo'  > </div>
                                              <div className='CardCont-Tipo-Info' >
-                                                  <div className='CardCont-Tipo-Info-Name' ></div>
+                                                  <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id={item} /> </div>
                                                   <div className='CardCont-Tipo-Info-icons' >
                                                        <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
                                                        <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
