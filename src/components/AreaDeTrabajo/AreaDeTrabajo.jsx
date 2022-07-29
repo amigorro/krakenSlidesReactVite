@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react'
 import './AreaDeTrabajo.css'
 import AppBar from '../AppBar/AppBar'
 import Cardpry from './Cardpry'
-import Visor from './Visor'
+import Visor from './Visor.jsx'
 import InfoGestionSlide from './InfoGestionSlide'
 import CatalogoSlides from './CatalogoSlides'
 import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
@@ -92,6 +92,11 @@ const AreaDeTrabajo = () => {
 
 
 
+
+
+     
+
+
      const getSesiones = async () =>{
           
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -161,7 +166,7 @@ const AreaDeTrabajo = () => {
      const getSlidesBD = async () =>{          
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
-               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?   ', [idProyectoActual,sesion], function(tx, results) {
+               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? ORDER BY orden ASC ', [idProyectoActual,sesion], function(tx, results) {
                     //console.log('results', results)
                     let len = results.rows.length, i;
                     let pry;
@@ -273,12 +278,7 @@ const AreaDeTrabajo = () => {
      }
 
 
-     const actualizaArregloSlides =()=>{
-          console.log("ACTUALIZA ARREGLO SLIDES")
-     }
 
-     const controls = useDragControls()
-     
 
   return (
      <>
@@ -370,10 +370,14 @@ const AreaDeTrabajo = () => {
 
                          </div>
                          
-                         <Reorder.Group axis='y' layoutScroll values={ slides } onReorder={ (  setSlides   ) } className='ADT_cont-cards-despl' >
+                         <Reorder.Group axis='y' layoutScroll values={ slides } onReorder={ (  setSlides   ) } id='listaCardsSlides' className='ADT_cont-cards-despl' >
                               
                               {
-                                   slides != null && slides ==25 ?
+                                   slides != null  ?
+
+                                        <PruebaOrder />
+
+                                        /*
                                         slides.map( (slide, index) => {
                                              return(     
                                                   <Reorder.Item 
@@ -413,7 +417,7 @@ const AreaDeTrabajo = () => {
                                                   
                                              )
                                         }
-                                        )
+                                        )*/
                                         :
                                         <h2>No hay slides</h2>
 
@@ -423,7 +427,7 @@ const AreaDeTrabajo = () => {
                          
                     </div>
                     <div className='   h-full col-start-2 col-span-2 ' >
-                                                                                                        { ordenPrueba ?  <PruebaOrder /> : null }
+                                                                                                        {/* ordenPrueba ?  <PruebaOrder /> : null */}
                          <Visor/>
                     </div>
                     <div className=' h-full end col-span-2 ' >

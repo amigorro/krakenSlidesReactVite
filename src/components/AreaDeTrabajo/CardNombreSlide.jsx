@@ -13,7 +13,7 @@ export const CardNombreSlide = (props) => {
   return (
     <div> {
      slides.map( (slide, index) => {
-               if(slide.id === props.id){                    
+               if(slide.id === props.id2){                    
                     return <div key={index} >{slide.nombre}</div>
                }
           })

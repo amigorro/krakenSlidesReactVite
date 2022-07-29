@@ -146,7 +146,7 @@ const EditarSlide = () => {
     <div className='EditarSlide'>
 
         <div
-            onClick={() => console.log("jelou") }
+            onClick={() =>setEdicion(false) }
             >Cerrar
         </div>
         {

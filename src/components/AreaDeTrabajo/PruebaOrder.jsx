@@ -41,6 +41,9 @@ export const PruebaOrder = () => {
           ordenSlides, setOrdenSlides,
           ordenPrueba, setOrdenPrueba
      } = useContext(ContextAreaDeTrabajo);
+     
+     
+     //const controls = useDragControls()
 
      /**
       * <Reorder.Group values={items} onReorder={setItems}>
@@ -63,27 +66,100 @@ export const PruebaOrder = () => {
       */
           
      useEffect( () =>{            
-          ImprimeTarjetasOrdenables();   
-          
+          guardaOrdenSlides()  
+          console.error("SE guarda ordeen de los slides")        
      }, [ordenPrueba]  )
 
 
-     const propsCardSlide = (id) =>{
-          let nombreSlide = "";
-          
-          slides.forEach(slide =>{ 
-               
-               if(slide.id === id){
-                    nombreSlide = slide.nombre;
-                    console.warn(slide.id+" | "+id+" SON IGUALES "+slide.nombre)
-                    return nombreSlide;
-               } 
-           })
-           
+     const cargaValoresSlide = (slideId) =>{
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
+                    //console.log('results', results)
+                    let len = results.rows.length, i;
+                    let pry;
+                    
+                    if(len > 0){                
+                         setValoresBDslide({
+                              num_chacks_sel: results.rows.item(0).num_chacks_sel,
+                              tipo_contenido: results.rows.item(0).tipo_contenido,
+                              plantilla: results.rows.item(0).plantilla,
+                              nombre_lamina: results.rows.item(0).nombre_lamina,
+                              titulo: results.rows.item(0).titulo,
+                              subtitulo1: results.rows.item(0).subtitulo1,
+                              texto1: results.rows.item(0).texto1,
+                              texto2: results.rows.item(0).texto2,
+                              texto3: results.rows.item(0).texto3,
+                              texto4: results.rows.item(0).texto4,
+                              texto5: results.rows.item(0).texto5,
+                              texto6: results.rows.item(0).texto6,
+                              imagen1: results.rows.item(0).imagen1,
+                              imagen2: results.rows.item(0).imagen2,
+                              imagen3: results.rows.item(0).imagen3,
+                              imagen4: results.rows.item(0).imagen4,
+                              imagen5: results.rows.item(0).imagen5,
+                              imagen6: results.rows.item(0).imagen6,
+                              imagen7: results.rows.item(0).imagen7,
+                              imagen8: results.rows.item(0).imagen8,
+                              audio: results.rows.item(0).audio,
+                              video: results.rows.item(0).video,
+                              tabla: results.rows.item(0).tabla,
+                              anterior: results.rows.item(0).anterior,
+                              siguiente: results.rows.item(0).siguiente,
+                              orden: results.rows.item(0).orden,
+                              paginacion: results.rows.item(0).paginacion
+                         })
+                         setValPlant_Titulo(results.rows.item(0).titulo)
+                         console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
+                    }
+               }, null);
+          });
+     }     
+     
+
+
+     const guardaOrdenSlides = () =>{
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+          let lista = document.getElementById("listaCardsSlides");
+          if (lista){
+               let items = lista.getElementsByTagName('li')
+               let props = {};
+               let itemId = ''; 
+               for(let i = 0; i < items.length; i++){
+                 props = items[i].getBoundingClientRect();
+                 itemId = items[i].id;
+                 console.log('ItemInfo: id = "%s", x = %s ', itemId, i);
+
+                    /**
+                     * Guardar en la base de datos el orden de los slides
+                     */
+                     
+                         tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [i,idProyectoActual,sesion,itemId], function(tx, results) {
+                              console.log('results', results)
+                         }, null);
+                    
+
+
+               }
+             } else {
+               console.warn('El elemento: %s NO fue encontrado dentro del HTML listaCardsSlides')
+             }
+
+          /*
+          slides.map( (slide, index) => {
+               db.transaction(function(tx) {
+                    tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [index,idProyectoActual,sesion,slide.id], function(tx, results) {
+                         console.log('results', results)
+                    }, null);
+               });
+          })
+          */
+     });
      }
-     const folito = () =>{
-          return (<div>hola</div>)
-     }
+
+    
+
 
 
      const ImprimeTarjetasOrdenables = () => {
@@ -99,6 +175,7 @@ export const PruebaOrder = () => {
                                         animate='visible'
                                         layoutId={ index }
                                         key={item} 
+                                        id={item} 
                                         layout
                                         value={item}
                                    >                    
@@ -106,15 +183,22 @@ export const PruebaOrder = () => {
                                         <motion.div 
                                              className={  slideSelected.id == item  ? 'CardCont slideSelected' : 'CardCont ' }
                                              onClick={ () => {                                              
+                                                  /*
                                                   setSlideSelected({
                                                        id : item
-                                                  }) 
+                                                  })*/ 
                                                   setEdicion(false)
-                                                  //cargaValoresSlide(item)
+                                                  cargaValoresSlide(item)
+                                                  
                                                   
                                                   slides.map( (slide, index) => {
                                                        if(slide.id === item){                    
                                                             setPlantillaSeleccionada(slide.plantilla)
+                                                            setSlideSelected({ 
+                                                                 id : item,
+                                                                 nombre: slide.nombre,
+                                                            })
+                                                            console.warn(`Plantilla seleccionada: ${slide.plantilla}`)
                                                        }
                                                   })
 
@@ -122,9 +206,9 @@ export const PruebaOrder = () => {
 
                                              } }
                                         >
-                                             <div className='CardCont-Tipo'  > </div>
+                                             <div className='CardCont-Tipo' /*onPointerDown={(e) => controls.start(e)}*/  > </div>
                                              <div className='CardCont-Tipo-Info' >
-                                                  <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id={item} /> </div>
+                                                  <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id2={item} /> </div>
                                                   <div className='CardCont-Tipo-Info-icons' >
                                                        <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
                                                        <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
