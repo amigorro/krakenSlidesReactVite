@@ -6,8 +6,8 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 
 const InfoGestionSlide = () => {
 
-     const {modalTipoSlide, setModalTipoSlide,slideSelected, setSlideSelected,setSlides,idUsuario,idProyectoActual,sesion,edicion, setEdicion} = useContext(ContextAreaDeTrabajo);     
-
+     const {modalTipoSlide, setModalTipoSlide,slideSelected, setSlideSelected,setSlides,idUsuario,idProyectoActual,sesion,edicion, setEdicion,despCronograma, setDespCronograma} = useContext(ContextAreaDeTrabajo);     
+     
 
      const actualizarRegBdSlide = async (variable,valor) =>{
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -71,7 +71,10 @@ const InfoGestionSlide = () => {
                <div className="areaTrabajo-cont-gestion-avanzaRetrocede-btn">Avanzar:<div className="areaTrabajo-cont-gestion-avanzaRetrocede-btn-specs"></div></div>
           </div>
            
-               <div className="areaTrabajo-cont-gestion-btn btn-gestion">Cronograma</div>
+               <div 
+                    className="areaTrabajo-cont-gestion-btn btn-gestion"
+                    onClick={ () => setDespCronograma(true) }
+                    >Cronograma</div>
                <div className="areaTrabajo-cont-gestion-btn btn-gestion">Objetivo tematico</div>
                <button 
                     className="areaTrabajo-cont-gestion-btn btn-gestion"

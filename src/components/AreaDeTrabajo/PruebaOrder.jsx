@@ -39,32 +39,11 @@ export const PruebaOrder = () => {
           plantillaSeleccionada, setPlantillaSeleccionada,
           setValoresBDslide,
           ordenSlides, setOrdenSlides,
-          ordenPrueba, setOrdenPrueba
+          ordenPrueba, setOrdenPrueba,
+          setDespCronograma
      } = useContext(ContextAreaDeTrabajo);
      
-     
-     //const controls = useDragControls()
 
-     /**
-      * <Reorder.Group values={items} onReorder={setItems}>
-              {items.map(item => (
-                <Reorder.Item key={item} value={item}>
-                  {item}
-                </Reorder.Item>
-              ))}
-            </Reorder.Group>
-      * 
-
-               IDEA PARA RESOLVER ESTE PEDO:
-                    Generar un arreglo con los id de los slides de la sesión 
-                    mapearlos con el reorder.group
-                    Imprmir en el motion.div un nuevo componente al que le pasaremos el IS del slide para que generae los onClick e incluir los estados como el título para que reaccione al input de la captura en gestión.
-                         Ojo buscar los datos del slide en otro estado que ya exista, este arreglo será un nuevo estado 
-
-
-
-      */
-          
      useEffect( () =>{            
           guardaOrdenSlides()  
           console.error("SE guarda ordeen de los slides")        
@@ -146,15 +125,7 @@ export const PruebaOrder = () => {
                console.warn('El elemento: %s NO fue encontrado dentro del HTML listaCardsSlides')
              }
 
-          /*
-          slides.map( (slide, index) => {
-               db.transaction(function(tx) {
-                    tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [index,idProyectoActual,sesion,slide.id], function(tx, results) {
-                         console.log('results', results)
-                    }, null);
-               });
-          })
-          */
+      
      });
      }
 
@@ -187,6 +158,7 @@ export const PruebaOrder = () => {
                                                   setSlideSelected({
                                                        id : item
                                                   })*/ 
+                                                  setDespCronograma(false)
                                                   setEdicion(false)
                                                   cargaValoresSlide(item)
                                                   

@@ -98,7 +98,30 @@ function precarga() {
                     audio int,
                     video int,
                     primary key(id_plantilla));`);
-   
+        
+        tx.executeSql(`CREATE TABLE IF NOT EXISTS TBL_CRONOGRAMA(
+                     id_cronograma varhar(10),
+                     id_proyecto int,
+                     id_usuario int,
+                     sesion int,
+                     figura int,
+                     id_slide varhar(10),
+                     objetivo varchar(330),
+                     instrucciones varchar(330),
+                     tiempo int,
+                     materiales varchar(200),
+                     notas varchar(330),
+                     tec1 int,
+                     tec2 int,
+                     tec3 int,
+                     tec4 int,
+                     tec5 int,
+                     tec6 int,
+                     tec7 int,
+                     tec8 int,
+                     tec9 int,
+                     tec10 int,
+                     primary key(id_proyecto,id_slide,sesion,id_usuario));`);  
 
           /**
            * 
@@ -176,27 +199,7 @@ function precarga() {
                                            ' primary key(ID_CONCEPTO,ID_PROYECTO));');  
    
            //Tabla TBL_CRONORGAMA    
-           tx.executeSql('CREATE TABLE IF NOT EXISTS TBL_CRONORGAMA('+
-                                           ' ID_PROYECTO int,'+
-                                           ' SESION int,'+
-                                           ' ID_FIGURA int,'+
-                                           ' ID_SLIDE int,'+
-                                           ' OBJETIVO varchar(330),'+
-                                           ' INSTRUCCIONES varchar(330),'+
-                                           ' TIEMPO int,'+
-                                           ' MATERIALES varchar(200),'+
-                                           ' NOTAS varchar(330),'+ 
-                                           ' TEC1 int,'+
-                                           ' TEC2 int,'+
-                                           ' TEC3 int,'+
-                                           ' TEC4 int,'+
-                                           ' TEC5 int,'+
-                                           ' TEC6 int,'+
-                                           ' TEC7 int,'+
-                                           ' TEC8 int,'+
-                                           ' TEC9 int,'+
-                                           ' TEC10 int,'+
-                                           ' primary key(ID_PROYECTO,SESION, ID_FIGURA,ID_SLIDE));');  
+           
    
            //Tabla Respuesta        
            tx.executeSql('CREATE TABLE IF NOT EXISTS TBL_RESPUESTA('+

@@ -5,6 +5,7 @@ import Cardpry from './Cardpry'
 import Visor from './Visor.jsx'
 import InfoGestionSlide from './InfoGestionSlide'
 import CatalogoSlides from './CatalogoSlides'
+import Cronograma from './Cronograma'
 import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
 
 import Routeo from '../Routeo'
@@ -47,7 +48,8 @@ const AreaDeTrabajo = () => {
                plantillaSeleccionada, setPlantillaSeleccionada,
                setValoresBDslide,
                ordenSlides, setOrdenSlides,
-               ordenPrueba, setOrdenPrueba
+               ordenPrueba, setOrdenPrueba,
+               despCronograma, setDespCronograma
           } = useContext(ContextAreaDeTrabajo);
 
      const [slide, setSlide] = useState(null)
@@ -65,8 +67,7 @@ const AreaDeTrabajo = () => {
      const regresaMenu = ()=>{
           setModulo("MenuPrincipal")
           setSesion()
-          setSlideSelected({})
-          
+          setSlideSelected({})          
           setSlides([])
           localStorage.removeItem("slidesEnSesion")
 
@@ -374,53 +375,9 @@ const AreaDeTrabajo = () => {
                               
                               {
                                    slides != null  ?
-
                                         <PruebaOrder />
-
-                                        /*
-                                        slides.map( (slide, index) => {
-                                             return(     
-                                                  <Reorder.Item 
-                                                       custom={{ delay: (index + 1) * 5.7 }}
-                                                       variants={ variants }
-                                                       initial='hidden'
-                                                       animate='visible'
-                                                       layoutId={ index }
-                                                       key={index} 
-                                                       layout
-                                                  >                                             
-                                                  <motion.div 
-                                                       className={ slideSelected.id == slide.id  ? 'CardCont slideSelected' : 'CardCont ' }
-                                                       onClick={ () => { 
-                                                            setSlideSelected({
-                                                                 id : slide.id,
-                                                                 nombre: slide.nombre
-                                                            }) 
-                                                            setEdicion(false)
-                                                            setPlantillaSeleccionada(slide.plantilla)
-                                                            cargaValoresSlide(slide.id)
-                                                            console.log('slideSelected', slideSelected.id)
-                                                       } }
-                                                  >
-                                                       <div className='CardCont-Tipo' onPointerDown={(e) => controls.start(e)} > </div>
-                                                       <div className='CardCont-Tipo-Info' >
-                                                            <div className='CardCont-Tipo-Info-Name' >{slideSelected.id == slide.id ? slideSelected.nombre : slide.nombre }</div>
-                                                            <div className='CardCont-Tipo-Info-icons' >
-                                                                 <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
-                                                                 <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
-                                                                 <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-message-check CardCont-ico "></i></div>
-                                                                 <div className='CardCont-Tipo-Info-icons-order idExplode'>{slide.id}</div>
-                                                            </div>
-                                                       </div>
-                                                  </motion.div>
-                                                  </Reorder.Item>
-                                                  
-                                             )
-                                        }
-                                        )*/
                                         :
                                         <h2>No hay slides</h2>
-
                               }
                               
                          </Reorder.Group>
@@ -457,11 +414,11 @@ const AreaDeTrabajo = () => {
                          
                     }
                     </div>
-                    {
-                         modalTipoSlide ?  <CatalogoSlides setModalTipoSlide={setModalTipoSlide} /> : null
-                    }
+                    
+                    { despCronograma && <Cronograma/>  }
+                    { modalTipoSlide ?  <CatalogoSlides setModalTipoSlide={setModalTipoSlide} /> : null }
+                    
                          
-                                         
 
                </div>
           </div>

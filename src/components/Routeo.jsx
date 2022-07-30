@@ -22,6 +22,11 @@ const Routeo = () => {
      const [valoresBDslide, setValoresBDslide] = useState({})
      const [ordenSlides, setOrdenSlides] = useState([])
      const [ordenPrueba, setOrdenPrueba] = useState([])
+     
+
+     /* Cronogramas */
+     const [despCronograma, setDespCronograma] = useState(false)
+     const [tipoCronograma, setTipoCronograma] = useState('off')
 
      const dirigir = ()=>{
           
@@ -55,7 +60,10 @@ const Routeo = () => {
                               valPlant_Titulo, setValPlant_Titulo,
                               valoresBDslide, setValoresBDslide,
                               ordenSlides, setOrdenSlides,
-                              ordenPrueba, setOrdenPrueba
+                              ordenPrueba, setOrdenPrueba,
+
+                              despCronograma, setDespCronograma,
+                              tipoCronograma, setTipoCronograma
                          }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>
