@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import './quill.css'
 import { useQuill } from 'react-quilljs';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
@@ -6,28 +6,69 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 const CronogramaFormulario = ( props ) => {
 
   const {
+    idUsuario,
     sesion, setSesion,    
     idProyectoActual,
     slideSelected, setSlideSelected,    
     despCronograma, setDespCronograma,
     tipoCronograma, setTipoCronograma
   } = useContext(ContextAreaDeTrabajo);
+  
+  
+  
+    const [bdObjetivo, setBdObjetivo] = React.useState('');
+    const [bdInstrucciones, setBdInstrucciones] = React.useState('');
+    const [bdTiempo, setBdTiempo] = React.useState('');
+    const [bdNotas, setBdNotas] = React.useState('');
+    const [bdMateriales, setBdMateriales] = React.useState('');
+    const [bdTec1, setBdTec1] = React.useState('');
+    const [bdTec2, setBdTec2] = React.useState('');
+    const [bdTec3, setBdTec3] = React.useState('');
+    const [bdTec4, setBdTec4] = React.useState('');
+    const [bdTec5, setBdTec5] = React.useState('');
+    const [bdTec6, setBdTec6] = React.useState('');
+    const [bdTec7, setBdTec7] = React.useState('');
+    const [bdTec8, setBdTec8] = React.useState('');
+    const [bdTec9, setBdTec9] = React.useState('');
+    const [bdTec10, setBdTec10] = React.useState('');
 
+  /* Opciones Editor Quill */
+  const placeholder = 'Ingresa el texto para un slide epico aquí...';      
+  const modules = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ align: [] }],
+      [{ list: 'ordered'}, { list: 'bullet' }],
+    ],
+  };    
+  const { quill, quillRef } = useQuill({placeholder,modules});
+
+  useEffect( () =>{
+    if (quill) {
+      //quill.clipboard.dangerouslyPasteHTML(valoresBDslide.texto1);
+      quill.on('text-change', (delta, oldDelta, source) => {        
+        /*
+        setValoresBDslide({            
+          texto1: quill.root.innerHTML
+        })
+        */
+        actualizarRegBdSlideCronogramas("instrucciones",quill.root.innerHTML)
+      });
+    }          
+  }, [quill]  )
+
+  useEffect( () =>{
+    
+      cargaValoresCronograma(slideSelected.id)
+    
+  } , [tipoCronograma] )
 
     const  tipo  = props.tipo;
     let titulo=''
 
-    /* Opciones Editor Quill */
-    const modules = {
-      toolbar: [
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ align: [] }],
-        [{ list: 'ordered'}, { list: 'bullet' }],
-      ],
-    };    
+    
 
-    const placeholder = 'Ingresa el texto para un slide epico aquí...';  
-    const { quill, quillRef } = useQuill({placeholder,modules});
+    
 
     switch (tipo) {
         case 'encuadre':
@@ -52,16 +93,41 @@ const CronogramaFormulario = ( props ) => {
             return(
                 <div>
                   <div>Objetivo:</div>
-                  <input type='text' />
+                  <input 
+                      type='text' 
+                      className='cronogramasInputText' 
+                      defaultValue={bdObjetivo}
+                      onBlur={(e)=>{  
+                        actualizarRegBdSlideCronogramas("objetivo",e.target.value)                          
+                      }}
+                      />
                 
                   <div>Instrucciones:</div>
-                  <div className='editorQuill' ><div ref={quillRef} /></div> 
+                  <div className='editorQuill cronogramasQuill ' ><div ref={quillRef} /></div> 
 
                   <div>Tiempo:</div>
-                  <input type='number' />
+                  <input 
+                      type='number' 
+                      defaultValue={bdTiempo}
+                      className='cronogramasTiempo' 
+                      onBlur={(e)=>{  
+                        actualizarRegBdSlideCronogramas("tiempo",e.target.value)                          
+                      }}
+                  />
 
                   <div>Notas:</div>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                  <textarea 
+                      name="" 
+                      id="" 
+                      cols="80" 
+                      defaultValue={bdNotas}
+                      className='cronogramasNotas' 
+                      rows="5"
+                      onBlur={(e)=>{  
+                        actualizarRegBdSlideCronogramas("notas",e.target.value)                          
+                      }}
+                  >   
+                  </textarea>
               </div>
             )
         case 'instruccion':
@@ -77,24 +143,66 @@ const CronogramaFormulario = ( props ) => {
 
     }
 
+    
 
-
-    const actualizarRegBdSlideContenidos = async (variable,valor) =>{
+    const cargaValoresCronograma = (slideId) =>{
       const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
       db.transaction(function(tx) {
-          tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${variable} = ? WHERE slide = ?  AND sesion = ? AND id_proyecto = ? AND id_usuario = ?  `, [valor, slideSelected.id,sesion,idProyectoActual,idUsuario], function(tx, results) {
+           tx.executeSql('SELECT * FROM TBL_CRONOGRAMA WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND id_slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
+                console.log("SELECT:"+idProyectoActual,sesion,slideId)
+                let len = results.rows.length ;
+                                
+                if(len > 0){                
+                  console.log("obj"+results.rows.item(0).objetivo)
+                  setBdObjetivo(results.rows.item(0).objetivo)
+                  setBdInstrucciones(results.rows.item(0).instrucciones)
+                  setBdTiempo(results.rows.item(0).tiempo)
+                  setBdNotas(results.rows.item(0).notas)
+                  setBdMateriales(results.rows.item(0).materiales)
+                  setBdTec1(results.rows.item(0).tec1)
+                  setBdTec2(results.rows.item(0).tec2)
+                  setBdTec3(results.rows.item(0).tec3)
+                  setBdTec4(results.rows.item(0).tec4)
+                  setBdTec5(results.rows.item(0).tec5)
+                  setBdTec6(results.rows.item(0).tec6)
+                  setBdTec7(results.rows.item(0).tec7)
+                  setBdTec8(results.rows.item(0).tec8)
+                  setBdTec9(results.rows.item(0).tec9)
+                  setBdTec10(results.rows.item(0).tec10)
+                }
+           }, null);
+      });
+ }     
+ 
+
+
+
+
+
+
+    const actualizarRegBdSlideCronogramas = async (variable,valor) =>{
+      const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+      db.transaction(function(tx) {
+          tx.executeSql(`UPDATE TBL_CRONOGRAMA SET ${variable} = ?, tipo = ? WHERE id_slide = ?  AND sesion = ? AND id_proyecto = ? AND id_usuario = ?  `, [valor, tipoCronograma,slideSelected.id,sesion,idProyectoActual,idUsuario], function(tx, results) {
             console.log('results', results)                    
           }, null);
       });
     }
 
 
+    const cerrarFormularioCronograma = () =>{
+      setDespCronograma(false)
+      setDespCronograma(false)
+      setTipoCronograma('off')
+            
+    }
+
 
 
 
   return (
     <div className='CronogramaFormulario-desp' >
-          <div>X</div>
+          <div onClick={ () => cerrarFormularioCronograma() } >X</div>
           <div>{ titulo }</div>
           <div className='CronogramaFormulario-desp-objetos' >
               {

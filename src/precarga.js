@@ -104,7 +104,7 @@ function precarga() {
                      id_proyecto int,
                      id_usuario int,
                      sesion int,
-                     figura int,
+                     tipo int,
                      id_slide varhar(10),
                      objetivo varchar(330),
                      instrucciones varchar(330),

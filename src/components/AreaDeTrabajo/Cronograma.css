@@ -84,3 +84,20 @@
      background-color: #454545;
      overflow-y: auto;
 }
+
+
+.cronogramasInputText{
+     color: #222;
+}
+
+.cronogramasQuill{
+     color: #222;
+     overflow-y: auto;
+}
+
+.cronogramasTiempo{
+     color: #222;
+}
+.cronogramasNotas{
+     color: #222;
+}

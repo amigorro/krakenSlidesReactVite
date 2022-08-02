@@ -35,7 +35,7 @@ const Cronograma = () => {
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {     
                let id_cronograma = nanoid(10)          
-               tx.executeSql('INSERT OR IGNORE INTO TBL_CRONOGRAMA (id_proyecto,id_cronograma,id_slide,sesion,id_usuario) VALUES (?,?,?,?,?)', [idProyectoActual,id_cronograma,slideSelected,sesion,1], function(tx, results) {
+               tx.executeSql('INSERT OR IGNORE INTO TBL_CRONOGRAMA (id_proyecto,id_cronograma,id_slide,sesion,id_usuario) VALUES (?,?,?,?,?)', [idProyectoActual,id_cronograma,slideSelected.id,sesion,1], function(tx, results) {
                     console.log('results', results)
                     /**
                     setSlideSelected({
@@ -53,7 +53,7 @@ const Cronograma = () => {
   return (
      <div className='CronogramaCont' >
           <div className='CronogramaCont-desp'>
-               <div className='CronogramaCont-desp-cerrar' >X</div>
+               <div className='CronogramaCont-desp-cerrar' onClick={ () => setDespCronograma(false) }  >X</div>
                <div className='CronogramaCont-desp-tlt' >Guia didáctica [Cronograma]</div>
                <div className='CronogramaCont-desp-menu' >
                     <div className='CronogramaCont-desp-menu-item' onClick={ () => setTipoCronograma('encuadre') }  >Encuadre del tema</div>
