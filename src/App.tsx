@@ -3,6 +3,9 @@ import AppBar from './components/AppBar/AppBar';
 
 function App() {
   console.log(window.ipcRenderer);
+  
+
+
 
   const [isOpen, setOpen] = useState(false);
   const [isSent, setSent] = useState(false);

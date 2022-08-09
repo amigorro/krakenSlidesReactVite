@@ -5,6 +5,13 @@ import MenuPrincipal from './MenuPrincipal/MenuPrincipal'
 
 const Routeo = () => {
   
+     console.log('fs: ', window.fs)
+     //const defPath = 'D:\\code\\tecnologia\\pato\\';
+     //window.fs.ensureDirSync(defPath);
+
+
+
+
      const [modulo, setModulo] = useState("MenuPrincipal")
      const [idProyectoActual, setIdProyectoActual] = useState()
      const [idUsuario, setIdUsuario] = useState(1)
@@ -23,11 +30,12 @@ const Routeo = () => {
      const [ordenSlides, setOrdenSlides] = useState([])
      const [ordenPrueba, setOrdenPrueba] = useState([])
      
-
      /* Cronogramas */
      const [despCronograma, setDespCronograma] = useState(false)
      const [tipoCronograma, setTipoCronograma] = useState('off')
 
+
+     
      const dirigir = ()=>{
           
           switch (modulo){

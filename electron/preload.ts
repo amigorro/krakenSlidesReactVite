@@ -1,9 +1,11 @@
 import { ipcRenderer, contextBridge } from 'electron';
+import fs from 'fs-extra';
 
 declare global {
   interface Window {
     Main: typeof api;
     ipcRenderer: typeof ipcRenderer;
+    fs : typeof import('fs-extra');
   }
 }
 
@@ -16,7 +18,7 @@ const api = {
    * The function below can accessed using `window.Main.sayHello`
    */
   sendMessage: (message: string) => {
-    ipcRenderer.send('message', message);
+    ipcRenderer.send('message', message);    
   },
   /**
     Here function for AppBar
@@ -38,6 +40,7 @@ const api = {
   }
 };
 contextBridge.exposeInMainWorld('Main', api);
+contextBridge.exposeInMainWorld('fs', fs);
 /**
  * Using the ipcRenderer directly in the browser through the contextBridge ist not really secure.
  * I advise using the Main/api way !!
