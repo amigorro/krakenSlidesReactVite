@@ -5,7 +5,7 @@ import './quill.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { useQuill } from 'react-quilljs';
 //import { readFile} from './fsExtra';
-
+import { moverArchivo, renombrarArchivo } from '../helpers/GestionArchivos';
 
 const EditarSlide = () => {
 
@@ -61,27 +61,7 @@ const EditarSlide = () => {
       }          
     }, [quill]  )
 
-    /*
-    const cargaQuill = (id) => {
-      let container = document.getElementById(id);
-      let toolbarOptions = [     ['bold', 'italic', 'underline', 'strike']
-                              , [{ 'list': 'ordered'}, { 'list': 'bullet' }]
-                          ];
 
-      let options = {
-          debug: 'info',
-          modules: {
-                toolbar: toolbarOptions
-          },
-          placeholder: 'Escribe en está área el contenido del slide',
-          readOnly: false,
-          theme: 'snow',
-      };
-
-      let quill = new Quill(container, options);
-      
-    }
-*/
 
 
     const actualizarRegBdSlideContenidos = async (variable,valor) =>{
@@ -91,6 +71,29 @@ const EditarSlide = () => {
             console.log('results', results)                    
           }, null);
       });
+    }
+
+
+    
+/*
+    function moverArchivo(rutaArchivo, destino){
+      let realNewPath = path.join(destino, path.basename(rutaArchivo));
+      return new Promise(function(resolve, reject){
+        fs.move(rutaArchivo, realNewPath, { overwrite: true })
+          .then(function(){
+            resolve(path.normalize(realNewPath))
+          })
+          .catch(function(err){
+            reject(err)
+          })
+      })
+    }
+*/
+    const mueveFile = (archivo) => {
+      let TmpPath = URL.createObjectURL(archivo);
+      console.log("path 01: "+TmpPath)
+      console.log("path 02: "+{archivo})
+      //moverArchivo(URL.createObjectURL(e.target.files[0]),'C:/krakenSlides32/assets')
     }
 
 
@@ -111,7 +114,15 @@ const EditarSlide = () => {
                           actualizarRegBdSlideContenidos("titulo",valPlant_Titulo)                          
                         }}
                       />
-                      
+                      <div onClick={ () => renombrarArchivo('D:/borrar_testfilekraken/ddd.txt','C:/krakenSlides32/prueb/perro.txt') } >Mover archivo</div>
+                      <br />
+                      <input 
+                          type="file" 
+                          name="imagen01" 
+                          accept="image/png, .jpeg, .jpg"
+                          onChange={(e) => mueveFile(e.target.files[0])  }
+                          
+                      />
                     </>
           break;
           case "2":
@@ -138,7 +149,7 @@ const EditarSlide = () => {
 
     }
 
-
+    
 
 
 

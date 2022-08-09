@@ -33,7 +33,7 @@ const CronogramaFormulario = ( props ) => {
     const [bdTec10, setBdTec10] = React.useState('');
 
   /* Opciones Editor Quill */
-  const placeholder = 'Ingresa el texto para un slide epico aquí...';      
+  const placeholder = 'Instrucciones';      
   const modules = {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],
@@ -43,25 +43,22 @@ const CronogramaFormulario = ( props ) => {
   };    
   const { quill, quillRef } = useQuill({placeholder,modules});
 
+  useEffect( () =>{    
+    cargaValoresCronograma(slideSelected.id)    
+  } , [tipoCronograma] )
+
   useEffect( () =>{
     if (quill) {
-      //quill.clipboard.dangerouslyPasteHTML(valoresBDslide.texto1);
-      quill.on('text-change', (delta, oldDelta, source) => {        
-        /*
-        setValoresBDslide({            
-          texto1: quill.root.innerHTML
-        })
-        */
+      cargaValoresQuill(slideSelected.id) 
+       
+      quill.on('text-change', (delta, oldDelta, source) => {                
+        setBdInstrucciones(quill.root.innerHTML)        
         actualizarRegBdSlideCronogramas("instrucciones",quill.root.innerHTML)
       });
     }          
   }, [quill]  )
 
-  useEffect( () =>{
-    
-      cargaValoresCronograma(slideSelected.id)
-    
-  } , [tipoCronograma] )
+  
 
     const  tipo  = props.tipo;
     let titulo=''
@@ -131,7 +128,74 @@ const CronogramaFormulario = ( props ) => {
               </div>
             )
         case 'instruccion':
-            titulo = 'Instrucción'
+            return(
+              <div>
+                <div>Objetivo:</div>
+                  <input 
+                      type='text' 
+                      className='cronogramasInputText' 
+                      defaultValue={bdObjetivo}
+                      onBlur={(e)=>{  
+                        actualizarRegBdSlideCronogramas("objetivo",e.target.value)                          
+                      }}
+                      />
+                
+                  <div>Instrucciones:</div>
+                  <div className='editorQuill cronogramasQuill ' ><div ref={quillRef} /></div> 
+                  
+                  <div>Técnicas didácticas </div>
+                  
+                  <label><input type="checkbox" id="tec1" value="1"/> Interrogativa</label>
+                  <label><input type="checkbox" id="tec2" value="1"/> Demostrativa</label>
+                  <label><input type="checkbox" id="tec3" value="1"/> Expositiva</label>
+                  <label><input type="checkbox" id="tec4" value="1"/> Dinámica grupal</label>
+                  <label><input type="checkbox" id="tec5" value="1"/> Lectura individual</label>
+                  <label><input type="checkbox" id="tec6" value="1"/> Lectura comentada</label>
+                  <label><input type="checkbox" id="tec7" value="1"/> Lluvia de ideas</label>
+                  <label><input type="checkbox" id="tec8" value="1"/> Dramatización</label>
+                  <label><input type="checkbox" id="tec9" value="1"/> Trabajo en equipo</label>
+                  
+
+                  <div>Tiempo:</div>
+                  <input 
+                      type='number' 
+                      defaultValue={bdTiempo}
+                      className='cronogramasTiempo' 
+                      onBlur={(e)=>{  
+                        actualizarRegBdSlideCronogramas("tiempo",e.target.value)                          
+                      }}
+                  />
+
+                  <div>Materiales:</div>
+                  <textarea 
+                      name="" 
+                      id="" 
+                      cols="80" 
+                      //defaultValue={bdNotas}
+                      //className='cronogramasNotas' 
+                      rows="5"
+                      onBlur={(e)=>{  
+                        //actualizarRegBdSlideCronogramas("notas",e.target.value)                          
+                      }}
+                  >   
+                  </textarea>
+
+
+                  <div>Notas:</div>
+                  <textarea 
+                      name="" 
+                      id="" 
+                      cols="80" 
+                      defaultValue={bdNotas}
+                      className='cronogramasNotas' 
+                      rows="5"
+                      onBlur={(e)=>{  
+                        actualizarRegBdSlideCronogramas("notas",e.target.value)                          
+                      }}
+                  >   
+                  </textarea>
+              </div>
+            )
             break;
         case 'ejercicio':
             titulo = 'Ejercicio o práctica'
@@ -143,7 +207,20 @@ const CronogramaFormulario = ( props ) => {
 
     }
 
-    
+    const cargaValoresQuill  = (slideId) =>{
+      const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+      db.transaction(function(tx) {
+           tx.executeSql('SELECT * FROM TBL_CRONOGRAMA WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND id_slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
+                console.log("SELECT:"+idProyectoActual,sesion,slideId)
+                let len = results.rows.length ;
+                                
+                if(len > 0){                                  
+                  setBdInstrucciones(results.rows.item(0).instrucciones) 
+                  quill.clipboard.dangerouslyPasteHTML(results.rows.item(0).instrucciones);                 
+                }
+           }, null);
+      });
+ }     
 
     const cargaValoresCronograma = (slideId) =>{
       const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -155,7 +232,7 @@ const CronogramaFormulario = ( props ) => {
                 if(len > 0){                
                   console.log("obj"+results.rows.item(0).objetivo)
                   setBdObjetivo(results.rows.item(0).objetivo)
-                  setBdInstrucciones(results.rows.item(0).instrucciones)
+                  //setBdInstrucciones(results.rows.item(0).instrucciones)
                   setBdTiempo(results.rows.item(0).tiempo)
                   setBdNotas(results.rows.item(0).notas)
                   setBdMateriales(results.rows.item(0).materiales)
@@ -176,7 +253,7 @@ const CronogramaFormulario = ( props ) => {
  
 
 
-
+ 
 
 
 

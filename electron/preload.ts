@@ -1,11 +1,13 @@
 import { ipcRenderer, contextBridge } from 'electron';
 import fs from 'fs-extra';
+import path from 'path';
 
 declare global {
   interface Window {
     Main: typeof api;
     ipcRenderer: typeof ipcRenderer;
     fs : typeof import('fs-extra');
+    path : typeof import('path');
   }
 }
 
@@ -41,6 +43,8 @@ const api = {
 };
 contextBridge.exposeInMainWorld('Main', api);
 contextBridge.exposeInMainWorld('fs', fs);
+contextBridge.exposeInMainWorld('path', path);
+
 /**
  * Using the ipcRenderer directly in the browser through the contextBridge ist not really secure.
  * I advise using the Main/api way !!
