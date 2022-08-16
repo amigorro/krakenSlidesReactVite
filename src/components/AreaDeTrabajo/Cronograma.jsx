@@ -58,12 +58,14 @@ const Cronograma = () => {
                <div className='CronogramaCont-desp-menu' >
                     <div className='CronogramaCont-desp-menu-item' onClick={ () => setTipoCronograma('encuadre') }  >Encuadre del tema</div>
                     <div className='CronogramaCont-desp-menu-item' onClick={ () => setTipoCronograma('instruccion') }  >Instrucción</div>
-                    <div className='CronogramaCont-desp-menu-item' >Ejercicio o práctica</div>
-                    <div className='CronogramaCont-desp-menu-item' >Actividad verificadora</div>
+                    <div className='CronogramaCont-desp-menu-item' onClick={ () => setTipoCronograma('ejercicio') } >Ejercicio o práctica</div>
+                    <div className='CronogramaCont-desp-menu-item' onClick={ () => setTipoCronograma('actividad') } >Actividad verificadora</div>
                </div>
                <div className='CronogramaCont-desp-menu-indicacion' >Elige el tipo de indicación a desarrollar</div>
                { tipoCronograma === 'encuadre' && <CronogramaFormulario tipo='encuadre'  /> }
                { tipoCronograma === 'instruccion' && <CronogramaFormulario tipo='instruccion'  /> }
+               { tipoCronograma === 'ejercicio' && <CronogramaFormulario tipo='ejercicio'  /> }
+               { tipoCronograma === 'actividad' && <CronogramaFormulario tipo='actividad'  /> }
           </div>
 
                

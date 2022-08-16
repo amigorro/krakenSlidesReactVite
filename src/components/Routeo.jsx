@@ -33,8 +33,8 @@ const Routeo = () => {
      /* Cronogramas */
      const [despCronograma, setDespCronograma] = useState(false)
      const [tipoCronograma, setTipoCronograma] = useState('off')
-
-
+     const [eliminarCrono, setEliminarCrono] = React.useState(false);
+     const [confirmEliminarCrono, setConfirmEliminarCrono] = React.useState(false);
      
      const dirigir = ()=>{
           
@@ -71,7 +71,9 @@ const Routeo = () => {
                               ordenPrueba, setOrdenPrueba,
 
                               despCronograma, setDespCronograma,
-                              tipoCronograma, setTipoCronograma
+                              tipoCronograma, setTipoCronograma,
+                              eliminarCrono, setEliminarCrono,
+                              confirmEliminarCrono, setConfirmEliminarCrono,
                          }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>
