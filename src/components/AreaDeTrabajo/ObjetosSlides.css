@@ -1,0 +1,39 @@
+.contImagen{
+     width: 80%;
+     height: 95px;
+     background-color: #898912;
+     margin: 50px auto;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+
+.input-imagen{
+     width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;    
+}
+
+
+.input-imagen + label {
+     width: 200px;
+     height: 55px;
+     font-size: 14px;
+     font-weight: 700;     
+     white-space: nowrap;
+     cursor: default;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     overflow: hidden;     
+     background-color: #128877;
+ }
+
+ .previewImg{
+     background-color: #337811;
+     width: 200px;
+     height: 90px;
+ }

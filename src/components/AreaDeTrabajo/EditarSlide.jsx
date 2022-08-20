@@ -1,11 +1,12 @@
 import React, {useEffect, useContext} from 'react'
 import './EditarSlide.css'
 import './quill.css'
-//import Quill from 'quill';
+
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { useQuill } from 'react-quilljs';
-//import { readFile} from './fsExtra';
+
 import { moverArchivo, renombrarArchivo } from '../helpers/GestionArchivos';
+import { ObjSld_titulo,ObjSld_imagen1 } from './ObjetosSlides';
 
 const EditarSlide = () => {
 
@@ -63,7 +64,7 @@ const EditarSlide = () => {
 
 
 
-
+    /* Posible borrar de acá esta función */
     const actualizarRegBdSlideContenidos = async (variable,valor) =>{
       const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
       db.transaction(function(tx) {
@@ -74,75 +75,23 @@ const EditarSlide = () => {
     }
 
 
-    
-/*
-    function moverArchivo(rutaArchivo, destino){
-      let realNewPath = path.join(destino, path.basename(rutaArchivo));
-      return new Promise(function(resolve, reject){
-        fs.move(rutaArchivo, realNewPath, { overwrite: true })
-          .then(function(){
-            resolve(path.normalize(realNewPath))
-          })
-          .catch(function(err){
-            reject(err)
-          })
-      })
-    }
-*/
-    const mueveFile = (archivo) => {
-      let TmpPath = URL.createObjectURL(archivo);
-      console.log("path 01: "+TmpPath)
-      console.log("path 02: "+{archivo})
-      //moverArchivo(URL.createObjectURL(e.target.files[0]),'C:/krakenSlides32/assets')
-    }
-
 
     const cargaObjetosForm = () => {
       console.log("plantillaSeleccionada"+plantillaSeleccionada)
         switch (plantillaSeleccionada){
           case "1":
             return  <>
-                      <input 
-                        type="text" 
-                        placeholder="Título"
-                        className="input-titulo"
-                        value={valPlant_Titulo}
-                        onChange={(e) => {                          
-                          setValPlant_Titulo(e.target.value )
-                        }}
-                        onBlur={()=>{  
-                          actualizarRegBdSlideContenidos("titulo",valPlant_Titulo)                          
-                        }}
-                      />
-                      <div onClick={ () => renombrarArchivo('D:/borrar_testfilekraken/ddd.txt','C:/krakenSlides32/prueb/perro.txt') } >Mover archivo</div>
-                      <br />
-                      <input 
-                          type="file" 
-                          name="imagen01" 
-                          accept="image/png, .jpeg, .jpg"
-                          onChange={(e) => mueveFile(e.target.files[0])  }
-                          
-                      />
+                      <ObjSld_titulo />
+                      <br /><br /><br />
+                      <div className='editorQuill' ><div ref={quillRef} /></div>
                     </>
-          break;
+                    break;
           case "2":
             return  <>
-                      <input 
-                        type="text" 
-                        placeholder="Título"
-                        className="input-titulo"
-                        value={valPlant_Titulo}
-                        onChange={(e) => {                          
-                          setValPlant_Titulo(e.target.value )                          
-                        }}
-                        onBlur={()=>{  
-                          actualizarRegBdSlideContenidos("titulo",valPlant_Titulo)                          
-                        }}
-                      />
+                      <ObjSld_titulo />
                       <br /><br /><br />
-                      <div className='editorQuill' ><div ref={quillRef} /></div> 
-                     
-                      
+                      <div className='editorQuill' ><div ref={quillRef} /></div>
+                      <ObjSld_imagen1 />
                     </>
           break;
         }

@@ -49,7 +49,23 @@ const AreaDeTrabajo = () => {
                setValoresBDslide,
                ordenSlides, setOrdenSlides,
                ordenPrueba, setOrdenPrueba,
-               despCronograma, setDespCronograma
+               despCronograma, setDespCronograma,
+                    cv_crono_flag, setCv_crono_flag,
+                    cv_crono_tipo, setCv_crono_tipo,
+                    cv_crono_objetivo, setCv_crono_objetivo,
+                    cv_crono_instrucciones, setCv_crono_instrucciones,
+                    cv_crono_tiempo, setCv_crono_tiempo,
+                    cv_crono_materiales, setCv_crono_materiales,
+                    cv_crono_notas, setCv_crono_notas,
+                    cv_crono_tec1, setCv_crono_tec1,
+                    cv_crono_tec2, setCv_crono_tec2,
+                    cv_crono_tec3, setCv_crono_tec3,
+                    cv_crono_tec4, setCv_crono_tec4,
+                    cv_crono_tec5, setCv_crono_tec5,
+                    cv_crono_tec6, setCv_crono_tec6,
+                    cv_crono_tec7, setCv_crono_tec7,
+                    cv_crono_tec8, setCv_crono_tec8,
+                    cv_crono_tec9, setCv_crono_tec9,
           } = useContext(ContextAreaDeTrabajo);
 
      const [slide, setSlide] = useState(null)
@@ -90,7 +106,6 @@ const AreaDeTrabajo = () => {
      useEffect( () =>{
           console.log('ordenSlides', ordenSlides)
      }, [ordenSlides]  )
-
 
 
 
@@ -219,6 +234,7 @@ const AreaDeTrabajo = () => {
           }else if( tamSesiones.length > 0 || tamSesiones != null){               
                let sesionesEnElProyecto = JSON.parse(localStorage.getItem("sesionesEnProyecto"))
                let sesiones = []
+               sesiones.push(<option className='ADT_cont-cards-select-inp-item' key={1051511} value="0"> Sesiones</option>)
                const numAscending = [...sesionesEnElProyecto].sort((a, b) => a.sesion - b.sesion);
                numAscending.map( (item,index) =>{
                     sesiones.push(<option className='ADT_cont-cards-select-inp-item' key={index} value={item.sesion}> {item.sesion}</option>)

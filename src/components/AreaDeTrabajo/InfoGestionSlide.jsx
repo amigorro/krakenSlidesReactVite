@@ -2,11 +2,22 @@ import React, {useState,useContext} from 'react'
 import EditarSlide from './EditarSlide'
 import './InfoGestionSlide.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
-
+import CronogramaFormulario from './CronogramaFormulario';
 
 const InfoGestionSlide = () => {
 
-     const {modalTipoSlide, setModalTipoSlide,slideSelected, setSlideSelected,setSlides,idUsuario,idProyectoActual,sesion,edicion, setEdicion,despCronograma, setDespCronograma} = useContext(ContextAreaDeTrabajo);     
+     const {
+               modalTipoSlide, setModalTipoSlide,
+               slideSelected, setSlideSelected,
+               setSlides,
+               idUsuario,
+               idProyectoActual,
+               sesion,
+               edicion, setEdicion,
+               despCronograma, setDespCronograma,
+               cv_crono_flag,cv_crono_tipo,
+               setTipoCronograma,
+          } = useContext(ContextAreaDeTrabajo);     
      
 
      const actualizarRegBdSlide = async (variable,valor) =>{
@@ -34,6 +45,40 @@ const InfoGestionSlide = () => {
      }
 
 
+
+
+     const abrirModalCronograma = () => {
+          if ( cv_crono_tipo=='encuadre' ||  cv_crono_tipo=='instruccion' ||  cv_crono_tipo=='ejercicio' ||  cv_crono_tipo=='actividad'   ){
+               console.log("Ya tiene cronograma, hay que ver como abrir directo la plantilla")
+
+               switch (cv_crono_tipo) {
+                    case 'encuadre':
+                         <CronogramaFormulario tipo='encuadre'  />
+                         setTipoCronograma('encuadre');
+                         setDespCronograma(true)
+                         break;
+                    case 'instruccion':                         
+                         <CronogramaFormulario tipo='instruccion'  />,
+                         setTipoCronograma('instruccion'),
+                         setDespCronograma(true)                         
+                         break;
+                    case 'ejercicio':
+                         <CronogramaFormulario tipo='ejercicio'  />     
+                         setTipoCronograma('ejercicio');
+                         setDespCronograma(true)                         
+                         break;
+                    case 'actividad':
+                         <CronogramaFormulario tipo='actividad'  />     
+                         setTipoCronograma('actividad');
+                         setDespCronograma(true)
+                         break;
+               }
+
+
+          }else {
+               setDespCronograma(true)
+          }
+     }
 
 
 
@@ -73,7 +118,7 @@ const InfoGestionSlide = () => {
            
                <div 
                     className="areaTrabajo-cont-gestion-btn btn-gestion"
-                    onClick={ () => setDespCronograma(true) }
+                    onClick={ () => abrirModalCronograma() }
                     >Cronograma</div>
                <div className="areaTrabajo-cont-gestion-btn btn-gestion">Objetivo tematico</div>
                <button 

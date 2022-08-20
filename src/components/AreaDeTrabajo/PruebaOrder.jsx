@@ -40,7 +40,23 @@ export const PruebaOrder = () => {
           setValoresBDslide,
           ordenSlides, setOrdenSlides,
           ordenPrueba, setOrdenPrueba,
-          setDespCronograma
+          setDespCronograma,
+               cv_crono_flag, setCv_crono_flag,
+               cv_crono_tipo, setCv_crono_tipo,
+               cv_crono_objetivo, setCv_crono_objetivo,
+               cv_crono_instrucciones, setCv_crono_instrucciones,
+               cv_crono_tiempo, setCv_crono_tiempo,
+               cv_crono_materiales, setCv_crono_materiales,
+               cv_crono_notas, setCv_crono_notas,
+               cv_crono_tec1, setCv_crono_tec1,
+               cv_crono_tec2, setCv_crono_tec2,
+               cv_crono_tec3, setCv_crono_tec3,
+               cv_crono_tec4, setCv_crono_tec4,
+               cv_crono_tec5, setCv_crono_tec5,
+               cv_crono_tec6, setCv_crono_tec6,
+               cv_crono_tec7, setCv_crono_tec7,
+               cv_crono_tec8, setCv_crono_tec8,
+               cv_crono_tec9, setCv_crono_tec9,
      } = useContext(ContextAreaDeTrabajo);
      
 
@@ -95,6 +111,39 @@ export const PruebaOrder = () => {
           });
      }     
      
+
+
+     
+     
+     const cargaValoresCronograma = (slideId) =>{
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+               tx.executeSql('SELECT * FROM TBL_CRONOGRAMA WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND id_slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
+                    setCv_crono_flag(false)
+                    setCv_crono_tipo('')
+                    let len = results.rows.length ;                                   
+                    if(len > 0){                                                           
+                         setCv_crono_flag(true)
+                         setCv_crono_tipo(results.rows.item(0).tipo)
+                         setCv_crono_objetivo(results.rows.item(0).objetivo)
+                         setCv_crono_instrucciones(results.rows.item(0).instrucciones)
+                         setCv_crono_tiempo(results.rows.item(0).tiempo)
+                         setCv_crono_materiales(results.rows.item(0).materiales)
+                         setCv_crono_notas(results.rows.item(0).notas)
+                         setCv_crono_tec1(results.rows.item(0).tec1)
+                         setCv_crono_tec2(results.rows.item(0).tec2)
+                         setCv_crono_tec3(results.rows.item(0).tec3)
+                         setCv_crono_tec4(results.rows.item(0).tec4)
+                         setCv_crono_tec5(results.rows.item(0).tec5)
+                         setCv_crono_tec6(results.rows.item(0).tec6)
+                         setCv_crono_tec7(results.rows.item(0).tec7)
+                         setCv_crono_tec8(results.rows.item(0).tec8)
+                         setCv_crono_tec9(results.rows.item(0).tec9)
+                    }
+               }, null);
+          });
+     }
+
 
 
      const guardaOrdenSlides = () =>{
@@ -161,7 +210,7 @@ export const PruebaOrder = () => {
                                                   setDespCronograma(false)
                                                   setEdicion(false)
                                                   cargaValoresSlide(item)
-                                                  
+                                                  cargaValoresCronograma(item)
                                                   
                                                   slides.map( (slide, index) => {
                                                        if(slide.id === item){                    

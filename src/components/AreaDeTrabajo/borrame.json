@@ -1,0 +1,118 @@
+// Tipos estáticos
+{
+     id: 1,
+     nemo: dp02,
+     objetos:{
+          titulo    : 'Titulo',
+          texto     : 'Texto',
+     }
+},
+{
+     id: 2,
+     nemo:  'diapo61',
+     objetos:{
+          titulo    : 'Titulo',
+          texto     : 'Texto',
+          imagen    : 'imagen.jpg',
+     }    
+},
+{
+     id: 3,
+     nemo: 'diapo8',
+     objetos:{
+          titulo    : 'Titulo',
+          texto     : 'Texto',
+          sub1      : 'Subtitulo 1',
+          sub2      : 'Subtitulo 2',
+          imagen1    : 'imagen.jpg',
+          imagen2    : 'imagen.jpg',
+          desc1      : 'Descripcion 1',
+          desc2      : 'Descripcion 2',
+     }
+},
+{
+     id: 4,
+     nemo: '---',
+     objetos:{
+          titulo    : 'Titulo',
+          texto     : 'Texto',
+          imagen    : 'imagen.jpg',
+     }
+},
+{
+     id: 5,
+     nemo: 'diapo60',
+     objetos:{
+          titulo    : 'Titulo',
+          texto     : 'Texto',
+          imagen    : 'imagen.jpg',
+     }
+},
+{
+     id: 6,
+     nemo: 'diapo39',
+     objetos:{          
+          imagen    : 'imagen.jpg',
+     }
+},
+{
+     id: 7,
+     nemo: 'diapo62',
+     objetos:{
+          titulo    : 'Titulo',          
+     }
+},
+{
+     id: 8,
+     nemo: 'diapo14',
+     objetos:{
+          titulo    : 'Titulo',
+          texto     : 'Texto',
+          imagesRow1:{
+               imagen1    : 'imagen.jpg',
+               imagen2    : 'imagen.jpg',
+               imagen3    : 'imagen.jpg',
+          }.
+          imagesRow2:{
+               imagen1    : 'imagen.jpg',
+               imagen2    : 'imagen.jpg',
+               imagen3    : 'imagen.jpg',
+          }
+     }
+},
+{
+     id: 9,
+     nemo: 'diapo17',
+     objetos:{
+          titulo: "Caja de texto con una o dos imagenes",
+          texto: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos, eaque. Quam sed provident inventore repellat odit non molestias? Voluptatum accusamus voluptatem unde quaerat voluptas maiores quam esse qui temporibus ducimus!",
+          imagenes: {
+               imagen1: "imagen.jpg",
+               imagen2: "imagen.jpg",
+          },
+     }
+},
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

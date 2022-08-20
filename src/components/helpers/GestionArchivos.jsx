@@ -51,3 +51,32 @@ export function eliminarArchivo(rutaArchivo){
 	})
 }
 
+export function moverDesdeInput(nombreInput, nuevoNombre){
+	// modificar ruta de almacenamiento
+	const rutaAlmacenamiento = 'C:/flskrk/nanoid/';
+ 	let pathFile = nombreInput.current;
+ 	let realPath = '', extension = '', response = '', estado = '';
+
+  return new Promise(function(resolve, reject){
+	if (pathFile && pathFile.files[0]) {
+		estado = pathFile;
+		pathFile = pathFile.files[0].path;
+		extension = path.extname(pathFile);
+		if (!path.extname(nuevoNombre)) {
+		nuevoNombre = `${nuevoNombre}${extension}`
+		}
+		realPath = path.join(rutaAlmacenamiento, nuevoNombre);
+		response = fs.move(pathFile, realPath, { overwrite: true })
+		.then(function(){
+		estado.value = '';
+		return realPath;
+		})
+		.catch(function(err){
+		reject(err)
+		})
+	} else {
+		response = false; 
+	}
+	resolve(response)
+	})
+}

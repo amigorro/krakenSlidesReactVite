@@ -33,9 +33,30 @@ const Routeo = () => {
      /* Cronogramas */
      const [despCronograma, setDespCronograma] = useState(false)
      const [tipoCronograma, setTipoCronograma] = useState('off')
-     const [eliminarCrono, setEliminarCrono] = React.useState(false);
-     const [confirmEliminarCrono, setConfirmEliminarCrono] = React.useState(false);
-     
+     const [eliminarCrono, setEliminarCrono] = useState(false)
+     const [confirmEliminarCrono, setConfirmEliminarCrono] = useState(false)
+          const [cv_crono_flag, setCv_crono_flag] = useState(false)
+          const [cv_crono_tipo, setCv_crono_tipo] = useState('')
+          const [cv_crono_objetivo, setCv_crono_objetivo] = useState()
+          const [cv_crono_instrucciones, setCv_crono_instrucciones] = useState()
+          const [cv_crono_tiempo, setCv_crono_tiempo] = useState()
+          const [cv_crono_materiales, setCv_crono_materiales] = useState()
+          const [cv_crono_notas, setCv_crono_notas] = useState()
+          const [cv_crono_tec1, setCv_crono_tec1] = useState()
+          const [cv_crono_tec2, setCv_crono_tec2] = useState()
+          const [cv_crono_tec3, setCv_crono_tec3] = useState()
+          const [cv_crono_tec4, setCv_crono_tec4] = useState()
+          const [cv_crono_tec5, setCv_crono_tec5] = useState()
+          const [cv_crono_tec6, setCv_crono_tec6] = useState()
+          const [cv_crono_tec7, setCv_crono_tec7] = useState()
+          const [cv_crono_tec8, setCv_crono_tec8] = useState()
+          const [cv_crono_tec9, setCv_crono_tec9] = useState()
+
+
+
+
+
+
      const dirigir = ()=>{
           
           switch (modulo){
@@ -74,6 +95,22 @@ const Routeo = () => {
                               tipoCronograma, setTipoCronograma,
                               eliminarCrono, setEliminarCrono,
                               confirmEliminarCrono, setConfirmEliminarCrono,
+                                   cv_crono_flag, setCv_crono_flag,
+                                   cv_crono_tipo, setCv_crono_tipo,
+                                   cv_crono_objetivo, setCv_crono_objetivo,
+                                   cv_crono_instrucciones, setCv_crono_instrucciones,
+                                   cv_crono_tiempo, setCv_crono_tiempo,
+                                   cv_crono_materiales, setCv_crono_materiales,
+                                   cv_crono_notas, setCv_crono_notas,
+                                   cv_crono_tec1, setCv_crono_tec1,
+                                   cv_crono_tec2, setCv_crono_tec2,
+                                   cv_crono_tec3, setCv_crono_tec3,
+                                   cv_crono_tec4, setCv_crono_tec4,
+                                   cv_crono_tec5, setCv_crono_tec5,
+                                   cv_crono_tec6, setCv_crono_tec6,
+                                   cv_crono_tec7, setCv_crono_tec7,
+                                   cv_crono_tec8, setCv_crono_tec8,
+                                   cv_crono_tec9, setCv_crono_tec9,
                          }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>

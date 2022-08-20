@@ -65,12 +65,13 @@ const CronogramaFormulario = ( props ) => {
 
   
   useEffect( () =>{    
-
-      if ( eliminarCrono){
-        console.warn("cronograma: id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND id_slide = ?"+slideSelected.id,sesion,idProyectoActual,idUsuario)
-      }
-
-
+      eliminarCrono && (
+        setConfirmEliminarCrono(false),
+        eliminaRegCronograma(),
+        setEliminarCrono(false),
+        setDespCronograma(false),
+        setTipoCronograma('off')
+      )
   } , [confirmEliminarCrono] )
 
 
@@ -112,18 +113,10 @@ const CronogramaFormulario = ( props ) => {
     
 
     switch (tipo) {
-        case 'encuadre':
-            titulo = 'Encuadre del tema'
-            break;
-        case 'instruccion':
-            titulo = 'Instrucción'
-            break;
-        case 'ejercicio':
-            titulo = 'Ejercicio o práctica'
-            break;
-        case 'actividad':
-            titulo = 'Actividad verificadora'
-            break;
+        case 'encuadre':     titulo = 'Encuadre del tema';       break;
+        case 'instruccion':  titulo = 'Instrucción';             break;
+        case 'ejercicio':    titulo = 'Ejercicio o práctica';    break;
+        case 'actividad':    titulo = 'Actividad verificadora';  break;
     }
 
 
@@ -441,10 +434,10 @@ const CronogramaFormulario = ( props ) => {
 
 
 
- const eliminaRegCronograma = async (crono) =>{
+ const eliminaRegCronograma = async () =>{
   const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
   db.transaction(function(tx) {
-      tx.executeSql(`UPDATE TBL_CRONOGRAMA SET ${variable} = ?, tipo = ? WHERE id_slide = ?  AND sesion = ? AND id_proyecto = ? AND id_usuario = ?  `, [valor, tipoCronograma,slideSelected.id,sesion,idProyectoActual,idUsuario], function(tx, results) {
+      tx.executeSql(`DELETE FROM TBL_CRONOGRAMA WHERE id_slide = ?  AND sesion = ? AND id_proyecto = ? AND id_usuario = ?  `, [slideSelected.id,sesion,idProyectoActual,idUsuario], function(tx, results) {
         console.log('results', results)                    
       }, null);
   });
@@ -461,7 +454,6 @@ const CronogramaFormulario = ( props ) => {
 
 
     const cerrarFormularioCronograma = () =>{
-      setDespCronograma(false)
       setDespCronograma(false)
       setTipoCronograma('off')
             
