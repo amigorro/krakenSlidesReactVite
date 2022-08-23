@@ -1,4 +1,4 @@
-import { fs, path } from './ConstantesNode';  
+import { fs, path } from './ConstantesNode';
 
 export function crearArchivo(nombreArchivo, contenidoArchivo, rutaAlmacenamiento){
 	const realPath = path.join(rutaAlmacenamiento, nombreArchivo);
@@ -51,9 +51,10 @@ export function eliminarArchivo(rutaArchivo){
 	})
 }
 
-export function moverDesdeInput(nombreInput, nuevoNombre){
+export function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProyectoActual,objeto){
 	// modificar ruta de almacenamiento
-	const rutaAlmacenamiento = 'C:/flskrk/nanoid/';
+	
+	const rutaAlmacenamiento = `C:/flskrk/${proyecto}/`;
  	let pathFile = nombreInput.current;
  	let realPath = '', extension = '', response = '', estado = '';
 
@@ -66,9 +67,33 @@ export function moverDesdeInput(nombreInput, nuevoNombre){
 		nuevoNombre = `${nuevoNombre}${extension}`
 		}
 		realPath = path.join(rutaAlmacenamiento, nuevoNombre);
-		response = fs.move(pathFile, realPath, { overwrite: true })
+		response = fs.copy(pathFile, realPath, { overwrite: true })
+
+		
+
+
+
+
 		.then(function(){
 		estado.value = '';
+
+			/** Acá poner la función para guardar en BD el nombre de la imagen */
+				let objMulti='';
+				switch (objeto){
+					case "i1":
+						objMulti='imagen1'
+						break;
+				}
+
+
+				const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+				db.transaction(function(tx) {
+					tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${objMulti} = ? WHERE slide = ?  AND id_proyecto = ? `, [nuevoNombre, slide,idProyectoActual], function(tx, results) {
+						console.log('results', results)                    
+					}, null);
+				});
+
+
 		return realPath;
 		})
 		.catch(function(err){

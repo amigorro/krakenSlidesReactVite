@@ -39,6 +39,9 @@ export const ObjSld_imagen1 = () => {
 
      const inputRefimg1 = useRef(null);
      const [urlImg1, setUrlImg1] = useState('');
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,          
+     } = useContext(ContextAreaDeTrabajo); 
 
      return (
           <div className='contImagen' >
@@ -50,11 +53,12 @@ export const ObjSld_imagen1 = () => {
                          ref={inputRefimg1}
                          className="input-imagen"
                          onChange={(e) => {
-                              moverDesdeInput(inputRefimg1, 'nuevoNombre')                     
-                         }
+                                   moverDesdeInput(inputRefimg1, slideSelected.id+'-i1','llokol',slideSelected.id,idProyectoActual,'i1')
+                                   setUrlImg1(slideSelected.id)
+                              }
                          }
                     />
-                    <label htmlFor="input-imagen1"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp; Selecciona una imagen </label>
+                    <label htmlFor="input-imagen1"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg1 ? 'ok' :  'Selecciona una imagen' }   </label>
                </div>
                <div className='previewImg' ></div>
           </div>
