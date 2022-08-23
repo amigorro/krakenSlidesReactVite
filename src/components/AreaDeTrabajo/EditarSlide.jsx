@@ -36,7 +36,7 @@ const EditarSlide = () => {
         
 
     useEffect( () =>{
-
+      /*
       switch (plantillaSeleccionada){
         case "1":
           console.warn("prueba switch")
@@ -45,7 +45,8 @@ const EditarSlide = () => {
           
           break;
       }
-
+      */
+     
       if (quill) {
         quill.clipboard.dangerouslyPasteHTML(valoresBDslide.texto1);
         quill.on('text-change', (delta, oldDelta, source) => {

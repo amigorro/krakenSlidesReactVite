@@ -57,12 +57,19 @@ export const PruebaOrder = () => {
                cv_crono_tec7, setCv_crono_tec7,
                cv_crono_tec8, setCv_crono_tec8,
                cv_crono_tec9, setCv_crono_tec9,
+
+               slideImg1, setSlideImg1,
+               slideImg2, setSlideImg2,
+               slideImg3, setSlideImg3,
+               slideImg4, setSlideImg4,
+               slideImg5, setSlideImg5,
+               slideImg6, setSlideImg6,
      } = useContext(ContextAreaDeTrabajo);
      
 
      useEffect( () =>{            
           guardaOrdenSlides()  
-          console.error("SE guarda ordeen de los slides")        
+          console.error("Se guarda ordeen de los slides")        
      }, [ordenPrueba]  )
 
 
@@ -73,8 +80,8 @@ export const PruebaOrder = () => {
                     //console.log('results', results)
                     let len = results.rows.length, i;
                     let pry;
-                    
-                    if(len > 0){                
+                    if(len > 0){      
+                                  
                          setValoresBDslide({
                               num_chacks_sel: results.rows.item(0).num_chacks_sel,
                               tipo_contenido: results.rows.item(0).tipo_contenido,
@@ -105,6 +112,7 @@ export const PruebaOrder = () => {
                               paginacion: results.rows.item(0).paginacion
                          })
                          setValPlant_Titulo(results.rows.item(0).titulo)
+                         setSlideImg1(results.rows.item(0).imagen1)
                          console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
                     }
                }, null);
@@ -207,10 +215,13 @@ export const PruebaOrder = () => {
                                                   setSlideSelected({
                                                        id : item
                                                   })*/ 
-                                                  setDespCronograma(false)
-                                                  setEdicion(false)
-                                                  cargaValoresSlide(item)
-                                                  cargaValoresCronograma(item)
+                                                  setDespCronograma(false),
+                                                       setEdicion(false),                                                      
+                                                       cargaValoresSlide(item),
+                                                       cargaValoresCronograma(item)
+                                                  
+                                                  
+                                                  
                                                   
                                                   slides.map( (slide, index) => {
                                                        if(slide.id === item){                    

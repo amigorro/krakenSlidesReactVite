@@ -1,0 +1,57 @@
+.GlosarioCont{
+     position: fixed;
+     top: 28px;
+     left: 0;
+     width: 100vw;
+     height: calc(100vh - 28px);
+     background-color: #ee8e8e;
+}
+
+.GlosarioCont-contenido{
+     display: flex;
+     flex-wrap: nowrap;
+     justify-content: space-around;
+}
+
+.editorQuill{
+     width:95%;
+     min-height: 200px;
+     height: 100;
+     max-height: 200px ;
+     margin: 0 auto;
+     background-color: rgb(255, 255, 255);
+     border-radius: 5px;     
+}
+
+.editorQuillItem{
+     background-color: #fff;
+     max-height: 180px ;
+     overflow-y: auto;
+}
+
+
+
+/**  Formulario */
+
+.GL-FormCont{
+     width: 32vw;
+     min-height: calc(100vh - 28px);
+     background-color: rgb(7, 110, 12);
+}
+
+
+
+/** Terminos */
+.GL-TermCont{
+     width: 32vw;
+     min-height: calc(100vh - 28px);
+     background-color: rgb(67, 73, 110);
+}
+
+
+/** Descripciónes */
+.GL-DescCont{
+     width: 32vw;
+     min-height: calc(100vh - 28px);
+     background-color: rgb(219, 193, 106);
+}

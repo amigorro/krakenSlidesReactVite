@@ -1,5 +1,6 @@
 import { fs, path } from './ConstantesNode';
 
+
 export function crearArchivo(nombreArchivo, contenidoArchivo, rutaAlmacenamiento){
 	const realPath = path.join(rutaAlmacenamiento, nombreArchivo);
 	return new Promise(function(resolve, reject){
@@ -52,7 +53,7 @@ export function eliminarArchivo(rutaArchivo){
 }
 
 export function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProyectoActual,objeto){
-	// modificar ruta de almacenamiento
+	
 	
 	const rutaAlmacenamiento = `C:/flskrk/${proyecto}/`;
  	let pathFile = nombreInput.current;
@@ -68,10 +69,6 @@ export function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProye
 		}
 		realPath = path.join(rutaAlmacenamiento, nuevoNombre);
 		response = fs.copy(pathFile, realPath, { overwrite: true })
-
-		
-
-
 
 
 		.then(function(){
@@ -93,6 +90,7 @@ export function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProye
 					}, null);
 				});
 
+				
 
 		return realPath;
 		})
@@ -101,7 +99,7 @@ export function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProye
 		})
 	} else {
 		response = false; 
-	}
+	}	
 	resolve(response)
 	})
 }

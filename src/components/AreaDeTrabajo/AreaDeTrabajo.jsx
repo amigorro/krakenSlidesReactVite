@@ -103,9 +103,11 @@ const AreaDeTrabajo = () => {
           getSlidesBD();  
      }, [sesion]  )
 
+     /*
      useEffect( () =>{
           console.log('ordenSlides', ordenSlides)
      }, [ordenSlides]  )
+     */
 
 
 

@@ -52,11 +52,19 @@ const Routeo = () => {
           const [cv_crono_tec8, setCv_crono_tec8] = useState()
           const [cv_crono_tec9, setCv_crono_tec9] = useState()
 
+     /** Objetos de imagen para edición de slides */
+     const [slideImg1, setSlideImg1] = useState('default')
+     const [slideImg2, setSlideImg2] = useState()
+     const [slideImg3, setSlideImg3] = useState()
+     const [slideImg4, setSlideImg4] = useState()
+     const [slideImg5, setSlideImg5] = useState()
+     const [slideImg6, setSlideImg6] = useState()
+
+     /** Glosario */
+     const [modalGlosario, setModalGlosario] = useState(false)
 
 
-
-
-
+     
      const dirigir = ()=>{
           
           switch (modulo){
@@ -111,6 +119,16 @@ const Routeo = () => {
                                    cv_crono_tec7, setCv_crono_tec7,
                                    cv_crono_tec8, setCv_crono_tec8,
                                    cv_crono_tec9, setCv_crono_tec9,
+
+                                   slideImg1, setSlideImg1,
+                                   slideImg2, setSlideImg2,
+                                   slideImg3, setSlideImg3,
+                                   slideImg4, setSlideImg4,
+                                   slideImg5, setSlideImg5,
+                                   slideImg6, setSlideImg6,
+
+                                   modalGlosario, setModalGlosario,
+
                          }}>
                          { dirigir() } 
                </ContextAreaDeTrabajo.Provider>

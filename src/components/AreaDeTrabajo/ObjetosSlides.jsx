@@ -1,4 +1,4 @@
-import {useContext,useRef,useState} from 'react'
+import {useContext,useRef,useState,useEffect} from 'react'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { ActualizarRegBdSlideContenidos } from '../helpers/GuardaEnBD';
 import {moverDesdeInput} from '../helpers/GestionArchivos';
@@ -12,7 +12,14 @@ export const ObjSld_titulo = () => {
           slideSelected,sesion,idProyectoActual,idUsuario,
           plnTitulo, setPlnTitulo,
           valPlant_Titulo, setValPlant_Titulo,
-          valoresBDslide, setValoresBDslide
+          valoresBDslide, setValoresBDslide,
+
+          slideImg1, setSlideImg1,
+          slideImg2, setSlideImg2,
+          slideImg3, setSlideImg3,
+          slideImg4, setSlideImg4,
+          slideImg5, setSlideImg5,
+          slideImg6, setSlideImg6,
         } = useContext(ContextAreaDeTrabajo); 
 
   return (
@@ -40,8 +47,31 @@ export const ObjSld_imagen1 = () => {
      const inputRefimg1 = useRef(null);
      const [urlImg1, setUrlImg1] = useState('');
      const {
-          slideSelected,sesion,idProyectoActual,idUsuario,          
+          slideSelected,sesion,idProyectoActual,idUsuario,
+          slideImg1, setSlideImg1,
+          slideImg2, setSlideImg2,
+          slideImg3, setSlideImg3,
+          slideImg4, setSlideImg4,
+          slideImg5, setSlideImg5,
+          slideImg6, setSlideImg6,          
      } = useContext(ContextAreaDeTrabajo); 
+
+
+     useEffect( () =>{            
+          obtenerUrlImagen(slideSelected.id)
+     }, [urlImg1]  )
+
+     const obtenerUrlImagen = (id) => {
+
+          if( urlImg1=='default'){
+               console.warn("urlImg1 default")
+          }
+
+          let carpeta = idProyectoActual;
+          let url = `c:/flskrk/${carpeta}/${slideImg1}?${new Date().getTime()}`
+          setUrlImg1(url)
+     }
+
 
      return (
           <div className='contImagen' >
@@ -53,14 +83,15 @@ export const ObjSld_imagen1 = () => {
                          ref={inputRefimg1}
                          className="input-imagen"
                          onChange={(e) => {
-                                   moverDesdeInput(inputRefimg1, slideSelected.id+'-i1','llokol',slideSelected.id,idProyectoActual,'i1')
-                                   setUrlImg1(slideSelected.id)
+                                   moverDesdeInput(inputRefimg1, slideSelected.id+'-i1',idProyectoActual,slideSelected.id,idProyectoActual,'i1')
+                                   .then( algo =>  obtenerUrlImagen(slideSelected.id, algo))
                               }
                          }
                     />
-                    <label htmlFor="input-imagen1"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg1 ? 'ok' :  'Selecciona una imagen' }   </label>
+                    <label htmlFor="input-imagen1"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg1 ? slideImg1 :  'Selecciona una imagen' }   </label>
                </div>
-               <div className='previewImg' ></div>
+               <div className='previewImg' ><img src={ urlImg1 } id="imgSlide1"  className="img-prev" /></div>
+               
           </div>
      )
 

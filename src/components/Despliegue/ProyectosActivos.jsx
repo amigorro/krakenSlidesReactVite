@@ -12,12 +12,16 @@ import './ProyectosActivos.css'
 import Routeo from '../Routeo.jsx';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { motion } from 'framer-motion';
+import GlosarioCont from '../Glosario/GlosarioCont.jsx';
+
+
 
 const ProyectosActivos = () => {
     
     const [proyectos, setProyectos] = useState([])
 
-    const {modulo, setModulo,idProyectoActual, setIdProyectoActual,setSlideSelected,setSesion} = useContext(ContextAreaDeTrabajo);
+    const [proyectoParaTools, setProyectoParaTools] = useState('')
+    const {modulo, setModulo,idProyectoActual, setIdProyectoActual,setSlideSelected,setSesion,modalGlosario, setModalGlosario} = useContext(ContextAreaDeTrabajo);
     
 
     useEffect( () =>{        
@@ -66,7 +70,13 @@ const ProyectosActivos = () => {
         return <Routeo />
     }
 
-    
+    const abrirGlosario = (id) =>{
+        setModalGlosario(true)
+        setProyectoParaTools(id)
+    }
+
+
+
   return (
     <div className='despPryCont' >
         <motion.h1 className='despPryCont-tlt' 
@@ -112,7 +122,9 @@ const ProyectosActivos = () => {
                                     <div className="cardpry-footer-buttons-01-item" ><i className="fa-duotone fa-flask"></i></div>
                                     <div className="cardpry-footer-buttons-01-item" ><i className="fa-duotone fa-eye"></i></div>
                                     <div className="cardpry-footer-buttons-01-item" ><i className="fa-duotone fa-block-quote"></i></div>
-                                    <div className="cardpry-footer-buttons-01-item" ><i className="fa-duotone fa-spell-check"></i></div>
+                                    <div className="cardpry-footer-buttons-01-item" 
+                                        onClick={() => abrirGlosario(proy.id)}
+                                    ><i className="fa-duotone fa-spell-check"></i></div>
                                     </div>
                                     <div className="cardpry-footer-buttons-02" >
                                     <div className="cardpry-footer-buttons-02-btnIni" 
@@ -140,7 +152,10 @@ const ProyectosActivos = () => {
                     </div>
             
         }
+
+        { modalGlosario && <GlosarioCont/>  }
     </div>  
+    
   )
 }
 

@@ -35,5 +35,11 @@
  .previewImg{
      background-color: #337811;
      width: 200px;
-     height: 90px;
+     height: 90px;     
+ }
+
+ .img-prev{
+    width: 200px;
+    height: 90px;
+    object-fit: cover;
  }
