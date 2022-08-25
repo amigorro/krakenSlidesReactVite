@@ -29,7 +29,7 @@ export const ObjSld_titulo = () => {
                type="text" 
                placeholder="Título"
                className="input-titulo"
-               value={valPlant_Titulo}
+               value={ valPlant_Titulo ? valPlant_Titulo : '' }
                onChange={(e) => {                          
                  setValPlant_Titulo(e.target.value )
                }}
@@ -58,17 +58,19 @@ export const ObjSld_imagen1 = () => {
 
 
      useEffect( () =>{            
-          obtenerUrlImagen(slideSelected.id)
+          obtenerUrlImagen(slideSelected.id)          
      }, [urlImg1]  )
 
      const obtenerUrlImagen = (id) => {
-
-          if( urlImg1=='default'){
-               console.warn("urlImg1 default")
+          
+          let carpeta = idProyectoActual;
+          let url='';
+          if( slideImg1=='image.png' ){
+               url = `c:/image.png?${new Date().getTime()}`
+          } else{
+               url = `c:/flskrk/${carpeta}/${slideImg1}?${new Date().getTime()}`
           }
 
-          let carpeta = idProyectoActual;
-          let url = `c:/flskrk/${carpeta}/${slideImg1}?${new Date().getTime()}`
           setUrlImg1(url)
      }
 

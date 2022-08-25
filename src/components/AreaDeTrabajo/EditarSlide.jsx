@@ -36,7 +36,7 @@ const EditarSlide = () => {
         
 
     useEffect( () =>{
-      /*
+      /* 
       switch (plantillaSeleccionada){
         case "1":
           console.warn("prueba switch")

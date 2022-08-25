@@ -74,7 +74,7 @@ export function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProye
 		.then(function(){
 		estado.value = '';
 
-			/** Acá poner la función para guardar en BD el nombre de la imagen */
+				/** Acá poner la función para guardar en BD el nombre de la imagen */
 				let objMulti='';
 				switch (objeto){
 					case "i1":

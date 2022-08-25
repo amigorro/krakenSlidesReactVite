@@ -74,14 +74,20 @@ export const PruebaOrder = () => {
 
 
      const cargaValoresSlide = (slideId) =>{
+          
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
                tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
                     //console.log('results', results)
-                    let len = results.rows.length, i;
+                    let len =0;
+
+                    if ( results.rows.length ) {
+                         len = 10;
+                    }
+                    
                     let pry;
-                    if(len > 0){      
-                                  
+                    if( len > 0 ){      
+ 
                          setValoresBDslide({
                               num_chacks_sel: results.rows.item(0).num_chacks_sel,
                               tipo_contenido: results.rows.item(0).tipo_contenido,
@@ -129,7 +135,11 @@ export const PruebaOrder = () => {
                tx.executeSql('SELECT * FROM TBL_CRONOGRAMA WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND id_slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
                     setCv_crono_flag(false)
                     setCv_crono_tipo('')
-                    let len = results.rows.length ;                                   
+                    let len = 0;    
+                    if( results.rows.length ){
+                         len =10;
+                    }
+                    
                     if(len > 0){                                                           
                          setCv_crono_flag(true)
                          setCv_crono_tipo(results.rows.item(0).tipo)
@@ -192,68 +202,69 @@ export const PruebaOrder = () => {
 
      const ImprimeTarjetasOrdenables = () => {
           
-          return(
-               <Reorder.Group values={ordenPrueba} onReorder={  setOrdenPrueba  }>
-                         { 
-                              ordenPrueba.map( (item, index) => (
-                                   <Reorder.Item 
-                                        custom={{ delay: (index + 1) * 5.7 }}
-                                        variants={ variants }
-                                        initial='hidden'
-                                        animate='visible'
-                                        layoutId={ index }
-                                        key={item} 
-                                        id={item} 
-                                        layout
-                                        value={item}
-                                   >                    
-                                        
-                                        <motion.div 
-                                             className={  slideSelected.id == item  ? 'CardCont slideSelected' : 'CardCont ' }
-                                             onClick={ () => {                                              
-                                                  /*
-                                                  setSlideSelected({
-                                                       id : item
-                                                  })*/ 
-                                                  setDespCronograma(false),
+          return(          <Reorder.Group values={ordenPrueba} onReorder={  setOrdenPrueba  }>
+                              { 
+                                   ordenPrueba.map( (item, index) => (
+                                        <Reorder.Item 
+                                             custom={{ delay: (index + 1) * 5.7 }}
+                                             variants={ variants }
+                                             initial='hidden'
+                                             animate='visible'
+                                             layoutId={ index }
+                                             key={item} 
+                                             id={item} 
+                                             layout
+                                             value={item}
+                                             name={'card-'+item}
+                                        >                    
+                                             
+                                             <motion.div 
+                                                  className={  slideSelected.id == item  ? 'CardCont slideSelected' : 'CardCont ' }
+                                                  onClick={ () => {                                              
+                                                       
+                                                       setDespCronograma(false),
                                                        setEdicion(false),                                                      
                                                        cargaValoresSlide(item),
                                                        cargaValoresCronograma(item)
-                                                  
-                                                  
-                                                  
-                                                  
-                                                  slides.map( (slide, index) => {
-                                                       if(slide.id === item){                    
-                                                            setPlantillaSeleccionada(slide.plantilla)
-                                                            setSlideSelected({ 
-                                                                 id : item,
-                                                                 nombre: slide.nombre,
-                                                            })
-                                                            console.warn(`Plantilla seleccionada: ${slide.plantilla}`)
-                                                       }
-                                                  })
+                                                       
+                                                       
+                                                       
+                                                       
+                                                       slides.map( (slide, index) => {
+                                                            if(slide.id === item){                    
+                                                                 setPlantillaSeleccionada(slide.plantilla)
+                                                                 setSlideSelected({ 
+                                                                      id : item,
+                                                                      nombre: slide.nombre,
+                                                                 })
+                                                                 
+                                                                 //console.warn(`Plantilla seleccionada: ${slide.plantilla}`)
+                                                            }
+                                                       })
 
 
 
-                                             } }
-                                        >
-                                             <div className='CardCont-Tipo' /*onPointerDown={(e) => controls.start(e)}*/  > </div>
-                                             <div className='CardCont-Tipo-Info' >
-                                                  <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id2={item} /> </div>
-                                                  <div className='CardCont-Tipo-Info-icons' >
-                                                       <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
-                                                       <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
-                                                       <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-message-check CardCont-ico "></i></div>
-                                                       <div className='CardCont-Tipo-Info-icons-order idExplode'>{item}</div>
+                                                  } }
+                                             >
+                                                  <div className='CardCont-Tipo' /*onPointerDown={(e) => controls.start(e)}*/  > </div>
+                                                  <div className='CardCont-Tipo-Info' >
+                                                       <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id2={item} /> </div>
+                                                       <div className='CardCont-Tipo-Info-icons' >
+                                                            <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
+                                                            <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
+                                                            <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-message-check CardCont-ico "></i></div>
+                                                            <div className='CardCont-Tipo-Info-icons-order idExplode'>{item}</div>
+                                                       </div>
                                                   </div>
-                                             </div>
-                                        </motion.div>
-                                   </Reorder.Item>  
-                              ))
-                         }
-               </Reorder.Group>
-          )
+                                             </motion.div>
+                                        </Reorder.Item>  
+                                   ))
+                              }
+                    </Reorder.Group>
+                    
+          )   
+                
+          
      }
 
 
@@ -262,6 +273,9 @@ export const PruebaOrder = () => {
           return (
                
                ImprimeTarjetasOrdenables()
+               //.then( (result) => { document.querySelector(`.slideSelected`).click() } )
+               
+          
                     
           )
      

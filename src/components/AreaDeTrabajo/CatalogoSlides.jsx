@@ -11,7 +11,10 @@ import  diapo3  from '../../assets/plantillas/diapo3.png'
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
 
-  const {sesion, setSesion,setModulo,idProyectoActual,setSlideSelected, slidesAct,plantillaSeleccionada, setPlantillaSeleccionada} = useContext(ContextAreaDeTrabajo);
+  const {
+          sesion, setSesion,setModulo,idProyectoActual,setSlideSelected, slidesAct,plantillaSeleccionada, setPlantillaSeleccionada,
+          setSlideImg1,setDespCronograma,setEdicion,slideSelected,
+        } = useContext(ContextAreaDeTrabajo);
   const [plantillas, setPlantillas] = useState([])
   const [categoriaSel, setCategoriaSel] = useState(1)
 
@@ -22,14 +25,15 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
 
 
   const getPlantillas = () => {
+    console.log("getPlantillas::::: BORRAR")
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
              tx.executeSql('SELECT * FROM PLANTILLAS', [], function(tx, results) {
+                  
                   //console.log('results', results)
                   let len = results.rows.length, i;
                   let plant;                 
                   
-                       let archivados = []
                        for (i = 0; i < len; i++){                            
                         if (i==0){localStorage.removeItem("plantillas");}
                         plant={
@@ -55,8 +59,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                                  imagen8: results.rows.item(i).imagen8,
                                  audio: results.rows.item(i).audio,
                                  video: results.rows.item(i).video
-
-                            }
+                        }
                             GuardarEnStorage('plantillas', plant)
                        }
                        
@@ -88,11 +91,20 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
           let id_plantilla = nanoid(10)
-          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla) VALUES (?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada], function(tx, results) {
+          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla,imagen1) VALUES (?,?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada,"image.png"], function(tx, results) {
             console.log('results', results)
             setSlideSelected({
               id : id_plantilla
-         }) 
+            })
+            setSlideImg1('image.png')
+            //setDespCronograma(false)
+            //setEdicion(false)
+            /*
+            setDespCronograma(false),
+            setEdicion(false),                                                      
+            cargaValoresSlide(item),
+            cargaValoresCronograma(item)
+            */
             //limpiarPlantillaSel()
           }, null);
         })
