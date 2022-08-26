@@ -69,7 +69,7 @@ export const PruebaOrder = () => {
 
      useEffect( () =>{            
           guardaOrdenSlides()  
-          console.error("Se guarda ordeen de los slides")        
+          //console.error("Se guarda ordeen de los slides")        
      }, [ordenPrueba]  )
 
 
@@ -182,7 +182,7 @@ export const PruebaOrder = () => {
                      */
                      
                          tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [i,idProyectoActual,sesion,itemId], function(tx, results) {
-                              console.log('results', results)
+                             // console.log('results', results)
                          }, null);
                     
 

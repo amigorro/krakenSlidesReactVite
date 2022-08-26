@@ -14,6 +14,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
   const {
           sesion, setSesion,setModulo,idProyectoActual,setSlideSelected, slidesAct,plantillaSeleccionada, setPlantillaSeleccionada,
           setSlideImg1,setDespCronograma,setEdicion,slideSelected,
+          setValoresBDslide,setValPlant_Titulo,
         } = useContext(ContextAreaDeTrabajo);
   const [plantillas, setPlantillas] = useState([])
   const [categoriaSel, setCategoriaSel] = useState(1)
@@ -25,7 +26,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
 
 
   const getPlantillas = () => {
-    console.log("getPlantillas::::: BORRAR")
+    //console.log("getPlantillas::::: BORRAR")
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
              tx.executeSql('SELECT * FROM PLANTILLAS', [], function(tx, results) {
@@ -92,11 +93,12 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
         db.transaction(function(tx) {
           let id_plantilla = nanoid(10)
           tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla,imagen1) VALUES (?,?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada,"image.png"], function(tx, results) {
-            console.log('results', results)
+            //console.log('results', results)
             setSlideSelected({
               id : id_plantilla
             })
             setSlideImg1('image.png')
+            cargaValoresSlide(id_plantilla)
             //setDespCronograma(false)
             //setEdicion(false)
             /*
@@ -110,6 +112,74 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
         })
 
   }
+
+
+
+  /** 
+   *  TODO: Si esta función jala, ponerla como helper
+   */
+   const cargaValoresSlide = (slideId) =>{
+          
+    const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+    db.transaction(function(tx) {
+         tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
+              //console.log('results', results)
+              let len =0;
+
+             // if ( results.rows ) {
+                   len = 10;
+              //}
+              
+              let pry;
+              if( len > 0 ){      
+
+                   setValoresBDslide({
+                        num_chacks_sel: results.rows.item(0).num_chacks_sel,
+                        tipo_contenido: results.rows.item(0).tipo_contenido,
+                        plantilla: results.rows.item(0).plantilla,
+                        nombre_lamina: results.rows.item(0).nombre_lamina,
+                        titulo: results.rows.item(0).titulo,
+                        subtitulo1: results.rows.item(0).subtitulo1,
+                        texto1: results.rows.item(0).texto1,
+                        texto2: results.rows.item(0).texto2,
+                        texto3: results.rows.item(0).texto3,
+                        texto4: results.rows.item(0).texto4,
+                        texto5: results.rows.item(0).texto5,
+                        texto6: results.rows.item(0).texto6,
+                        imagen1: results.rows.item(0).imagen1,
+                        imagen2: results.rows.item(0).imagen2,
+                        imagen3: results.rows.item(0).imagen3,
+                        imagen4: results.rows.item(0).imagen4,
+                        imagen5: results.rows.item(0).imagen5,
+                        imagen6: results.rows.item(0).imagen6,
+                        imagen7: results.rows.item(0).imagen7,
+                        imagen8: results.rows.item(0).imagen8,
+                        audio: results.rows.item(0).audio,
+                        video: results.rows.item(0).video,
+                        tabla: results.rows.item(0).tabla,
+                        anterior: results.rows.item(0).anterior,
+                        siguiente: results.rows.item(0).siguiente,
+                        orden: results.rows.item(0).orden,
+                        paginacion: results.rows.item(0).paginacion
+                   })
+                   setValPlant_Titulo(results.rows.item(0).titulo)
+                   setSlideImg1(results.rows.item(0).imagen1)
+                   console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
+              }
+
+
+
+
+
+
+         }, null);
+    });
+}     
+
+
+
+
+
 
 
   return (

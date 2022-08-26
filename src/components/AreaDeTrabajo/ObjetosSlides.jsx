@@ -62,7 +62,9 @@ export const ObjSld_imagen1 = () => {
      }, [urlImg1]  )
 
      const obtenerUrlImagen = (id) => {
-          
+          /**
+           *  ! IDEA: Tal vez esta función debería realizar la consulta a BD para obtener el nuevo nombre
+           */
           let carpeta = idProyectoActual;
           let url='';
           if( slideImg1=='image.png' ){

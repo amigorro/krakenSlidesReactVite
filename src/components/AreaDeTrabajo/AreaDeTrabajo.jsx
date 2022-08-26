@@ -251,6 +251,7 @@ const AreaDeTrabajo = () => {
 
      }
 
+     /*
      const cargaValoresSlide = (slideId) =>{
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
@@ -295,7 +296,7 @@ const AreaDeTrabajo = () => {
                }, null);
           });
      }
-
+     */
 
 
 
