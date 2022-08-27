@@ -84,7 +84,8 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
 
   const cerrarModal = () =>{
     console.error("plantillaSeleccionada: " + plantillaSeleccionada)
-    console.error("Sesión actual: " + sesion)    
+    console.error("Sesión actual: " + sesion) 
+    setEdicion(false)   
     setModalTipoSlide(false)
     
 

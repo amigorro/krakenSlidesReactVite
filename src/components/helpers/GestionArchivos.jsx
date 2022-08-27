@@ -52,29 +52,40 @@ export function eliminarArchivo(rutaArchivo){
 	})
 }
 
-export function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProyectoActual,objeto){
+export  function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProyectoActual,objeto){
 	
 	
 	const rutaAlmacenamiento = `C:/flskrk/${proyecto}/`;
- 	let pathFile = nombreInput.current;
+ 	let pathFile = nombreInput.current; 
  	let realPath = '', extension = '', response = '', estado = '';
 
   return new Promise(function(resolve, reject){
+
 	if (pathFile && pathFile.files[0]) {
 		estado = pathFile;
 		pathFile = pathFile.files[0].path;
 		extension = path.extname(pathFile);
 		if (!path.extname(nuevoNombre)) {
-		nuevoNombre = `${nuevoNombre}${extension}`
+			nuevoNombre = `${nuevoNombre}${extension}`
 		}
 		realPath = path.join(rutaAlmacenamiento, nuevoNombre);
 		response = fs.copy(pathFile, realPath, { overwrite: true })
 
 
 		.then(function(){
-		estado.value = '';
+			estado.value = '';
 
 				/** Acá poner la función para guardar en BD el nombre de la imagen */
+
+		return realPath;
+		})
+		.catch(function(err){
+		reject(err)
+		})
+	} else {
+		response = false; 
+	}	
+				/**/
 				let objMulti='';
 				switch (objeto){
 					case "i1":
@@ -86,20 +97,12 @@ export function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProye
 				const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
 				db.transaction(function(tx) {
 					tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${objMulti} = ? WHERE slide = ?  AND id_proyecto = ? `, [nuevoNombre, slide,idProyectoActual], function(tx, results) {
-						console.log('results', results)                    
+						//console.log('se updateo el campo de imagen', results)         
+						console.log(' %c #2   Se updatea el nombre de la iamgen en BD %c', 'color:white;background-color:#f74e4e;font-size:16px', '')      
+						console.log(' %c #3   REJECT mover desde input %c', 'color:white;background-color:#f74e4e;font-size:16px', '')
+						resolve(response)     
 					}, null);
 				});
-
-				
-
-		return realPath;
-		})
-		.catch(function(err){
-		reject(err)
-		})
-	} else {
-		response = false; 
-	}	
-	resolve(response)
+	
 	})
 }
