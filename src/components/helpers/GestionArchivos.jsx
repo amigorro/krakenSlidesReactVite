@@ -75,8 +75,6 @@ export  function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProy
 		.then(function(){
 			estado.value = '';
 
-				/** Acá poner la función para guardar en BD el nombre de la imagen */
-
 		return realPath;
 		})
 		.catch(function(err){
@@ -94,15 +92,17 @@ export  function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProy
 					case "i2":
 						objMulti='imagen2'
 						break;
+					case "i3":
+						objMulti='imagen3'
+						break;
 				}
 
 
 				const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
 				db.transaction(function(tx) {
 					tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${objMulti} = ? WHERE slide = ?  AND id_proyecto = ? `, [nuevoNombre, slide,idProyectoActual], function(tx, results) {
-						//console.log('se updateo el campo de imagen', results)         
-						console.log(' %c #2   Se updatea el nombre de la iamgen en BD %c', 'color:white;background-color:#f74e4e;font-size:16px', '')      
-						console.log(' %c #3   REJECT mover desde input %c', 'color:white;background-color:#f74e4e;font-size:16px', '')
+						//console.log(' %c #2   Se updatea el nombre de la iamgen en BD %c', 'color:white;background-color:#f74e4e;font-size:16px', '')      
+						//console.log(' %c #3   REJECT mover desde input %c', 'color:white;background-color:#f74e4e;font-size:16px', '')
 						resolve(response)     
 					}, null);
 				});

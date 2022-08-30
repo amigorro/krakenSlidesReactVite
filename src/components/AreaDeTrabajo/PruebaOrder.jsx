@@ -64,6 +64,9 @@ export const PruebaOrder = () => {
                slideImg4, setSlideImg4,
                slideImg5, setSlideImg5,
                slideImg6, setSlideImg6,
+               urlImg1, setUrlImg1,
+               urlImg2, setUrlImg2,
+               urlImg3, setUrlImg3,
      } = useContext(ContextAreaDeTrabajo);
      
 
@@ -120,12 +123,22 @@ export const PruebaOrder = () => {
                          setValPlant_Titulo(results.rows.item(0).titulo)
                          setSlideImg1(results.rows.item(0).imagen1)
                          let urlimg1='';
-                         if( results.rows.item(0).imagen1 =='image.png' ){
+                         if( results.rows.item(0).imagen1 =='image.png'  || !results.rows.item(0).imagen1 ){
                               urlimg1 = `./../../logos/image_icon.png?${new Date().getTime()}`
-                         } else{
-                              urlimg1 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}?${new Date().getTime()}`
-                         }
+                         } else{ urlimg1 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}?${new Date().getTime()}` }
                          setUrlImg1(urlimg1)
+                         
+                         let urlimg2='';
+                         if( results.rows.item(0).imagen2 =='image.png' || !results.rows.item(0).imagen2  ){
+                              urlimg2 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{ urlimg2 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen2}?${new Date().getTime()}` }
+                         setUrlImg2(urlimg2)
+
+                         let urlimg3='';
+                         if( results.rows.item(0).imagen3 =='image.png' || !results.rows.item(0).imagen3  ){
+                              urlimg3 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{ urlimg3 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen3}?${new Date().getTime()}` }
+                         setUrlImg3(urlimg3)
 
 
 

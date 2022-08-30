@@ -59,6 +59,9 @@ const Routeo = () => {
      const [slideImg4, setSlideImg4] = useState()
      const [slideImg5, setSlideImg5] = useState()
      const [slideImg6, setSlideImg6] = useState()
+     const [urlImg1, setUrlImg1] = useState()
+     const [urlImg2, setUrlImg2] = useState()
+     const [urlImg3, setUrlImg3] = useState()
 
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
@@ -126,6 +129,9 @@ const Routeo = () => {
                                    slideImg4, setSlideImg4,
                                    slideImg5, setSlideImg5,
                                    slideImg6, setSlideImg6,
+                                   urlImg1, setUrlImg1,
+                                   urlImg2, setUrlImg2,
+                                   urlImg3, setUrlImg3,
 
                                    modalGlosario, setModalGlosario,
 

@@ -93,7 +93,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
           let id_plantilla = nanoid(10)
-          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla,imagen1) VALUES (?,?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada,"image.png"], function(tx, results) {
+          tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla) VALUES (?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada], function(tx, results) {
             //console.log('results', results)
             setSlideSelected({
               id : id_plantilla
