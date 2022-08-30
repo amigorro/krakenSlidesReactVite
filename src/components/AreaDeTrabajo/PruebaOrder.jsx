@@ -119,6 +119,16 @@ export const PruebaOrder = () => {
                          })
                          setValPlant_Titulo(results.rows.item(0).titulo)
                          setSlideImg1(results.rows.item(0).imagen1)
+                         let urlimg1='';
+                         if( results.rows.item(0).imagen1 =='image.png' ){
+                              urlimg1 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{
+                              urlimg1 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}?${new Date().getTime()}`
+                         }
+                         setUrlImg1(urlimg1)
+
+
+
                          console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
                     }
                }, null);

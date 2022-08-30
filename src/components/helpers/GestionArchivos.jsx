@@ -91,6 +91,9 @@ export  function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProy
 					case "i1":
 						objMulti='imagen1'
 						break;
+					case "i2":
+						objMulti='imagen2'
+						break;
 				}
 
 
