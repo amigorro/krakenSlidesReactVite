@@ -67,6 +67,12 @@ export const PruebaOrder = () => {
                urlImg1, setUrlImg1,
                urlImg2, setUrlImg2,
                urlImg3, setUrlImg3,
+               slideTexto1, setSlideTexto1,
+               slideTexto2, setSlideTexto2,
+               slideTexto3, setSlideTexto3,
+               slideTexto4, setSlideTexto4,
+               slideTexto5, setSlideTexto5,
+               slideTexto6, setSlideTexto6,
      } = useContext(ContextAreaDeTrabajo);
      
 
@@ -88,7 +94,6 @@ export const PruebaOrder = () => {
                          len = 10;
                     }
                     
-                    let pry;
                     if( len > 0 ){      
  
                          setValoresBDslide({
@@ -122,6 +127,12 @@ export const PruebaOrder = () => {
                          })
                          setValPlant_Titulo(results.rows.item(0).titulo)
                          setSlideImg1(results.rows.item(0).imagen1)
+                         setSlideTexto1(results.rows.item(0).texto1)
+                         setSlideTexto2(results.rows.item(0).texto2)
+                         setSlideTexto3(results.rows.item(0).texto3)
+                         setSlideTexto4(results.rows.item(0).texto4)
+                         setSlideTexto5(results.rows.item(0).texto5)
+                         setSlideTexto6(results.rows.item(0).texto6)
                          let urlimg1='';
                          if( results.rows.item(0).imagen1 =='image.png'  || !results.rows.item(0).imagen1 ){
                               urlimg1 = `./../../logos/image_icon.png?${new Date().getTime()}`

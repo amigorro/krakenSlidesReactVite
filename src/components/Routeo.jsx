@@ -21,15 +21,7 @@ const Routeo = () => {
      const [slides, setSlides] = useState([])
      const [edicion, setEdicion] = useState(false)
      const [plantillaSeleccionada, setPlantillaSeleccionada] = useState()
-
-     /* Elementos de las plantillas */
-     const [plnTitulo, setPlnTitulo] = useState('Titulo')
-     const [plnTexto1, setPlnTexto1] = useState('Texto 1')
-     const [valPlant_Titulo, setValPlant_Titulo] = useState('')
-     const [valoresBDslide, setValoresBDslide] = useState({})
-     const [ordenSlides, setOrdenSlides] = useState([])
-     const [ordenPrueba, setOrdenPrueba] = useState([])
-     
+   
      /* Cronogramas */
      const [despCronograma, setDespCronograma] = useState(false)
      const [tipoCronograma, setTipoCronograma] = useState('off')
@@ -51,7 +43,15 @@ const Routeo = () => {
           const [cv_crono_tec7, setCv_crono_tec7] = useState()
           const [cv_crono_tec8, setCv_crono_tec8] = useState()
           const [cv_crono_tec9, setCv_crono_tec9] = useState()
-
+     
+     
+          /* Elementos de las plantillas */
+     const [plnTitulo, setPlnTitulo] = useState('Titulo')
+     const [plnTexto1, setPlnTexto1] = useState('Texto 1')
+     const [valPlant_Titulo, setValPlant_Titulo] = useState('')
+     const [valoresBDslide, setValoresBDslide] = useState({})
+     const [ordenSlides, setOrdenSlides] = useState([])
+     const [ordenPrueba, setOrdenPrueba] = useState([])
      /** Objetos de imagen para edición de slides */
      const [slideImg1, setSlideImg1] = useState('default')
      const [slideImg2, setSlideImg2] = useState()
@@ -62,6 +62,13 @@ const Routeo = () => {
      const [urlImg1, setUrlImg1] = useState()
      const [urlImg2, setUrlImg2] = useState()
      const [urlImg3, setUrlImg3] = useState()
+     /* Para las variables de textos */
+     const [slideTexto1, setSlideTexto1] = useState()
+     const [slideTexto2, setSlideTexto2] = useState()
+     const [slideTexto3, setSlideTexto3] = useState()
+     const [slideTexto4, setSlideTexto4] = useState()
+     const [slideTexto5, setSlideTexto5] = useState()
+     const [slideTexto6, setSlideTexto6] = useState()
 
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
@@ -132,6 +139,13 @@ const Routeo = () => {
                                    urlImg1, setUrlImg1,
                                    urlImg2, setUrlImg2,
                                    urlImg3, setUrlImg3,
+
+                                   slideTexto1, setSlideTexto1,
+                                   slideTexto2, setSlideTexto2,
+                                   slideTexto3, setSlideTexto3,
+                                   slideTexto4, setSlideTexto4,
+                                   slideTexto5, setSlideTexto5,
+                                   slideTexto6, setSlideTexto6,
 
                                    modalGlosario, setModalGlosario,
 

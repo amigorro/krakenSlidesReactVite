@@ -20,6 +20,12 @@ export const ObjSld_titulo = () => {
           slideImg4, setSlideImg4,
           slideImg5, setSlideImg5,
           slideImg6, setSlideImg6,
+          slideTexto1,
+          slideTexto2,
+          slideTexto3,
+          slideTexto4,
+          slideTexto5,
+          slideTexto6,
         } = useContext(ContextAreaDeTrabajo); 
 
   return (
@@ -40,6 +46,51 @@ export const ObjSld_titulo = () => {
     </div>
   )
 }
+
+
+export const Texto5 = (params) => {
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,          
+          urlImg1, setUrlImg1,
+          slideTexto1,setSlideTexto1,
+          slideTexto2,setSlideTexto2,
+          slideTexto3,setSlideTexto3,
+          slideTexto4,setSlideTexto4,
+          slideTexto5,setSlideTexto5,
+          slideTexto6,setSlideTexto6,
+     } = useContext(ContextAreaDeTrabajo); 
+
+     const updateText = (e) => {
+          
+          console.log("updateamos texto")
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${params.variab} = ? WHERE slide = ?  AND id_proyecto = ? `, [e,slideSelected.id,idProyectoActual], function(tx, results) {
+                         //console.log(' %c #2   Se updatea el nombre de la iamgen en BD '+idImage,slideSelected.id,idProyectoActual+' %c', 'color:white;background-color:#f74e4e;font-size:16px', '')                                  
+                    }, null);
+               });
+     }
+
+     return(
+          <div>
+               <div>Texto:</div>
+               <textarea 
+                    name="" 
+                    id="" 
+                    value={params.variab === 'texto1' ? slideTexto1 : params.variab === 'texto2' ? slideTexto2 : params.variab === 'texto3' ? slideTexto3 : params.variab === 'texto4' ? slideTexto4 : params.variab === 'texto5' ? slideTexto5 : params.variab === 'texto6' ? slideTexto6 : '' }
+                    onChange={ (e) => { params.variab === 'texto1' && setSlideTexto1(e.target.value) || params.variab === 'texto2' && setSlideTexto2(e.target.value) || params.variab === 'texto3' && setSlideTexto3(e.target.value) || params.variab === 'texto4' && setSlideTexto4(e.target.value) || params.variab === 'texto5' && setSlideTexto5(e.target.value) || params.variab === 'texto6' && setSlideTexto6(e.target.value) }}
+                    onBlur={ (e)=>{ updateText(e.target.value)} }
+                    cols="70" 
+                    rows="10"
+               ></textarea>
+          </div>
+     )
+}
+
+
+
+
+
 
 
 export const ObjSld_imagen1 = () => {
@@ -162,7 +213,6 @@ export const ObjSld_imagen3 = (props) => {
           slideSelected,sesion,idProyectoActual,idUsuario,urlImg3, setUrlImg3,          
      } = useContext(ContextAreaDeTrabajo); 
 
-
      const resetImage = (numImage) => {          
           let url = `./../../logos/image_icon.png?${new Date().getTime()}`
           let idImage=''
@@ -180,19 +230,10 @@ export const ObjSld_imagen3 = (props) => {
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
                db.transaction(function(tx) {
                     tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${idImage} = '' WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {
-                         console.log(' %c #2   Se updatea el nombre de la iamgen en BD '+idImage,slideSelected.id,idProyectoActual+' %c', 'color:white;background-color:#f74e4e;font-size:16px', '')      
-                         //console.log(' %c #3   REJECT mover desde input %c', 'color:white;background-color:#f74e4e;font-size:16px', '')
-                         //resolve(response)     
+                         console.log(' %c #2   Se updatea el nombre de la iamgen en BD '+idImage,slideSelected.id,idProyectoActual+' %c', 'color:white;background-color:#f74e4e;font-size:16px', '')                                  
                     }, null);
                });
-          
-     
-     
      }
-
-
-
-
 
      const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
           return new Promise(function(resolve, reject){
@@ -225,8 +266,7 @@ export const ObjSld_imagen3 = (props) => {
                          type="file"
                          ref={inputRefimg3}
                          className="input-imagen"
-                         onChange={(e) => {
-                                   //console.log(' %c #1   cambio en input image %c', 'color:white;background-color:#f74e4e;font-size:16px', '');
+                         onChange={(e) => {                                   
                                    moverDesdeInput(inputRefimg3, slideSelected.id+'-i3',idProyectoActual,slideSelected.id,idProyectoActual,'i3')
                                    .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
                               }
@@ -238,7 +278,6 @@ export const ObjSld_imagen3 = (props) => {
                
           </div>
      )
-
 }
 
 

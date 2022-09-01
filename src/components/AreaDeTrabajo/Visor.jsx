@@ -11,6 +11,9 @@ const Visor = () => {
     plnTitulo,plnTexto1,
     
     valPlant_Titulo, setValPlant_Titulo,
+    urlImg1,urlImg2,
+    slideTexto1,slideTexto2,slideTexto3,slideTexto4,slideTexto5,slideTexto6,
+
     valoresBDslide, setValoresBDslide,
           cv_crono_flag, setCv_crono_flag,
           cv_crono_tipo, setCv_crono_tipo,
@@ -37,17 +40,41 @@ const Visor = () => {
       switch (plantillaSeleccionada){
         case "1":
           return <>
-                    <div className="v-titulo">{valPlant_Titulo}</div>
-                    <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >121245</div>
+                      <div className='visorContenidos' >
+                        <div className="v-titulo">{valPlant_Titulo}</div>
+                        <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+                      </div>
+                    </div>            
+                    
                  </>
         break;
         case "2":
           return  <>
-                    <div className="contSlide" >
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >121245</div>
+                      <div className='visorContenidos' >
                       <div className="titulo" >{valPlant_Titulo}</div>
                       <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
-                      <div><img src="" alt="" /></div>
-                    </div>
+                      <div><img src={urlImg1} alt="" /></div>
+                      </div>
+                    </div>   
+                  </>
+        break;
+        case "3":
+          return  <>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >121245</div>
+                      <div className='visorContenidos' >
+                      <div className="titulo" >{valPlant_Titulo}</div>
+                      <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+                      <div><img src={urlImg1} alt="" /></div>
+                      <div>{slideTexto5}</div>
+                      <div><img src={urlImg2} alt="" /></div>
+                      <div>{slideTexto6}</div>
+                      </div>
+                    </div>   
                   </>
         break;
       }
