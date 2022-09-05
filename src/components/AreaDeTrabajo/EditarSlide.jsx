@@ -6,7 +6,7 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { useQuill } from 'react-quilljs';
 
 import { moverArchivo, renombrarArchivo } from '../helpers/GestionArchivos';
-import { ObjSld_titulo,ObjSld_imagen1,ObjSld_imagen2,ObjSld_imagen3, BtnAddImage, Texto5 } from './ObjetosSlides';
+import { ObjSld_titulo,ObjSld_imagen1,ObjSld_imagen2,ObjSld_imagen3, BtnAddImage, Texto5, InputText } from './ObjetosSlides';
 
 const EditarSlide = () => {
 
@@ -101,14 +101,19 @@ const EditarSlide = () => {
                       <br /><br /><br />
                       <div className='editorQuill' ><div ref={quillRef} /></div>
                       
-                      <span>subtitulo1</span>
+                      
+                      <InputText variab='texto3' />
                       <ObjSld_imagen1 />
                       <Texto5 variab='texto5' />
                       
-                      <span>subtitulo1</span>
+                      <InputText variab='texto4' />
                       <ObjSld_imagen2 />
                       <Texto5 variab='texto6' />
                       {/*<ObjSld_imagen3 elim="true" />*/}
+                    </>
+          break;
+          case "4":
+            return  <>
                     </>
           break;
         }

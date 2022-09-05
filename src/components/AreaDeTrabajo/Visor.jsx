@@ -69,8 +69,10 @@ const Visor = () => {
                       <div className='visorContenidos' >
                       <div className="titulo" >{valPlant_Titulo}</div>
                       <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+                      <div>{slideTexto3}</div>
                       <div><img src={urlImg1} alt="" /></div>
                       <div>{slideTexto5}</div>
+                      <div>{slideTexto4}</div>
                       <div><img src={urlImg2} alt="" /></div>
                       <div>{slideTexto6}</div>
                       </div>

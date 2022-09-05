@@ -98,3 +98,50 @@
   padding: 10px;
   border-radius: 5px;
 }
+
+
+
+
+/* Estilos diapos */
+
+
+@font-face {
+	font-family: 'Baloo';
+	src: url(../assets/fonts/BalooThambi2-Regular.ttf);
+}
+
+.visorVistaPrCont{
+  width: 100%;
+  height: 100%;  
+  background-color: rgb(238, 255, 251);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.visor-Paginacion{
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  min-width: 50px;
+  height: 23px;
+  background-color: rgb(228, 122, 122);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  font-family: "Nunito";
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.visorContenidos{
+  width: 95%;
+  height: 84%;
+  display: flex;  
+  flex-direction: column;  
+  font-family: 'Baloo';
+}
