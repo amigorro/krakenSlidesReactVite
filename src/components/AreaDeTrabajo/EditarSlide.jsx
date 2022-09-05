@@ -50,13 +50,11 @@ const EditarSlide = () => {
       if (quill) {
         quill.clipboard.dangerouslyPasteHTML(valoresBDslide.texto1);
         quill.on('text-change', (delta, oldDelta, source) => {
-          console.log(quill.getText()); // Get text only
-          console.log(quill.getContents()); // Get delta contents
-          console.log(quill.root.innerHTML); // Get innerHTML using quill
+          //console.log(quill.getText()); // Get text only
+          //console.log(quill.getContents()); // Get delta contents
+          //console.log(quill.root.innerHTML); // Get innerHTML using quill
           //console.log(quillRef.current.firstChild.innerHTML); // Get innerHTML using quillRef
-          setValoresBDslide({            
-            texto1: quill.root.innerHTML
-          })
+          setValoresBDslide({     texto1: quill.root.innerHTML       })
 
           actualizarRegBdSlideContenidos("texto1",quill.root.innerHTML)
         });

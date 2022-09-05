@@ -3,6 +3,7 @@ import EditarSlide from './EditarSlide'
 import './InfoGestionSlide.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import CronogramaFormulario from './CronogramaFormulario';
+import { BorrarPruebaQuill } from './BorrarPruebaQuill';
 
 const InfoGestionSlide = () => {
 
@@ -17,8 +18,12 @@ const InfoGestionSlide = () => {
                despCronograma, setDespCronograma,
                cv_crono_flag,cv_crono_tipo,
                setTipoCronograma,
+
+               /** info Gestión slides: */
+               paginacion, setPaginacion,
+
           } = useContext(ContextAreaDeTrabajo);     
-     
+     const [flagObjetivoTem, setFlagObjetivoTem] = useState(false)
 
      const actualizarRegBdSlide = async (variable,valor) =>{
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -81,6 +86,16 @@ const InfoGestionSlide = () => {
      }
 
 
+     const actualizaPaginacion = (valor) => {
+          setPaginacion(valor)
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET  paginacion = ? WHERE slide = ?  AND id_proyecto = ? `, [valor,slideSelected.id,idProyectoActual], function(tx, results) {
+                         console.log(' %c #2   Se updatea Paginación '+valor,slideSelected.id,idProyectoActual+' %c', 'color:white;background-color:#882829;font-size:16px', '')                                  
+                    }, null);
+               });
+     }
+
 
   return (
     <div className='gestionCont' >
@@ -109,7 +124,13 @@ const InfoGestionSlide = () => {
           </div>
           <div className="areaTrabajo-cont-gestion-paginacion">
                <div  className="areaTrabajo-cont-gestion-paginacion-txt">Paginación:</div>
-               <input  className="areaTrabajo-cont-gestion-paginacion-inp"  spellCheck="false" type="number"/>
+               <input  
+                    className="areaTrabajo-cont-gestion-paginacion-inp"  
+                    spellCheck="false" 
+                    type="number"
+                    value={paginacion}
+                    onChange={(e)=>{ actualizaPaginacion(e.target.value) }}
+               />
           </div>
           <div className="areaTrabajo-cont-gestion-avanzaRetrocede">
                <div className="areaTrabajo-cont-gestion-avanzaRetrocede-btn">Regresar:<div className="areaTrabajo-cont-gestion-avanzaRetrocede-btn-specs" ></div></div>
@@ -120,7 +141,11 @@ const InfoGestionSlide = () => {
                     className="areaTrabajo-cont-gestion-btn btn-gestion"
                     onClick={ () => abrirModalCronograma() }
                     >Cronograma</div>
-               <div className="areaTrabajo-cont-gestion-btn btn-gestion">Objetivo tematico</div>
+               <div 
+                    className="areaTrabajo-cont-gestion-btn btn-gestion"
+                    onClick={ () => setFlagObjetivoTem(true) }
+               >Objetivo tematico</div>
+               
                <button 
                     className="areaTrabajo-cont-gestion-btn btn-gestion"
                     onClick={() => setEdicion(true)}
@@ -141,7 +166,13 @@ const InfoGestionSlide = () => {
                edicion === true ?
                     <EditarSlide/>
                :
-                    null
+                    null               
+          }
+          {
+               flagObjetivoTem &&
+                    <BorrarPruebaQuill/>
+               
+               
           }
 
     </div>

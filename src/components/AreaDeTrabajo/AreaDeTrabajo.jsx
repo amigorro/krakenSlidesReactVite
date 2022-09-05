@@ -402,11 +402,11 @@ const AreaDeTrabajo = () => {
                          </Reorder.Group>
                          
                     </div>
-                    <div className='   h-full col-start-2 col-span-2 ' >
+                    <div className=' divVisor  h-full col-start-2 col-span-2 ' >
                                                                                                         {/* ordenPrueba ?  <PruebaOrder /> : null */}
                          <Visor/>
                     </div>
-                    <div className=' h-full end col-span-2 ' >
+                    <div className=' divEdition h-full end col-span-2 ' >
                     {
                          existeSesiones && !modalTipoSlide && sesion && slideSelected.id ?    <InfoGestionSlide/>
                          : 

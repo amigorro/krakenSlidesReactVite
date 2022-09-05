@@ -151,3 +151,15 @@
      flex-direction: column;
      background-color: #fabebe;
 }
+
+
+
+.divVisor{
+     width: 50vw !important;
+}
+
+.divEdition{
+     width: 30vw !important;
+     position : absolute;
+     right: 10px;
+}

@@ -22,6 +22,10 @@ const Routeo = () => {
      const [edicion, setEdicion] = useState(false)
      const [plantillaSeleccionada, setPlantillaSeleccionada] = useState()
    
+     /** Info gestión de slides */
+     const [paginacion, setPaginacion] = useState()
+
+
      /* Cronogramas */
      const [despCronograma, setDespCronograma] = useState(false)
      const [tipoCronograma, setTipoCronograma] = useState('off')
@@ -148,6 +152,11 @@ const Routeo = () => {
                                    slideTexto6, setSlideTexto6,
 
                                    modalGlosario, setModalGlosario,
+                              
+                              /** Información de gestión de slides */
+                              paginacion, setPaginacion,
+                              
+                         
 
                          }}>
                          { dirigir() } 

@@ -13,7 +13,7 @@ import Routeo from '../Routeo.jsx';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { motion } from 'framer-motion';
 import GlosarioCont from '../Glosario/GlosarioCont.jsx';
-
+import logo1 from '../../assets/megaproyectos/pry_censo2020.png'
 
 
 const ProyectosActivos = () => {
@@ -98,14 +98,14 @@ const ProyectosActivos = () => {
                         return(
 
                             <div key={proy.id} className="cardpry" >
-                                <div className="cardpry-img" ><img src='./assets/megaproyectos/pry_censo2020.png' alt="Censo2020" className="cardpry-img-pic" /></div>
+                                <div className="cardpry-img" ><img src={logo1} alt="Censo2020" className="cardpry-img-pic" /></div>
                                 <div className="cardpry-infoPry" >
                                     <div className="cardpry-name" >{
                                         
                                         proy.nombre.length > 70 ? proy.nombre.substring(0, 70)+"..." :  proy.nombre
                                     
                                     }</div>
-                                    <div className="cardpry-figura">Líder de proyecto</div>
+                                    <div className="cardpry-figura">Líder de proyecto 1</div>
                                 </div>
                                 <div className="cardpry-footer" >
                                 <div className="cardpry-footer-ss">

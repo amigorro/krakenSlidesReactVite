@@ -36,6 +36,7 @@ export const PruebaOrder = () => {
           slideSelected, setSlideSelected,
           slides, setSlides,
           valPlant_Titulo, setValPlant_Titulo,
+          paginacion, setPaginacion,
           plantillaSeleccionada, setPlantillaSeleccionada,
           setValoresBDslide,
           ordenSlides, setOrdenSlides,
@@ -126,6 +127,7 @@ export const PruebaOrder = () => {
                               paginacion: results.rows.item(0).paginacion
                          })
                          setValPlant_Titulo(results.rows.item(0).titulo)
+                         
                          setSlideImg1(results.rows.item(0).imagen1)
                          setSlideTexto1(results.rows.item(0).texto1)
                          setSlideTexto2(results.rows.item(0).texto2)
@@ -133,6 +135,11 @@ export const PruebaOrder = () => {
                          setSlideTexto4(results.rows.item(0).texto4)
                          setSlideTexto5(results.rows.item(0).texto5)
                          setSlideTexto6(results.rows.item(0).texto6)
+                         
+                         if (!results.rows.item(0).paginacion){
+                              setPaginacion('')
+                         } else { setPaginacion(results.rows.item(0).paginacion) }
+                         
                          let urlimg1='';
                          if( results.rows.item(0).imagen1 =='image.png'  || !results.rows.item(0).imagen1 ){
                               urlimg1 = `./../../logos/image_icon.png?${new Date().getTime()}`

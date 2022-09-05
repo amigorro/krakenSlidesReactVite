@@ -1,12 +1,12 @@
 {
-  "name": "krakenslides3.2.vr",
+  "name": "krakenslides3.2.fghuivr",
   "version": "0.5.0",
   "license": "MIT",
   "main": "main/index.js",
   "author": {
-    "name": "Maximilian Stümpfl"
+    "name": "Daniel Acosta Vargas"
   },
-  "description": "Starter using Vite 2+ React +Typescript + Electron for fast prototyping.",
+  "description": "Kraken Slides 3.2 [vite, react]",
   "keywords": [
     "vite",
     "react",
@@ -16,7 +16,7 @@
   "repository": {
     "url": "https://github.com/lTimeless/vite-reactts-electron-starter"
   },
-  "productName": "vite-reactts-electron-starter",
+  "productName": "krakenslides 3",
   "scripts": {
     "dev": "concurrently \"npm run dev:vite\" \" npm run dev:electron\"",
     "dev:vite": "vite",
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.2.0",
+    "electron-devtools-installer": "^3.2.0",
     "electron-is-dev": "^2.0.0",
     "framer-motion": "6.5.1",
     "fs-extra": "^10.1.0",
@@ -56,7 +57,6 @@
     "concurrently": "^7.0.0",
     "electron": "^17.1.2",
     "electron-builder": "^22.14.13",
-    "electron-devtools-installer": "^3.2.0",
     "eslint": "8.11.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.5.0",

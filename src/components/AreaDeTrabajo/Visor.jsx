@@ -9,7 +9,8 @@ const Visor = () => {
     slideSelected,
     plantillaSeleccionada, setPlantillaSeleccionada,
     plnTitulo,plnTexto1,
-    
+    paginacion, setPaginacion,
+
     valPlant_Titulo, setValPlant_Titulo,
     urlImg1,urlImg2,
     slideTexto1,slideTexto2,slideTexto3,slideTexto4,slideTexto5,slideTexto6,
@@ -37,14 +38,16 @@ const Visor = () => {
   const cargaElementosPlantilla = () => {
     console.log("plantillaSeleccionada"+plantillaSeleccionada)
     
-      switch (plantillaSeleccionada){
+      switch (plantillaSeleccionada){        
         case "1":
           return <>
                     <div className='visorVistaPrCont' >
-                      <div className='visor-Paginacion' >121245</div>
+                      <div className='visor-Paginacion' >{paginacion}</div>
                       <div className='visorContenidos' >
-                        <div className="v-titulo">{valPlant_Titulo}</div>
-                        <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+                      <div className="vis_contSlide" >
+                        <div className="vis_titulo" >{valPlant_Titulo}</div>
+                        <div className="vis_texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+                      </div>
                       </div>
                     </div>            
                     
@@ -53,11 +56,13 @@ const Visor = () => {
         case "2":
           return  <>
                     <div className='visorVistaPrCont' >
-                      <div className='visor-Paginacion' >121245</div>
+                      <div className='visor-Paginacion' >{paginacion}</div>
                       <div className='visorContenidos' >
-                      <div className="titulo" >{valPlant_Titulo}</div>
-                      <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
-                      <div><img src={urlImg1} alt="" /></div>
+                        <div className="vis_contSlide" >
+                          <div className="vis_titulo" >{valPlant_Titulo}</div>                      
+                            <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50R" src=${urlImg1} />`+valoresBDslide.texto1    }} >
+                            </div>		
+                        </div> 
                       </div>
                     </div>   
                   </>
@@ -65,18 +70,28 @@ const Visor = () => {
         case "3":
           return  <>
                     <div className='visorVistaPrCont' >
-                      <div className='visor-Paginacion' >121245</div>
+                      <div className='visor-Paginacion' >{paginacion}</div>
                       <div className='visorContenidos' >
-                      <div className="titulo" >{valPlant_Titulo}</div>
-                      <div className="texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
-                      <div>{slideTexto3}</div>
-                      <div><img src={urlImg1} alt="" /></div>
-                      <div>{slideTexto5}</div>
-                      <div>{slideTexto4}</div>
-                      <div><img src={urlImg2} alt="" /></div>
-                      <div>{slideTexto6}</div>
+                      <div className="vis_contSlide" >
+                      <div className="vis_titulo" >{valPlant_Titulo}</div>
+                        <div className="vis_contenedorColsCont" >
+                          <div className="vis_textoColsIntro" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}}></div>	        
+                            <div className="vis_contenedorCols" >                          
+                              <div className="vis_contenedorCols-col">
+                                <div className="vis_contenedorCols-col-tlt">{slideTexto3}</div>
+                                <img className="vis_imagenCols" src={urlImg1} />
+                                <div className="vis_textoCols">{slideTexto5}</div>
+                              </div>
+                              <div className="vis_contenedorCols-col">
+                                <div className="vis_contenedorCols-col-tlt" >{slideTexto4}</div>
+                                <img className="vis_imagenCols" src={urlImg2} />
+                                <div className="vis_textoCols">{slideTexto6}</div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>  
                       </div>
-                    </div>   
+                    </div>
                   </>
         break;
       }

@@ -5,9 +5,9 @@
   flex-shrink: 1;
   flex-basis: auto;
   width: 100%;
-  height: 80%;
+  height: 90%;
   overflow: auto;  
-  margin-top: 10%;
+  margin: 10% auto 0 auto;
 }
 .areaTrabajo-cont-visor {
   width: 40vw;
@@ -18,13 +18,13 @@
   
 }
 .areaTrabajo-cont-visor-display {
-  width: 80%;
-  height: calc(100% - 48% - 5vh);
+  width: 600px;
+  height: 340px ;
   background-color: #fff;
   margin: 20px auto;
   -webkit-box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.945);
   box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.945);
-  border-radius: 4px;
+  border-radius: 4px;  
 }
 .areaTrabajo-cont-visor-btns {
   width: 80%;
@@ -125,16 +125,18 @@
   position: absolute;
   top: 3px;
   left: 3px;
-  min-width: 50px;
-  height: 23px;
-  background-color: rgb(228, 122, 122);
+  min-width: 30px;
+  height: 20px;
+  background-color: rgb(255, 233, 195);
   border-radius: 5px;
+  border-bottom: 1px solid rgb(255, 164, 111);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 5px;
+  padding-top: 2px;
   font-family: "Nunito";
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -145,3 +147,227 @@
   flex-direction: column;  
   font-family: 'Baloo';
 }
+
+.vis_contSlide{
+  width: 90%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+  margin: 0 auto;  
+}
+
+.vis_titulo{
+	width: 100%;
+	font-weight: 900;
+	font-size: 1.5em;
+	margin: 15px auto;
+}
+
+.vis_tituloGde{
+	width: 100%;
+	font-weight: 900;
+	font-size: 2.5em;
+	margin: auto;
+	text-align: center;
+}
+
+.vis_texto{
+	width: 100%;
+	max-height: 80%;
+	min-height: 60%;
+	font-size: 1em;
+	margin: 15px auto;
+	overflow-y: auto;
+}
+
+.vis_textoRodeando{
+	width: 100%;
+	height: auto;
+	max-height: 80%;
+	font-size: 1em;
+	margin: 1px auto;
+	overflow-y: auto;  
+}
+
+.vis_imagen20	{
+	width: 100%;
+}
+.vis_imagen50R{  
+	max-width: 50%;
+	max-height: 90%;
+	float: right;
+	margin: 0 0 10px 10px;  
+}
+.vis_imagen50L{
+	max-width: 50%;
+	max-height: 90%;
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+
+
+
+/*******************************/
+
+.vis_imagen90{
+	max-width: 90%;
+	max-height: 80%;
+	margin: 0 auto;
+}
+.vis_imagen100{
+	max-width: 90%;
+	max-height: 90%;
+	margin: auto;
+}
+/* Contenedores */
+.vis_divFlexNoWrap{
+	width: 100%;
+	max-height: 100%;
+	display: flex;
+	flex-wrap: no-wrap;
+	background-color: #882929;
+}
+
+.vis_contImages_float{
+	width: 50%;
+	max-height: 100%;
+	min-height: 60%;
+	float: right;
+	background-color: #121515;
+}
+
+
+.vis_contenedorColsCont{
+	overflow-y: auto;
+	width: 100%;
+}
+.vis_contenedorCols{
+	display: flex;
+	justify-content: center;
+}	
+.vis_contenedorCols-col{
+		width: 45%;
+		display: flex;
+		flex-direction: column;
+  }
+  .vis_contenedorCols-col-tlt{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			font-weight: 600;
+			font-size: 16px;
+			margin: 6px 0px 2px 0px;
+    }
+
+.vis_rowImages1{
+	width: 80%;
+	margin: 20px auto;
+	display: flex;
+	justify-content: space-around;
+}
+.vis_cntImg20{
+	width: 20% !important;
+}
+.vis_imagenCols{
+	width: 80%;
+	margin: 0 auto;
+}
+.vis_textoCols{
+	width: 80%;
+	margin: 0 auto;
+}
+.vis_textoColsIntro{
+	width: 100%;
+	margin: 0 auto;
+	font-size: 1em;
+}	
+	
+/* Probando maquetación */
+.vis_contStatic09Row{
+	width: 95%;
+	height: 80%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+.vis_textoRowElement01{
+	width: 45%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.vis_textoRowElement02{
+	width: 32%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.vis_imagenRowElement01{
+	width: 45%;
+	height: 100%;
+}
+
+.vis_imagenRowElement02{
+	width: 32%;
+	height: 100%;
+}
+.vis_imagenPrb01{
+	object-fit: contain !important;
+	width: 100%;
+	height: 100%;
+}
+	
+	
+
+
+/* Preguntas */
+.vis_contRadioChecSimple{
+	width: 80%;
+	height: auto;
+	min-height: 40%;
+	margin: 20px auto 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+.vis_txtPregunta{
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	font-weight: 300;
+}
+
+.vis_contRadioChecSimple input[type=radio]{
+	display: none;
+}	
+
+.vis_contRadioChecSimple input[type=radio] + label{
+	display: flex;
+	align-items: center;
+	background-color: #FFF;
+	color: #333;
+	margin: 5px auto;
+	display: flex;
+	width: 90%;
+	min-height: 30px;
+	padding: 2.5px 8px 2.5px 30px;
+	border-radius: 1px;
+	box-shadow: 0 2px 6px -1px rgb(0 0 0 / 0.1), 0 2px 2px -2px rgb(0 0 0 / 0.1);
+}	
+	
+.vis_contRadioChecSimple input[type=radio]:checked + label{
+	background-color: #898956;
+	color: #678897;
+}	
+.vis_contRadioChecSimple input[type=radio]:disabled + label{
+	background-color: #DDE0D8;
+	color: #B0B2AB;
+}	
+.vis_contRadioChecSimple input[type=radio]:disabled:checked + label{
+	background-color: #827234;
+	color: #998877;
+}
+	
