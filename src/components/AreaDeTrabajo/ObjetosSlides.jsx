@@ -252,13 +252,7 @@ export const ObjSld_imagen3 = (props) => {
           let url = `./../../logos/image_icon.png?${new Date().getTime()}`
           let idImage=''
           switch(numImage){
-               case 3: setUrlImg3(url); idImage='imagen3'; break;
-               /*
-               case 4: setUrlImg4(url); break;
-               case 5: setUrlImg5(url); break;
-               case 6: setUrlImg6(url); break;
-               case 7: setUrlImg7(url); break;
-               case 8: setUrlImg8(url); break;*/
+               case 3: setUrlImg3(url); idImage='imagen3'; break;       
           }
           console.log(' %c resetear imagen %c', 'color:white;background-color:#788821;font-size:16px', '')
           
@@ -314,6 +308,329 @@ export const ObjSld_imagen3 = (props) => {
           </div>
      )
 }
+
+
+
+
+export const ObjSld_imagen4 = (props) => {
+
+     const inputRefimg4 = useRef(null);     
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,urlImg4, setUrlImg4,          
+     } = useContext(ContextAreaDeTrabajo); 
+
+     const resetImage = (numImage) => {          
+          let url = `./../../logos/image_icon.png`
+          let idImage=''
+          setUrlImg4(url); 
+          idImage='imagen4'
+          
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${idImage} = '' WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {
+                         console.log(' %c #2   Se updatea el nombre de la iamgen en BD '+idImage,slideSelected.id,idProyectoActual+' %c', 'color:white;background-color:#f74e4e;font-size:16px', '')                                  
+                    }, null);
+               });
+     }
+
+     const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
+          return new Promise(function(resolve, reject){
+               console.log(' %c #4   Llegamos a: obtenerUrlImagen %c', 'color:white;background-color:#f74e4e;font-size:16px', '');
+               const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
+                         console.log(` %c #5   se ejecuta consulta, image: ${results.rows.item(0).imagen4} %c`, 'color:white;background-color:#f74e4e;font-size:16px', '');
+                         
+                         let carpeta = idProyectoActual;
+                         let url='';
+                         if( results.rows.item(0).imagen4 =='image.png' ){
+                              url = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{
+                              url = `c:/flskrk/${carpeta}/${results.rows.item(0).imagen4}?${new Date().getTime()}`
+                         }
+                         setUrlImg4(url)
+                         resolve("ok")
+                    }, null);
+               });
+          })
+     }
+
+     return (
+          <div className='contImagen' >
+               <div>
+                    <div>Imagen 4: { props.elim == "true" && <div onClick={ () => resetImage(4,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
+                    <input
+                         id="input-imagen4"
+                         type="file"
+                         ref={inputRefimg4}
+                         className="input-imagen"
+                         onChange={(e) => {                                   
+                                   moverDesdeInput(inputRefimg4, slideSelected.id+'-i4',idProyectoActual,slideSelected.id,idProyectoActual,'i4')
+                                   .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
+                              }
+                         }
+                    />
+                    <label htmlFor="input-imagen4"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg4 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
+               </div>
+               <div className='previewImg' ><img src={ urlImg4 } id="imgSlide4"  className="img-prev" /></div>
+               
+          </div>
+     )
+}
+
+
+export const ObjSld_imagen5 = (props) => {
+
+     const inputRefimg5 = useRef(null);     
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,urlImg5, setUrlImg5,
+     } = useContext(ContextAreaDeTrabajo); 
+
+     const resetImage = (numImage) => {          
+          let url = `./../../logos/image_icon.png`
+          let idImage=''
+          setUrlImg5(url); 
+          idImage='imagen5'
+          
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${idImage} = '' WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {
+                         console.log(' %c #2   Se updatea el nombre de la iamgen en BD '+idImage,slideSelected.id,idProyectoActual+' %c', 'color:white;background-color:#f74e4e;font-size:16px', '')                                  
+                    }, null);
+               });
+     }
+
+     const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
+          return new Promise(function(resolve, reject){               
+               const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
+                         console.log(` %c #5   se ejecuta consulta, image: ${results.rows.item(0).imagen5} %c`, 'color:white;background-color:#f74e4e;font-size:16px', '');
+                         
+                         let carpeta = idProyectoActual;
+                         let url='';
+                         if( results.rows.item(0).imagen5 =='image.png' ){
+                              url = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{
+                              url = `c:/flskrk/${carpeta}/${results.rows.item(0).imagen5}?${new Date().getTime()}`
+                         }
+                         setUrlImg5(url)
+                         resolve("ok")
+                    }, null);
+               });
+          })
+     }
+
+     return (
+          <div className='contImagen' >
+               <div>
+                    <div>Imagen 5: { props.elim == "true" && <div onClick={ () => resetImage(5,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
+                    <input
+                         id="input-imagen5"
+                         type="file"
+                         ref={inputRefimg5}
+                         className="input-imagen"
+                         onChange={(e) => {                                   
+                                   moverDesdeInput(inputRefimg5, slideSelected.id+'-i5',idProyectoActual,slideSelected.id,idProyectoActual,'i5')
+                                   .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
+                              }
+                         }
+                    />
+                    <label htmlFor="input-imagen5"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg5 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
+               </div>
+               <div className='previewImg' ><img src={ urlImg5 } id="imgSlide5"  className="img-prev" /></div>
+               
+          </div>
+     )
+}
+
+
+
+export const ObjSld_imagen6 = (props) => {
+     const inputRefimg6 = useRef(null);     
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,urlImg6, setUrlImg6,
+     } = useContext(ContextAreaDeTrabajo); 
+
+     const resetImage = (numImage) => {          
+          let url = `./../../logos/image_icon.png`
+          let idImage=''
+          setUrlImg6(url); 
+          idImage='imagen6'
+          
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${idImage} = '' WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {
+                         
+                    }, null);
+               });
+     }
+
+     const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
+          return new Promise(function(resolve, reject){               
+               const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
+                         let carpeta = idProyectoActual;
+                         let url='';
+                         if( results.rows.item(0).imagen6 =='image.png' ){
+                              url = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{
+                              url = `c:/flskrk/${carpeta}/${results.rows.item(0).imagen6}?${new Date().getTime()}`
+                         }
+                         setUrlImg6(url)
+                         resolve("ok")
+                    }, null);
+               });
+          })
+     }
+
+     return (
+          <div className='contImagen' >
+               <div>
+                    <div>Imagen 6: { props.elim == "true" && <div onClick={ () => resetImage(6,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
+                    <input
+                         id="input-imagen6"
+                         type="file"
+                         ref={inputRefimg6}
+                         className="input-imagen"
+                         onChange={(e) => {                                   
+                                   moverDesdeInput(inputRefimg6, slideSelected.id+'-i6',idProyectoActual,slideSelected.id,idProyectoActual,'i6')
+                                   .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
+                              }
+                         }
+                    />
+                    <label htmlFor="input-imagen6"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg6 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
+               </div>
+               <div className='previewImg' ><img src={ urlImg6 } id="imgSlide6"  className="img-prev" /></div>               
+          </div>
+     )
+}
+
+
+export const ObjSld_imagen7 = (props) => {
+     const inputRefimg7 = useRef(null);     
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,urlImg7, setUrlImg7,
+     } = useContext(ContextAreaDeTrabajo); 
+
+     const resetImage = (numImage) => {          
+          let url = `./../../logos/image_icon.png`
+          let idImage=''
+          setUrlImg7(url); 
+          idImage='imagen7'
+          
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${idImage} = '' WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {                         
+                    }, null);
+               });
+     }
+
+     const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
+          return new Promise(function(resolve, reject){               
+               const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
+                         let carpeta = idProyectoActual;
+                         let url='';
+                         if( results.rows.item(0).imagen7 =='image.png' ){
+                              url = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{
+                              url = `c:/flskrk/${carpeta}/${results.rows.item(0).imagen7}?${new Date().getTime()}`
+                         }
+                         setUrlImg7(url)
+                         resolve("ok")
+                    }, null);
+               });
+          })
+     }
+
+     return (
+          <div className='contImagen' >
+               <div>
+                    <div>Imagen 7: { props.elim == "true" && <div onClick={ () => resetImage(7,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
+                    <input
+                         id="input-imagen7"
+                         type="file"
+                         ref={inputRefimg7}
+                         className="input-imagen"
+                         onChange={(e) => {                                   
+                                   moverDesdeInput(inputRefimg7, slideSelected.id+'-i7',idProyectoActual,slideSelected.id,idProyectoActual,'i7')
+                                   .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
+                              }
+                         }
+                    />
+                    <label htmlFor="input-imagen7"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg7 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
+               </div>
+               <div className='previewImg' ><img src={ urlImg7 } id="imgSlide7"  className="img-prev" /></div>               
+          </div>
+     )
+}
+
+export const ObjSld_imagen8 = (props) => {
+     const inputRefimg8 = useRef(null);     
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,urlImg8, setUrlImg8,
+     } = useContext(ContextAreaDeTrabajo); 
+
+     const resetImage = (numImage) => {          
+          let url = `./../../logos/image_icon.png`
+          let idImage=''
+          setUrlImg8(url); 
+          idImage='imagen8'
+          
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${idImage} = '' WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {                         
+                    }, null);
+               });
+     }
+
+     const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
+          return new Promise(function(resolve, reject){               
+               const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
+                         let carpeta = idProyectoActual;
+                         let url='';
+                         if( results.rows.item(0).imagen8 =='image.png' ){
+                              url = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{
+                              url = `c:/flskrk/${carpeta}/${results.rows.item(0).imagen8}?${new Date().getTime()}`
+                         }
+                         setUrlImg8(url)
+                         resolve("ok")
+                    }, null);
+               });
+          })
+     }
+
+     return (
+          <div className='contImagen' >
+               <div>
+                    <div>Imagen 8: { props.elim == "true" && <div onClick={ () => resetImage(8,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
+                    <input
+                         id="input-imagen8"
+                         type="file"
+                         ref={inputRefimg8}
+                         className="input-imagen"
+                         onChange={(e) => {                                   
+                                   moverDesdeInput(inputRefimg8, slideSelected.id+'-i8',idProyectoActual,slideSelected.id,idProyectoActual,'i8')
+                                   .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
+                              }
+                         }
+                    />
+                    <label htmlFor="input-imagen8"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg8 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
+               </div>
+               <div className='previewImg' ><img src={ urlImg8 } id="imgSlide8"  className="img-prev" /></div>               
+          </div>
+     )
+}
+
+
+
+
 
 
 

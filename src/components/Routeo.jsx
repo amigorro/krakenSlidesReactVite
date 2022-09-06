@@ -4,10 +4,6 @@ import AreaDeTrabajo from './AreaDeTrabajo/AreaDeTrabajo'
 import MenuPrincipal from './MenuPrincipal/MenuPrincipal'
 
 const Routeo = () => {
-  
-     console.log('fs: ', window.fs)
-     //const defPath = 'D:\\code\\tecnologia\\pato\\';
-     //window.fs.ensureDirSync(defPath);
 
 
 
@@ -66,6 +62,11 @@ const Routeo = () => {
      const [urlImg1, setUrlImg1] = useState()
      const [urlImg2, setUrlImg2] = useState()
      const [urlImg3, setUrlImg3] = useState()
+     const [urlImg4, setUrlImg4] = useState()
+     const [urlImg5, setUrlImg5] = useState()
+     const [urlImg6, setUrlImg6] = useState()
+     const [urlImg7, setUrlImg7] = useState()
+     const [urlImg8, setUrlImg8] = useState()
      /* Para las variables de textos */
      const [slideTexto1, setSlideTexto1] = useState()
      const [slideTexto2, setSlideTexto2] = useState()
@@ -143,6 +144,11 @@ const Routeo = () => {
                                    urlImg1, setUrlImg1,
                                    urlImg2, setUrlImg2,
                                    urlImg3, setUrlImg3,
+                                   urlImg4, setUrlImg4,
+                                   urlImg5, setUrlImg5,
+                                   urlImg6, setUrlImg6,
+                                   urlImg7, setUrlImg7,
+                                   urlImg8, setUrlImg8,
 
                                    slideTexto1, setSlideTexto1,
                                    slideTexto2, setSlideTexto2,

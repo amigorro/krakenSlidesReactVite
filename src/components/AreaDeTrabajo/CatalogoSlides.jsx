@@ -4,10 +4,15 @@ import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo'
 import { nanoid } from 'nanoid'
 import  diapo3  from '../../assets/plantillas/diapo3.png'
-
-
-
-
+import plant01 from './../../assets/plantillas/subst/dp01.png';
+import plant02 from './../../assets/plantillas/subst/dp02.png';
+import plant03 from './../../assets/plantillas/subst/dp03.png';
+import plant04 from './../../assets/plantillas/subst/dp04.png';
+import plant05 from './../../assets/plantillas/subst/dp05.png';
+import plant06 from './../../assets/plantillas/subst/dp06.png';
+import plant07 from './../../assets/plantillas/subst/dp07.png';
+import plant08 from './../../assets/plantillas/subst/dp08.png';
+import defa from './../../assets/plantillas/subst/default.png';
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
 
@@ -221,7 +226,17 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                                 
                           >
                               <div className='CatalogoSlides-mins-img' >
-                                  <img src={'./assets/plantillas/'+plantilla.miniatura} alt='miniatura' />
+                                  <img src={
+                                      plantilla.miniatura == 'pl01' ? plant01 :
+                                      plantilla.miniatura == 'pl02' ? plant02 :
+                                      plantilla.miniatura == 'pl03' ? plant03 :
+                                      plantilla.miniatura == 'pl04' ? plant04 :
+                                      plantilla.miniatura == 'pl05' ? plant05 :
+                                      plantilla.miniatura == 'pl06' ? plant06 :
+                                      plantilla.miniatura == 'pl07' ? plant07 :
+                                      plantilla.miniatura == 'pl08' ? plant08 :
+                                      defa
+                                  } alt='miniatura' />
                               </div>                              
                           </div>
                       )

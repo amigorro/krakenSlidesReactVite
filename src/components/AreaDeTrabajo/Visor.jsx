@@ -12,7 +12,7 @@ const Visor = () => {
     paginacion, setPaginacion,
 
     valPlant_Titulo, setValPlant_Titulo,
-    urlImg1,urlImg2,
+    urlImg1,urlImg2,urlImg3,urlImg4,urlImg5,urlImg6,urlImg7,urlImg8,
     slideTexto1,slideTexto2,slideTexto3,slideTexto4,slideTexto5,slideTexto6,
 
     valoresBDslide, setValoresBDslide,
@@ -90,6 +90,84 @@ const Visor = () => {
                           </div>
                         </div>
                       </div>  
+                      </div>
+                    </div>
+                  </>
+        break;
+        case "4":
+          return  <>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                              <div className="vis_contSlide" >
+                                <div className="vis_titulo" >{valPlant_Titulo}</div>
+                                <img className="vis_imagen90" src={urlImg1} />
+                              </div> 
+                      </div>
+                    </div>
+                  </>
+        break;
+        case "5":
+          return  <>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                              <div className="vis_contSlide" >
+                                  <div className="vis_titulo" >{valPlant_Titulo}</div>
+                                  <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50L" src=${urlImg1} />`+valoresBDslide.texto1    }} >
+                                  </div>                                                      
+                              </div> 
+                      </div>
+                    </div>
+                  </>
+        break;
+        case "6":
+          return  <>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                              <div className="vis_contSlide" >
+                                    <img className="vis_imagen100" src={urlImg1} />                                                                                     
+                              </div> 
+                      </div>
+                    </div>
+                  </>
+        break;
+        case "7":
+          return  <>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                              <div className="vis_contSlide" >
+                              <div className="vis_tituloGde" >{valPlant_Titulo}</div>
+                              </div> 
+                      </div>
+                    </div>
+                  </>
+        break;
+        case "8":
+          return  <>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                              <div className="vis_contSlide" >
+                                    <div className="vis_titulo" >{valPlant_Titulo}</div>
+                                    <div className="vis_textoColsIntro" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+								                    <div className="vis_rowImages1" >
+                                        <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg1} /></div>
+                                        <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg2} /></div>
+                                        <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg3} /></div>
+                                        {
+                                          (urlImg4 !== "" && urlImg4 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg4} /></div> : null 
+                                        }
+                                    </div>
+                                    <div class="vis_rowImages1" >
+                                        { (urlImg5 !== "" && urlImg5 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg5} /></div> : null }
+                                        { (urlImg6 !== "" && urlImg6 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg6} /></div> : null }
+                                        { (urlImg7 !== "" && urlImg7 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg7} /></div> : null }
+                                        { (urlImg8 !== "" && urlImg8 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg8} /></div> : null }
+                                    </div>
+                              </div> 
                       </div>
                     </div>
                   </>

@@ -68,6 +68,12 @@ export const PruebaOrder = () => {
                urlImg1, setUrlImg1,
                urlImg2, setUrlImg2,
                urlImg3, setUrlImg3,
+               urlImg4, setUrlImg4,
+               urlImg5, setUrlImg5,
+               urlImg6, setUrlImg6,
+               urlImg7, setUrlImg7,
+               urlImg8, setUrlImg8,
+
                slideTexto1, setSlideTexto1,
                slideTexto2, setSlideTexto2,
                slideTexto3, setSlideTexto3,
@@ -157,6 +163,36 @@ export const PruebaOrder = () => {
                               urlimg3 = `./../../logos/image_icon.png?${new Date().getTime()}`
                          } else{ urlimg3 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen3}?${new Date().getTime()}` }
                          setUrlImg3(urlimg3)
+
+                         let urlimg4='';
+                         if( results.rows.item(0).imagen4 =='image.png' || !results.rows.item(0).imagen4  ){
+                              urlimg4 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{ urlimg4 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen4}?${new Date().getTime()}` }
+                         setUrlImg4(urlimg4)
+
+                         let urlimg5='';
+                         if( results.rows.item(0).imagen5 =='image.png' || !results.rows.item(0).imagen5  ){
+                              urlimg5 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{ urlimg5 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen5}?${new Date().getTime()}` }
+                         setUrlImg5(urlimg5)
+
+                         let urlimg6='';
+                         if( results.rows.item(0).imagen6 =='image.png' || !results.rows.item(0).imagen6  ){
+                              urlimg6 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{ urlimg6 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen6}?${new Date().getTime()}` }
+                         setUrlImg6(urlimg6)
+
+                         let urlimg7='';
+                         if( results.rows.item(0).imagen7 =='image.png' || !results.rows.item(0).imagen7  ){
+                              urlimg7 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{ urlimg7 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen7}?${new Date().getTime()}` }
+                         setUrlImg7(urlimg7)
+
+                         let urlimg8='';
+                         if( results.rows.item(0).imagen8 =='image.png' || !results.rows.item(0).imagen8  ){
+                              urlimg8 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         } else{ urlimg8 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen8}?${new Date().getTime()}` }
+                         setUrlImg8(urlimg8)
 
 
 

@@ -54,7 +54,6 @@ export function eliminarArchivo(rutaArchivo){
 
 export  function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProyectoActual,objeto){
 	
-	
 	const rutaAlmacenamiento = `C:/flskrk/${proyecto}/`;
  	let pathFile = nombreInput.current; 
  	let realPath = '', extension = '', response = '', estado = '';
@@ -71,7 +70,6 @@ export  function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProy
 		realPath = path.join(rutaAlmacenamiento, nuevoNombre);
 		response = fs.copy(pathFile, realPath, { overwrite: true })
 
-
 		.then(function(){
 			estado.value = '';
 
@@ -86,14 +84,21 @@ export  function moverDesdeInput(nombreInput, nuevoNombre, proyecto,slide,idProy
 				/**/
 				let objMulti='';
 				switch (objeto){
-					case "i1":
-						objMulti='imagen1'
+					case "i1":  objMulti='imagen1'
 						break;
-					case "i2":
-						objMulti='imagen2'
+					case "i2":  objMulti='imagen2'
 						break;
-					case "i3":
-						objMulti='imagen3'
+					case "i3":  objMulti='imagen3'
+						break;
+					case "i4":  objMulti='imagen4'
+						break;
+					case "i5":  objMulti='imagen5'
+						break;
+					case "i6":  objMulti='imagen6'
+						break;
+					case "i7":  objMulti='imagen7'
+						break;
+					case "i8":  objMulti='imagen8'
 						break;
 				}
 
