@@ -161,12 +161,44 @@ const Visor = () => {
                                           (urlImg4 !== "" && urlImg4 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg4} /></div> : null 
                                         }
                                     </div>
-                                    <div class="vis_rowImages1" >
+                                    <div className="vis_rowImages1" >
                                         { (urlImg5 !== "" && urlImg5 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg5} /></div> : null }
                                         { (urlImg6 !== "" && urlImg6 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg6} /></div> : null }
                                         { (urlImg7 !== "" && urlImg7 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg7} /></div> : null }
                                         { (urlImg8 !== "" && urlImg8 != "./../../logos/image_icon.png") ? <div className="vis_cntImg20" ><img className="vis_imagen20" src={urlImg8} /></div> : null }
                                     </div>
+                              </div> 
+                      </div>
+                    </div>
+                  </>
+        break;
+        case "9":
+          let regImages = "";
+                                        
+          if ( (urlImg1 !== "" && urlImg1 != "./../../logos/image_icon.png") && (urlImg4 == "" || urlImg4 == "./../../logos/image_icon.png")){
+            regImages = <><div class="vis_imagenRowElement01" ><img class="vis_imagenPrb01" src={urlImg1} /></div></>;
+          } else if ( (urlImg4 !== "" && urlImg4 != "./../../logos/image_icon.png") && (urlImg1 == "" || urlImg1 == "./../../logos/image_icon.png") ){
+            regImages = <><div class="vis_imagenRowElement01" ><img class="vis_imagenPrb01" src={urlImg4} /></div></>;
+          } else if (  (urlImg1 !== "" && urlImg1 != "./../../logos/image_icon.png")  &&  (urlImg4 !== "" && urlImg4 != "./../../logos/image_icon.png")  ){
+            regImages = <> <div class="vis_imagenRowElement02" ><img class="vis_imagenPrb02" src={urlImg1} /></div> <div class="vis_imagenRowElement02" ><img class="vis_imagenPrb02" src={urlImg4} /></div> </>                      ;
+          }
+          
+          else {
+            regImages = "";
+          }
+          
+
+          return<>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                              <div className="vis_contSlide" >
+                                  <div className="vis_titulo" >{valPlant_Titulo}</div>
+                                  <div className="vis_contStatic09Row" >
+                                    <div className="vis_textoColsIntro" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
+                                    <div className="vis_textoRowElement0${numReg}" ></div>	
+                                    {regImages}
+                                  </div>
                               </div> 
                       </div>
                     </div>

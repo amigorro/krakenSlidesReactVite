@@ -12,6 +12,7 @@ import plant05 from './../../assets/plantillas/subst/dp05.png';
 import plant06 from './../../assets/plantillas/subst/dp06.png';
 import plant07 from './../../assets/plantillas/subst/dp07.png';
 import plant08 from './../../assets/plantillas/subst/dp08.png';
+import plant09 from './../../assets/plantillas/subst/dp09.png';
 import defa from './../../assets/plantillas/subst/default.png';
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
@@ -235,6 +236,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                                       plantilla.miniatura == 'pl06' ? plant06 :
                                       plantilla.miniatura == 'pl07' ? plant07 :
                                       plantilla.miniatura == 'pl08' ? plant08 :
+                                      plantilla.miniatura == 'pl09' ? plant09 :
                                       defa
                                   } alt='miniatura' />
                               </div>                              

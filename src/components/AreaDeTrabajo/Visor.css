@@ -281,6 +281,8 @@
 	width: 100%;
 	margin: 0 auto;
 	font-size: 1em;
+	padding: 15px 10px 0 0;
+	overflow-y: auto;
 }	
 	
 /* Probando maquetación */
@@ -307,13 +309,19 @@
 }
 
 .vis_imagenRowElement01{
-	width: 45%;
+	width: 65%;
 	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .vis_imagenRowElement02{
-	width: 32%;
-	height: 100%;
+	width: 80% !important;
+	height: 100% ;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .vis_imagenPrb01{
 	object-fit: contain !important;

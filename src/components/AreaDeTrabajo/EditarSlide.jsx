@@ -149,6 +149,15 @@ const EditarSlide = () => {
                       <ObjSld_imagen8  elim="true" />
                     </>
           break;
+          case "9":
+            return  <>                      
+                      <ObjSld_titulo />
+                      <br /><br /><br />
+                      <div className='editorQuill' ><div ref={quillRef} /></div>
+                      <ObjSld_imagen1 />
+                      <ObjSld_imagen4 elim="true" />                      
+                    </>
+          break;
         }
 
     }
