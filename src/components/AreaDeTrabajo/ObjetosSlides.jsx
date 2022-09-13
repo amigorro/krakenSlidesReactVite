@@ -3,6 +3,7 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { ActualizarRegBdSlideContenidos } from '../helpers/GuardaEnBD';
 import {moverDesdeInput} from '../helpers/GestionArchivos';
 import './ObjetosSlides.css'
+import {ObjetoRespuestaRadioG} from './ObjetoRespuestaRadioG'
 
 export const ObjSld_titulo = () => {
 
@@ -630,12 +631,17 @@ export const ObjSld_imagen8 = (props) => {
 
 
 
+
+
+
+
+
 export const PreguntaRadio01 = () => {
 
      const agregarRespuesta = (idProyectoActual,sesion,idSlide) => {
      }
 
-
+     
 
 
      return (
@@ -644,12 +650,15 @@ export const PreguntaRadio01 = () => {
                     <div>Texto pregunta:</div>
                     <input type="text" />                    
                     <div>--------------</div>
-                    <div>Respuestas:</div>
-                    <div>
-                         <div>Respuesta 1:</div>
-                         <input type="text" /> <input type="text" />
-                    </div>
-                    
+                    <div>Respuestas:</div>                    
+                    <ObjetoRespuestaRadioG />
+                    <ObjetoRespuestaRadioG />
+                    <ObjetoRespuestaRadioG elim="true" />
+                    <ObjetoRespuestaRadioG elim="true" />
+                    <ObjetoRespuestaRadioG elim="true" />
+                    <ObjetoRespuestaRadioG />
+                    <ObjetoRespuestaRadioG />
+                    <ObjetoRespuestaRadioG />
                     
                </div>
 

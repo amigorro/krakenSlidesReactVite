@@ -96,11 +96,33 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
     setModalTipoSlide(false)
     
 
+
+
+
+    let id_plantilla = nanoid(10)
+    let tipoPlant = '';
+    switch (plantillaSeleccionada){
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+          tipoPlant = 'Static';          
+            break;
+        case '10':
+          tipoPlant = 'Pregunta';          
+            break;
+    }
+
     /* Ingresamos el registro en la ba  se de datos */
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
-          let id_plantilla = nanoid(10)
-            tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla) VALUES (?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada], function(tx, results) {
+          
+            tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla,tipo_contenido) VALUES (?,?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada,tipoPlant], function(tx, results) {
             //console.log('results', results)
             setSlideSelected({
               id : id_plantilla
@@ -117,6 +139,12 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
             */
             //limpiarPlantillaSel()
           }, null);
+
+          if( tipoPlant == 'Pregunta' ){
+            tx.executeSql('INSERT INTO TBL_RESPUESTA (id_usuario,id_proyecto,sesion,slide) VALUES (?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla ], function(tx, results) {
+            })      
+          }
+
         })
 
   }
