@@ -197,29 +197,34 @@ function precarga() {
                                            ' ID_USUARIO INTEGER,'+ 
                                            ' ID_PROYECTO INTEGER,'+ 
                                            ' primary key(ID_CONCEPTO,ID_PROYECTO));');  
-   
-           //Tabla TBL_CRONORGAMA    
-           
-   
-           //Tabla Respuesta        
-           tx.executeSql('CREATE TABLE IF NOT EXISTS TBL_RESPUESTA('+
-                                           ' id_respuesta INTEGER primary key AUTOINCREMENT,'+
-                                           ' tx_respuesta varchar(200),'+
-                                           ' valor INTEGER,'+
-                                           ' siguiente INTEGER,'+
-                                           ' figura INTEGER,'+
-                                           ' sesion INTEGER,'+                                      
-                                           ' idpregunta INTEGER,'+
-                                           ' idusuario INTEGER,'+                                      
-                                           ' idproyecto INTEGER,'+
-                                           ' categoria varchar(60),'+
-                                           ' tipo_contenido varchar(60)'+
-                                           ' );   ');  
-   
-           
-             
-   
-             
+
+
+          //Tabla Respuesta        
+          tx.executeSql(`CREATE TABLE IF NOT EXISTS TBL_RESPUESTA(
+                                          id_respuesta VARCHAR(10),
+                                          txt01_respuesta varchar(200),
+                                          valor01 INTEGER,
+                                          txt02_respuesta varchar(200),
+                                          valor02 INTEGER,
+                                          txt03_respuesta varchar(200),
+                                          valor03 INTEGER,
+                                          txt04_respuesta varchar(200),
+                                          valor04 INTEGER,
+                                          txt05_respuesta varchar(200),
+                                          valor05 INTEGER,
+                                          txt06_respuesta varchar(200),
+                                          valor06 INTEGER,
+                                          txt07_respuesta varchar(200),
+                                          valor07 INTEGER,
+                                          txt08_respuesta varchar(200),
+                                          valor08 INTEGER,
+                                          salta VARCHAR(10),                                           
+                                          sesion INTEGER,                                                                                 
+                                          id_usuario INTEGER,                                      
+                                          id_proyecto INTEGER,
+                                          slide VARCHAR(10),
+                                          primary key(id_respuesta,slide, id_proyecto,sesion,id_usuario));`);
+
            //Tabla Apllicacion Columna
            tx.executeSql('CREATE TABLE IF NOT EXISTS APP_COLUMNA('+
                                            ' nombre_diapo varchar(20),'+
@@ -266,6 +271,7 @@ function precarga() {
                     (7,"Título"                         ,1,"pl07",1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
                     (8,"dos filas imagenes"             ,1,"pl08",1,0,1,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0),
                     (9,"cajas texto imagenes"           ,1,"pl09",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
+                    (10,"cajas texto imagenes"           ,2,"pr01",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
                       (200,"disenio6",2,"diapo10.png",1,null,null,1,null,null,null,null,1,1,null,null,null,null,null,null,null,null),
                       (210,"disenio7",2,"diapo11.png",null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
                       (220,"disenio8",3,"diapo14.png",1,null,null,1,1,null,null,null,1,1,null,null,null,null,null,null,null,null),
