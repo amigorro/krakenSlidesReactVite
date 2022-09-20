@@ -75,6 +75,10 @@ const Routeo = () => {
      const [slideTexto5, setSlideTexto5] = useState()
      const [slideTexto6, setSlideTexto6] = useState()
 
+     /** respuestas */
+     const [resp1, setResp1] = useState()
+     const [valResp1, setValResp1] = useState()
+
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
 
@@ -156,6 +160,9 @@ const Routeo = () => {
                                    slideTexto4, setSlideTexto4,
                                    slideTexto5, setSlideTexto5,
                                    slideTexto6, setSlideTexto6,
+
+                                   resp1, setResp1,
+                                   valResp1, setValResp1,
 
                                    modalGlosario, setModalGlosario,
                               

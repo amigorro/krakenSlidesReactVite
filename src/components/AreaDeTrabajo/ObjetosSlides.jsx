@@ -651,14 +651,14 @@ export const PreguntaRadio01 = () => {
                     <input type="text" />                    
                     <div>--------------</div>
                     <div>Respuestas:</div>                    
-                    <ObjetoRespuestaRadioG />
-                    <ObjetoRespuestaRadioG />
-                    <ObjetoRespuestaRadioG elim="true" />
-                    <ObjetoRespuestaRadioG elim="true" />
-                    <ObjetoRespuestaRadioG elim="true" />
-                    <ObjetoRespuestaRadioG />
-                    <ObjetoRespuestaRadioG />
-                    <ObjetoRespuestaRadioG />
+                    <ObjetoRespuestaRadioG numObj="1" />
+                    <ObjetoRespuestaRadioG numObj="2" />
+                    <ObjetoRespuestaRadioG elim="true" numObj="3" />
+                    <ObjetoRespuestaRadioG elim="true" numObj="4" />
+                    <ObjetoRespuestaRadioG elim="true" numObj="5" />
+                    <ObjetoRespuestaRadioG elim="true" numObj="6" />
+                    <ObjetoRespuestaRadioG elim="true" numObj="7" />
+                    <ObjetoRespuestaRadioG elim="true" numObj="8" />
                     
                </div>
 
