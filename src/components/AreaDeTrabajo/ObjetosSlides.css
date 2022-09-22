@@ -44,3 +44,9 @@
     object-fit: cover;
  }
 
+.seleccionaCorrectoRadioImagen{
+    width:30px;
+    height: 30px;
+    background-color: rgb(85, 152, 228);
+    margin-bottom: 15px;
+}

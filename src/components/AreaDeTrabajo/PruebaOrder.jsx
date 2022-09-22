@@ -109,6 +109,12 @@ export const PruebaOrder = () => {
 
      const cargaValoresSlide = (slideId) =>{
           
+          /** Limpiamos valores del estado */
+          setResp1('')
+          setResp2('')
+          setResp3('')
+
+
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
                tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {

@@ -665,6 +665,15 @@ export const PreguntaRadio01 = () => {
 
 }
 
+export const PreguntaRadio02 = () => {
+
+     return (
+          <div className='seleccionaCorrectoRadioImagen' >               
+
+          </div>
+     )
+
+}
 
 
 
