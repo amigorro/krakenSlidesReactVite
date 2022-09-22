@@ -1,43 +1,56 @@
-
 import {useContext} from 'react';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo'
 
 export const ObjetoRespuestaRadioG = ( params ) => {
   
   const {
-    slideSelected,idProyectoActual,
-    resp1, setResp1,
-    valResp1, setValResp1,
+     slideSelected,idProyectoActual,
+     resp1, setResp1,
+     valResp1, setValResp1,
+     resp2, setResp2,
+     valResp2, setValResp2,
+     resp3, setResp3,
+     valResp3, setValResp3,
+     resp4, setResp4,
+     valResp4, setValResp4,
+     resp5, setResp5,
+     valResp5, setValResp5,
+     resp6, setResp6,
+     valResp6, setValResp6,
+     resp7, setResp7,
+     valResp7, setValResp7,
+     resp8, setResp8,
+     valResp8, setValResp8,
   } = useContext(ContextAreaDeTrabajo); 
 
   const actualizaResp = (e) => {
-    let variableDb = '';
-    switch (params.numObj){
-      case "1":
-        variableDb = 'txt01_respuesta';
-        break;
-      case "2":
-        variableDb = 'txt02_respuesta';
-        break;
-      case "3":
-        variableDb = 'txt03_respuesta';
-        break;
-      case "4":
-        variableDb = 'txt04_respuesta';
-        break;
-      case "5":
-        variableDb = 'txt05_respuesta';
-        break;
-      case "6":
-        variableDb = 'txt06_respuesta';
-        break;
-      case "7":
-        variableDb = 'txt07_respuesta';
-        break;
-      case "8":
-        variableDb = 'txt08_respuesta';
-        break;
-    }
+     let variableDb = '';
+     switch (params.numObj){
+          case "1":
+          variableDb = 'txt01_respuesta';
+          break;
+          case "2":
+          variableDb = 'txt02_respuesta';
+          break;
+          case "3":
+          variableDb = 'txt03_respuesta';
+          break;
+          case "4":
+          variableDb = 'txt04_respuesta';
+          break;
+          case "5":
+          variableDb = 'txt05_respuesta';
+          break;
+          case "6":
+          variableDb = 'txt06_respuesta';
+          break;
+          case "7":
+          variableDb = 'txt07_respuesta';
+          break;
+          case "8":
+          variableDb = 'txt08_respuesta';
+          break;
+     }
 
 
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -46,83 +59,161 @@ export const ObjetoRespuestaRadioG = ( params ) => {
          }, null);
     });
   }
+     
   
-
-  return (
-      <div>
-          <div>Respuesta {  params.numObj  }:</div> { params.elim=='true' && <div>trash</div> }
-          <input 
-            type="text" 
-            onChange={ (e) => { actualizaResp(e.target.value) } }
-          /> 
+     const resetRespuesta = (numResp) => {          
+          let variableRespDB='';
+          switch(numResp){
+               case  '1':
+                    setResp1('')
+                    variableRespDB='txt01_respuesta'
+                    break;
+               case  '2':
+                    setResp2('')
+                    variableRespDB='txt02_respuesta'
+                    break;
+               case  '3':
+                    setResp3('')
+                    variableRespDB='txt03_respuesta'
+                    break;
+               case  '4':
+                    setResp4('')
+                    variableRespDB='txt04_respuesta'
+                    break;
+               case  '5':
+                    setResp5('')
+                    variableRespDB='txt05_respuesta'
+                    break;
+               case  '6':
+                    setResp6('')
+                    variableRespDB='txt06_respuesta'
+                    break;
+               case  '7':
+                    setResp7('')
+                    variableRespDB='txt07_respuesta'
+                    break;
+               case  '8':
+                    setResp8('')
+                    variableRespDB='txt08_respuesta'
+                    break;
+          }
           
-      </div>
-  )
-}
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE TBL_RESPUESTA SET ${variableRespDB} = '' WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {                         
+                    }, null);
+               });
+     }
 
 
+     const actualizaRespuestaValRadio = (idResp) =>{
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql(`UPDATE TBL_RESPUESTA SET valor01 = '',valor02 = '',valor03 = '',valor04 = '',valor05 = '',valor06 = '',valor07 = '',valor08 = ''  WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {                         
+                    }, null);
+                    tx.executeSql(`UPDATE TBL_RESPUESTA SET valor0${idResp} = 1  WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {                         
+                    }, null);
+               });
+               
+               
+     }
 
-/**
- * ! BORRAR este componente, es solo para referencia
- * 
- */
-export const ObjSld_imagen8 = (props) => {
-  const inputRefimg8 = useRef(null);     
-  const {
-       slideSelected,sesion,idProyectoActual,idUsuario,urlImg8, setUrlImg8,
-  } = useContext(ContextAreaDeTrabajo); 
+     const seleccionaCorrecta = ( idResp ) => {
+          setValResp1('')
+          setValResp2('')
+          setValResp3('')
+          setValResp4('')
+          setValResp5('')
+          setValResp6('')
+          setValResp7('')
+          setValResp8('')
+          switch(idResp){
+               case '1':
+                    setValResp1('1')
+                    actualizaRespuestaValRadio(1)
+                    break;
+               case '2':                    
+                    setValResp2('1')                    
+                    actualizaRespuestaValRadio(2)
+                    break;
+               case '3':                    
+                    setValResp3('1')                    
+                    actualizaRespuestaValRadio(3)
+                    break;
+               case '4':                    
+                    setValResp4('1')                    
+                    actualizaRespuestaValRadio(4)
+                    break;
+               case '5':                    
+                    setValResp5('1')                    
+                    actualizaRespuestaValRadio(5)
+                    break;
+               case '6':                    
+                    setValResp6('1')                    
+                    actualizaRespuestaValRadio(6)
+                    break;
+               case '7':                    
+                    setValResp7('1')                    
+                    actualizaRespuestaValRadio(7)
+                    break;
+               case '8':
+                    setValResp8('1')
+                    actualizaRespuestaValRadio(8)
+                    break;
+          }
+     }
 
-  const resetImage = (numImage) => {          
-       let url = `./../../logos/image_icon.png`
-       let idImage=''
-       setUrlImg8(url); 
-       idImage='imagen8'
-       
-       const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
-            db.transaction(function(tx) {
-                 tx.executeSql(`UPDATE DATOS_INTRODUCIDOS SET ${idImage} = '' WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {                         
-                 }, null);
-            });
-  }
+     return (
+          <div>
+               <div>Respuesta {  params.numObj  }:</div> { params.elim=='true' && <div onClick={ () => resetRespuesta(params.numObj)} >trash</div> }
+               <input 
+               type="text" 
+               value={ 
+                    params.numObj == '1' ? resp1 
+                    : params.numObj == '2' ? resp2
+                    : params.numObj == '3' ? resp3
+                    : params.numObj == '4' ? resp4
+                    : params.numObj == '5' ? resp5
+                    : params.numObj == '6' ? resp6
+                    : params.numObj == '7' ? resp7
+                    : params.numObj == '8' ? resp8
+                    : ''
+               }
+               onChange={(e) => {   
+                    params.numObj == '1' && setResp1(e.target.value )
+                    params.numObj == '2' && setResp2(e.target.value )
+                    params.numObj == '3' && setResp3(e.target.value )
+                    params.numObj == '4' && setResp4(e.target.value )
+                    params.numObj == '5' && setResp5(e.target.value )
+                    params.numObj == '6' && setResp6(e.target.value )
+                    params.numObj == '7' && setResp7(e.target.value )
+                    params.numObj == '8' && setResp8(e.target.value )                    
+                  }}
+               onBlur={ (e) => { actualizaResp(e.target.value) } }
+               /> 
+               
+               <div 
+                    className={  
+                              (params.numObj =='1' && resp1 !='' && valResp1==1 ) ?  'radioValCorrect selected' : 
+                              (params.numObj =='1' && resp1 !='' ) ?  'radioValCorrect' :                         
+                              (params.numObj =='2' && resp2 !='' && valResp2==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='2' && resp2 !='' ) ?  'radioValCorrect' : 
+                              (params.numObj =='3' && resp3 !='' && valResp3==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='3' && resp3 !='' ) ?  'radioValCorrect' : 
+                              (params.numObj =='4' && resp4 !='' && valResp4==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='4' && resp4 !='' ) ?  'radioValCorrect' : 
+                              (params.numObj =='5' && resp5 !='' && valResp5==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='5' && resp5 !='' ) ?  'radioValCorrect' : 
+                              (params.numObj =='6' && resp6 !='' && valResp6==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='6' && resp6 !='' ) ?  'radioValCorrect' : 
+                              (params.numObj =='7' && resp7 !='' && valResp7==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='7' && resp7 !='' ) ?  'radioValCorrect' : 
+                              (params.numObj =='8' && resp8 !='' && valResp8==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='8' && resp8 !='' ) ?  'radioValCorrect' : 'quitarRadioValCorrect'
+                    }
+                    onClick={ () => { seleccionaCorrecta(params.numObj) } }
+               ></div>
 
-
-  const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
-       return new Promise(function(resolve, reject){               
-            const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
-            db.transaction(function(tx) {
-                 tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
-                      let carpeta = idProyectoActual;
-                      let url='';
-                      if( results.rows.item(0).imagen8 =='image.png' ){
-                           url = `./../../logos/image_icon.png?${new Date().getTime()}`
-                      } else{
-                           url = `c:/flskrk/${carpeta}/${results.rows.item(0).imagen8}?${new Date().getTime()}`
-                      }
-                      setUrlImg8(url)
-                      resolve("ok")
-                 }, null);
-            });
-       })
-  }
-
-  return (
-       <div className='contImagen' >
-            <div>
-                 <div>Imagen 8: { props.elim == "true" && <div onClick={ () => resetImage(8,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
-                 <input
-                      id="input-imagen8"
-                      type="file"
-                      ref={inputRefimg8}
-                      className="input-imagen"
-                      onChange={(e) => {                                   
-                                moverDesdeInput(inputRefimg8, slideSelected.id+'-i8',idProyectoActual,slideSelected.id,idProyectoActual,'i8')
-                                .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
-                           }
-                      }
-                 />
-                 <label htmlFor="input-imagen8"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg8 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
-            </div>
-            <div className='previewImg' ><img src={ urlImg8 } id="imgSlide8"  className="img-prev" /></div>               
-       </div>
-  )
+          </div>
+     )
 }

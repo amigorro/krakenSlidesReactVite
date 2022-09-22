@@ -161,6 +161,7 @@ const EditarSlide = () => {
           case "10":
             return  <>                      
                       <ObjSld_titulo />
+                      <Texto5 variab='texto1' />
                       <PreguntaRadio01 />                
                     </>
           break;

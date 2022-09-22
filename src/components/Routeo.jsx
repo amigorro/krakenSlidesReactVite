@@ -78,6 +78,20 @@ const Routeo = () => {
      /** respuestas */
      const [resp1, setResp1] = useState()
      const [valResp1, setValResp1] = useState()
+     const [resp2, setResp2] = useState()
+     const [valResp2, setValResp2] = useState()
+     const [resp3, setResp3] = useState()
+     const [valResp3, setValResp3] = useState()
+     const [resp4, setResp4] = useState()
+     const [valResp4, setValResp4] = useState()
+     const [resp5, setResp5] = useState()
+     const [valResp5, setValResp5] = useState()
+     const [resp6, setResp6] = useState()
+     const [valResp6, setValResp6] = useState()
+     const [resp7, setResp7] = useState()
+     const [valResp7, setValResp7] = useState()
+     const [resp8, setResp8] = useState()
+     const [valResp8, setValResp8] = useState()
 
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
@@ -163,6 +177,20 @@ const Routeo = () => {
 
                                    resp1, setResp1,
                                    valResp1, setValResp1,
+                                   resp2, setResp2,
+                                   valResp2, setValResp2,
+                                   resp3, setResp3,
+                                   valResp3, setValResp3,
+                                   resp4, setResp4,
+                                   valResp4, setValResp4,
+                                   resp5, setResp5,
+                                   valResp5, setValResp5,
+                                   resp6, setResp6,
+                                   valResp6, setValResp6,
+                                   resp7, setResp7,
+                                   valResp7, setValResp7,
+                                   resp8, setResp8,
+                                   valResp8, setValResp8,
 
                                    modalGlosario, setModalGlosario,
                               

@@ -646,9 +646,7 @@ export const PreguntaRadio01 = () => {
 
      return (
           <div className='contPregRadio01' >
-               <div>
-                    <div>Texto pregunta:</div>
-                    <input type="text" />                    
+               <div>                                      
                     <div>--------------</div>
                     <div>Respuestas:</div>                    
                     <ObjetoRespuestaRadioG numObj="1" />

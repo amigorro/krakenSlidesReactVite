@@ -80,6 +80,24 @@ export const PruebaOrder = () => {
                slideTexto4, setSlideTexto4,
                slideTexto5, setSlideTexto5,
                slideTexto6, setSlideTexto6,
+
+               resp1, setResp1,
+               valResp1, setValResp1,
+               resp2, setResp2,
+               valResp2, setValResp2,
+               resp3, setResp3,
+               valResp3, setValResp3,
+               resp4, setResp4,
+               valResp4, setValResp4,
+               resp5, setResp5,
+               valResp5, setValResp5,
+               resp6, setResp6,
+               valResp6, setValResp6,
+               resp7, setResp7,
+               valResp7, setValResp7,
+               resp8, setResp8,
+               valResp8, setValResp8,
+
      } = useContext(ContextAreaDeTrabajo);
      
 
@@ -194,7 +212,35 @@ export const PruebaOrder = () => {
                          } else{ urlimg8 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen8}?${new Date().getTime()}` }
                          setUrlImg8(urlimg8)
 
+                         /* Cargamos los estados de los slides de tipo pregunta */
+                         if ( results.rows.item(0).tipo_contenido=='Pregunta' ){                              
+                              console.warn("carga respuestas")
+                              db.transaction(function(tx) {
+                                   console.warn("dentro de obj DB: "+idProyectoActual,sesion,slideId)
+                                   tx.executeSql('SELECT * FROM TBL_RESPUESTA WHERE id_usuario = 1 AND id_proyecto = ? AND slide = ? AND sesion = ? ', [idProyectoActual,slideId,sesion], function(tx, results) {
+                                        console.warn("ejecuta SQL")
+                                        
+                                        setResp1(results.rows.item(0).txt01_respuesta)
+                                        setResp2(results.rows.item(0).txt02_respuesta)
+                                        setResp3(results.rows.item(0).txt03_respuesta)
+                                        setResp4(results.rows.item(0).txt04_respuesta)
+                                        setResp5(results.rows.item(0).txt05_respuesta)
+                                        setResp6(results.rows.item(0).txt06_respuesta)
+                                        setResp7(results.rows.item(0).txt07_respuesta)
+                                        setResp8(results.rows.item(0).txt08_respuesta)
+                                        setValResp1(results.rows.item(0).valor01)
+                                        setValResp2(results.rows.item(0).valor02)
+                                        setValResp3(results.rows.item(0).valor03)
+                                        setValResp4(results.rows.item(0).valor04)
+                                        setValResp5(results.rows.item(0).valor05)
+                                        setValResp6(results.rows.item(0).valor06)
+                                        setValResp7(results.rows.item(0).valor07)
+                                        setValResp8(results.rows.item(0).valor08)
+                                        console.warn('RESPSSSS:'+results.rows.item(0).txt01_respuesta)
+                                   }, null);
+                              });
 
+                         }
 
                          console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
                     }
