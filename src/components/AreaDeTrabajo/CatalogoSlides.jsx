@@ -15,6 +15,7 @@ import plant08 from './../../assets/plantillas/subst/dp08.png';
 import plant09 from './../../assets/plantillas/subst/dp09.png';
 import plant10 from './../../assets/plantillas/subst/pr01.png';
 import plant11 from './../../assets/plantillas/subst/pr02.png';
+import plant12 from './../../assets/plantillas/subst/pr03.png';
 import defa from './../../assets/plantillas/subst/default.png';
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
@@ -116,6 +117,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
             break;
         case '10':
         case '11':
+        case '12':
           tipoPlant = 'Pregunta';          
             break;
     }
@@ -270,6 +272,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                                       plantilla.miniatura == 'pl09' ? plant09 :
                                       plantilla.miniatura == 'pr01' ? plant10 :
                                       plantilla.miniatura == 'pr02' ? plant11 :
+                                      plantilla.miniatura == 'pr03' ? plant12 :
                                       defa
                                   } alt='miniatura' />
                               </div>                              

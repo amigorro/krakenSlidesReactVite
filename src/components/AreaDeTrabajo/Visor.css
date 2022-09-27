@@ -326,6 +326,8 @@
 	margin: 10px;
 	border-radius: 3px;
 	border: solid 2px #FFF;
+	position: relative;
+	box-shadow: 0px 0px 3px 0px rgba(62, 122, 112, 0.75);
 }
 .imageSelectedRadio{
 	border: solid 2px rgb(225, 47, 248);
@@ -358,7 +360,42 @@
 	align-items: center;
 }
 
+.iconSelectedRadioImagen{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	color: rgb(225, 47, 248);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:absolute;
+	bottom: -27px;
+	left: -6px;
+	font-size: 30px;
+}
 
+
+.respSelected2{
+	background-color: #124545 !important;
+}
+
+
+.vis_contRespTipo12{
+	width: 100%;
+	height: 100%;
+	display: flex;	
+}
+.vis_imagenCols_radio12{
+	width: 40%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.radio12{
+	width: 70% !important;
+	overflow-x: none !important;
+}
 
 /* Preguntas */
 .vis_contRadioChecSimple{
@@ -368,7 +405,7 @@
 	margin: 20px auto 0 auto;
 	display: flex;
 	flex-direction: column;
-	overflow-y: auto;
+	overflow-y: auto;	
 }
 .vis_txtPregunta{
 	width: 90%;

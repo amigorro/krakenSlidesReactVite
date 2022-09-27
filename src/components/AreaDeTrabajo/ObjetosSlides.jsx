@@ -665,12 +665,99 @@ export const PreguntaRadio01 = () => {
 
 }
 
-export const PreguntaRadio02 = () => {
+export const PreguntaRadio02 = (props) => {
+
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,          
+          urlImg1, setUrlImg1,
+          urlImg2, setUrlImg2,
+          urlImg3, setUrlImg3,
+          urlImg4, setUrlImg4,
+          urlImg5, setUrlImg5,
+          valResp1,valResp2,valResp3,valResp4,valResp5,valResp6,valResp7,valResp8,
+          setValResp1,setValResp2,setValResp3,setValResp4,setValResp5,setValResp6,setValResp7,setValResp8,     
+     } = useContext(ContextAreaDeTrabajo); 
+
+     const guardaRespuestaBD = (opcResp) => {
+          let varUpdate = '';
+
+          switch (opcResp) {
+               case 1:
+                    varUpdate = 'valor01'
+                    break;
+               case 2:
+                    varUpdate = 'valor02'
+                    break;
+               case 3:
+                    varUpdate = 'valor03'
+                    break;
+               case 4:
+                    varUpdate = 'valor04'
+                    break;
+               case 5:
+                    varUpdate = 'valor05'
+                    break;
+               default:
+                    break;
+          }
+
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+               tx.executeSql(`UPDATE TBL_RESPUESTA SET valor01 = null,valor02 = null,valor03 = null,valor04 = null,valor05 = null WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {                         
+               }, null);
+
+               tx.executeSql(`UPDATE TBL_RESPUESTA SET ${varUpdate} = 1 WHERE slide = ?  AND id_proyecto = ? `, [slideSelected.id,idProyectoActual], function(tx, results) {                         
+               }, null);               
+          });
+     }
+
+
+
+     const selectedRespImage = (idResp) =>{
+          setValResp1('');
+          setValResp2('');
+          setValResp3('');
+          setValResp4('');
+          setValResp5('');
+
+          switch (idResp) {
+               case 1:
+                    setValResp1(1)
+                    guardaRespuestaBD(1)
+                    break;
+               case 2:
+                    setValResp2(1)
+                    guardaRespuestaBD(2)
+                    break;
+               case 3:
+                    setValResp3(1)
+                    guardaRespuestaBD(3)
+                    break;
+               case 4:
+                    setValResp4(1)
+                    guardaRespuestaBD(4)
+                    break;
+               case 5:
+                    setValResp5(1)
+                    guardaRespuestaBD(5)
+                    break;
+               default:
+                    break;
+          }
+     } 
+
 
      return (
-          <div className='seleccionaCorrectoRadioImagen' >               
-
-          </div>
+          <>
+               {
+                    (props.radio == 1 && (urlImg1 && urlImg1!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(1)} className={valResp1 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : 
+                    (props.radio == 2 && (urlImg2 && urlImg2!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(2)} className={valResp2 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : 
+                    (props.radio == 3 && (urlImg3 && urlImg3!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(3)} className={valResp3 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : 
+                    (props.radio == 4 && (urlImg4 && urlImg4!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(4)} className={valResp4 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : 
+                    (props.radio == 5 && (urlImg5 && urlImg5!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(5)} className={valResp5 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : null
+               }
+          
+          </>
      )
 
 }

@@ -41,7 +41,8 @@ const Visor = () => {
 
   const cargaElementosPlantilla = () => {
     console.log("plantillaSeleccionada"+plantillaSeleccionada)
-    
+    let respuestasRadio1='',respuestasRadio2='',respuestasRadio3='',respuestasRadio4='',respuestasRadio5='',respuestasRadio6='',respuestasRadio7='',respuestasRadio8='';
+
       switch (plantillaSeleccionada){        
         case "1":
           return <>
@@ -209,7 +210,7 @@ const Visor = () => {
                   </>
         break;
         case "10":   /* Pregunta RADIO simple */
-        let respuestasRadio1='',respuestasRadio2='',respuestasRadio3='',respuestasRadio4='',respuestasRadio5='',respuestasRadio6='',respuestasRadio7='',respuestasRadio8='';
+        
         resp1  ? respuestasRadio1 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="1"  value="" /><label className='vis_labelRespuesta' for="1" >{resp1} { valResp1 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
         resp2  ? respuestasRadio2 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="2"  value="" /><label className='vis_labelRespuesta' for="2" >{resp2} { valResp2 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
         resp3  ? respuestasRadio3 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="3"  value="" /><label className='vis_labelRespuesta' for="3" >{resp3} { valResp3 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
@@ -241,15 +242,27 @@ const Visor = () => {
                     </div>
                   </>
         break;
-        case "11":
+        case "11":  /** Pregunta Radio tipo omagenes */
           let regImagesRadio1= "",regImagesRadio2= "",regImagesRadio3= "",regImagesRadio4= "",regImagesRadio5 = "";
           
+          let iconSelectResp1 ='';
+          let iconSelectResp2 ='';
+          let iconSelectResp3 ='';
+          let iconSelectResp4 ='';
+          let iconSelectResp5 ='';
+          
+          (valResp1 == 1) ? iconSelectResp1=<div className='iconSelectedRadioImagen' ><i className="fa-sharp fa-solid fa-badge-check"></i></div> : iconSelectResp1 = null;
+          (valResp2 == 1) ? iconSelectResp2=<div className='iconSelectedRadioImagen' ><i className="fa-sharp fa-solid fa-badge-check"></i></div> : iconSelectResp2 = null;
+          (valResp3 == 1) ? iconSelectResp3=<div className='iconSelectedRadioImagen' ><i className="fa-sharp fa-solid fa-badge-check"></i></div> : iconSelectResp3 = null;
+          (valResp4 == 1) ? iconSelectResp4=<div className='iconSelectedRadioImagen' ><i className="fa-sharp fa-solid fa-badge-check"></i></div> : iconSelectResp4 = null;
+          (valResp5 == 1) ? iconSelectResp5=<div className='iconSelectedRadioImagen' ><i className="fa-sharp fa-solid fa-badge-check"></i></div> : iconSelectResp5 = null;
+   
 
-          ( urlImg1 && urlImg1 != "./../../logos/image_icon.png" ) ? regImagesRadio1=<><div onClick={()=> setImageSelected(1)} className={imageSelected==1 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg1} /></div></>:regImagesRadio1=<><div className="vis_imagenRowElement01" ><img className="vis_imagenPrb01" src={defa} /></div></>;
-          ( urlImg2 && urlImg2 != "./../../logos/image_icon.png" ) ? regImagesRadio2=<><div onClick={()=> setImageSelected(2)} className={imageSelected==2 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg2} /></div></>:regImagesRadio2=<><div className="vis_imagenRowElement01" ><img className="vis_imagenPrb01" src={defa} /></div></>;
-          ( urlImg3 && urlImg3 != "./../../logos/image_icon.png" ) ? regImagesRadio3=<><div onClick={()=> setImageSelected(3)} className={imageSelected==3 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg3} /></div></>:regImagesRadio3=<><div className="vis_imagenRowElement01" ><img className="vis_imagenPrb01" src={defa} /></div></>;
-          ( urlImg4 && urlImg4 != "./../../logos/image_icon.png" ) ? regImagesRadio4=<><div onClick={()=> setImageSelected(4)} className={imageSelected==4 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg4} /></div></>:regImagesRadio4=<></>;
-          ( urlImg5 && urlImg5 != "./../../logos/image_icon.png" ) ? regImagesRadio5=<><div onClick={()=> setImageSelected(5)} className={imageSelected==5 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg5} /></div></>:regImagesRadio5=<></>;
+          ( urlImg1 && urlImg1 != "./../../logos/image_icon.png" ) ? regImagesRadio1=<><div onClick={()=> setImageSelected(1)} className={imageSelected==1 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg1} />{iconSelectResp1}</div></>:regImagesRadio1=<><div className="vis_imagenRowElement01" ><img className="vis_imagenPrb01" src={defa} /></div></>;
+          ( urlImg2 && urlImg2 != "./../../logos/image_icon.png" ) ? regImagesRadio2=<><div onClick={()=> setImageSelected(2)} className={imageSelected==2 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg2} />{iconSelectResp2}</div></>:regImagesRadio2=<><div className="vis_imagenRowElement01" ><img className="vis_imagenPrb01" src={defa} /></div></>;
+          ( urlImg3 && urlImg3 != "./../../logos/image_icon.png" ) ? regImagesRadio3=<><div onClick={()=> setImageSelected(3)} className={imageSelected==3 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg3} />{iconSelectResp3}</div></>:regImagesRadio3=<><div className="vis_imagenRowElement01" ><img className="vis_imagenPrb01" src={defa} /></div></>;
+          ( urlImg4 && urlImg4 != "./../../logos/image_icon.png" ) ? regImagesRadio4=<><div onClick={()=> setImageSelected(4)} className={imageSelected==4 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg4} />{iconSelectResp4}</div></>:regImagesRadio4=<></>;
+          ( urlImg5 && urlImg5 != "./../../logos/image_icon.png" ) ? regImagesRadio5=<><div onClick={()=> setImageSelected(5)} className={imageSelected==5 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg5} />{iconSelectResp5}</div></>:regImagesRadio5=<></>;
           
           console.log(urlImg1,urlImg2,urlImg3,urlImg4,urlImg5)
           
@@ -273,7 +286,43 @@ const Visor = () => {
                     </div>
                   </>
         break;
-
+        case "12":   /* Pregunta RADIO simple */
+        
+        resp1  ? respuestasRadio1 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="1"  value="" /><label className='vis_labelRespuesta' for="1" >{resp1} { valResp1 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp2  ? respuestasRadio2 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="2"  value="" /><label className='vis_labelRespuesta' for="2" >{resp2} { valResp2 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp3  ? respuestasRadio3 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="3"  value="" /><label className='vis_labelRespuesta' for="3" >{resp3} { valResp3 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp4  ? respuestasRadio4 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="4"  value="" /><label className='vis_labelRespuesta' for="4" >{resp4} { valResp4 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp5  ? respuestasRadio5 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="5"  value="" /><label className='vis_labelRespuesta' for="5" >{resp5} { valResp5 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp6  ? respuestasRadio6 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="6"  value="" /><label className='vis_labelRespuesta' for="6" >{resp6} { valResp6 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp7  ? respuestasRadio7 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="7"  value="" /><label className='vis_labelRespuesta' for="7" >{resp7} { valResp7 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp8  ? respuestasRadio8 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="8"  value="" /><label className='vis_labelRespuesta' for="8" >{resp8} { valResp8 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          
+          return  <>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                              <div className="vis_contSlide" >                                  
+                                    <div className="vis_titulo" >{ valPlant_Titulo }</div>
+                                    <div className="vis_txtPregunta" >{ slideTexto1 }</div>
+                                    <div className='vis_contRespTipo12' >
+                                        <div className="vis_contRadioChecSimple radio12" >
+                                            { respuestasRadio1 }
+                                            { respuestasRadio2 }
+                                            { respuestasRadio3 }
+                                            { respuestasRadio4 }
+                                            { respuestasRadio5 }
+                                            { respuestasRadio6 }
+                                            { respuestasRadio7 }
+                                            { respuestasRadio8 }
+                                        </div>
+                                        <img className="vis_imagenCols_radio12" src={urlImg1} />
+                                    </div>
+                                    
+                              </div> 
+                      </div>
+                    </div>
+                  </>
+        break;
          
 
       }

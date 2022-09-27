@@ -172,10 +172,22 @@ const EditarSlide = () => {
                       <ObjSld_imagen1 />
                       <PreguntaRadio02 radio='1' />                      
                       <ObjSld_imagen2 />
+                      <PreguntaRadio02 radio='2' />
                       <ObjSld_imagen3 />
+                      <PreguntaRadio02 radio='3' />
                       <ObjSld_imagen4  elim="true" />
+                      <PreguntaRadio02 radio='4' />
                       <ObjSld_imagen5  elim="true" />
+                      <PreguntaRadio02 radio='5' />
                       
+                    </>
+          break;
+          case "12":
+            return  <>                      
+                      <ObjSld_titulo />
+                      <Texto5 variab='texto1' />
+                      <ObjSld_imagen1 />
+                      <PreguntaRadio01 />                      
                     </>
           break;
         }
