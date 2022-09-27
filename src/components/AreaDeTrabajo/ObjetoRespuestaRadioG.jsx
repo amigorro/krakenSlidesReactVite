@@ -29,6 +29,15 @@ export const ObjetoRespuestaRadioG = ( params ) => {
                case "5":
                     variableDb = 'txt05_respuesta';
                     break;          
+               case "6":
+                    variableDb = 'txt06_respuesta';
+                    break;          
+               case "7":
+                    variableDb = 'txt07_respuesta';
+                    break;          
+               case "8":
+                    variableDb = 'txt08_respuesta';
+                    break;          
           }
 
 
@@ -103,6 +112,9 @@ export const ObjetoRespuestaRadioG = ( params ) => {
           setValResp3('')
           setValResp4('')
           setValResp5('')          
+          setValResp6('')  
+          setValResp7('')  
+          setValResp8('')  
           switch(idResp){
                case '1':
                     setValResp1('1')
@@ -124,6 +136,18 @@ export const ObjetoRespuestaRadioG = ( params ) => {
                     setValResp5('1')                    
                     actualizaRespuestaValRadio(5)
                     break;               
+               case '6':                    
+                    setValResp6('1')                    
+                    actualizaRespuestaValRadio(6)
+                    break;               
+               case '7':                    
+                    setValResp7('1')                    
+                    actualizaRespuestaValRadio(7)
+                    break;          
+               case '8':                    
+                    setValResp8('1')                    
+                    actualizaRespuestaValRadio(8)
+                    break;                    
           }
      }
 
@@ -138,6 +162,9 @@ export const ObjetoRespuestaRadioG = ( params ) => {
                     : params.numObj == '3' ? resp3
                     : params.numObj == '4' ? resp4
                     : params.numObj == '5' ? resp5                    
+                    : params.numObj == '6' ? resp6                    
+                    : params.numObj == '7' ? resp7                    
+                    : params.numObj == '8' ? resp8                    
                     : ''
                }
                onChange={(e) => {   
@@ -146,10 +173,17 @@ export const ObjetoRespuestaRadioG = ( params ) => {
                     params.numObj == '3' && setResp3(e.target.value )
                     params.numObj == '4' && setResp4(e.target.value )
                     params.numObj == '5' && setResp5(e.target.value )                                       
+                    params.numObj == '6' && setResp6(e.target.value )                                       
+                    params.numObj == '7' && setResp7(e.target.value )                                       
+                    params.numObj == '8' && setResp8(e.target.value )                                       
                   }}
                onBlur={ (e) => { actualizaResp(e.target.value) } }
                /> 
                
+
+               
+
+
                <div 
                     className={  
                               (params.numObj =='1' && resp1  && valResp1==1 ) ?  'radioValCorrect selected' : 
@@ -161,7 +195,13 @@ export const ObjetoRespuestaRadioG = ( params ) => {
                               (params.numObj =='4' && resp4  && valResp4==1 ) ?  'radioValCorrect selected' :       
                               (params.numObj =='4' && resp4  ) ?  'radioValCorrect' : 
                               (params.numObj =='5' && resp5  && valResp5==1 ) ?  'radioValCorrect selected' :       
-                              (params.numObj =='5' && resp5  ) ?  'radioValCorrect' : 'quitarRadioValCorrect'
+                              (params.numObj =='5' && resp5  ) ?  'radioValCorrect' : 
+                              (params.numObj =='6' && resp6  && valResp6==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='6' && resp6  ) ?  'radioValCorrect' : 
+                              (params.numObj =='7' && resp7  && valResp7==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='7' && resp7  ) ?  'radioValCorrect' : 
+                              (params.numObj =='8' && resp8  && valResp8==1 ) ?  'radioValCorrect selected' :       
+                              (params.numObj =='8' && resp8  ) ?  'radioValCorrect' : 'quitarRadioValCorrect'
                     }
                     onClick={ () => { seleccionaCorrecta(params.numObj) } }
                ></div>

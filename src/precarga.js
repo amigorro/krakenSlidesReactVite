@@ -271,11 +271,13 @@ function precarga() {
                     (7,"Título"                                 ,1,"pl07",1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
                     (8,"dos filas imagenes"                     ,1,"pl08",1,0,1,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0),
                     (9,"cajas texto imagenes"                   ,1,"pl09",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
-                    (10,"cajas texto imagenes"                  ,2,"pr01",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
+                    (10,"Pregunta radio sencilla"               ,2,"pr01",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
                     (11,"Pregunta radio con imágenes"           ,2,"pr02",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
                     (12,"Pregunta radio simple con una imágen"  ,2,"pr03",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
-                      (200,"disenio6",2,"diapo10.png",1,null,null,1,null,null,null,null,1,1,null,null,null,null,null,null,null,null),
-                      (210,"disenio7",2,"diapo11.png",null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
+                    (13,"Pregunta checkbox"                     ,2,"pr04",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
+                    (14,"Audio"                                 ,3,"av01",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
+                    (15,"Video"                                 ,3,"av02",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
+                      
                       (220,"disenio8",3,"diapo14.png",1,null,null,1,1,null,null,null,1,1,null,null,null,null,null,null,null,null),
                       (230,"disenio9",3,"diapo16.png",1,1,null,null,null,null,null,null,1,1,1,null,null,null,null,null,null,null),
                       (240,"disenio10",4,"diapo20.png",1,null,1,1,1,null,null,null,1,1,null,null,null,null,null,null,null,1)

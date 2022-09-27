@@ -6,7 +6,14 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { useQuill } from 'react-quilljs';
 
 import { moverArchivo, renombrarArchivo } from '../helpers/GestionArchivos';
-import { ObjSld_titulo,ObjSld_imagen1,ObjSld_imagen2,ObjSld_imagen3,ObjSld_imagen4,ObjSld_imagen5, BtnAddImage, Texto5, InputText, ObjSld_imagen6, ObjSld_imagen7, ObjSld_imagen8, PreguntaRadio01, PreguntaRadio02 } from './ObjetosSlides';
+import  { ObjSld_titulo,
+          ObjSld_imagen1,ObjSld_imagen2,ObjSld_imagen3,ObjSld_imagen4,ObjSld_imagen5, ObjSld_imagen6, ObjSld_imagen7, ObjSld_imagen8,
+          BtnAddImage, 
+          Texto5, InputText,  
+          PreguntaRadio01, PreguntaRadio02, 
+          PreguntaCheckbox01, 
+          ObjSld_audio, 
+        } from './ObjetosSlides';
 
 const EditarSlide = () => {
 
@@ -190,11 +197,25 @@ const EditarSlide = () => {
                       <PreguntaRadio01 />                      
                     </>
           break;
+          case "13":
+            return  <>                      
+                      <ObjSld_titulo />
+                      <Texto5 variab='texto1' />
+                      <PreguntaCheckbox01 />
+                    </>
+          break;
+          case "14":
+            return  <>                      
+                      <ObjSld_titulo />
+                      <Texto5 variab='texto1' />
+                      <ObjSld_audio />
+                    </>
+          break;
         }
 
     }
 
-    
+
 
 
 

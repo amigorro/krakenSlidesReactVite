@@ -4,6 +4,7 @@ import { ActualizarRegBdSlideContenidos } from '../helpers/GuardaEnBD';
 import {moverDesdeInput} from '../helpers/GestionArchivos';
 import './ObjetosSlides.css'
 import {ObjetoRespuestaRadioG} from './ObjetoRespuestaRadioG'
+import frecuencia from './../../assets/plantillas/subst/frecuencia.gif';
 
 export const ObjSld_titulo = () => {
 
@@ -81,7 +82,7 @@ export const Texto5 = (params) => {
                     value={params.variab === 'texto1' ? slideTexto1 : params.variab === 'texto2' ? slideTexto2 : params.variab === 'texto3' ? slideTexto3 : params.variab === 'texto4' ? slideTexto4 : params.variab === 'texto5' ? slideTexto5 : params.variab === 'texto6' ? slideTexto6 : '' }
                     onChange={ (e) => { params.variab === 'texto1' && setSlideTexto1(e.target.value) || params.variab === 'texto2' && setSlideTexto2(e.target.value) || params.variab === 'texto3' && setSlideTexto3(e.target.value) || params.variab === 'texto4' && setSlideTexto4(e.target.value) || params.variab === 'texto5' && setSlideTexto5(e.target.value) || params.variab === 'texto6' && setSlideTexto6(e.target.value) }}
                     onBlur={ (e)=>{ updateText(e.target.value)} }
-                    cols="70" 
+                    cols="50" 
                     rows="10"
                ></textarea>
           </div>
@@ -656,10 +657,8 @@ export const PreguntaRadio01 = () => {
                     <ObjetoRespuestaRadioG elim="true" numObj="5" />
                     <ObjetoRespuestaRadioG elim="true" numObj="6" />
                     <ObjetoRespuestaRadioG elim="true" numObj="7" />
-                    <ObjetoRespuestaRadioG elim="true" numObj="8" />
-                    
+                    <ObjetoRespuestaRadioG elim="true" numObj="8" />                    
                </div>
-
           </div>
      )
 
@@ -763,6 +762,139 @@ export const PreguntaRadio02 = (props) => {
 }
 
 
+export const PreguntaCheckbox01 = (props) => {
+     
+          const {
+               slideSelected,sesion,idProyectoActual,idUsuario,  
+               resp1,resp2,resp3,resp4,resp5,resp6,resp7,resp8,
+               setResp1,setResp2,setResp3,setResp4,setResp5,setResp6,setResp7,setResp8,                       
+               valResp1,valResp2,valResp3,valResp4,valResp5,valResp6,valResp7,valResp8,
+               setValResp1,setValResp2,setValResp3,setValResp4,setValResp5,setValResp6,setValResp7,setValResp8,     
+          } = useContext(ContextAreaDeTrabajo); 
+     
+          const guardaRespuestaBD_val = (opcResp) => {
+               let varUpdate='';
+               switch (opcResp) {                              
+                    case 1: valResp1== 1 ? (setValResp1(0), varUpdate = 0 ) : (setValResp1(1), varUpdate = 1 ); break;
+                    case 2: valResp2== 1 ? (setValResp2(0), varUpdate = 0 ) : (setValResp2(1), varUpdate = 1 ); break;
+                    case 3: valResp3== 1 ? (setValResp3(0), varUpdate = 0 ) : (setValResp3(1), varUpdate = 1 ); break;
+                    case 4: valResp4== 1 ? (setValResp4(0), varUpdate = 0 ) : (setValResp4(1), varUpdate = 1 ); break;
+                    case 5: valResp5== 1 ? (setValResp5(0), varUpdate = 0 ) : (setValResp5(1), varUpdate = 1 ); break;
+                    case 6: valResp6== 1 ? (setValResp6(0), varUpdate = 0 ) : (setValResp6(1), varUpdate = 1 ); break;
+                    case 7: valResp7== 1 ? (setValResp7(0), varUpdate = 0 ) : (setValResp7(1), varUpdate = 1 ); break;
+                    case 8: valResp8== 1 ? (setValResp8(0), varUpdate = 0 ) : (setValResp8(1), varUpdate = 1 ); break;
+
+               }
+               console.log("===guardaRespuestaBD_val===",opcResp,valResp1)
+               
+               
+               const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {                   
+                    tx.executeSql(`UPDATE TBL_RESPUESTA SET valor0${opcResp} = ? WHERE slide = ?  AND id_proyecto = ? `, [varUpdate,slideSelected.id,idProyectoActual], function(tx, results) {                         
+                         
+                         console.log("Ya estamos dentro del BD");
+                    }, null);               
+               });
+          }
+
+          const guardaRespuestaBD_txt = (txt, variable) => {          
+               const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {                   
+                    tx.executeSql(`UPDATE TBL_RESPUESTA SET ${variable} = ? WHERE slide = ?  AND id_proyecto = ? `, [txt,slideSelected.id,idProyectoActual], function(tx, results) {                         
+                    }, null);               
+               });
+          }
+
+
+          return(
+               <>
+                    <div><div>Respuesta 1:</div>
+                         <input 
+                              onChange={(e)=>setResp1(e.target.value)}
+                              onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt01_respuesta')}
+                              type="text" 
+                         />
+                         { resp1 ? <div className={valResp1 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' }
+                                        onClick={ ()=> guardaRespuestaBD_val(1)  } >d</div> : null }
+                         
+                    </div>
+                    <div><div>Respuesta 2:</div>
+                         <input 
+                              onChange={(e)=>setResp2(e.target.value)}
+                              onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt02_respuesta')}
+                              type="text" 
+                         />
+                         { resp2 ? <div className={valResp2 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
+                                        onClick={ ()=> guardaRespuestaBD_val(2)  }  >d</div> : null }
+                         
+                    </div>
+                    <div><div>Respuesta 3:</div>
+                         <input 
+                              onChange={(e)=>setResp3(e.target.value)}
+                              onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt03_respuesta')}
+                              type="text" 
+                         />
+                         { resp3 ? <div className={valResp3 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
+                                        onClick={ ()=> guardaRespuestaBD_val(3)  } >d</div> : null }
+                         
+                    </div>
+                    <div><div>Respuesta 4:</div>
+                         <input 
+                              onChange={(e)=>setResp4(e.target.value)}
+                              onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt04_respuesta')}
+                              type="text" 
+                         />
+                         { resp4 ? <div className={valResp4 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
+                                        onClick={ ()=> guardaRespuestaBD_val(4)  } >d</div> : null }
+                         
+                    </div>
+                    <div><div>Respuesta 5:</div>
+                         <input 
+                              onChange={(e)=>setResp5(e.target.value)}
+                              onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt05_respuesta')}
+                              type="text" 
+                         />
+                         { resp5 ? <div className={valResp5 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
+                                        onClick={ ()=> guardaRespuestaBD_val(5)  } >d</div> : null }
+                         
+                    </div>
+                    <div><div>Respuesta 6:</div>
+                         <input 
+                              onChange={(e)=>setResp6(e.target.value)}
+                              onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt06_respuesta')}
+                              type="text" 
+                         />
+                         { resp6 ? <div className={valResp6 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
+                                        onClick={ ()=> guardaRespuestaBD_val(6)  } >d</div> : null }
+                         
+                    </div>
+                    <div><div>Respuesta 7:</div>
+                         <input 
+                              onChange={(e)=>setResp7(e.target.value)}
+                              onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt07_respuesta')}
+                              type="text" 
+                         />
+                         {resp7 ? <div  className={valResp7 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
+                                        onClick={ ()=> guardaRespuestaBD_val(7)  } >d</div> : null }
+                         
+                    </div>
+                    <div><div>Respuesta 8:</div>
+                         <input 
+                              onChange={(e)=>setResp8(e.target.value)}
+                              onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt08_respuesta')}
+                              type="text" 
+                         />
+                         {resp8 ? <div  className={valResp8 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
+                                        onClick={ ()=> guardaRespuestaBD_val(8)  } >d</div> : null}
+                         
+                    </div>
+               </>
+          )
+}
+
+
+
+
 
 export const BtnAddImage = () => {
      
@@ -771,3 +903,55 @@ export const BtnAddImage = () => {
      )
 
 }
+
+
+
+
+export const ObjSld_audio = (props) => {
+          const inputRefAudio = useRef(null);     
+          const {
+               slideSelected,sesion,idProyectoActual,idUsuario,urlImg1, setUrlImg1,
+          } = useContext(ContextAreaDeTrabajo); 
+     
+          const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
+               return new Promise(function(resolve, reject){               
+                    const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+                    db.transaction(function(tx) {
+                         tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
+                              let carpeta = idProyectoActual;
+                              let url='';
+                              if( results.rows.item(0).imagen8 =='image.png' ){
+                                   url = `./../../logos/image_icon.png?${new Date().getTime()}`
+                              } else{
+                                   url = frecuencia
+                              }
+                              setUrlImg1(url)
+                              resolve("ok")
+                         }, null);
+                    });
+               })
+          }
+     
+          return (
+               <div className='contImagen' >
+                    <div>
+                         <div>Selecciona el audio: </div>
+                         <input
+                              id="input-audio"
+                              type="file"
+                              ref={inputRefAudio}
+                              className="input-imagen"
+                              onChange={(e) => {                                   
+                                        moverDesdeInput(inputRefAudio, slideSelected.id+'-i1',idProyectoActual,slideSelected.id,idProyectoActual,'i1')
+                                        .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
+                                   }
+                              }
+                         />
+                         <label htmlFor="input-audio"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg1 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
+                    </div>
+                    <div className='previewImg' ><img src={ urlImg1 } id="imgSlide8"  className="img-prev" /></div>               
+               </div>
+          )
+     }
+     
+     

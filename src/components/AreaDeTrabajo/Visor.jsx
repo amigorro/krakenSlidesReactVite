@@ -286,16 +286,55 @@ const Visor = () => {
                     </div>
                   </>
         break;
-        case "12":   /* Pregunta RADIO simple */
+        case "12":   /* Pregunta RADIO simple con UNA imágen */
         
-        resp1  ? respuestasRadio1 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="1"  value="" /><label className='vis_labelRespuesta' for="1" >{resp1} { valResp1 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
-        resp2  ? respuestasRadio2 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="2"  value="" /><label className='vis_labelRespuesta' for="2" >{resp2} { valResp2 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
-        resp3  ? respuestasRadio3 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="3"  value="" /><label className='vis_labelRespuesta' for="3" >{resp3} { valResp3 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
-        resp4  ? respuestasRadio4 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="4"  value="" /><label className='vis_labelRespuesta' for="4" >{resp4} { valResp4 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
-        resp5  ? respuestasRadio5 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="5"  value="" /><label className='vis_labelRespuesta' for="5" >{resp5} { valResp5 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
-        resp6  ? respuestasRadio6 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="6"  value="" /><label className='vis_labelRespuesta' for="6" >{resp6} { valResp6 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
-        resp7  ? respuestasRadio7 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="7"  value="" /><label className='vis_labelRespuesta' for="7" >{resp7} { valResp7 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
-        resp8  ? respuestasRadio8 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="8"  value="" /><label className='vis_labelRespuesta' for="8" >{resp8} { valResp8 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          resp1  ? respuestasRadio1 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="1"  value="" /><label className='vis_labelRespuesta' for="1" >{resp1} { valResp1 == '1' && <div className='iconSelected_t12' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          resp2  ? respuestasRadio2 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="2"  value="" /><label className='vis_labelRespuesta' for="2" >{resp2} { valResp2 == '1' && <div className='iconSelected_t12' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          resp3  ? respuestasRadio3 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="3"  value="" /><label className='vis_labelRespuesta' for="3" >{resp3} { valResp3 == '1' && <div className='iconSelected_t12' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          resp4  ? respuestasRadio4 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="4"  value="" /><label className='vis_labelRespuesta' for="4" >{resp4} { valResp4 == '1' && <div className='iconSelected_t12' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          resp5  ? respuestasRadio5 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="5"  value="" /><label className='vis_labelRespuesta' for="5" >{resp5} { valResp5 == '1' && <div className='iconSelected_t12' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          resp6  ? respuestasRadio6 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="6"  value="" /><label className='vis_labelRespuesta' for="6" >{resp6} { valResp6 == '1' && <div className='iconSelected_t12' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          resp7  ? respuestasRadio7 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="7"  value="" /><label className='vis_labelRespuesta' for="7" >{resp7} { valResp7 == '1' && <div className='iconSelected_t12' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+          resp8  ? respuestasRadio8 = <><input className='vis_inputPregunta' type="radio" name="radioChecSimple" id="8"  value="" /><label className='vis_labelRespuesta' for="8" >{resp8} { valResp8 == '1' && <div className='iconSelected_t12' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+            
+            return  <>
+                      <div className='visorVistaPrCont' >
+                        <div className='visor-Paginacion' >{paginacion}</div>
+                        <div className='visorContenidos' >
+                                <div className="vis_contSlide" >
+                                      <div className="vis_titulo" >{ valPlant_Titulo }</div>
+                                      <div className="vis_txtPregunta" >{ slideTexto1 }</div>
+                                      <div className='vis_contRespTipo12' >
+                                          <div className="vis_contRadioChecSimple_t12" >
+                                              { respuestasRadio1 }
+                                              { respuestasRadio2 }
+                                              { respuestasRadio3 }
+                                              { respuestasRadio4 }
+                                              { respuestasRadio5 }
+                                              { respuestasRadio6 }
+                                              { respuestasRadio7 }
+                                              { respuestasRadio8 }
+                                          </div>
+                                          <dir className='vis_imagenRadio12_cont' ><img className="vis_imagenRadio_t12" src={urlImg1} /></dir>                                          
+                                      </div>
+                                      
+                                </div> 
+                        </div>
+                      </div>
+                    </>
+        break;
+
+        case "13":   /* Pregunta RADIO simple */
+            
+
+        resp1  ? respuestasRadio1 = <><input className='vis_inputPregunta' type="checkbox" name="radioChecSimple" id="1"  value="" /><label className='vis_labelRespuesta' for="1" >{resp1} { valResp1 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp2  ? respuestasRadio2 = <><input className='vis_inputPregunta' type="checkbox" name="radioChecSimple" id="2"  value="" /><label className='vis_labelRespuesta' for="2" >{resp2} { valResp2 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp3  ? respuestasRadio3 = <><input className='vis_inputPregunta' type="checkbox" name="radioChecSimple" id="3"  value="" /><label className='vis_labelRespuesta' for="3" >{resp3} { valResp3 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp4  ? respuestasRadio4 = <><input className='vis_inputPregunta' type="checkbox" name="radioChecSimple" id="4"  value="" /><label className='vis_labelRespuesta' for="4" >{resp4} { valResp4 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp5  ? respuestasRadio5 = <><input className='vis_inputPregunta' type="checkbox" name="radioChecSimple" id="5"  value="" /><label className='vis_labelRespuesta' for="5" >{resp5} { valResp5 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp6  ? respuestasRadio6 = <><input className='vis_inputPregunta' type="checkbox" name="radioChecSimple" id="6"  value="" /><label className='vis_labelRespuesta' for="6" >{resp6} { valResp6 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp7  ? respuestasRadio7 = <><input className='vis_inputPregunta' type="checkbox" name="radioChecSimple" id="7"  value="" /><label className='vis_labelRespuesta' for="7" >{resp7} { valResp7 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
+        resp8  ? respuestasRadio8 = <><input className='vis_inputPregunta' type="checkbox" name="radioChecSimple" id="8"  value="" /><label className='vis_labelRespuesta' for="8" >{resp8} { valResp8 == '1' && <div className='iconSelected' ><i className='fa-duotone fa-badge-check'></i></div>  }</label></>: null
           
           return  <>
                     <div className='visorVistaPrCont' >
@@ -304,20 +343,16 @@ const Visor = () => {
                               <div className="vis_contSlide" >                                  
                                     <div className="vis_titulo" >{ valPlant_Titulo }</div>
                                     <div className="vis_txtPregunta" >{ slideTexto1 }</div>
-                                    <div className='vis_contRespTipo12' >
-                                        <div className="vis_contRadioChecSimple radio12" >
-                                            { respuestasRadio1 }
-                                            { respuestasRadio2 }
-                                            { respuestasRadio3 }
-                                            { respuestasRadio4 }
-                                            { respuestasRadio5 }
-                                            { respuestasRadio6 }
-                                            { respuestasRadio7 }
-                                            { respuestasRadio8 }
-                                        </div>
-                                        <img className="vis_imagenCols_radio12" src={urlImg1} />
+                                    <div className="vis_contRadioChecSimple_t13" >
+                                        { respuestasRadio1 }
+                                        { respuestasRadio2 }
+                                        { respuestasRadio3 }
+                                        { respuestasRadio4 }
+                                        { respuestasRadio5 }
+                                        { respuestasRadio6 }
+                                        { respuestasRadio7 }
+                                        { respuestasRadio8 }
                                     </div>
-                                    
                               </div> 
                       </div>
                     </div>
