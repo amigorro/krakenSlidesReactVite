@@ -358,6 +358,26 @@ const Visor = () => {
                     </div>
                   </>
         break;
+
+
+        case "14":   /* Pregunta RADIO simple */
+            
+          return  <>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                              <div className="vis_contSlide" >                                  
+                                    <div className="vis_titulo" >{ valPlant_Titulo }</div>
+                                    <div className="vis_txtPregunta" >{ slideTexto1 }</div>
+                                    
+                              </div> 
+                      </div>
+                    </div>
+                  </>
+        break;
+
+
+
          
 
       }

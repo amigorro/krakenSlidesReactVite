@@ -5,6 +5,7 @@ import {moverDesdeInput} from '../helpers/GestionArchivos';
 import './ObjetosSlides.css'
 import {ObjetoRespuestaRadioG} from './ObjetoRespuestaRadioG'
 import frecuencia from './../../assets/plantillas/subst/frecuencia.gif';
+import audio_ini from './../../assets/plantillas/subst/audio00.png';
 
 export const ObjSld_titulo = () => {
 
@@ -912,7 +913,9 @@ export const ObjSld_audio = (props) => {
           const {
                slideSelected,sesion,idProyectoActual,idUsuario,urlImg1, setUrlImg1,
           } = useContext(ContextAreaDeTrabajo); 
-     
+          
+          console.log("dfdsadsadsadsa: ",urlImg1)
+
           const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
                return new Promise(function(resolve, reject){               
                     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -920,8 +923,8 @@ export const ObjSld_audio = (props) => {
                          tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
                               let carpeta = idProyectoActual;
                               let url='';
-                              if( results.rows.item(0).imagen8 =='image.png' ){
-                                   url = `./../../logos/image_icon.png?${new Date().getTime()}`
+                              if( results.rows.item(0).imagen1 =='image.png' ){
+                                   url = `./../../logos/image_icon.png`
                               } else{
                                    url = frecuencia
                               }
@@ -949,7 +952,7 @@ export const ObjSld_audio = (props) => {
                          />
                          <label htmlFor="input-audio"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg1 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
                     </div>
-                    <div className='previewImg' ><img src={ urlImg1 } id="imgSlide8"  className="img-prev" /></div>               
+                    <div className='previewImg' ><img src={ (urlImg1=='./../../logos/image_icon.png' || !urlImg1 ) ? audio_ini : frecuencia     } id="imgSlide8"  className="img-prev" /></div>               
                </div>
           )
      }

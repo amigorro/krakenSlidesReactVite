@@ -172,7 +172,7 @@ export const PruebaOrder = () => {
                          
                          let urlimg1='';
                          if( results.rows.item(0).imagen1 =='image.png'  || !results.rows.item(0).imagen1 ){
-                              urlimg1 = `./../../logos/image_icon.png?${new Date().getTime()}`
+                              urlimg1 = `./../../logos/image_icon.png`
                          } else{ urlimg1 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}?${new Date().getTime()}` }
                          setUrlImg1(urlimg1)
                          
