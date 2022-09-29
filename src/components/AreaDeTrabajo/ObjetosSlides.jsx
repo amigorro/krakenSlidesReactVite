@@ -942,6 +942,7 @@ export const ObjSld_audio = (props) => {
                          <input
                               id="input-audio"
                               type="file"
+                              accept=".mp3"
                               ref={inputRefAudio}
                               className="input-imagen"
                               onChange={(e) => {                                   

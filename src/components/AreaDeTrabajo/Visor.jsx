@@ -2,6 +2,10 @@ import React, {useEffect,useState, useContext} from 'react'
 import './Visor.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import defa from './../../assets/plantillas/subst/default.png';
+
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
+
 const Visor = () => {
   const [imageSelected,setImageSelected] = useState('')
   const {    
@@ -369,7 +373,7 @@ const Visor = () => {
                               <div className="vis_contSlide" >                                  
                                     <div className="vis_titulo" >{ valPlant_Titulo }</div>
                                     <div className="vis_txtPregunta" >{ slideTexto1 }</div>
-                                    
+                                    <RepAudio  urlAudio={urlImg1} />
                               </div> 
                       </div>
                     </div>
@@ -416,3 +420,48 @@ const Visor = () => {
 }
 
 export default Visor
+
+export function RepAudio(props) {
+  const musicTracks = [
+    {
+      name: "Audio",
+      src: props.urlAudio
+    }
+  ];
+
+  const [trackIndex, setTrackIndex] = useState(0);
+
+  const handleClickPrevious = () => {
+    setTrackIndex((currentTrack) =>
+      currentTrack === 0 ? musicTracks.length - 1 : currentTrack - 1
+    );
+  };
+
+  const handleClickNext = () => {
+    setTrackIndex((currentTrack) =>
+      currentTrack < musicTracks.length - 1 ? currentTrack + 1 : 0
+    );
+  };
+
+  return (
+      <AudioPlayer
+        // style={{ width: "300px" }}
+        style={{ margin: "70px auto" }}
+        autoPlayAfterSrcChange={false}
+        // layout="horizontal"
+        src={musicTracks[trackIndex].src}
+        onPlay={(e) => console.log("onPlay")}
+        //showSkipControls={true}
+        showJumpControls={false}
+        volume={0.4}
+        //header={`Now playing: ${musicTracks[trackIndex].name}`}
+        //footer="aaaawd"
+        //onClickPrevious={handleClickPrevious}
+        //onClickNext={handleClickNext}
+        //onEnded={handleClickNext}
+        // other props here
+        customAdditionalControls={ [] }        
+          
+      />    
+  );
+}
