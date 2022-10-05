@@ -593,3 +593,14 @@
 .selectedCheck{
 	background-color: rgb(240, 98, 32) !important;
 }
+
+
+/* video */
+.contVideo{
+	width:90%;
+	height: 86%;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 30px auto;
+}

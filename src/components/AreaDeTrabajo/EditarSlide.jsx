@@ -211,6 +211,12 @@ const EditarSlide = () => {
                       <ObjSld_audio />
                     </>
           break;
+          case "15":
+            return  <>                  
+                      <ObjSld_audio />
+                      <ObjSld_imagen2 />
+                    </>
+          break;
         }
 
     }

@@ -380,6 +380,32 @@ const Visor = () => {
                   </>
         break;
 
+        case "15":   /* Pregunta RADIO simple */            
+            
+            return  (  
+
+                  urlImg2 != "" ? 
+                  <>
+                  <div className='contVideo'>
+                      <video
+                        src={urlImg2}
+                        controls
+                        disablePictureInPicture
+                        controlsList="noplaybackrate nodownload nofullscreen "
+                        style={{ width: '100%' }}                        
+                      />
+                  </div>
+                  </>
+                    : null
+                  ) 
+        break;
+
+
+
+        
+
+
+
 
 
          

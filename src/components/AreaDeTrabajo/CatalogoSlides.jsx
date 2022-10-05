@@ -18,6 +18,7 @@ import plant11 from './../../assets/plantillas/subst/pr02.png';
 import plant12 from './../../assets/plantillas/subst/pr03.png';
 import plant13 from './../../assets/plantillas/subst/pr04.png';
 import plant14 from './../../assets/plantillas/subst/av01.png';
+import plant15 from './../../assets/plantillas/subst/av02.png';
 import defa from './../../assets/plantillas/subst/default.png';
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
@@ -124,6 +125,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
           tipoPlant = 'Pregunta';          
             break;
         case '14':
+        case '15':
           tipoPlant = 'AudioVideo';
     }
 
@@ -280,6 +282,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                                       plantilla.miniatura == 'pr03' ? plant12 :
                                       plantilla.miniatura == 'pr04' ? plant13 :
                                       plantilla.miniatura == 'av01' ? plant14 :
+                                      plantilla.miniatura == 'av02' ? plant15 :
                                       defa
                                   } alt='miniatura' />
                               </div>                              
