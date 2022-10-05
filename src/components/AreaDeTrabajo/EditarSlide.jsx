@@ -12,8 +12,9 @@ import  { ObjSld_titulo,
           Texto5, InputText,  
           PreguntaRadio01, PreguntaRadio02, 
           PreguntaCheckbox01, 
-          ObjSld_audio, 
+          ObjSld_audio, ObjSld_video,
         } from './ObjetosSlides';
+import {Menu01} from './Menus';
 
 const EditarSlide = () => {
 
@@ -213,8 +214,15 @@ const EditarSlide = () => {
           break;
           case "15":
             return  <>                  
-                      <ObjSld_audio />
+                      <ObjSld_video />
                       <ObjSld_imagen2 />
+                    </>
+          break;
+          case "16":
+            return  <>          
+                      <ObjSld_titulo />
+                      <Texto5 variab='texto1' />
+                      <Menu01 />  
                     </>
           break;
         }

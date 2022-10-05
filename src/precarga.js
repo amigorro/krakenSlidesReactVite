@@ -100,28 +100,38 @@ function precarga() {
                     primary key(id_plantilla));`);
         
         tx.executeSql(`CREATE TABLE IF NOT EXISTS TBL_CRONOGRAMA(
-                     id_cronograma varhar(10),
-                     id_proyecto int,
-                     id_usuario int,
-                     sesion int,
-                     tipo int,
-                     id_slide varhar(10),
-                     objetivo varchar(330),
-                     instrucciones varchar(330),
-                     tiempo int,
-                     materiales varchar(200),
-                     notas varchar(330),
-                     tec1 int,
-                     tec2 int,
-                     tec3 int,
-                     tec4 int,
-                     tec5 int,
-                     tec6 int,
-                     tec7 int,
-                     tec8 int,
-                     tec9 int,
-                     tec10 int,
-                     primary key(id_proyecto,id_slide,sesion,id_usuario));`);  
+                      id_cronograma varhar(10),
+                      id_proyecto int,
+                      id_usuario int,
+                      sesion int,
+                      tipo int,
+                      id_slide varhar(10),
+                      objetivo varchar(330),
+                      instrucciones varchar(330),
+                      tiempo int,
+                      materiales varchar(200),
+                      notas varchar(330),
+                      tec1 int,
+                      tec2 int,
+                      tec3 int,
+                      tec4 int,
+                      tec5 int,
+                      tec6 int,
+                      tec7 int,
+                      tec8 int,
+                      tec9 int,
+                      tec10 int,
+                      primary key(id_proyecto,id_slide,sesion,id_usuario));`);  
+        
+        tx.executeSql(`CREATE TABLE IF NOT EXISTS MENUS( 
+                      id_option varchar(10),
+                      id_proyecto int,
+                      id_usuario int,
+                      sesion int,
+                      slide varchar(10),
+                      txt varchar(120),
+                      skip varchar(10),                      
+                      primary key(id_option,id_proyecto,id_usuario,sesion));`);
 
           /**
            * 
@@ -277,10 +287,9 @@ function precarga() {
                     (13,"Pregunta checkbox"                     ,2,"pr04",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
                     (14,"Audio"                                 ,3,"av01",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
                     (15,"Video"                                 ,3,"av02",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0),
+                    (16,"Menu de una columna"                   ,4,"mn01",1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0)                      
                       
-                      (220,"disenio8",3,"diapo14.png",1,null,null,1,1,null,null,null,1,1,null,null,null,null,null,null,null,null),
-                      (230,"disenio9",3,"diapo16.png",1,1,null,null,null,null,null,null,1,1,1,null,null,null,null,null,null,null),
-                      (240,"disenio10",4,"diapo20.png",1,null,1,1,1,null,null,null,1,1,null,null,null,null,null,null,null,1)
+                    
             `); 
 
 

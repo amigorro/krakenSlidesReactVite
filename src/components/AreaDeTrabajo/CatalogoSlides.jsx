@@ -19,6 +19,7 @@ import plant12 from './../../assets/plantillas/subst/pr03.png';
 import plant13 from './../../assets/plantillas/subst/pr04.png';
 import plant14 from './../../assets/plantillas/subst/av01.png';
 import plant15 from './../../assets/plantillas/subst/av02.png';
+import plant16 from './../../assets/plantillas/subst/mn01.png';
 import defa from './../../assets/plantillas/subst/default.png';
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
@@ -127,6 +128,8 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
         case '14':
         case '15':
           tipoPlant = 'AudioVideo';
+        case '16':
+            tipoPlant = 'Menu';
     }
 
     /* Ingresamos el registro en la ba  se de datos */
@@ -283,6 +286,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                                       plantilla.miniatura == 'pr04' ? plant13 :
                                       plantilla.miniatura == 'av01' ? plant14 :
                                       plantilla.miniatura == 'av02' ? plant15 :
+                                      plantilla.miniatura == 'mn01' ? plant16 :
                                       defa
                                   } alt='miniatura' />
                               </div>                              

@@ -93,6 +93,9 @@ const Routeo = () => {
      const [resp8, setResp8] = useState('')
      const [valResp8, setValResp8] = useState()
 
+     /* MENUS */
+     const [listadoOpcionesMenu, setListadoOpcionesMenu] = useState([]);
+
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
 
@@ -192,6 +195,7 @@ const Routeo = () => {
                                    resp8, setResp8,
                                    valResp8, setValResp8,
                                    
+                                   listadoOpcionesMenu, setListadoOpcionesMenu,
 
                                    modalGlosario, setModalGlosario,
                               

@@ -28,7 +28,6 @@ const ProyectosActivos = () => {
         getDataProyectosBD(1)
     }, []  )
 
- 
 
 
     const getDataProyectosBD = async (id_usuario) =>{

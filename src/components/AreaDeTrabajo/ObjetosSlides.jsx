@@ -5,7 +5,9 @@ import {moverDesdeInput} from '../helpers/GestionArchivos';
 import './ObjetosSlides.css'
 import {ObjetoRespuestaRadioG} from './ObjetoRespuestaRadioG'
 import frecuencia from './../../assets/plantillas/subst/frecuencia.gif';
+import video_anim from './../../assets/plantillas/subst/video_anim.gif';
 import audio_ini from './../../assets/plantillas/subst/audio00.png';
+import video_ini from './../../assets/plantillas/subst/video00.png';
 
 export const ObjSld_titulo = () => {
 
@@ -956,6 +958,54 @@ export const ObjSld_audio = (props) => {
                     <div className='previewImg' ><img src={ (urlImg1=='./../../logos/image_icon.png' || !urlImg1 ) ? audio_ini : frecuencia     } id="imgSlide8"  className="img-prev" /></div>               
                </div>
           )
+}
+
+export const ObjSld_video = (props) => {
+     const inputRefVideo = useRef(null);     
+     const {
+          slideSelected,sesion,idProyectoActual,idUsuario,urlImg1, setUrlImg1,setUrlImg2,urlImg2
+     } = useContext(ContextAreaDeTrabajo); 
+     
+     console.log("imagen video---: ",urlImg1)
+
+     const obtenerUrlImagen = (idProyectoActual, sesion,id) =>{
+          return new Promise(function(resolve, reject){               
+               const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+               db.transaction(function(tx) {
+                    tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
+                         let carpeta = idProyectoActual;
+                         let url='';
+                         if( results.rows.item(0).imagen1 =='image.png' ){
+                              url = `./../../logos/image_icon.png`
+                         } else{
+                              url = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}`
+                         }
+                         setUrlImg1(url)
+                         resolve("ok")
+                    }, null);
+               });
+          })
      }
-     
-     
+
+     return (
+          <div className='contImagen' >
+               <div>
+                    <div>Selecciona el video: </div>
+                    <input
+                         id="input-video"
+                         type="file"
+                         accept=".mp4"
+                         ref={inputRefVideo}
+                         className="input-imagen"
+                         onChange={(e) => {                                   
+                                   moverDesdeInput(inputRefVideo, slideSelected.id+'-i1',idProyectoActual,slideSelected.id,idProyectoActual,'i1')
+                                   .then( algo =>  obtenerUrlImagen(idProyectoActual,sesion,slideSelected.id, algo))                                   
+                              }
+                         }
+                    />
+                    <label htmlFor="input-video"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg1 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
+               </div>
+               <div className='previewImg' ><img src={ (urlImg1=='./../../logos/image_icon.png' || !urlImg2 ) ? video_ini : video_anim     } id="imgSlide8"  className="img-prev" /></div>               
+          </div>
+     )
+}

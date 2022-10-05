@@ -381,28 +381,34 @@ const Visor = () => {
         break;
 
         case "15":   /* Pregunta RADIO simple */            
-            
+
             return  (  
 
-                  urlImg2 != "" ? 
+                  urlImg1 != "./../../logos/image_icon.png" ? 
                   <>
-                  <div className='contVideo'>
-                      <video
-                        src={urlImg2}
-                        controls
-                        disablePictureInPicture
-                        controlsList="noplaybackrate nodownload nofullscreen "
-                        style={{ width: '100%' }}                        
-                      />
-                  </div>
+                    <div className='visorVistaPrCont' >
+                      <div className='visor-Paginacion' >{paginacion}</div>
+                      <div className='visorContenidos' >
+                          <div className='contVideo'>
+                            <video
+                              src={ urlImg1+`?${new Date().getTime()}` }
+                              controls
+                              poster={ urlImg2+`?${new Date().getTime()}` }
+                              disablePictureInPicture
+                              controlsList="noplaybackrate nodownload nofullscreen "
+                              style={{ width: '100%' }}                        
+                            />
+                          </div>
+                      </div>
+                    </div>
+
+                  
                   </>
                     : null
                   ) 
         break;
 
 
-
-        
 
 
 
