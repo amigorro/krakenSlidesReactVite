@@ -95,6 +95,11 @@ const Routeo = () => {
 
      /* MENUS */
      const [listadoOpcionesMenu, setListadoOpcionesMenu] = useState([]);
+     const [slidesSeleccionables, setSlidesSeleccionables] = useState([]);
+     const [slideSeleccionado, setSlideSeleccionado] = useState('');
+     const [modalEditarOpcMenu, setModalEditarOpcMenu] = useState(false);
+     const [editarSlide, setEditarSlide] = useState('');
+     const [txtUpdateMenu, setTxtUpdateMenu] = useState('');
 
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
@@ -196,6 +201,11 @@ const Routeo = () => {
                                    valResp8, setValResp8,
                                    
                                    listadoOpcionesMenu, setListadoOpcionesMenu,
+                                   slidesSeleccionables, setSlidesSeleccionables,
+                                   slideSeleccionado, setSlideSeleccionado,
+                                   modalEditarOpcMenu, setModalEditarOpcMenu,
+                                   editarSlide, setEditarSlide,
+                                   txtUpdateMenu, setTxtUpdateMenu,
 
                                    modalGlosario, setModalGlosario,
                               

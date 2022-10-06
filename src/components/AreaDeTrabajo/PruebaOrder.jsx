@@ -97,6 +97,8 @@ export const PruebaOrder = () => {
                valResp7, setValResp7,
                resp8, setResp8,
                valResp8, setValResp8,
+               setSlidesSeleccionables,
+               setListadoOpcionesMenu ,
 
      } = useContext(ContextAreaDeTrabajo);
      
@@ -245,8 +247,24 @@ export const PruebaOrder = () => {
                                         console.warn('RESPSSSS:'+results.rows.item(0).txt01_respuesta)
                                    }, null);
                               });
-
                          }
+
+
+                         /* Cargamos los estados de los slides de tipo Menu */
+                         if ( results.rows.item(0).tipo_contenido=='Menu' ){  
+                              tx.executeSql('SELECT * FROM MENUS WHERE id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {                    
+                                   let len = results.rows.length, i;                                        
+                                   
+                                        let opciones2 = []
+                                        for (i = 0; i < len; i++){                              
+                                             opciones2.push(results.rows.item(i))                              
+                                        }
+                                        setListadoOpcionesMenu(opciones2)
+                                   
+                              }, null);
+                         }
+
+
 
                          console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
                     }

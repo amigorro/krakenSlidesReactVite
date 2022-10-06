@@ -39,6 +39,7 @@ const Visor = () => {
     
           resp1, resp2, resp3,resp4,resp5,resp6,resp7,resp8, 
           valResp1,valResp2,valResp3,valResp4,valResp5,valResp6,valResp7,valResp8,
+          listadoOpcionesMenu,
     
   } = useContext(ContextAreaDeTrabajo);
 
@@ -408,6 +409,32 @@ const Visor = () => {
                   ) 
         break;
 
+        case "16":   /* Pregunta RADIO simple */            
+
+            return  (  
+                      <div className='visorVistaPrCont' >
+                        <div className='visor-Paginacion' >{paginacion}</div>
+                        <div className='visorContenidos' >
+                                <div className="vis_contSlide" >
+                                    <div className="vis_titulo" >{valPlant_Titulo}</div>
+                                    <div className="vis_txtPregunta" >{ slideTexto1 }</div>
+                                    <div className="vis_opcionesMenu" >
+                                      {
+                                        listadoOpcionesMenu.map((item,index)=>{
+                                              return(
+                                                <div key={index}>
+                                                      <OptionMenuVista idd={item}  />
+                                                  </div>
+                                              )
+                                        })
+                                      }
+                                    </div>	
+                                </div> 
+                        </div>
+                      </div>
+                    )
+        break;
+
 
 
 
@@ -452,6 +479,44 @@ const Visor = () => {
 }
 
 export default Visor
+
+export const OptionMenuVista = (props) => {
+  const {    
+    idProyectoActual,sesion,
+  } = useContext(ContextAreaDeTrabajo);
+  let txtSlide='';
+  console.log("id::::",idProyectoActual,1,sesion,props.idd.skip)
+  const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+              tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ? ', [idProyectoActual,1,sesion,props.idd.skip], function(tx, results) {
+                txtSlide=results.rows.item(0).nombre_lamina;
+                console.log("txtSlide::::",txtSlide)
+
+                return(
+                      <div className='regOpcionMenu' >
+                          <div >{props.idd.txt} - {txtSlide}</div>  
+                          
+                      </div>
+                )
+
+
+
+              });
+          });
+
+
+  return(
+        <div className='regOpcionMenu' >
+            <div >{props.idd.txt} - {txtSlide}</div>  
+            
+        </div>
+  )
+
+
+}
+
+
+
 
 export function RepAudio(props) {
   const musicTracks = [
