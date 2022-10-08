@@ -39,7 +39,7 @@ const Visor = () => {
     
           resp1, resp2, resp3,resp4,resp5,resp6,resp7,resp8, 
           valResp1,valResp2,valResp3,valResp4,valResp5,valResp6,valResp7,valResp8,
-          listadoOpcionesMenu,
+          listadoOpcionesMenu,setListadoOpcionesMenu,
     
   } = useContext(ContextAreaDeTrabajo);
 
@@ -368,6 +368,7 @@ const Visor = () => {
         case "14":   /* Pregunta RADIO simple */
             
           return  <>
+          
                     <div className='visorVistaPrCont' >
                       <div className='visor-Paginacion' >{paginacion}</div>
                       <div className='visorContenidos' >
@@ -409,8 +410,8 @@ const Visor = () => {
                   ) 
         break;
 
-        case "16":   /* Pregunta RADIO simple */            
-
+        case "16":   /* Pregunta RADIO simple */ 
+                
             return  (  
                       <div className='visorVistaPrCont' >
                         <div className='visor-Paginacion' >{paginacion}</div>
@@ -422,8 +423,10 @@ const Visor = () => {
                                       {
                                         listadoOpcionesMenu.map((item,index)=>{
                                               return(
-                                                <div key={index}>
-                                                      <OptionMenuVista idd={item}  />
+                                                  <div key={index}>
+                                                      <div className='regOpcionMenu' >
+                                                          <div >{item.nombre_lamina} - {item.txt}</div>  
+                                                      </div>
                                                   </div>
                                               )
                                         })
@@ -485,35 +488,34 @@ export const OptionMenuVista = (props) => {
     idProyectoActual,sesion,
   } = useContext(ContextAreaDeTrabajo);
   let txtSlide='';
-  console.log("id::::",idProyectoActual,1,sesion,props.idd.skip)
+  let txtMenu='';
+  
   const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
-              tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ? ', [idProyectoActual,1,sesion,props.idd.skip], function(tx, results) {
+              //tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ? ', [idProyectoActual,1,sesion,props.idd.skip], function(tx, results) {
+                tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS D JOIN  MENUS M ON D.slide = M.skip AND D.id_proyecto = ? AND D.id_usuario = ? AND D.sesion = ? AND D.slide = ? ', [idProyectoActual,1,sesion,props.idd.skip], function(tx, results) {
                 txtSlide=results.rows.item(0).nombre_lamina;
-                console.log("txtSlide::::",txtSlide)
-
-                return(
-                      <div className='regOpcionMenu' >
-                          <div >{props.idd.txt} - {txtSlide}</div>  
-                          
-                      </div>
+                txtMenu=results.rows.item(0).txt;
+                console.log("txtSlide::::",txtSlide,txtMenu)
+                return(                    
+                    <div className='regOpcionMenu' >
+                        <div >{txtMenu} - {txtSlide}</div>  
+                    </div>
                 )
-
-
-
               });
           });
 
 
-  return(
-        <div className='regOpcionMenu' >
-            <div >{props.idd.txt} - {txtSlide}</div>  
-            
-        </div>
-  )
-
+      
 
 }
+
+
+
+
+
+
+
 
 
 

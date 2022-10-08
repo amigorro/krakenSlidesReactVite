@@ -99,6 +99,7 @@ export const PruebaOrder = () => {
                valResp8, setValResp8,
                setSlidesSeleccionables,
                setListadoOpcionesMenu ,
+               listadoOpcionesMenu,
 
      } = useContext(ContextAreaDeTrabajo);
      
@@ -115,6 +116,7 @@ export const PruebaOrder = () => {
           setResp1('')
           setResp2('')
           setResp3('')
+
 
 
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -251,17 +253,18 @@ export const PruebaOrder = () => {
 
 
                          /* Cargamos los estados de los slides de tipo Menu */
+                         let opciones2 = []
                          if ( results.rows.item(0).tipo_contenido=='Menu' ){  
-                              tx.executeSql('SELECT * FROM MENUS WHERE id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {                    
+                         
+                              tx.executeSql('SELECT *  FROM MENUS M LEFT JOIN DATOS_INTRODUCIDOS D   ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ?  ', [idProyectoActual,1,sesion], function(tx, results) {
                                    let len = results.rows.length, i;                                        
-                                   
-                                        let opciones2 = []
-                                        for (i = 0; i < len; i++){                              
+                                        for (i = 0; i < len; i++){                          
+                                             console.warn("PERRUUU - "+results.rows.item(i)["nombre_lamina"]+" UUU "+results.rows.item(i)['txt'])    
                                              opciones2.push(results.rows.item(i))                              
                                         }
                                         setListadoOpcionesMenu(opciones2)
-                                   
                               }, null);
+                         
                          }
 
 

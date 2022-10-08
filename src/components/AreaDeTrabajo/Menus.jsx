@@ -36,8 +36,8 @@ export const Menu01 = () => {
 
      const getDataProyectosBD = async (id_usuario) =>{        
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
-          db.transaction(function(tx) {
-               tx.executeSql('SELECT * FROM MENUS WHERE id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {                    
+          db.transaction(function(tx) {               
+               tx.executeSql('SELECT * FROM MENUS M LEFT JOIN  DATOS_INTRODUCIDOS D ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {                    
                     let len = results.rows.length, i;                                        
                     if(len > 0){
                          let opciones = []
