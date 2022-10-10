@@ -26,7 +26,7 @@ export const Menu01 = () => {
      const [opcionSlideSelected, setOpcionSlideSelected] = useState('');
      const [flagInput, setFlagInput] = useState(false);
      const [flagModalSlides, setFlagModalSlides] = useState(false);
-     
+
 
 
      useEffect( (slideSelected,sesion,idProyectoActual,idUsuario) =>{
@@ -34,7 +34,8 @@ export const Menu01 = () => {
      },[slidesSeleccionables]);
 
 
-     const getDataProyectosBD = async (id_usuario) =>{        
+     const getDataProyectosBD = async (id_usuario) =>{   
+          setListadoOpcionesMenu([''])     
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {               
                tx.executeSql('SELECT * FROM MENUS M LEFT JOIN  DATOS_INTRODUCIDOS D ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {                    
@@ -50,7 +51,7 @@ export const Menu01 = () => {
           });
           
      }
-  
+
 
      const guardarOpcionMenu = (txt) =>{
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -105,23 +106,26 @@ export const Menu01 = () => {
 
   return (
     <div>
-          <div>Menú:</div>
+          <div className='editTlt' >Menú:</div>
           <input 
                type="text"   
-               name='txtMenu'             
+               name='txtMenu'  
+               className='input-titulo'           
                onChange={(e) => muestraBtnAdd(e.target.value)}
           />
           {
                flagInput   ?
-                    <div>
+                    <div className='contOptionsMenu' >
+                         <div onClick={ () => ListadoSlides() } className='contOptionsMenu-selectSlide'  ><i class="fa-solid fa-arrow-up-right-from-square"></i> Selecciona slide <span>{slideSeleccionado}</span> </div>
                          <div
+                              className='contOptionsMenuSaveOption'
                               onClick={()=>{
                                    let txt = document.getElementsByName('txtMenu')[0].value
                                    guardarOpcionMenu(txt,opcionSlideSelected)                                   
                               }}
                          >
-                              add option</div>
-                         <div onClick={ () => ListadoSlides() }  ><i className='fa-duotone fa-square-dashed'></i> <span>{slideSeleccionado}</span> </div>
+                             <i class="fa-sharp fa-solid fa-download"></i> &nbsp; Guardar</div>
+                        
                     </div>
                : null
           }
@@ -185,15 +189,15 @@ export const ImprimeOpcionesMenu = ({getDataProyectosBD}) =>{
                          {
                               item.id_option === id_showBtns ?
                                    <div className='btnsOpcionMenu'>
-                                        <div className='btnOpcionMenu' 
+                                        <div className='btnOpcionMenu btnEditMenu ' 
                                              onClick={()=>{
                                                             setModalEditarOpcMenu(true)
                                                             setEditarSlide(item.id_option)
                                                             setTxtUpdateMenu(item.txt)
                                                        }   
                                         }><i className='fa-duotone fa-edit'></i></div>
-                                        <div className='btnOpcionMenu' onClick={()=>{deleteOpcionMenu(item.id_option)}
-                                        }><i className='fa-duotone fa-trash'></i></div>
+                                        <div className='btnOpcionMenu btnDeleteMenu' onClick={()=>{deleteOpcionMenu(item.id_option)}
+                                        }><i class="fa-solid fa-trash"></i></div>
                                    </div>
                               : null
                          }

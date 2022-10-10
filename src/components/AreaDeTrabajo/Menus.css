@@ -47,16 +47,99 @@
 }
 
 .regOpcionMenu{
+     background-color: rgb(172, 218, 255);
+     margin-top: 4px;
+     margin-left: 20px;
+     position:relative;
+     width: 90%;
+     height: 30px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     font-size: 14px;
+     padding-left: 10px;
+}
+
+.inputEditModal{
+     color:rgba(0, 0, 0, 0.849)
+}
+
+.regOpcionMenu3{
      background-color: rgb(253, 220, 6);
      margin: 4px auto;
      position:relative;
-     width: 90%;
+     width: 250px;
      height: 35px;
      display: flex;
      justify-content: space-between;
      align-items: center;
 }
 
-.inputEditModal{
-     color:rgba(0, 0, 0, 0.849)
+.contOptionsMenu{     
+     width: 90%;
+     margin-left:20px;
+     display: flex;
+     margin-top: 6px;
+     border-bottom: 1px dashed rgb(147, 147, 147);
+     padding-bottom: 4px;
+     margin-bottom: 15px;
+}
+
+.contOptionsMenu-selectSlide{
+     width: 130px;
+     background-color: rgb(255, 220, 210);
+     display:flex;
+     justify-content: space-around;
+     align-items: center;
+     border-radius: 4px;
+     font-size: 14px;
+     font-weight: 600;
+}
+.contOptionsMenuSaveOption{
+     background-color: rgb(121, 215, 104);
+     width: 140px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 4px;
+     font-size: 14px;
+     font-weight: 600;
+     color: #000;
+     margin-left: 15px;
+
+}
+
+.contOptionsMenuSaveOption-icon{
+     color: #fff !important;
+}
+
+.btnEditMenu{
+     background-color: rgb(192, 231, 198);
+     width: 25px;
+     height: 25px;
+     border-radius: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: 2px solid rgb(38, 128, 36);
+}
+
+.btnDeleteMenu{
+     background-color: rgb(255, 176, 176);
+     width: 25px;
+     height: 25px;
+     border-radius: 4px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: 2px solid rgb(73, 13, 13);
+     color: rgb(73, 13, 13);
+}
+
+.btnsOpcionMenu{
+     width: 60px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-right: 5px;
 }

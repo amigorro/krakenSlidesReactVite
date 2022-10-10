@@ -20,6 +20,8 @@ import plant13 from './../../assets/plantillas/subst/pr04.png';
 import plant14 from './../../assets/plantillas/subst/av01.png';
 import plant15 from './../../assets/plantillas/subst/av02.png';
 import plant16 from './../../assets/plantillas/subst/mn01.png';
+import plant17 from './../../assets/plantillas/subst/mn02.png';
+import plant18 from './../../assets/plantillas/subst/mn03.png';
 import defa from './../../assets/plantillas/subst/default.png';
 
 const CatalogoSlides = ({setModalTipoSlide}) => {
@@ -124,25 +126,33 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
         case '12':
         case '13':
           tipoPlant = 'Pregunta';          
-            break;
+          break;
         case '14':
         case '15':
           tipoPlant = 'AudioVideo';
+          break;
         case '16':
-            tipoPlant = 'Menu';
+        case '17':
+        case '18':
+          tipoPlant = 'Menu';
+          break;
     }
 
-    /* Ingresamos el registro en la ba  se de datos */
+    /* Ingresamos el registro en la base de datos */
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
         db.transaction(function(tx) {
           
-            tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla,tipo_contenido) VALUES (?,?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada,tipoPlant], function(tx, results) {
+            tx.executeSql('INSERT INTO DATOS_INTRODUCIDOS (id_usuario,id_proyecto,sesion,slide,plantilla,tipo_contenido,orden) VALUES (?,?,?,?,?,?,?)', [1,idProyectoActual,sesion,id_plantilla, plantillaSeleccionada,tipoPlant,999999], function(tx, results) {
             //console.log('results', results)
             setSlideSelected({
               id : id_plantilla
             })
             setSlideImg1('image.png')
             cargaValoresSlide(id_plantilla)
+            
+
+            
+
             //setDespCronograma(false)
             //setEdicion(false)
             /*
@@ -161,6 +171,10 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
 
         })
 
+        
+
+
+
   }
 
 
@@ -169,7 +183,10 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
    *  TODO: Si esta función jala, ponerla como helper
    */
    const cargaValoresSlide = (slideId) =>{
-          
+    
+    
+    
+
     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
     db.transaction(function(tx) {
          tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
@@ -287,6 +304,8 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                                       plantilla.miniatura == 'av01' ? plant14 :
                                       plantilla.miniatura == 'av02' ? plant15 :
                                       plantilla.miniatura == 'mn01' ? plant16 :
+                                      plantilla.miniatura == 'mn02' ? plant17 :
+                                      plantilla.miniatura == 'mn03' ? plant18 :
                                       defa
                                   } alt='miniatura' />
                               </div>                              

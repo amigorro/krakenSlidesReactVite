@@ -35,7 +35,7 @@ export const ObjSld_titulo = () => {
 
   return (
     <div>
-          <div>Título:</div>
+          <div className='editTlt' >Título:</div>
           <input 
                type="text" 
                placeholder="Título"
@@ -78,15 +78,14 @@ export const Texto5 = (params) => {
 
      return(
           <div>
-               <div>Texto:</div>
+               <div className='editTlt'>Texto:</div>
                <textarea 
                     name="" 
                     id="" 
                     value={params.variab === 'texto1' ? slideTexto1 : params.variab === 'texto2' ? slideTexto2 : params.variab === 'texto3' ? slideTexto3 : params.variab === 'texto4' ? slideTexto4 : params.variab === 'texto5' ? slideTexto5 : params.variab === 'texto6' ? slideTexto6 : '' }
                     onChange={ (e) => { params.variab === 'texto1' && setSlideTexto1(e.target.value) || params.variab === 'texto2' && setSlideTexto2(e.target.value) || params.variab === 'texto3' && setSlideTexto3(e.target.value) || params.variab === 'texto4' && setSlideTexto4(e.target.value) || params.variab === 'texto5' && setSlideTexto5(e.target.value) || params.variab === 'texto6' && setSlideTexto6(e.target.value) }}
                     onBlur={ (e)=>{ updateText(e.target.value)} }
-                    cols="50" 
-                    rows="10"
+                    className="caja-texto"
                ></textarea>
           </div>
      )

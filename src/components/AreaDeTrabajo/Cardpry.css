@@ -22,6 +22,50 @@
      justify-content: center;
      align-items: center;
      margin: 15px;
+     border: 2px solid #de822c;
+     color: #de822c;
+     font-size: 14px;
+}
+
+
+.CardCont-TipoMenu {
+     width: 30px;
+     height: 30px;
+     background-color: rgb(106, 180, 241);
+     border-radius: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 15px;
+     font-size: 14px;
+     border: 2px solid #1b6289;
+     color: #1b6289;
+}
+.CardCont-TipoPregunta {
+     width: 30px;
+     height: 30px;
+     background-color: rgb(131, 219, 118);
+     border-radius: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 15px;
+     font-size: 14px;
+     border: 2px solid #338255;
+     color: #338255;
+}
+.CardCont-TipoAudioVideo {
+     width: 30px;
+     height: 30px;
+     background-color: rgb(234, 92, 92);
+     border-radius: 100%;
+     display: flex;
+     font-size: 14px;
+     justify-content: center;
+     align-items: center;
+     margin: 15px;
+     border: 2px solid #932828;
+     color: #932828;
 }
 
 .CardCont-Tipo-Info {     
@@ -34,14 +78,17 @@
 }
 
 .CardCont-Tipo-Info-Name{
+     text-overflow: ellipsis !important;
      font-size: 13px;
      font-weight: 500;
      height: 50%;
-     width: 100%;
+     width: 95%;
      display: flex;
      justify-content: flex-start;
      align-items: center;     
      padding-top: 10px;
+     white-space: nowrap;     
+     overflow: hidden;
 }
 
 .CardCont-Tipo-Info-icons{

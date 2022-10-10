@@ -2,7 +2,7 @@ import React, {useState, useContext,useEffect} from 'react'
 import { motion, AnimatePresence,Reorder, useDragControls  } from 'framer-motion';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { CardNombreSlide } from './CardNombreSlide';
-
+import { CardIconTipo } from './CardIconTipo';
 
 const variants = {
      hidden: {
@@ -116,12 +116,13 @@ export const PruebaOrder = () => {
           setResp1('')
           setResp2('')
           setResp3('')
+          setListadoOpcionesMenu([''])
 
 
 
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
-               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idProyectoActual,sesion,slideId], function(tx, results) {
+               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?   ', [idProyectoActual,sesion,slideId], function(tx, results) {
                     //console.log('results', results)
                     let len =0;
 
@@ -130,7 +131,7 @@ export const PruebaOrder = () => {
                     }
                     
                     if( len > 0 ){      
- 
+
                          setValoresBDslide({
                               num_chacks_sel: results.rows.item(0).num_chacks_sel,
                               tipo_contenido: results.rows.item(0).tipo_contenido,
@@ -255,8 +256,8 @@ export const PruebaOrder = () => {
                          /* Cargamos los estados de los slides de tipo Menu */
                          let opciones2 = []
                          if ( results.rows.item(0).tipo_contenido=='Menu' ){  
-                         
-                              tx.executeSql('SELECT *  FROM MENUS M LEFT JOIN DATOS_INTRODUCIDOS D   ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ?  ', [idProyectoActual,1,sesion], function(tx, results) {
+                              
+                              tx.executeSql('SELECT *  FROM MENUS M LEFT JOIN DATOS_INTRODUCIDOS D   ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideId], function(tx, results) {
                                    let len = results.rows.length, i;                                        
                                         for (i = 0; i < len; i++){                          
                                              console.warn("PERRUUU - "+results.rows.item(i)["nombre_lamina"]+" UUU "+results.rows.item(i)['txt'])    
@@ -333,6 +334,8 @@ export const PruebaOrder = () => {
                      
                          tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [i,idProyectoActual,sesion,itemId], function(tx, results) {
                              // console.log('results', results)
+                             const buffer = document.getElementById("listaCardsSlides");
+                                   buffer.scrollTop = buffer.scrollHeight;
                          }, null);
                     
 
@@ -390,13 +393,14 @@ export const PruebaOrder = () => {
                                                                  
                                                                  //console.warn(`Plantilla seleccionada: ${slide.plantilla}`)
                                                             }
+                                                            
                                                        })
 
 
 
                                                   } }
                                              >
-                                                  <div className='CardCont-Tipo' /*onPointerDown={(e) => controls.start(e)}*/  > </div>
+                                                  <CardIconTipo id2={item} />
                                                   <div className='CardCont-Tipo-Info' >
                                                        <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id2={item} /> </div>
                                                        <div className='CardCont-Tipo-Info-icons' >
@@ -417,15 +421,13 @@ export const PruebaOrder = () => {
           
      }
 
-
+     
+     
 
 
           return (
                
                ImprimeTarjetasOrdenables()
-               //.then( (result) => { document.querySelector(`.slideSelected`).click() } )
-               
-          
                     
           )
      

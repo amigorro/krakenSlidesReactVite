@@ -225,6 +225,21 @@ const EditarSlide = () => {
                       <Menu01 />  
                     </>
           break;
+          case "17":
+            return  <>          
+                      <ObjSld_titulo />
+                      <Texto5 variab='texto1' />
+                      <ObjSld_imagen1 />
+                      <Menu01 />  
+                    </>
+          break;
+          case "18":
+            return  <>          
+                      <ObjSld_titulo />
+                      <Texto5 variab='texto1' />
+                      <Menu01 />  
+                    </>
+          break;
         }
 
     }
@@ -237,8 +252,9 @@ const EditarSlide = () => {
     <div className='EditarSlide'>
 
         <div
+            className="btnQuitEdition"
             onClick={() =>setEdicion(false) }
-            >Cerrar
+            ><i class="fa-sharp fa-solid btnQuitEdition-icon fa-xmark"></i> &nbsp;&nbsp; Cerrar
         </div>
         {
           plantillaSeleccionada ?

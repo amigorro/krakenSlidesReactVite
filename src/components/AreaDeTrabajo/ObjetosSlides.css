@@ -32,11 +32,11 @@
      background-color: #128877;
  }
 
- .previewImg{
-     background-color: #337811;
-     width: 200px;
-     height: 90px;     
- }
+.previewImg{
+    background-color: #337811;
+    width: 200px;
+    height: 90px;     
+}
 
  .img-prev{
     width: 200px;
@@ -49,4 +49,37 @@
     height: 30px;
     background-color: rgb(85, 152, 228);
     margin-bottom: 15px;
+}
+
+
+
+.editTlt{
+    color: #FFF;    
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 90%;
+    font-weight: 600;
+}
+.input-titulo{
+    width: 90%;
+    height: 30px;
+    margin-left: 20px;        
+    background-color: #fff;    
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+
+.caja-texto{
+    width: 90%;
+    height: 100px;
+    margin-left: 20px;    
+    background-color: #fff;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    outline: none;
+    resize: none;
 }

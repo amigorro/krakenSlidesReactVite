@@ -1,21 +1,52 @@
 .EditarSlide{
      width: 31vw;
-     height: calc(100% - 150px);
-     background-color: #784444;
+     height: calc(100% - 130px);
+     background-color: #111827;
      position: fixed;
      bottom:  0;
      right: 0;
      overflow-y: auto;
+     overflow-x: hidden;
+     padding: 10px;
+     border-top-left-radius: 5px;
 }
 
+.btnQuitEdition{
+     background-color: rgb(229, 94, 94);
+     width: 100px;
+     height: 25px;     
+     border-bottom-left-radius: 5px;
+     color: #fff;
+     font-size: 14px;
+     font-weight: 600;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position:absolute;
+     top: 0px;
+     right: 0px;     
+     text-transform: uppercase;
+}
+.btnQuitEdition:hover{
+     background-color: rgb(128, 31, 31);     
+}
+.btnQuitEdition-icon{
+     font-size: 16px;
+     padding-top: 1px;
+}
 
 .editorQuill{
-     width:95%;
+     width:90% !important;
      height: 100%;
-     max-height: 200px ;
-     margin: 0 auto;
-     background-color: #fff;
-     border-radius: 5px;     
+     max-height: 200px ;     
+     background-color: rgb(172, 32, 32);
+     border-radius: 5px;  
+     color: #000;   
+     margin-left: 20px !important;
+}
+
+.ql-editor{
+     background-color: #fff;     
 }
 
 .editorQuillItem{

@@ -438,6 +438,64 @@ const Visor = () => {
                     )
         break;
 
+        case "17":   /* Pregunta RADIO simple */ 
+                
+            return  (  
+                      <div className='visorVistaPrCont' >
+                        <div className='visor-Paginacion' >{paginacion}</div>
+                        <div className='visorContenidos' >
+                                <div className="vis_contSlide" >
+                                    <div className="vis_titulo" >{valPlant_Titulo}</div>
+                                    <div className="vis_txtPregunta" >{ slideTexto1 }</div>
+                                    <div className='vis_menuConImagen' >
+                                        <div className="vis_opcionesMenu2" >
+                                          {
+                                            listadoOpcionesMenu.map((item,index)=>{
+                                                  return(
+                                                      <div key={index}>
+                                                          <div className='regOpcionMenu' >
+                                                              <div >{item.nombre_lamina} - {item.txt}</div>  
+                                                          </div>
+                                                      </div>
+                                                  )
+                                            })
+                                          }
+                                        </div>	
+                                        <div className='contImageMenu' ><img className="vis_imagenMenu" src={urlImg1} /> </div>
+                                    </div>
+                                </div> 
+                        </div>
+                      </div>
+                    )
+        break;
+        case "18":   /* Pregunta RADIO simple */ 
+                
+            return  (  
+                      <div className='visorVistaPrCont' >
+                        <div className='visor-Paginacion' >{paginacion}</div>
+                        <div className='visorContenidos' >
+                                <div className="vis_contSlide" >
+                                    <div className="vis_titulo" >{valPlant_Titulo}</div>
+                                    <div className="vis_txtPregunta" >{ slideTexto1 }</div>
+                                    <div className="vis_opcionesMenu3" >
+                                      {
+                                        listadoOpcionesMenu.map((item,index)=>{
+                                              return(
+                                                  <div key={index}>
+                                                      <div className='regOpcionMenu3' >
+                                                          <div >{item.nombre_lamina} - {item.txt}</div>  
+                                                      </div>
+                                                  </div>
+                                              )
+                                        })
+                                      }
+                                    </div>	
+                                </div> 
+                        </div>
+                      </div>
+                    )
+        break;
+
 
 
 
