@@ -410,7 +410,7 @@ const Visor = () => {
                   ) 
         break;
 
-        case "16":   /* Pregunta RADIO simple */ 
+        case "16":   /* Menú simple */ 
                 
             return  (  
                       <div className='visorVistaPrCont' >
@@ -424,8 +424,9 @@ const Visor = () => {
                                         listadoOpcionesMenu.map((item,index)=>{
                                               return(
                                                   <div key={index}>
-                                                      <div className='regOpcionMenu' >
-                                                          <div >{item.nombre_lamina} - {item.txt}</div>  
+                                                      <div className='vis_regOpcionMenu2' >
+                                                          <div className='vis_regOpcionMenu2-txt'>{item.txt}</div>  
+                                                          <div className='vis_regOpcionMenu2_regSub' >{item.nombre_lamina}</div>
                                                       </div>
                                                   </div>
                                               )
@@ -438,7 +439,7 @@ const Visor = () => {
                     )
         break;
 
-        case "17":   /* Pregunta RADIO simple */ 
+        case "17":   /* Menú con una imagen */ 
                 
             return  (  
                       <div className='visorVistaPrCont' >
@@ -453,8 +454,14 @@ const Visor = () => {
                                             listadoOpcionesMenu.map((item,index)=>{
                                                   return(
                                                       <div key={index}>
-                                                          <div className='regOpcionMenu' >
-                                                              <div >{item.nombre_lamina} - {item.txt}</div>  
+                                                          <div className='vis_regOpcionMenu2' >
+                                                              <div className='vis_regOpcionMenu2-txt' >{item.txt}</div>  
+                                                              {
+                                                                item.nombre_lamina ?
+                                                                      <div className='vis_regOpcionMenu2_regSub' >{item.nombre_lamina}</div>
+                                                                : null
+                                                              }
+                                                              
                                                           </div>
                                                       </div>
                                                   )
@@ -482,8 +489,9 @@ const Visor = () => {
                                         listadoOpcionesMenu.map((item,index)=>{
                                               return(
                                                   <div key={index}>
-                                                      <div className='regOpcionMenu3' >
-                                                          <div >{item.nombre_lamina} - {item.txt}</div>  
+                                                      <div className='vis_regOpcionMenu3' >
+                                                          <div >{item.nombre_lamina}</div>  
+                                                          <div>{item.txt}</div>
                                                       </div>
                                                   </div>
                                               )
@@ -543,6 +551,7 @@ export default Visor
 
 export const OptionMenuVista = (props) => {
   const {    
+    slideSelected,
     idProyectoActual,sesion,
   } = useContext(ContextAreaDeTrabajo);
   let txtSlide='';
@@ -551,7 +560,7 @@ export const OptionMenuVista = (props) => {
   const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
               //tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ? ', [idProyectoActual,1,sesion,props.idd.skip], function(tx, results) {
-                tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS D JOIN  MENUS M ON D.slide = M.skip AND D.id_proyecto = ? AND D.id_usuario = ? AND D.sesion = ? AND D.slide = ? ', [idProyectoActual,1,sesion,props.idd.skip], function(tx, results) {
+                tx.executeSql('SELECT * FROM MENUS M  JOIN  DATOS_INTRODUCIDOS D ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {
                 txtSlide=results.rows.item(0).nombre_lamina;
                 txtMenu=results.rows.item(0).txt;
                 console.log("txtSlide::::",txtSlide,txtMenu)

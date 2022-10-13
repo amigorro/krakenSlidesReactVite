@@ -35,10 +35,10 @@ export const Menu01 = () => {
 
 
      const getDataProyectosBD = async (id_usuario) =>{   
-          setListadoOpcionesMenu([''])     
+          setListadoOpcionesMenu([' '])     
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {               
-               tx.executeSql('SELECT * FROM MENUS M LEFT JOIN  DATOS_INTRODUCIDOS D ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {                    
+               tx.executeSql('SELECT * FROM MENUS M LEFT JOIN DATOS_INTRODUCIDOS D ON  M.skip=D.slide WHERE  M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {                    
                     let len = results.rows.length, i;                                        
                     if(len > 0){
                          let opciones = []
@@ -168,7 +168,7 @@ export const ImprimeOpcionesMenu = ({getDataProyectosBD}) =>{
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
                tx.executeSql('DELETE FROM MENUS WHERE id_option = ? AND id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ? ', [id_option,idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {
-                    console.log('results', results)
+                    console.log('results DELETEEEEEEEE', results)
                     getDataProyectosBD();
                }, null);
           });
@@ -257,7 +257,8 @@ export const ModalSlidesEditar = ({ListadoSlides}) =>{
           db.transaction(function(tx) {
                console.warn(txt,slideSeleccionado,editarSlide,idProyectoActual,1,sesion)
                tx.executeSql('UPDATE MENUS SET txt = ?, skip = ? WHERE id_option = ? AND id_proyecto = ? AND id_usuario = ? AND sesion = ? ', [txt,slideSeleccionado,editarSlide,idProyectoActual,1,sesion], function(tx, results) {
-                    console.log('results', results)                    
+                    let qry ='UPDATE MENUS SET txt = '+txt+', skip = '+slideSeleccionado+' WHERE id_option = '+editarSlide+' AND id_proyecto = '+idProyectoActual+' AND id_usuario = 1 AND sesion = '+sesion+' ';
+                    console.log('results UPDATEEE', qry)                    
                     setModalEditarOpcMenu(false)
                     ListadoSlides2();
                }, null);

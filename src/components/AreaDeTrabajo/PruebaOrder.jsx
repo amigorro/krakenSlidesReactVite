@@ -256,8 +256,8 @@ export const PruebaOrder = () => {
                          /* Cargamos los estados de los slides de tipo Menu */
                          let opciones2 = []
                          if ( results.rows.item(0).tipo_contenido=='Menu' ){  
-                              
-                              tx.executeSql('SELECT *  FROM MENUS M LEFT JOIN DATOS_INTRODUCIDOS D   ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideId], function(tx, results) {
+                               
+                              tx.executeSql('SELECT * FROM MENUS M LEFT JOIN DATOS_INTRODUCIDOS D ON  M.skip=D.slide WHERE  M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideId], function(tx, results) {
                                    let len = results.rows.length, i;                                        
                                         for (i = 0; i < len; i++){                          
                                              console.warn("PERRUUU - "+results.rows.item(i)["nombre_lamina"]+" UUU "+results.rows.item(i)['txt'])    
