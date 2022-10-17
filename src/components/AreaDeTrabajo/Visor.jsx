@@ -426,7 +426,12 @@ const Visor = () => {
                                                   <div key={index}>
                                                       <div className='vis_regOpcionMenu2' >
                                                           <div className='vis_regOpcionMenu2-txt'>{item.txt}</div>  
-                                                          <div className='vis_regOpcionMenu2_regSub' >{item.nombre_lamina}</div>
+                                                          {
+                                                            item.nombre_lamina ?
+                                                            <div className='vis_regOpcionMenu2_regSub' >{item.nombre_lamina}</div>
+                                                            : null
+                                                          }
+                                                          
                                                       </div>
                                                   </div>
                                               )

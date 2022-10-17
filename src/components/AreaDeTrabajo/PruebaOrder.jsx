@@ -117,7 +117,7 @@ export const PruebaOrder = () => {
           setResp2('')
           setResp3('')
           setListadoOpcionesMenu([''])
-
+          setUrlImg1(''), setUrlImg2(''), setUrlImg3(''), setUrlImg4(''), setUrlImg5(''), setUrlImg6(''), setUrlImg7(''), setUrlImg8('')
 
 
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -195,31 +195,31 @@ export const PruebaOrder = () => {
 
                          let urlimg4='';
                          if( results.rows.item(0).imagen4 =='image.png' || !results.rows.item(0).imagen4  ){
-                              urlimg4 = ``
+                              urlimg4 = `./../../logos/image_icon.png`
                          } else{ urlimg4 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen4}?${new Date().getTime()}` }
                          setUrlImg4(urlimg4)
 
                          let urlimg5='';
                          if( results.rows.item(0).imagen5 =='image.png' || !results.rows.item(0).imagen5  ){
-                              urlimg5 = ``
+                              urlimg5 = `./../../logos/image_icon.png`
                          } else{ urlimg5 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen5}?${new Date().getTime()}` }
                          setUrlImg5(urlimg5)
 
                          let urlimg6='';
                          if( results.rows.item(0).imagen6 =='image.png' || !results.rows.item(0).imagen6  ){
-                              urlimg6 = ``
+                              urlimg6 = `./../../logos/image_icon.png`
                          } else{ urlimg6 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen6}?${new Date().getTime()}` }
                          setUrlImg6(urlimg6)
 
                          let urlimg7='';
                          if( results.rows.item(0).imagen7 =='image.png' || !results.rows.item(0).imagen7  ){
-                              urlimg7 = ``
+                              urlimg7 = `./../../logos/image_icon.png`
                          } else{ urlimg7 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen7}?${new Date().getTime()}` }
                          setUrlImg7(urlimg7)
 
                          let urlimg8='';
                          if( results.rows.item(0).imagen8 =='image.png' || !results.rows.item(0).imagen8  ){
-                              urlimg8 = ``
+                              urlimg8 = `./../../logos/image_icon.png`
                          } else{ urlimg8 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen8}?${new Date().getTime()}` }
                          setUrlImg8(urlimg8)
 

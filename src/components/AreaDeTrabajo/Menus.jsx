@@ -116,7 +116,7 @@ export const Menu01 = () => {
           {
                flagInput   ?
                     <div className='contOptionsMenu' >
-                         <div onClick={ () => ListadoSlides() } className='contOptionsMenu-selectSlide'  ><i class="fa-solid fa-arrow-up-right-from-square"></i> Selecciona slide <span>{slideSeleccionado}</span> </div>
+                         <div onClick={ () => ListadoSlides() } className='contOptionsMenu-selectSlide'  ><i class="fa-solid fa-arrow-up-right-from-square"></i> Selecciona slide &nbsp;</div>
                          <div
                               className='contOptionsMenuSaveOption'
                               onClick={()=>{
@@ -125,7 +125,6 @@ export const Menu01 = () => {
                               }}
                          >
                              <i class="fa-sharp fa-solid fa-download"></i> &nbsp; Guardar</div>
-                        
                     </div>
                : null
           }
@@ -218,10 +217,13 @@ export const ModalSlides = ({setFlagModalSlides}) =>{
      <div className='modalSlidesSeleccionables' >
           <div className='modalSlidesSeleccionables-desp'>
                <div>
-                    <div>Selecciona el slide a donde se dirigirá esta opción del menú:</div>
-                    <div onClick={ () => setFlagModalSlides(false) } >Cerrar</div>
+                    <div className='tltModalMenu' >Selecciona el slide a donde se dirigirá esta opción del menú:</div  > 
+                    <div 
+                         onClick={ () => setFlagModalSlides(false) } 
+                         className='btnGuardarModalSlides22'
+                    >Seleccionar</div>
                </div>
-               <div>
+               <div className='desplRegsMenues' >
                     {
                          slidesSeleccionables.map((item,index)=>{
                               return(
@@ -229,8 +231,8 @@ export const ModalSlides = ({setFlagModalSlides}) =>{
                                         key={index}                                           
                                         onClick={ () => setSlideSeleccionado(item.slide)    }                                         
                                    >
-                                        <div className={ item.slide === slideSeleccionado ? 'slideSeleccionado reg_slide' : 'reg_slide' }>
-                                             <div className='reg_slideCode'  >{item.slide}</div>
+                                        <div className={ item.slide === slideSeleccionado ? 'slideSeleccionado22 reg_slide22' : 'reg_slide22' }>
+                                             <div className='reg_slideCode22'  >[ {item.slide} ]</div>
                                              <div>{item.nombre_lamina}</div>
                                         </div>
                                    </div>
@@ -295,13 +297,19 @@ export const ModalSlidesEditar = ({ListadoSlides}) =>{
      <div className='modalSlidesSeleccionables' >
           <div className='modalSlidesSeleccionables-desp'>
                <div>
-                    <div>Texto de la opción del menú:</div>
-                    <input className='inputEditModal' type="text" name="txtUodateMenu" defaultValue={txtOpcVal} />
-                    <div>Selecciona el slide a donde se dirigirá esta opción del menú:</div>
-                    <div onClick={ () => setModalEditarOpcMenu(false) } >Cerrar</div>
-                    <div onClick={ () => actualizarOpcionMenu( document.getElementsByName('txtUodateMenu')[0].value  ) } >Guardar</div>
+                    <div className='tltModalMenu22' >Texto de la opción del menú:<input className='inputEditModal22' type="text" name="txtUodateMenu" defaultValue={txtOpcVal} /></div>
+                    
+                    <div className='tltModalMenu' >Selecciona el slide a donde se dirigirá esta opción del menú:</div>
+                    <div 
+                         onClick={ () => setModalEditarOpcMenu(false) } 
+                         className='btnCloseModalSlides'
+                    >Cerrar</div>
+                    <div 
+                         onClick={ () => actualizarOpcionMenu( document.getElementsByName('txtUodateMenu')[0].value  ) } 
+                         className='btnGuardarModalSlides'
+                    >Guardar</div>
                </div>
-               <div>
+               <div className='desplRegsMenues22'>
                     {
                          slidesSeleccionables.map((item,index)=>{
                               return(
@@ -309,8 +317,8 @@ export const ModalSlidesEditar = ({ListadoSlides}) =>{
                                         key={index}                                           
                                         onClick={ () => setSlideSeleccionado(item.slide)    }                                         
                                    >
-                                        <div className={ item.slide === slideSeleccionado ? 'slideSeleccionado reg_slide' : 'reg_slide' }>
-                                             <div className='reg_slideCode'  >{item.slide}</div>
+                                        <div className={ item.slide === slideSeleccionado ? 'slideSeleccionado22 reg_slide22' : 'reg_slide22' }>
+                                             <div className='reg_slideCode22'  >[ {item.slide} ]</div>
                                              <div>{item.nombre_lamina}</div>
                                         </div>
                                    </div>

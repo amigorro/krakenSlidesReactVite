@@ -163,9 +163,10 @@ export const ObjSld_imagen1 = () => {
      }
 
      return (
-          <div className='contImagen' >
-               <div>
-                    <div>Imagen 1:</div>
+          <>
+          <div className='editTlt' >Imagen 1:</div>
+          <div className='contImagen' >               
+               <div>                    
                     <input
                          id="input-imagen1"
                          type="file"
@@ -183,6 +184,7 @@ export const ObjSld_imagen1 = () => {
                <div className='previewImg' ><img src={ urlImg1 } id="imgSlide1"  className="img-prev" /></div>
                
           </div>
+          </>
      )
 
 }
@@ -218,9 +220,10 @@ export const ObjSld_imagen2 = () => {
      }
 
      return (
+          <>
+          <div className='editTlt' >Imagen 2:</div>
           <div className='contImagen' >
-               <div>
-                    <div>Imagen 2:</div>
+               <div>                    
                     <input
                          id="input-imagen2"
                          type="file"
@@ -238,6 +241,7 @@ export const ObjSld_imagen2 = () => {
                <div className='previewImg' ><img src={ urlImg2 } id="imgSlide2"  className="img-prev" /></div>
                
           </div>
+          </>
      )
 
 }
@@ -291,9 +295,10 @@ export const ObjSld_imagen3 = (props) => {
      }
 
      return (
+          <>
+          <div className='editTlt flexionando' >Imagen 3: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(3,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
-               <div>
-                    <div>Imagen 3: { props.elim == "true" && <div onClick={ () => resetImage(3,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
+               <div>          
                     <input
                          id="input-imagen3"
                          type="file"
@@ -310,6 +315,7 @@ export const ObjSld_imagen3 = (props) => {
                <div className='previewImg' ><img src={ urlImg3 } id="imgSlide2"  className="img-prev" /></div>
                
           </div>
+          </>
      )
 }
 
@@ -360,9 +366,10 @@ export const ObjSld_imagen4 = (props) => {
      }
 
      return (
+          <>
+          <div className='editTlt flexionando' >Imagen 4: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(4,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>
-                    <div>Imagen 4: { props.elim == "true" && <div onClick={ () => resetImage(4,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
                     <input
                          id="input-imagen4"
                          type="file"
@@ -379,6 +386,7 @@ export const ObjSld_imagen4 = (props) => {
                <div className='previewImg' ><img src={ urlImg4 } id="imgSlide4"  className="img-prev" /></div>
                
           </div>
+          </>
      )
 }
 
@@ -426,9 +434,10 @@ export const ObjSld_imagen5 = (props) => {
      }
 
      return (
+          <>
+          <div className='editTlt flexionando' >Imagen 5: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(5,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
-               <div>
-                    <div>Imagen 5: { props.elim == "true" && <div onClick={ () => resetImage(5,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
+               <div>                    
                     <input
                          id="input-imagen5"
                          type="file"
@@ -445,6 +454,7 @@ export const ObjSld_imagen5 = (props) => {
                <div className='previewImg' ><img src={ urlImg5 } id="imgSlide5"  className="img-prev" /></div>
                
           </div>
+          </>
      )
 }
 
@@ -490,9 +500,10 @@ export const ObjSld_imagen6 = (props) => {
      }
 
      return (
+          <>
+          <div className='editTlt flexionando' >Imagen 6: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(6,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>
-                    <div>Imagen 6: { props.elim == "true" && <div onClick={ () => resetImage(6,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
                     <input
                          id="input-imagen6"
                          type="file"
@@ -508,6 +519,7 @@ export const ObjSld_imagen6 = (props) => {
                </div>
                <div className='previewImg' ><img src={ urlImg6 } id="imgSlide6"  className="img-prev" /></div>               
           </div>
+          </>
      )
 }
 
@@ -551,9 +563,10 @@ export const ObjSld_imagen7 = (props) => {
      }
 
      return (
+          <>
+          <div className='editTlt flexionando' >Imagen 7: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(7,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
-               <div>
-                    <div>Imagen 7: { props.elim == "true" && <div onClick={ () => resetImage(7,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
+               <div>          
                     <input
                          id="input-imagen7"
                          type="file"
@@ -569,6 +582,7 @@ export const ObjSld_imagen7 = (props) => {
                </div>
                <div className='previewImg' ><img src={ urlImg7 } id="imgSlide7"  className="img-prev" /></div>               
           </div>
+          </>
      )
 }
 
@@ -598,8 +612,8 @@ export const ObjSld_imagen8 = (props) => {
                     tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? AND slide = ?   ', [idProyectoActual,sesion,id], function(tx, results) {
                          let carpeta = idProyectoActual;
                          let url='';
-                         if( results.rows.item(0).imagen8 =='image.png' ){
-                              url = `./../../logos/image_icon.png?${new Date().getTime()}`
+                         if( results.rows.item(0).imagen8 =='image.png' || results.rows.item(0).imagen8 =='' ){
+                              url = `./../../logos/image_icon.png`
                          } else{
                               url = `c:/flskrk/${carpeta}/${results.rows.item(0).imagen8}?${new Date().getTime()}`
                          }
@@ -611,9 +625,10 @@ export const ObjSld_imagen8 = (props) => {
      }
 
      return (
+          <>
+          <div className='editTlt flexionando' >Imagen 8: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(8,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>
-                    <div>Imagen 8: { props.elim == "true" && <div onClick={ () => resetImage(8,idProyectoActual,slideSelected.id)}> eliminar </div> } </div>
                     <input
                          id="input-imagen8"
                          type="file"
@@ -629,6 +644,7 @@ export const ObjSld_imagen8 = (props) => {
                </div>
                <div className='previewImg' ><img src={ urlImg8 } id="imgSlide8"  className="img-prev" /></div>               
           </div>
+          </>
      )
 }
 
@@ -751,11 +767,11 @@ export const PreguntaRadio02 = (props) => {
      return (
           <>
                {
-                    (props.radio == 1 && (urlImg1 && urlImg1!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(1)} className={valResp1 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : 
-                    (props.radio == 2 && (urlImg2 && urlImg2!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(2)} className={valResp2 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : 
-                    (props.radio == 3 && (urlImg3 && urlImg3!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(3)} className={valResp3 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : 
-                    (props.radio == 4 && (urlImg4 && urlImg4!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(4)} className={valResp4 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : 
-                    (props.radio == 5 && (urlImg5 && urlImg5!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(5)} className={valResp5 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ></div> : null
+                    (props.radio == 1 && (urlImg1 && urlImg1!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(1)} className={valResp1 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : 
+                    (props.radio == 2 && (urlImg2 && urlImg2!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(2)} className={valResp2 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : 
+                    (props.radio == 3 && (urlImg3 && urlImg3!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(3)} className={valResp3 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : 
+                    (props.radio == 4 && (urlImg4 && urlImg4!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(4)} className={valResp4 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : 
+                    (props.radio == 5 && (urlImg5 && urlImg5!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(5)} className={valResp5 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : null
                }
           
           </>
@@ -817,7 +833,7 @@ export const PreguntaCheckbox01 = (props) => {
                               type="text" 
                          />
                          { resp1 ? <div className={valResp1 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' }
-                                        onClick={ ()=> guardaRespuestaBD_val(1)  } >d</div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(1)  } ></div> : null }
                          
                     </div>
                     <div><div>Respuesta 2:</div>
