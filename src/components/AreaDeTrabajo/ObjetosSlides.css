@@ -8,6 +8,22 @@
      justify-content: space-around;
 }
 
+.contAudio{
+    width: 90%;
+    height: 95px;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto 30px auto ;     
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.previewAudio{
+    background-color: rgb(103, 187, 222);
+    width: 200px;
+    height: 90px;   
+    border: 1px dotted rgb(23, 48, 94);  
+}
+
 .input-imagen{
     width: 0.1px;
     height: 0.1px;
@@ -40,6 +56,7 @@
     border: 1px dotted rgb(23, 48, 94);  
 }
 
+
  .img-prev{
     width: 200px;
     height: 90px;
@@ -60,6 +77,28 @@
     margin-top: -25px;	
 }
 
+
+.unaLineaFlex{
+    display: flex;            
+}
+
+.trashRadio{
+    color: rgb(167, 77, 77);
+    width: 22px;
+    margin-left: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.trashRadio:hover{
+    color: rgb(90, 30, 30);
+    width: 22px;
+    margin-left: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
 
 
 .editTlt{
@@ -92,6 +131,42 @@
     outline: none;
     resize: none;
 }
+/**  SCROLLBAR */
+.caja-texto::-webkit-scrollbar {
+	width: 6px;
+     margin-left: 5px;
+     border-radius: 10px;
+	background-color: #335539;
+	
+}
+.caja-texto::-webkit-scrollbar-track{
+	box-shadow: inset 0 0 6px rgba(184, 184, 184, 0.3);
+	background-color: #b9d1f3;
+     border-radius: 0px;
+     margin-left: 5px;
+	
+}
+
+.caja-texto::-webkit-scrollbar-thumb{
+	background-color: #4fb1e2;
+	border-radius: 0px;
+     margin-left: 5px;
+     transition: 1s;
+	
+}
+
+.caja-texto::-webkit-scrollbar-thumb:hover{
+     background: #3ab183;
+     transition: 1s;
+	
+}	
+/** FIN SCROLLBAR */
+
+
+
+
+
+
 
 .resetImageBtn{
     color:rgb(253, 93, 82);
@@ -112,3 +187,13 @@
     margin-left: 20px;
     margin-top: 20px;
 }
+
+.lineaPunteada{
+    width: 90%;
+    height: 1px;    
+    border: 1px dashed #fff;
+    margin: 20px auto;
+}
+
+
+

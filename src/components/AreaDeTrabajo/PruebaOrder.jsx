@@ -117,7 +117,7 @@ export const PruebaOrder = () => {
           setResp2('')
           setResp3('')
           setListadoOpcionesMenu([''])
-          setUrlImg1(''), setUrlImg2(''), setUrlImg3(''), setUrlImg4(''), setUrlImg5(''), setUrlImg6(''), setUrlImg7(''), setUrlImg8('')
+          //setUrlImg1(''), setUrlImg2(''), setUrlImg3(''), setUrlImg4(''), setUrlImg5(''), setUrlImg6(''), setUrlImg7(''), setUrlImg8('')
 
 
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
@@ -161,9 +161,21 @@ export const PruebaOrder = () => {
                               orden: results.rows.item(0).orden,
                               paginacion: results.rows.item(0).paginacion
                          })
-                         setValPlant_Titulo(results.rows.item(0).titulo)
+                         if ( !results.rows.item(0).titulo || results.rows.item(0).titulo == ''  ) {
+                              setValPlant_Titulo('')
+                            }else{
+                              setValPlant_Titulo(results.rows.item(0).titulo)
+                            }
+
+                         //setSlideImg1(results.rows.item(0).imagen1)
                          
-                         setSlideImg1(results.rows.item(0).imagen1)
+                         /*
+                         if ( !results.rows.item(0).texto1 || results.rows.item(0).texto1 == ''  ) {
+                              setSlideTexto1(' ')
+                            }else{
+                              setSlideTexto1(results.rows.item(0).texto1)
+                            } */
+
                          setSlideTexto1(results.rows.item(0).texto1)
                          setSlideTexto2(results.rows.item(0).texto2)
                          setSlideTexto3(results.rows.item(0).texto3)
@@ -177,7 +189,7 @@ export const PruebaOrder = () => {
                          
                          let urlimg1='';
                          if( results.rows.item(0).imagen1 =='image.png'  || !results.rows.item(0).imagen1 ){
-                              urlimg1 = `./../../logos/image_icon.png`
+                              urlimg1 = `./../../logos/image_icon.png?${new Date().getTime()}`
                          } else{ urlimg1 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}?${new Date().getTime()}` }
                          setUrlImg1(urlimg1)
                          
@@ -267,7 +279,15 @@ export const PruebaOrder = () => {
                               }, null);
                          
                          }
-
+                         /* Cargamos los estados de los slides de tipo AudioVideo */
+                         if ( results.rows.item(0).tipo_contenido=='AudioVideo' ){                              
+                              let urlimg1='';
+                                   if( results.rows.item(0).imagen1 =='image.png'  || !results.rows.item(0).imagen1 ){
+                                        urlimg1 = `./../../logos/image_icon.png`
+                                   } else{ urlimg1 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}?${new Date().getTime()}` }
+                                   setUrlImg1(urlimg1)
+                              
+                         }
 
 
                          console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
@@ -334,8 +354,12 @@ export const PruebaOrder = () => {
                      
                          tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [i,idProyectoActual,sesion,itemId], function(tx, results) {
                              // console.log('results', results)
-                             const buffer = document.getElementById("listaCardsSlides");
-                                   buffer.scrollTop = buffer.scrollHeight;
+                             /**
+                              * ? Alternativa para mover el scroll a la posición maxima del bottom                             
+                              * const buffer = document.getElementById("listaCardsSlides");
+                              * buffer.scrollTop = buffer.scrollHeight;                              
+                             **/                              
+                                     
                          }, null);
                     
 

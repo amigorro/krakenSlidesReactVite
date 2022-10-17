@@ -90,6 +90,7 @@ const EditarSlide = () => {
             return  <>
                       <ObjSld_titulo />
                       <br /><br /><br />
+                      <div className='editTlt'>Texto:</div>
                       <div className='editorQuill' ><div ref={quillRef} /></div>
                     </>
                     break;
@@ -97,6 +98,7 @@ const EditarSlide = () => {
             return  <>
                       <ObjSld_titulo />
                       <br /><br /><br />
+                      <div className='editTlt'>Texto:</div>
                       <div className='editorQuill' ><div ref={quillRef} /></div>
                       <ObjSld_imagen1 />
                     </>
@@ -104,17 +106,18 @@ const EditarSlide = () => {
           case "3":
             return  <>
                       <ObjSld_titulo />
-                      <br /><br /><br />
+                      <br />
+                      <div className='editTlt'>Texto principal:</div>
                       <div className='editorQuill' ><div ref={quillRef} /></div>
                       
                       
-                      <InputText variab='texto3' />
+                      <InputText variab='texto3' title="Subtítulo 1" />
                       <ObjSld_imagen1 />
-                      <Texto5 variab='texto5' />
+                      <Texto5 variab='texto5' title="1" />
                       
-                      <InputText variab='texto4' />
+                      <InputText variab='texto4' title="Subtítulo 2" />
                       <ObjSld_imagen2 />
-                      <Texto5 variab='texto6' />
+                      <Texto5 variab='texto6' title="2" />
                       {/*<ObjSld_imagen3 elim="true" />*/}
                     </>
           break;
@@ -215,7 +218,7 @@ const EditarSlide = () => {
           case "15":
             return  <>                  
                       <ObjSld_video />
-                      <ObjSld_imagen2 />
+                      <ObjSld_imagen2 num="1" />
                     </>
           break;
           case "16":

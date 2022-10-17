@@ -29,7 +29,11 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
   const {
           sesion, setSesion,setModulo,idProyectoActual,setSlideSelected, slidesAct,plantillaSeleccionada, setPlantillaSeleccionada,
           setSlideImg1,setDespCronograma,setEdicion,slideSelected,
-          setValoresBDslide,setValPlant_Titulo,
+          setValoresBDslide,setValPlant_Titulo,setPaginacion,
+          setSlideTexto1,setSlideTexto2,setSlideTexto3,setSlideTexto4,setSlideTexto5,setSlideTexto6,
+          setUrlImg1,setUrlImg2,setUrlImg3,setUrlImg4,setUrlImg5,setUrlImg6,setUrlImg7,setUrlImg8,
+          setResp1,setResp2,setResp3,setResp4,setResp5,setResp6,setResp7,setResp8,
+          setValResp1,setValResp2,setValResp3,setValResp4,setValResp5,setValResp6,setValResp7,setValResp8,
         } = useContext(ContextAreaDeTrabajo);
   const [plantillas, setPlantillas] = useState([])
   const [categoriaSel, setCategoriaSel] = useState(1)
@@ -102,8 +106,9 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
     console.error("Sesión actual: " + sesion) 
     setEdicion(false)   
     setModalTipoSlide(false)
-    
-
+    setUrlImg1(''), setUrlImg2(''), setUrlImg3(''), setUrlImg4(''), setUrlImg5(''), setUrlImg6(''), setUrlImg7(''), setUrlImg8('')
+    setResp1(''), setResp2(''), setResp3(''), setResp4(''), setResp5(''), setResp6(''), setResp7(''), setResp8('')
+    setValResp1(''), setValResp2(''), setValResp3(''), setValResp4(''), setValResp5(''), setValResp6(''), setValResp7(''), setValResp8('')
 
 
 
@@ -229,8 +234,133 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                         orden: results.rows.item(0).orden,
                         paginacion: results.rows.item(0).paginacion
                    })
-                   setValPlant_Titulo(results.rows.item(0).titulo)
-                   setSlideImg1(results.rows.item(0).imagen1)
+              if ( !results.rows.item(0).titulo || results.rows.item(0).titulo == ''  ) {
+                setValPlant_Titulo('')
+              }else{
+                setValPlant_Titulo(results.rows.item(0).titulo)
+              }
+              
+              /*
+              if ( !results.rows.item(0).texto1 || results.rows.item(0).texto1 == ''  ) {
+                setSlideTexto1(' ')
+              }else{
+                setSlideTexto1(results.rows.item(0).texto1)
+              }*/
+              setSlideTexto1(results.rows.item(0).texto1)
+
+              
+
+              //setSlideImg1(results.rows.item(0).imagen1)
+
+               if (!results.rows.item(0).paginacion){
+                    setPaginacion('')
+               } else { setPaginacion(results.rows.item(0).paginacion) }
+               
+               let urlimg1='';
+               if( results.rows.item(0).imagen1 =='image.png'  || !results.rows.item(0).imagen1 ){
+                    urlimg1 = `./../../logos/image_icon.png?${new Date().getTime()}`
+               } else{ urlimg1 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}?${new Date().getTime()}` }
+               setUrlImg1(urlimg1)
+               
+               let urlimg2='';
+               if( results.rows.item(0).imagen2 =='image.png' || !results.rows.item(0).imagen2  ){
+                    urlimg2 = `./../../logos/image_icon.png?${new Date().getTime()}`
+               } else{ urlimg2 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen2}` }
+               setUrlImg2(urlimg2)
+
+               let urlimg3='';
+               if( results.rows.item(0).imagen3 =='image.png' || !results.rows.item(0).imagen3  ){
+                    urlimg3 = `./../../logos/image_icon.png?${new Date().getTime()}`
+               } else{ urlimg3 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen3}?${new Date().getTime()}` }
+               setUrlImg3(urlimg3)
+
+               let urlimg4='';
+               if( results.rows.item(0).imagen4 =='image.png' || !results.rows.item(0).imagen4  ){
+                    urlimg4 = `./../../logos/image_icon.png`
+               } else{ urlimg4 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen4}?${new Date().getTime()}` }
+               setUrlImg4(urlimg4)
+
+               let urlimg5='';
+               if( results.rows.item(0).imagen5 =='image.png' || !results.rows.item(0).imagen5  ){
+                    urlimg5 = `./../../logos/image_icon.png`
+               } else{ urlimg5 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen5}?${new Date().getTime()}` }
+               setUrlImg5(urlimg5)
+
+               let urlimg6='';
+               if( results.rows.item(0).imagen6 =='image.png' || !results.rows.item(0).imagen6  ){
+                    urlimg6 = `./../../logos/image_icon.png`
+               } else{ urlimg6 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen6}?${new Date().getTime()}` }
+               setUrlImg6(urlimg6)
+
+               let urlimg7='';
+               if( results.rows.item(0).imagen7 =='image.png' || !results.rows.item(0).imagen7  ){
+                    urlimg7 = `./../../logos/image_icon.png`
+               } else{ urlimg7 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen7}?${new Date().getTime()}` }
+               setUrlImg7(urlimg7)
+
+               let urlimg8='';
+               if( results.rows.item(0).imagen8 =='image.png' || !results.rows.item(0).imagen8  ){
+                    urlimg8 = `./../../logos/image_icon.png`
+               } else{ urlimg8 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen8}?${new Date().getTime()}` }
+               setUrlImg8(urlimg8)
+
+
+               
+              /* Cargamos los estados de los slides de tipo pregunta */
+              if ( results.rows.item(0).tipo_contenido=='Pregunta' ){                              
+                console.warn("carga respuestas")
+                db.transaction(function(tx) {
+                     console.warn("dentro de obj DB: "+idProyectoActual,sesion,slideId)
+                     tx.executeSql('SELECT * FROM TBL_RESPUESTA WHERE id_usuario = 1 AND id_proyecto = ? AND slide = ? AND sesion = ? ', [idProyectoActual,slideId,sesion], function(tx, results) {
+                          console.warn("ejecuta SQL")
+                          
+                          setResp1(results.rows.item(0).txt01_respuesta)
+                          setResp2(results.rows.item(0).txt02_respuesta)
+                          setResp3(results.rows.item(0).txt03_respuesta)
+                          setResp4(results.rows.item(0).txt04_respuesta)
+                          setResp5(results.rows.item(0).txt05_respuesta)
+                          setResp6(results.rows.item(0).txt06_respuesta)
+                          setResp7(results.rows.item(0).txt07_respuesta)
+                          setResp8(results.rows.item(0).txt08_respuesta)
+                          setValResp1(results.rows.item(0).valor01)
+                          setValResp2(results.rows.item(0).valor02)
+                          setValResp3(results.rows.item(0).valor03)
+                          setValResp4(results.rows.item(0).valor04)
+                          setValResp5(results.rows.item(0).valor05)
+                          setValResp6(results.rows.item(0).valor06)
+                          setValResp7(results.rows.item(0).valor07)
+                          setValResp8(results.rows.item(0).valor08)
+                          console.warn('RESPSSSS:'+results.rows.item(0).txt01_respuesta)
+                     }, null);
+                });
+              }
+
+              /* Cargamos los estados de los slides de tipo audio y video */
+              if ( results.rows.item(0).tipo_contenido=='AudioVideo' ){                              
+                let urlimg1='';
+                     if( results.rows.item(0).imagen1 =='image.png'  || !results.rows.item(0).imagen1 ){
+                          urlimg1 = `./../../logos/image_icon.png`
+                     } else{ urlimg1 = `c:/flskrk/${idProyectoActual}/${results.rows.item(0).imagen1}?${new Date().getTime()}` }
+                     setUrlImg1(urlimg1)
+                
+              }
+              /* Cargamos los estados de los slides de tipo Menu */
+              let opciones2 = []
+              if ( results.rows.item(0).tipo_contenido=='Menu' ){  
+                    
+                   tx.executeSql('SELECT * FROM MENUS M LEFT JOIN DATOS_INTRODUCIDOS D ON  M.skip=D.slide WHERE  M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideId], function(tx, results) {
+                        let len = results.rows.length, i;                                        
+                             for (i = 0; i < len; i++){                          
+                                  console.warn("PERRUUU - "+results.rows.item(i)["nombre_lamina"]+" UUU "+results.rows.item(i)['txt'])    
+                                  opciones2.push(results.rows.item(i))                              
+                             }
+                             setListadoOpcionesMenu(opciones2)
+                   }, null);
+              
+              }
+
+
+
                    console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
               }
 

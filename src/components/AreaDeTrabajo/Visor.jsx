@@ -59,8 +59,7 @@ const Visor = () => {
                         <div className="vis_texto" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
                       </div>
                       </div>
-                    </div>            
-                    
+                    </div>        
                  </>
         break;
         case "2":
@@ -69,12 +68,16 @@ const Visor = () => {
                       <div className='visor-Paginacion' >{paginacion}</div>
                       <div className='visorContenidos' >
                         <div className="vis_contSlide" >
-                          <div className="vis_titulo" >{valPlant_Titulo}</div>                      
-                            <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50R" src=${urlImg1} />`+valoresBDslide.texto1    }} >
+                          <div className="vis_titulo" >{ valPlant_Titulo  }</div>                      
+                            {
+                              valoresBDslide.texto1 ?
+                                  <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50R" src=${urlImg1} />`+ valoresBDslide.texto1     }} ></div>
+                                    :
+                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50R" src=${urlImg1} /> `     }} ></div>
+                            }                            
                             </div>		
                         </div> 
-                      </div>
-                    </div>   
+                      </div>                    
                   </>
         break;
         case "3":
@@ -89,7 +92,7 @@ const Visor = () => {
                             <div className="vis_contenedorCols" >                          
                               <div className="vis_contenedorCols-col">
                                 <div className="vis_contenedorCols-col-tlt">{slideTexto3}</div>
-                                <img className="vis_imagenCols" src={urlImg1} />
+                                { urlImg1 ? <img className="vis_imagenCols" src={urlImg1} /> : '' }
                                 <div className="vis_textoCols">{slideTexto5}</div>
                               </div>
                               <div className="vis_contenedorCols-col">
@@ -124,8 +127,12 @@ const Visor = () => {
                       <div className='visorContenidos' >
                               <div className="vis_contSlide" >
                                   <div className="vis_titulo" >{valPlant_Titulo}</div>
-                                  <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50L" src=${urlImg1} />`+valoresBDslide.texto1    }} >
-                                  </div>                                                      
+                                  {
+                                    valoresBDslide.texto1 ?
+                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50L" src=${urlImg1} />`+valoresBDslide.texto1    }} ></div>
+                                    :
+                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50L" src=${urlImg1} />`    }} ></div>
+                                  }
                               </div> 
                       </div>
                     </div>
@@ -159,7 +166,7 @@ const Visor = () => {
           return  <>
                     <div className='visorVistaPrCont' >
                       <div className='visor-Paginacion' >{paginacion}</div>
-                      <div className='visorContenidos' >
+                      <div className='visorContenidos8' >
                               <div className="vis_contSlide" >
                                     <div className="vis_titulo" >{valPlant_Titulo}</div>
                                     <div className="vis_textoColsIntro" dangerouslySetInnerHTML={{__html: valoresBDslide.texto1}} ></div>
@@ -269,7 +276,7 @@ const Visor = () => {
           ( urlImg4 && urlImg4 != "./../../logos/image_icon.png" ) ? regImagesRadio4=<><div onClick={()=> setImageSelected(4)} className={imageSelected==4 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg4} />{iconSelectResp4}</div></>:regImagesRadio4=<></>;
           ( urlImg5 && urlImg5 != "./../../logos/image_icon.png" ) ? regImagesRadio5=<><div onClick={()=> setImageSelected(5)} className={imageSelected==5 ? "vis_imagenRowElement66 imageSelectedRadio" :"vis_imagenRowElement66" } ><img className="vis_imagenPrb01" src={urlImg5} />{iconSelectResp5}</div></>:regImagesRadio5=<></>;
           
-          console.log(urlImg1,urlImg2,urlImg3,urlImg4,urlImg5)
+          console.log("imagesBorrar",urlImg1,urlImg2,urlImg3,urlImg4,urlImg5)
           
 
           return<>
@@ -375,7 +382,11 @@ const Visor = () => {
                               <div className="vis_contSlide" >                                  
                                     <div className="vis_titulo" >{ valPlant_Titulo }</div>
                                     <div className="vis_txtPregunta" >{ slideTexto1 }</div>
-                                    <RepAudio  urlAudio={urlImg1} />
+                                    {
+                                      (urlImg1 != './../../logos/image_icon.png' && urlImg1!= '' ) ?
+                                      <RepAudio  urlAudio={urlImg1} />
+                                      : null
+                                    }
                               </div> 
                       </div>
                     </div>
@@ -386,11 +397,13 @@ const Visor = () => {
 
             return  (  
 
-                  urlImg1 != "./../../logos/image_icon.png" ? 
+                  
                   <>
                     <div className='visorVistaPrCont' >
                       <div className='visor-Paginacion' >{paginacion}</div>
                       <div className='visorContenidos' >
+                      {
+                        urlImg1 != "./../../logos/image_icon.png" ? 
                           <div className='contVideo'>
                             <video
                               src={ urlImg1+`?${new Date().getTime()}` }
@@ -401,12 +414,15 @@ const Visor = () => {
                               style={{ width: '100%' }}                        
                             />
                           </div>
+                      : null
+                      }
+                          
                       </div>
                     </div>
 
                   
                   </>
-                    : null
+                    
                   ) 
         break;
 
@@ -593,6 +609,8 @@ export const OptionMenuVista = (props) => {
 
 
 export function RepAudio(props) {
+  
+    
   const musicTracks = [
     {
       name: "Audio",
@@ -617,10 +635,10 @@ export function RepAudio(props) {
   return (
       <AudioPlayer
         // style={{ width: "300px" }}
-        style={{ margin: "70px auto" }}
+        style={{ margin: "20px auto" }}
         autoPlayAfterSrcChange={false}
         // layout="horizontal"
-        src={musicTracks[trackIndex].src}
+        src={musicTracks[trackIndex].src+"?"+Math.random()}
         onPlay={(e) => console.log("onPlay")}
         //showSkipControls={true}
         showJumpControls={false}

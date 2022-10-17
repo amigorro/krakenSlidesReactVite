@@ -78,7 +78,7 @@ export const Texto5 = (params) => {
 
      return(
           <div>
-               <div className='editTlt'>Texto:</div>
+               <div className='editTlt'>Texto{ params.title ? " "+params.title+":" : ":" }</div>
                <textarea 
                     name="" 
                     id="" 
@@ -116,7 +116,7 @@ export const InputText = (params) => {
 
      return(
           <div>
-               <div>Texto:</div>
+               <div className='editTlt'>{ params.title }:</div>
                <input 
                type="text" 
                placeholder=""
@@ -190,7 +190,7 @@ export const ObjSld_imagen1 = () => {
 }
 
 
-export const ObjSld_imagen2 = () => {
+export const ObjSld_imagen2 = (params) => {
 
      const inputRefimg2 = useRef(null);     
      const {
@@ -221,7 +221,7 @@ export const ObjSld_imagen2 = () => {
 
      return (
           <>
-          <div className='editTlt' >Imagen 2:</div>
+          <div className='editTlt' >Imagen { params.num ? params.num : "2"  }:</div>
           <div className='contImagen' >
                <div>                    
                     <input
@@ -282,7 +282,7 @@ export const ObjSld_imagen3 = (props) => {
                          
                          let carpeta = idProyectoActual;
                          let url='';
-                         if( results.rows.item(0).imagen3 =='image.png' ){
+                         if( results.rows.item(0).imagen3 =='image.png' || results.rows.item(0).imagen3 =='' || results.rows.item(0).imagen3 ==null || results.rows.item(0).imagen3 ==undefined ){
                               url = `./../../logos/image_icon.png?${new Date().getTime()}`
                          } else{
                               url = `c:/flskrk/${carpeta}/${results.rows.item(0).imagen3}?${new Date().getTime()}`
@@ -666,8 +666,7 @@ export const PreguntaRadio01 = () => {
      return (
           <div className='contPregRadio01' >
                <div>                                      
-                    <div>--------------</div>
-                    <div>Respuestas:</div>                    
+                    <div className='lineaPunteada' ></div>                    
                     <ObjetoRespuestaRadioG numObj="1" />
                     <ObjetoRespuestaRadioG numObj="2" />
                     <ObjetoRespuestaRadioG elim="true" numObj="3" />
@@ -826,84 +825,92 @@ export const PreguntaCheckbox01 = (props) => {
 
           return(
                <>
-                    <div><div>Respuesta 1:</div>
+                    <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 1:</div>
                          <input 
                               onChange={(e)=>setResp1(e.target.value)}
                               onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt01_respuesta')}
                               type="text" 
+                              className="input-titulo"
                          />
                          { resp1 ? <div className={valResp1 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' }
-                                        onClick={ ()=> guardaRespuestaBD_val(1)  } ></div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(1)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
-                    <div><div>Respuesta 2:</div>
+                    <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 2:</div>
                          <input 
                               onChange={(e)=>setResp2(e.target.value)}
                               onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt02_respuesta')}
                               type="text" 
+                              className="input-titulo"
                          />
                          { resp2 ? <div className={valResp2 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(2)  }  >d</div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(2)  }  ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
-                    <div><div>Respuesta 3:</div>
+                    <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 3:</div>
                          <input 
                               onChange={(e)=>setResp3(e.target.value)}
                               onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt03_respuesta')}
                               type="text" 
+                              className="input-titulo"
                          />
                          { resp3 ? <div className={valResp3 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(3)  } >d</div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(3)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
-                    <div><div>Respuesta 4:</div>
+                    <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 4:</div>
                          <input 
                               onChange={(e)=>setResp4(e.target.value)}
                               onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt04_respuesta')}
                               type="text" 
+                              className="input-titulo"
                          />
                          { resp4 ? <div className={valResp4 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(4)  } >d</div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(4)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
-                    <div><div>Respuesta 5:</div>
+                    <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 5:</div>
                          <input 
                               onChange={(e)=>setResp5(e.target.value)}
                               onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt05_respuesta')}
                               type="text" 
+                              className="input-titulo"
                          />
                          { resp5 ? <div className={valResp5 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(5)  } >d</div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(5)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
-                    <div><div>Respuesta 6:</div>
+                    <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 6:</div>
                          <input 
                               onChange={(e)=>setResp6(e.target.value)}
                               onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt06_respuesta')}
                               type="text" 
+                              className="input-titulo"
                          />
                          { resp6 ? <div className={valResp6 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(6)  } >d</div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(6)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
-                    <div><div>Respuesta 7:</div>
+                    <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 7:</div>
                          <input 
                               onChange={(e)=>setResp7(e.target.value)}
                               onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt07_respuesta')}
                               type="text" 
+                              className="input-titulo"
                          />
                          {resp7 ? <div  className={valResp7 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(7)  } >d</div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(7)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
-                    <div><div>Respuesta 8:</div>
+                    <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 8:</div>
                          <input 
                               onChange={(e)=>setResp8(e.target.value)}
                               onBlur={(e)=>guardaRespuestaBD_txt(e.target.value, 'txt08_respuesta')}
                               type="text" 
+                              className="input-titulo"
                          />
                          {resp8 ? <div  className={valResp8 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(8)  } >d</div> : null}
+                                        onClick={ ()=> guardaRespuestaBD_val(8)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null}
                          
                     </div>
                </>
@@ -943,7 +950,7 @@ export const ObjSld_audio = (props) => {
                               if( results.rows.item(0).imagen1 =='image.png' ){
                                    url = `./../../logos/image_icon.png`
                               } else{
-                                   url = frecuencia
+                                   url = `c:/flskrk/${idProyectoActual}/`+results.rows.item(0).imagen1
                               }
                               setUrlImg1(url)
                               resolve("ok")
@@ -953,9 +960,12 @@ export const ObjSld_audio = (props) => {
           }
      
           return (
-               <div className='contImagen' >
+               <>
+               <div className='editTlt'>Selecciona el audio: </div>               
+               <div className='contAudio' >
+                    
                     <div>
-                         <div>Selecciona el audio: </div>
+                         
                          <input
                               id="input-audio"
                               type="file"
@@ -970,8 +980,9 @@ export const ObjSld_audio = (props) => {
                          />
                          <label htmlFor="input-audio"><i className="fa-solid fa-arrow-up-from-bracket"></i>&nbsp;&nbsp; { urlImg1 != 'c:/image.png' ? 'ok' :  'Selecciona una imagen' }   </label>
                     </div>
-                    <div className='previewImg' ><img src={ (urlImg1=='./../../logos/image_icon.png' || !urlImg1 ) ? audio_ini : frecuencia     } id="imgSlide8"  className="img-prev" /></div>               
+                    <div className='previewAudio' ><img src={ (urlImg1=='./../../logos/image_icon.png' || !urlImg1 ) ? audio_ini : frecuencia     } id="imgSlide8"  className="img-prev" /></div>               
                </div>
+               </>
           )
 }
 
@@ -1003,9 +1014,10 @@ export const ObjSld_video = (props) => {
      }
 
      return (
+          <>
+          <div  className='editTlt'>Selecciona el video: </div>
           <div className='contImagen' >
-               <div>
-                    <div>Selecciona el video: </div>
+               <div>                    
                     <input
                          id="input-video"
                          type="file"
@@ -1022,5 +1034,6 @@ export const ObjSld_video = (props) => {
                </div>
                <div className='previewImg' ><img src={ (urlImg1=='./../../logos/image_icon.png' || !urlImg2 ) ? video_ini : video_anim     } id="imgSlide8"  className="img-prev" /></div>               
           </div>
+          </>
      )
 }

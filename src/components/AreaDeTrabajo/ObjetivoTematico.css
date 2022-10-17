@@ -9,13 +9,23 @@
 }
 
 .radioValCorrect{
-     width: 30px;
-     height: 30px;
-     background-color: #898943;
+     width:30px;
+    height: 30px;
+    background-color: rgb(119, 119, 119);
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:rgb(119, 119, 119);
+    margin-left: 20px;
+    margin-top: 4px;
+    font-size: 18px;
 }
 
 .selected {
-     background-color: #ffff25 !important;
+     background-color: #236c20 !important;
+     color: #fff;
 }
 
 
