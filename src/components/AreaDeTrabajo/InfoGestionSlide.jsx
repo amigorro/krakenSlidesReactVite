@@ -4,6 +4,7 @@ import './InfoGestionSlide.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import CronogramaFormulario from './CronogramaFormulario';
 import { BorrarPruebaQuill } from './BorrarPruebaQuill';
+import { AvanzarSlide, RetrocederSlide } from './InfoGestionSlidesAvanzarRetro';
 
 const InfoGestionSlide = () => {
 
@@ -134,12 +135,10 @@ const InfoGestionSlide = () => {
                     />
                </div>
                <div className='objetoControl' >
-                    <div className="areaTrabajo-cont-gestion-paginacion-txt">Regresar:</div>
-                    <div ></div>
+                    <RetrocederSlide />
                </div>
                <div className='objetoControl' >
-                    <div  className="areaTrabajo-cont-gestion-paginacion-txt">Avanzar:</div>
-                    <div ></div>
+                    <AvanzarSlide />
                </div>
                
           </div>

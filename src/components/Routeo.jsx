@@ -101,6 +101,15 @@ const Routeo = () => {
      const [editarSlide, setEditarSlide] = useState('');
      const [txtUpdateMenu, setTxtUpdateMenu] = useState('');
 
+     /** GESTIÓN DE SLIDES */
+     const [modalAvanzar, setModalAvanzar] = useState(false);
+     const [modalRetroceder, setModalRetroceder] = useState(false);
+     const [slideAvanzar, setSlideAvanzar] = useState('');
+     const [slideRetroceder, setSlideRetroceder] = useState('');
+     const [seleccionables, setSeleccionables] = useState([]);
+
+
+
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
 
@@ -206,6 +215,12 @@ const Routeo = () => {
                                    modalEditarOpcMenu, setModalEditarOpcMenu,
                                    editarSlide, setEditarSlide,
                                    txtUpdateMenu, setTxtUpdateMenu,
+
+                                   modalAvanzar, setModalAvanzar,
+                                   modalRetroceder, setModalRetroceder,
+                                   slideAvanzar, setSlideAvanzar,
+                                   slideRetroceder, setSlideRetroceder,
+                                   seleccionables, setSeleccionables,
 
                                    modalGlosario, setModalGlosario,
                               

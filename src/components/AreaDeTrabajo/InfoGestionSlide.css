@@ -49,13 +49,13 @@
 }
 
 .areaTrabajo-cont-gestion-paginacion-txt{
-  margin: 10px 0 0 0;  
+  margin: 10px auto 0 auto;  
   color:rgb(195, 211, 208);
   font-weight: 600;
 }
 
 .areaTrabajo-cont-gestion-paginacion-inp{
-  width: 60px;
+  width: 90px;
   text-align: center;
   height: 36px;
   border-radius: 2px;
