@@ -593,9 +593,6 @@ export const OptionMenuVista = (props) => {
               });
           });
 
-
-      
-
 }
 
 
