@@ -961,11 +961,12 @@ video[poster]{
 	background-color: #fff;
 	border: 1px solid rgb(38, 96, 146);
 	width: 80%;
-	border-radius: 20px;
+	border-radius: 4px;
 	position:absolute;
 	right: 0;
 	font-weight: 300;
 	padding-left: 7px;
+	padding-top: 2px;
 }
 
 
@@ -993,14 +994,13 @@ video[poster]{
 
 .vis_regOpcionMenu3{
      background-color: rgb(146, 195, 238);
-     margin: 4px auto;
+	margin: 9px auto;
      position:relative;
-	border-radius: 4px;
      width: 250px;
      height: 40px;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
+     font-size: 14px;
+	border-radius: 3px;
+	font-weight: 600;
 }
 
 .vis_regOpcionMenu2{

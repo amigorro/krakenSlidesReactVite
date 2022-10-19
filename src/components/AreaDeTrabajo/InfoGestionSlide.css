@@ -34,14 +34,24 @@
 }
 
 .areaTrabajo-cont-gestion-paginacion{
-  width: 500px;
-  margin: 2vh auto 2vh auto;  
+  width: 400px;
+  margin: 2vh auto 2vh auto;    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.objetoControl{
+  width: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .areaTrabajo-cont-gestion-paginacion-txt{
   margin: 10px 0 0 0;  
   color:rgb(195, 211, 208);
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .areaTrabajo-cont-gestion-paginacion-inp{

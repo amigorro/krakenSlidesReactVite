@@ -153,7 +153,7 @@ export const ObjetoRespuestaRadioG = ( params ) => {
 
      return (
           <div>
-               <div className='editTlt unaLineaFlex'> Respuesta {  params.numObj  }:  { params.elim=='true' && <div className='trashRadio' onClick={ () => resetRespuesta(params.numObj)} ><i class="fa-sharp fa-solid fa-trash"></i></div> }</div>
+               <div className='editTlt unaLineaFlex'> Respuesta {  params.numObj  }:  { params.elim=='true' && <div className='trashRadio' onClick={ () => resetRespuesta(params.numObj)} ><i className="fa-sharp fa-solid fa-trash"></i></div> }</div>
                <input 
                type="text" 
                className="input-titulo"
@@ -205,7 +205,7 @@ export const ObjetoRespuestaRadioG = ( params ) => {
                               (params.numObj =='8' && resp8  ) ?  'radioValCorrect' : 'quitarRadioValCorrect'
                     }
                     onClick={ () => { seleccionaCorrecta(params.numObj) } }
-               ><i class="fa-sharp fa-solid fa-check"></i></div>
+               ><i className="fa-sharp fa-solid fa-check"></i></div>
 
           </div>
      )

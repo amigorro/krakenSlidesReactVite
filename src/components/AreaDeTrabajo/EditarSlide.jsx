@@ -257,7 +257,7 @@ const EditarSlide = () => {
         <div
             className="btnQuitEdition"
             onClick={() =>setEdicion(false) }
-            ><i class="fa-sharp fa-solid btnQuitEdition-icon fa-xmark"></i> &nbsp;&nbsp; Cerrar
+            ><i className="fa-sharp fa-solid btnQuitEdition-icon fa-xmark"></i> &nbsp;&nbsp; Cerrar
         </div>
         {
           plantillaSeleccionada ?

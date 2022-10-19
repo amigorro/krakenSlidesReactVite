@@ -71,9 +71,9 @@ const Visor = () => {
                           <div className="vis_titulo" >{ valPlant_Titulo  }</div>                      
                             {
                               valoresBDslide.texto1 ?
-                                  <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50R" src=${urlImg1} />`+ valoresBDslide.texto1     }} ></div>
+                                  <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img className="vis_imagen50R" src=${urlImg1} />`+ valoresBDslide.texto1     }} ></div>
                                     :
-                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50R" src=${urlImg1} /> `     }} ></div>
+                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img className="vis_imagen50R" src=${urlImg1} /> `     }} ></div>
                             }                            
                             </div>		
                         </div> 
@@ -129,9 +129,9 @@ const Visor = () => {
                                   <div className="vis_titulo" >{valPlant_Titulo}</div>
                                   {
                                     valoresBDslide.texto1 ?
-                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50L" src=${urlImg1} />`+valoresBDslide.texto1    }} ></div>
+                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img className="vis_imagen50L" src=${urlImg1} />`+valoresBDslide.texto1    }} ></div>
                                     :
-                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img class="vis_imagen50L" src=${urlImg1} />`    }} ></div>
+                                    <div className="vis_textoRodeando" dangerouslySetInnerHTML={{__html: `<img className="vis_imagen50L" src=${urlImg1} />`    }} ></div>
                                   }
                               </div> 
                       </div>
@@ -193,11 +193,11 @@ const Visor = () => {
           let regImages = "";
                                         
           if ( (urlImg1 !== "" && urlImg1 != "./../../logos/image_icon.png") && (urlImg4 == "" || urlImg4 == "./../../logos/image_icon.png")){
-            regImages = <><div class="vis_imagenRowElement01" ><img class="vis_imagenPrb01" src={urlImg1} /></div></>;
+            regImages = <><div className="vis_imagenRowElement01" ><img className="vis_imagenPrb01" src={urlImg1} /></div></>;
           } else if ( (urlImg4 !== "" && urlImg4 != "./../../logos/image_icon.png") && (urlImg1 == "" || urlImg1 == "./../../logos/image_icon.png") ){
-            regImages = <><div class="vis_imagenRowElement01" ><img class="vis_imagenPrb01" src={urlImg4} /></div></>;
+            regImages = <><div className="vis_imagenRowElement01" ><img className="vis_imagenPrb01" src={urlImg4} /></div></>;
           } else if (  (urlImg1 !== "" && urlImg1 != "./../../logos/image_icon.png")  &&  (urlImg4 !== "" && urlImg4 != "./../../logos/image_icon.png")  ){
-            regImages = <> <div class="vis_imagenRowElement02" ><img class="vis_imagenPrb02" src={urlImg1} /></div> <div class="vis_imagenRowElement02" ><img class="vis_imagenPrb02" src={urlImg4} /></div> </>                      ;
+            regImages = <> <div className="vis_imagenRowElement02" ><img className="vis_imagenPrb02" src={urlImg1} /></div> <div className="vis_imagenRowElement02" ><img className="vis_imagenPrb02" src={urlImg4} /></div> </>                      ;
           }
           
           else {
@@ -511,8 +511,12 @@ const Visor = () => {
                                               return(
                                                   <div key={index}>
                                                       <div className='vis_regOpcionMenu3' >
-                                                          <div >{item.nombre_lamina}</div>  
-                                                          <div>{item.txt}</div>
+                                                          <div className='vis_regOpcionMenu2-txt' >{item.txt}</div>  
+                                                          {
+                                                                item.nombre_lamina ?
+                                                                      <div className='vis_regOpcionMenu2_regSub' >{item.nombre_lamina}</div>
+                                                                : null
+                                                              }
                                                       </div>
                                                   </div>
                                               )

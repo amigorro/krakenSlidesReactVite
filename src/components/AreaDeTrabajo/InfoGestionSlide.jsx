@@ -123,19 +123,27 @@ const InfoGestionSlide = () => {
                />
           </div>
           <div className="areaTrabajo-cont-gestion-paginacion">
-               <div  className="areaTrabajo-cont-gestion-paginacion-txt">Paginación:</div>
-               <input  
-                    className="areaTrabajo-cont-gestion-paginacion-inp"  
-                    spellCheck="false" 
-                    type="number"
-                    value={paginacion}
-                    onChange={(e)=>{ actualizaPaginacion(e.target.value) }}
-               />
+               <div className='objetoControl' >
+                    <div  className="areaTrabajo-cont-gestion-paginacion-txt">Paginación:</div>
+                    <input  
+                         className="areaTrabajo-cont-gestion-paginacion-inp"  
+                         spellCheck="false" 
+                         type="number"
+                         value={paginacion}
+                         onChange={(e)=>{ actualizaPaginacion(e.target.value) }}
+                    />
+               </div>
+               <div className='objetoControl' >
+                    <div className="areaTrabajo-cont-gestion-paginacion-txt">Regresar:</div>
+                    <div ></div>
+               </div>
+               <div className='objetoControl' >
+                    <div  className="areaTrabajo-cont-gestion-paginacion-txt">Avanzar:</div>
+                    <div ></div>
+               </div>
+               
           </div>
-          <div className="areaTrabajo-cont-gestion-avanzaRetrocede">
-               <div className="areaTrabajo-cont-gestion-avanzaRetrocede-btn">Regresar:<div className="areaTrabajo-cont-gestion-avanzaRetrocede-btn-specs" ></div></div>
-               <div className="areaTrabajo-cont-gestion-avanzaRetrocede-btn">Avanzar:<div className="areaTrabajo-cont-gestion-avanzaRetrocede-btn-specs"></div></div>
-          </div>
+          
            
                <div 
                     className="areaTrabajo-cont-gestion-btn btn-gestion"

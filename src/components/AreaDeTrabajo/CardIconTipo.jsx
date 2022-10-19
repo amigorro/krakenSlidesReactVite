@@ -15,24 +15,23 @@ export const CardIconTipo = (props) => {
     <div> {
      slides.map( (slide, index) => {
                if(slide.id === props.id2){                  
-                    console.log("perro666",slide.tipo_contenido)  
-
+                    
                     switch (slide.tipo_contenido){
                          case "Static":
                               identificadorTipo="CardCont-Tipo"
-                              iconoTipo=<i class="fa-regular fa-browser"></i>
+                              iconoTipo=<i className="fa-regular fa-browser"></i>
                               break;
                          case "Menu":
                               identificadorTipo="CardCont-TipoMenu"
-                              iconoTipo=<i class="fa-solid fa-bars"></i>
+                              iconoTipo=<i className="fa-solid fa-bars"></i>
                               break;
                          case "Pregunta":
                               identificadorTipo="CardCont-TipoPregunta"
-                              iconoTipo=<i class="fa-sharp fa-solid fa-question"></i>
+                              iconoTipo=<i className="fa-sharp fa-solid fa-question"></i>
                               break;
                          case "AudioVideo":
                               identificadorTipo="CardCont-TipoAudioVideo"
-                              iconoTipo=<i class="fa-solid fa-waveform"></i>
+                              iconoTipo=<i className="fa-solid fa-waveform"></i>
                               break;
                     }
 

@@ -296,7 +296,7 @@ export const ObjSld_imagen3 = (props) => {
 
      return (
           <>
-          <div className='editTlt flexionando' >Imagen 3: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(3,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
+          <div className='editTlt flexionando' >Imagen 3: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(3,idProyectoActual,slideSelected.id)}> <i className="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>          
                     <input
@@ -367,7 +367,7 @@ export const ObjSld_imagen4 = (props) => {
 
      return (
           <>
-          <div className='editTlt flexionando' >Imagen 4: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(4,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
+          <div className='editTlt flexionando' >Imagen 4: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(4,idProyectoActual,slideSelected.id)}> <i className="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>
                     <input
@@ -435,7 +435,7 @@ export const ObjSld_imagen5 = (props) => {
 
      return (
           <>
-          <div className='editTlt flexionando' >Imagen 5: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(5,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
+          <div className='editTlt flexionando' >Imagen 5: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(5,idProyectoActual,slideSelected.id)}> <i className="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>                    
                     <input
@@ -501,7 +501,7 @@ export const ObjSld_imagen6 = (props) => {
 
      return (
           <>
-          <div className='editTlt flexionando' >Imagen 6: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(6,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
+          <div className='editTlt flexionando' >Imagen 6: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(6,idProyectoActual,slideSelected.id)}> <i className="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>
                     <input
@@ -564,7 +564,7 @@ export const ObjSld_imagen7 = (props) => {
 
      return (
           <>
-          <div className='editTlt flexionando' >Imagen 7: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(7,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
+          <div className='editTlt flexionando' >Imagen 7: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(7,idProyectoActual,slideSelected.id)}> <i className="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>          
                     <input
@@ -626,7 +626,7 @@ export const ObjSld_imagen8 = (props) => {
 
      return (
           <>
-          <div className='editTlt flexionando' >Imagen 8: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(8,idProyectoActual,slideSelected.id)}> <i class="fa-sharp fa-solid fa-trash"></i> </div> } </div>
+          <div className='editTlt flexionando' >Imagen 8: { props.elim == "true" && <div className='resetImageBtn' onClick={ () => resetImage(8,idProyectoActual,slideSelected.id)}> <i className="fa-sharp fa-solid fa-trash"></i> </div> } </div>
           <div className='contImagen' >
                <div>
                     <input
@@ -766,11 +766,11 @@ export const PreguntaRadio02 = (props) => {
      return (
           <>
                {
-                    (props.radio == 1 && (urlImg1 && urlImg1!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(1)} className={valResp1 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : 
-                    (props.radio == 2 && (urlImg2 && urlImg2!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(2)} className={valResp2 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : 
-                    (props.radio == 3 && (urlImg3 && urlImg3!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(3)} className={valResp3 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : 
-                    (props.radio == 4 && (urlImg4 && urlImg4!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(4)} className={valResp4 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : 
-                    (props.radio == 5 && (urlImg5 && urlImg5!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(5)} className={valResp5 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i class="fa-sharp fa-solid fa-circle-check"></i></div> : null
+                    (props.radio == 1 && (urlImg1 && urlImg1!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(1)} className={valResp1 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i className="fa-sharp fa-solid fa-circle-check"></i></div> : 
+                    (props.radio == 2 && (urlImg2 && urlImg2!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(2)} className={valResp2 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i className="fa-sharp fa-solid fa-circle-check"></i></div> : 
+                    (props.radio == 3 && (urlImg3 && urlImg3!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(3)} className={valResp3 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i className="fa-sharp fa-solid fa-circle-check"></i></div> : 
+                    (props.radio == 4 && (urlImg4 && urlImg4!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(4)} className={valResp4 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i className="fa-sharp fa-solid fa-circle-check"></i></div> : 
+                    (props.radio == 5 && (urlImg5 && urlImg5!= './../../logos/image_icon.png' ) ) ? <div onClick={()=>selectedRespImage(5)} className={valResp5 == 1  ? 'seleccionaCorrectoRadioImagen respSelected2' : 'seleccionaCorrectoRadioImagen' } ><i className="fa-sharp fa-solid fa-circle-check"></i></div> : null
                }
           
           </>
@@ -833,7 +833,7 @@ export const PreguntaCheckbox01 = (props) => {
                               className="input-titulo"
                          />
                          { resp1 ? <div className={valResp1 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' }
-                                        onClick={ ()=> guardaRespuestaBD_val(1)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(1)  } ><i className="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
                     <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 2:</div>
@@ -844,7 +844,7 @@ export const PreguntaCheckbox01 = (props) => {
                               className="input-titulo"
                          />
                          { resp2 ? <div className={valResp2 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(2)  }  ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(2)  }  ><i className="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
                     <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 3:</div>
@@ -855,7 +855,7 @@ export const PreguntaCheckbox01 = (props) => {
                               className="input-titulo"
                          />
                          { resp3 ? <div className={valResp3 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(3)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(3)  } ><i className="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
                     <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 4:</div>
@@ -866,7 +866,7 @@ export const PreguntaCheckbox01 = (props) => {
                               className="input-titulo"
                          />
                          { resp4 ? <div className={valResp4 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(4)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(4)  } ><i className="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
                     <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 5:</div>
@@ -877,7 +877,7 @@ export const PreguntaCheckbox01 = (props) => {
                               className="input-titulo"
                          />
                          { resp5 ? <div className={valResp5 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(5)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(5)  } ><i className="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
                     <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 6:</div>
@@ -888,7 +888,7 @@ export const PreguntaCheckbox01 = (props) => {
                               className="input-titulo"
                          />
                          { resp6 ? <div className={valResp6 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(6)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(6)  } ><i className="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
                     <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 7:</div>
@@ -899,7 +899,7 @@ export const PreguntaCheckbox01 = (props) => {
                               className="input-titulo"
                          />
                          {resp7 ? <div  className={valResp7 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(7)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null }
+                                        onClick={ ()=> guardaRespuestaBD_val(7)  } ><i className="fa-sharp fa-solid fa-check"></i></div> : null }
                          
                     </div>
                     <div className='registroRespuestaInput' ><div className='editTlt'>Respuesta 8:</div>
@@ -910,7 +910,7 @@ export const PreguntaCheckbox01 = (props) => {
                               className="input-titulo"
                          />
                          {resp8 ? <div  className={valResp8 == 1  ? 'cajitaValCheckbox selectedCheck' : 'cajitaValCheckbox' } 
-                                        onClick={ ()=> guardaRespuestaBD_val(8)  } ><i class="fa-sharp fa-solid fa-check"></i></div> : null}
+                                        onClick={ ()=> guardaRespuestaBD_val(8)  } ><i className="fa-sharp fa-solid fa-check"></i></div> : null}
                          
                     </div>
                </>

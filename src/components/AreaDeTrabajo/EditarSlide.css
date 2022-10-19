@@ -11,6 +11,35 @@
      border-top-left-radius: 5px;
 }
 
+/**  SCROLLBAR */
+.EditarSlide::-webkit-scrollbar {
+	width: 6px;
+     margin-left: 5px;
+     border-radius: 10px;
+	background-color: #334155;	
+}
+.EditarSlide::-webkit-scrollbar-track{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #616467;     
+     margin-left: 5px;	
+}
+.EditarSlide::-webkit-scrollbar-thumb{
+	background-color: #2a4552;
+	border-radius: 10px;
+     margin-left: 5px;
+     transition: 1s;	
+}
+.EditarSlide::-webkit-scrollbar-thumb:hover{
+     background: #3ab183;
+     transition: 1s;	
+}	
+/** FIN SCROLLBAR */
+
+
+
+
+
+
 .btnQuitEdition{
      background-color: rgb(229, 94, 94);
      width: 100px;

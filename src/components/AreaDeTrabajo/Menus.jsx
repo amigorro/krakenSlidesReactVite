@@ -116,7 +116,7 @@ export const Menu01 = () => {
           {
                flagInput   ?
                     <div className='contOptionsMenu' >
-                         <div onClick={ () => ListadoSlides() } className='contOptionsMenu-selectSlide'  ><i class="fa-solid fa-arrow-up-right-from-square"></i> Selecciona slide &nbsp;</div>
+                         <div onClick={ () => ListadoSlides() } className='contOptionsMenu-selectSlide'  ><i className="fa-solid fa-arrow-up-right-from-square"></i> Selecciona slide &nbsp;</div>
                          <div
                               className='contOptionsMenuSaveOption'
                               onClick={()=>{
@@ -124,7 +124,7 @@ export const Menu01 = () => {
                                    guardarOpcionMenu(txt,opcionSlideSelected)                                   
                               }}
                          >
-                             <i class="fa-sharp fa-solid fa-download"></i> &nbsp; Guardar</div>
+                             <i className="fa-sharp fa-solid fa-download"></i> &nbsp; Guardar</div>
                     </div>
                : null
           }
@@ -196,7 +196,7 @@ export const ImprimeOpcionesMenu = ({getDataProyectosBD}) =>{
                                                        }   
                                         }><i className='fa-duotone fa-edit'></i></div>
                                         <div className='btnOpcionMenu btnDeleteMenu' onClick={()=>{deleteOpcionMenu(item.id_option)}
-                                        }><i class="fa-solid fa-trash"></i></div>
+                                        }><i className="fa-solid fa-trash"></i></div>
                                    </div>
                               : null
                          }
