@@ -391,13 +391,20 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                   }
               ><i className="fa-solid fa-xmark"></i></div>
               <header className='CatalogoSlides-header' >
-                  <div className='CatalogoSlides-header-tlt' >Nombre de la categoría</div>  
+                  <div className='CatalogoSlides-header-tlt' >
+                      {
+                        categoriaSel == 1 ? 'Texto e imágenes' :
+                        categoriaSel == 2 ? 'Preguntas' :
+                        categoriaSel == 3 ? 'Audio y video' :
+                        categoriaSel == 4 && 'Menús' 
+                      }  
+                  </div>  
                   <div className='CatalogoSlides-header-menu'>
                       <ul>
-                          <li onClick={ () => setCategoriaSel(1) }>Texto & imagenes</li>
-                          <li onClick={ () => setCategoriaSel(2) }>Pregunta</li>
-                          <li onClick={ () => setCategoriaSel(3) }>Audio y video</li>
-                          <li onClick={ () => setCategoriaSel(4) }>Menú</li>
+                          <li onClick={ () => setCategoriaSel(1) }><div className='CardCont-Tipo' ><i className="fa-regular fa-browser"></i></div></li>
+                          <li onClick={ () => setCategoriaSel(2) }><div className='CardCont-TipoPregunta' ><i className="fa-sharp fa-solid fa-question"></i></div></li>
+                          <li onClick={ () => setCategoriaSel(3) }><div className='CardCont-TipoAudioVideo' ><i className="fa-solid fa-waveform"></i></div></li>
+                          <li onClick={ () => setCategoriaSel(4) }> <div className='CardCont-TipoMenu' ><i className="fa-solid fa-bars"></i></div></li>
                       </ul>
                   </div>                  
               </header>

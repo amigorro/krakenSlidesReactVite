@@ -259,8 +259,7 @@ export const ModalSlidesEditar = ({ListadoSlides}) =>{
           db.transaction(function(tx) {
                console.warn(txt,slideSeleccionado,editarSlide,idProyectoActual,1,sesion)
                tx.executeSql('UPDATE MENUS SET txt = ?, skip = ? WHERE id_option = ? AND id_proyecto = ? AND id_usuario = ? AND sesion = ? ', [txt,slideSeleccionado,editarSlide,idProyectoActual,1,sesion], function(tx, results) {
-                    let qry ='UPDATE MENUS SET txt = '+txt+', skip = '+slideSeleccionado+' WHERE id_option = '+editarSlide+' AND id_proyecto = '+idProyectoActual+' AND id_usuario = 1 AND sesion = '+sesion+' ';
-                    console.log('results UPDATEEE', qry)                    
+                    
                     setModalEditarOpcMenu(false)
                     ListadoSlides2();
                }, null);

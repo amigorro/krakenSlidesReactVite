@@ -101,6 +101,9 @@ export const PruebaOrder = () => {
                setListadoOpcionesMenu ,
                listadoOpcionesMenu,
 
+               slideAvanzar, setSlideAvanzar,
+               slideRetroceder, setSlideRetroceder,
+
      } = useContext(ContextAreaDeTrabajo);
      
 
@@ -182,6 +185,9 @@ export const PruebaOrder = () => {
                          setSlideTexto4(results.rows.item(0).texto4)
                          setSlideTexto5(results.rows.item(0).texto5)
                          setSlideTexto6(results.rows.item(0).texto6)
+
+                         setSlideAvanzar(results.rows.item(0).siguiente)
+                         setSlideRetroceder(results.rows.item(0).anterior)
                          
                          if (!results.rows.item(0).paginacion){
                               setPaginacion('')

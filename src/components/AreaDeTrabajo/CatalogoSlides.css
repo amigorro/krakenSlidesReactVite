@@ -34,6 +34,8 @@
 .CatalogoSlides-header-tlt{
      font-size: 18px;
      font-weight: 600;
+     font-size: 28px;
+     margin-left: 40px;
 }
 
  .CatalogoSlides-header-menu{
@@ -49,7 +51,7 @@
  .CatalogoSlides-header-menu li{     
      display: flex;
      width: 120px;
-     background-color: #115599;
+     border: .5px solid #dbe4ef;
      margin: 5px;
      justify-content: center;
      align-items: center;
