@@ -25,8 +25,18 @@
 
 .CronogramaCont-desp-cerrar{
      position : absolute;
-     top : 10px;
-     right : 20px;
+     top : -10px;
+     right : -5px;
+     width : 30px;
+     height : 30px;
+     border-radius : 50%;
+     background-color : #7f1f1f;
+     color: #FFF;
+     font-size: 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: 2px solid #fff;
 }
 
 
@@ -85,10 +95,49 @@
      background-color: transparent;
      overflow-y: auto !important; 
 }
+/**  SCROLLBAR */
+.CronogramaFormulario-desp-objetos::-webkit-scrollbar {
+	width: 6px;
+     margin-left: 5px;
+     border-radius: 10px;
+	background-color: #335539;
+	
+}
+.CronogramaFormulario-desp-objetos::-webkit-scrollbar-track{
+	box-shadow: inset 0 0 6px rgba(184, 184, 184, 0.3);
+	background-color: #b9d1f3;
+     border-radius: 0px;
+     margin-left: 5px;
+	
+}
+
+.CronogramaFormulario-desp-objetos::-webkit-scrollbar-thumb{
+	background-color: #031f36;
+	border-radius: 0px;
+     margin-left: 5px;
+     transition: 1s;
+	
+}
+
+.CronogramaFormulario-desp-objetos::-webkit-scrollbar-thumb:hover{
+     background: #3ab183;
+     transition: 1s;
+	
+}	
+/** FIN SCROLLBAR */
+
 
 
 .cronogramasInputText{
-     color: #222;
+     width: 90%;
+     height: 30px;
+     margin-left: 20px;        
+     background-color: #fff;    
+     padding-left: 10px;
+     font-size: 14px;
+     font-weight: 600;
+     color: #000;
+     border-radius: 2px;
 }
 
 .cronogramasQuill{
@@ -99,17 +148,60 @@
 }
 
 .cronogramasTiempo{
-     color: #222;
+     width: 80px;
+     height: 30px;
+     margin-left: 20px; 
+     margin-bottom: 20px;       
+     background-color: #fff;    
+     padding-left: 10px;
+     font-size: 14px;
+     font-weight: 600;
+     color: #000;
+     border-radius: 2px;
 }
 .cronogramasNotas{
      color: #222;
+     width: 90%;
+     height: 80px;
+     margin-left: 20px;        
+     background-color: #fff;    
+     padding: 10px;
+     font-size: 14px;
+     outline: none;
+     font-weight: 600;
+     color: #000;
+     border-radius: 2px;
+     resize: none;     
 }
-
+.cronogramasMateriales{
+     color: #222;
+     width: 90%;
+     height: 80px;
+     margin-left: 20px;        
+     background-color: #fff;    
+     padding: 10px;
+     font-size: 14px;
+     outline: none;
+     font-weight: 600;
+     color: #000;
+     border-radius: 2px;
+     resize: none;     
+}
 
 .crono_cerrar{
      position : absolute;
-     top : 10px;
-     right : 20px;
+     top : -10px;
+     right : -5px;
+     width : 30px;
+     height : 30px;
+     border-radius : 50%;
+     background-color : #7f1f1f;
+     color: #FFF;
+     font-size: 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: 2px solid #fff;
 }
 
 .crono_tlt{
@@ -179,6 +271,7 @@
      border-radius: 2.5px;
      font-size: 16px;
      font-weight: 600;     
+     margin-left: 20px;
 }
 
 

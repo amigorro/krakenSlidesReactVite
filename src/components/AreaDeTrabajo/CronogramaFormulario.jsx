@@ -147,16 +147,14 @@ const CronogramaFormulario = ( props ) => {
                       onBlur={(e)=>{  
                         actualizarRegBdSlideCronogramas("tiempo",e.target.value)                          
                       }}
-                  />
+                  /> minutos
 
                   <div className='crono_subtlt'>Notas:</div>
                   <textarea 
                       name="" 
-                      id="" 
-                      cols="80" 
+                      id=""                       
                       defaultValue={bdNotas}
-                      className='cronogramasNotas' 
-                      rows="5"
+                      className='cronogramasNotas'                       
                       onBlur={(e)=>{  
                         actualizarRegBdSlideCronogramas("notas",e.target.value)                          
                       }}
@@ -299,7 +297,7 @@ const CronogramaFormulario = ( props ) => {
                     id="" 
                     cols="80" 
                     //defaultValue={bdNotas}
-                    //className='cronogramasNotas' 
+                    className='cronogramasMateriales' 
                     rows="5"
                     onBlur={(e)=>{  
                       //actualizarRegBdSlideCronogramas("notas",e.target.value)                          
@@ -357,10 +355,8 @@ const CronogramaFormulario = ( props ) => {
                 <textarea 
                     name="" 
                     id="" 
-                    cols="80" 
                     //defaultValue={bdNotas}
-                    //className='cronogramasNotas' 
-                    rows="5"
+                    className='cronogramasMateriales' 
                     onBlur={(e)=>{  
                       //actualizarRegBdSlideCronogramas("notas",e.target.value)                          
                     }}
@@ -464,7 +460,7 @@ const CronogramaFormulario = ( props ) => {
 
   return (
     <div className='CronogramaFormulario-desp' >
-          <div onClick={ () => cerrarFormularioCronograma() } className='crono_cerrar' >X</div>
+          <div onClick={ () => cerrarFormularioCronograma() } className='crono_cerrar' ><i className="fa-solid fa-xmark"></i></div>
           <div className='crono_tlt'>{ titulo }</div>
           <div className='CronogramaFormulario-desp-objetos' >
               {

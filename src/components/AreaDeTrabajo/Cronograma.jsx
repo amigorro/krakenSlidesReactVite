@@ -53,7 +53,7 @@ const Cronograma = () => {
   return (
      <div className='CronogramaCont' >
           <div className='CronogramaCont-desp'>
-               <div className='CronogramaCont-desp-cerrar' onClick={ () => setDespCronograma(false) }  >X</div>
+               <div className='CronogramaCont-desp-cerrar' onClick={ () => setDespCronograma(false) }  ><i className="fa-solid fa-xmark"></i></div>
                <div className='CronogramaCont-desp-tlt' >Guia didáctica [Cronograma]</div>
                <div className='CronogramaCont-desp-menu' >
                     <div className='CronogramaCont-desp-menu-item' onClick={ () => setTipoCronograma('encuadre') }  >Encuadre del tema</div>

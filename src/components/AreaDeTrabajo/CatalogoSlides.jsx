@@ -39,7 +39,8 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
   const [categoriaSel, setCategoriaSel] = useState(1)
 
 
-  useEffect( () =>{     
+  useEffect( () =>{    
+    setPlantillaSeleccionada(null) 
     getPlantillas()
   }  , [categoriaSel]  )
 
@@ -155,7 +156,7 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
             setSlideImg1('image.png')
             cargaValoresSlide(id_plantilla)
             
-
+            
             
 
             //setDespCronograma(false)
@@ -364,8 +365,9 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                    console.log("TITULO DEL SLIDE:::::::::: "+results.rows.item(0).titulo+" PROYECTO:::"+idProyectoActual+" SESION:::"+sesion+" SLIDE:::"+slideId+":::::")                                         
               }
 
-
-
+            /** Mandamos el SCROLL AL FINAL */
+            const buffer = document.getElementById("listaCardsSlides");
+            buffer.scrollTop = buffer.scrollHeight; 
 
 
 
@@ -401,10 +403,10 @@ const CatalogoSlides = ({setModalTipoSlide}) => {
                   </div>  
                   <div className='CatalogoSlides-header-menu'>
                       <ul>
-                          <li onClick={ () => setCategoriaSel(1) }><div className='CardCont-Tipo' ><i className="fa-regular fa-browser"></i></div></li>
-                          <li onClick={ () => setCategoriaSel(2) }><div className='CardCont-TipoPregunta' ><i className="fa-sharp fa-solid fa-question"></i></div></li>
-                          <li onClick={ () => setCategoriaSel(3) }><div className='CardCont-TipoAudioVideo' ><i className="fa-solid fa-waveform"></i></div></li>
-                          <li onClick={ () => setCategoriaSel(4) }> <div className='CardCont-TipoMenu' ><i className="fa-solid fa-bars"></i></div></li>
+                          <li onClick={ () => setCategoriaSel(1) } className={ categoriaSel==1 ? 'CardCont-Tipo-btnCatalogo CardCont-Tipo-btnCatalogo-sel' : 'CardCont-Tipo-btnCatalogo' } ><div className='' ><i className="fa-regular fa-browser"></i></div></li>
+                          <li onClick={ () => setCategoriaSel(2) } className={ categoriaSel==2 ? 'CardCont-Tipo-btnPregunta CardCont-Tipo-btnPregunta-sel' : 'CardCont-Tipo-btnPregunta' } ><div className='' ><i className="fa-sharp fa-solid fa-question"></i></div></li>
+                          <li onClick={ () => setCategoriaSel(3) } className={ categoriaSel==3 ? 'CardCont-Tipo-btnAudioVideo CardCont-Tipo-btnAudioVideo-sel' : 'CardCont-Tipo-btnAudioVideo' } ><div className='' ><i className="fa-solid fa-waveform"></i></div></li>
+                          <li onClick={ () => setCategoriaSel(4) } className={ categoriaSel==4 ? 'CardCont-Tipo-btnMenues CardCont-Tipo-btnMenues-sel' : 'CardCont-Tipo-btnMenues' } > <div className='' ><i className="fa-solid fa-bars"></i></div></li>
                       </ul>
                   </div>                  
               </header>
