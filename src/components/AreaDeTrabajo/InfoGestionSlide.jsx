@@ -3,7 +3,7 @@ import EditarSlide from './EditarSlide'
 import './InfoGestionSlide.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import CronogramaFormulario from './CronogramaFormulario';
-import { BorrarPruebaQuill } from './BorrarPruebaQuill';
+import { ObjetivoTematico } from './ObjetivoTematico';
 import { AvanzarSlide, RetrocederSlide } from './InfoGestionSlidesAvanzarRetro';
 
 const InfoGestionSlide = () => {
@@ -22,6 +22,9 @@ const InfoGestionSlide = () => {
 
                /** info Gestión slides: */
                paginacion, setPaginacion,
+
+               /** Objetivo aprendizaje */
+               modalObjetivoApr, setModalObjetivoApr,
 
           } = useContext(ContextAreaDeTrabajo);     
      const [flagObjetivoTem, setFlagObjetivoTem] = useState(false)
@@ -150,8 +153,8 @@ const InfoGestionSlide = () => {
                     >Cronograma</div>
                <div 
                     className="areaTrabajo-cont-gestion-btn btn-gestion"
-                    onClick={ () => setFlagObjetivoTem(true) }
-               >Objetivo tematico</div>
+                    onClick={ () => setModalObjetivoApr(true) }
+               >Objetivo de aprendizaje</div>
                
                <button 
                     className="areaTrabajo-cont-gestion-btn btn-gestion"
@@ -176,8 +179,8 @@ const InfoGestionSlide = () => {
                     null               
           }
           {
-               flagObjetivoTem &&
-                    <BorrarPruebaQuill/>
+               modalObjetivoApr &&
+                    <ObjetivoTematico />
                
                
           }

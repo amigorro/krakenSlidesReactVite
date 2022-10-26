@@ -199,7 +199,7 @@ const CronogramaFormulario = ( props ) => {
                         >Lectura individual</div>
                         <div className={ bdTec6 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
                             onClick={ () => revisaCheck("tec6") }
-                        >Lectura comentadal</div>
+                        >Lectura comentada</div>
                         <div className={ bdTec7 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
                             onClick={ () => revisaCheck("tec7") }
                         >Lluvia de ideas</div>
@@ -226,11 +226,11 @@ const CronogramaFormulario = ( props ) => {
                       name="" 
                       id="" 
                       cols="80" 
-                      //defaultValue={bdNotas}
+                      defaultValue={bdMateriales}
                       className='cronogramasMateriales' 
                       rows="5"
                       onBlur={(e)=>{  
-                        //actualizarRegBdSlideCronogramas("notas",e.target.value)                          
+                        actualizarRegBdSlideCronogramas("materiales",e.target.value)                          
                       }}
                   >   
                   </textarea>
@@ -268,17 +268,37 @@ const CronogramaFormulario = ( props ) => {
                 <div className='crono_subtlt' >Instrucciones:</div>
                 <div className='editorQuill cronogramasQuill ' ><div ref={quillRef} /></div> 
                 
-                <div className='crono_subtlt'>Técnicas didácticas </div>
-                
-                <label><input type="checkbox" id="tec1" value="1"/> Interrogativa</label>
-                <label><input type="checkbox" id="tec2" value="1"/> Demostrativa</label>
-                <label><input type="checkbox" id="tec3" value="1"/> Expositiva</label>
-                <label><input type="checkbox" id="tec4" value="1"/> Dinámica grupal</label>
-                <label><input type="checkbox" id="tec5" value="1"/> Lectura individual</label>
-                <label><input type="checkbox" id="tec6" value="1"/> Lectura comentada</label>
-                <label><input type="checkbox" id="tec7" value="1"/> Lluvia de ideas</label>
-                <label><input type="checkbox" id="tec8" value="1"/> Dramatización</label>
-                <label><input type="checkbox" id="tec9" value="1"/> Trabajo en equipo</label>
+                <div className='crono_subtlt' >Técnicas didácticas </div>
+                  <div className='contTecnicas' >
+                        <div className={ bdTec1 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec1") }                      
+                        >Interrogativa</div>
+                        
+                        <div className={ bdTec2 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec2") }                      
+                        >Demostrativa</div>
+                        <div className={ bdTec3 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec3") }                      
+                        >Expositiva</div>
+                        <div className={ bdTec4 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec4") }                      
+                        >Dinámica grupal</div>
+                        <div className={ bdTec5 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec5") }                      
+                        >Lectura individual</div>
+                        <div className={ bdTec6 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec6") }
+                        >Lectura comentada</div>
+                        <div className={ bdTec7 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec7") }
+                        >Lluvia de ideas</div>
+                        <div className={ bdTec8 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec8") }
+                        >Dramatización</div>
+                        <div className={ bdTec9 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec9") }
+                        >Trabajo en equipo</div>
+                  </div>
                 
 
                 <div className='crono_subtlt'>Tiempo:</div>
@@ -292,18 +312,18 @@ const CronogramaFormulario = ( props ) => {
                 />
 
                 <div className='crono_subtlt'>Materiales:</div>
-                <textarea 
-                    name="" 
-                    id="" 
-                    cols="80" 
-                    //defaultValue={bdNotas}
-                    className='cronogramasMateriales' 
-                    rows="5"
-                    onBlur={(e)=>{  
-                      //actualizarRegBdSlideCronogramas("notas",e.target.value)                          
-                    }}
-                >   
-                </textarea>
+                  <textarea 
+                      name="" 
+                      id="" 
+                      cols="80" 
+                      defaultValue={bdMateriales}
+                      className='cronogramasMateriales' 
+                      rows="5"
+                      onBlur={(e)=>{  
+                        actualizarRegBdSlideCronogramas("materiales",e.target.value)                          
+                      }}
+                  >   
+                  </textarea>
 
 
                 <div className='crono_subtlt' >Notas:</div>
@@ -328,17 +348,37 @@ const CronogramaFormulario = ( props ) => {
                 <div className='crono_subtlt' >Instrucciones:</div>
                 <div className='editorQuill cronogramasQuill ' ><div ref={quillRef} /></div> 
                 
-                <div className='crono_subtlt'>Técnicas didácticas </div>
-                
-                <label><input type="checkbox" id="tec1" value="1"/> Interrogativa</label>
-                <label><input type="checkbox" id="tec2" value="1"/> Demostrativa</label>
-                <label><input type="checkbox" id="tec3" value="1"/> Expositiva</label>
-                <label><input type="checkbox" id="tec4" value="1"/> Dinámica grupal</label>
-                <label><input type="checkbox" id="tec5" value="1"/> Lectura individual</label>
-                <label><input type="checkbox" id="tec6" value="1"/> Lectura comentada</label>
-                <label><input type="checkbox" id="tec7" value="1"/> Lluvia de ideas</label>
-                <label><input type="checkbox" id="tec8" value="1"/> Dramatización</label>
-                <label><input type="checkbox" id="tec9" value="1"/> Trabajo en equipo</label>
+                <div className='crono_subtlt' >Técnicas didácticas </div>
+                  <div className='contTecnicas' >
+                        <div className={ bdTec1 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec1") }                      
+                        >Interrogativa</div>
+                        
+                        <div className={ bdTec2 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec2") }                      
+                        >Demostrativa</div>
+                        <div className={ bdTec3 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec3") }                      
+                        >Expositiva</div>
+                        <div className={ bdTec4 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec4") }                      
+                        >Dinámica grupal</div>
+                        <div className={ bdTec5 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec5") }                      
+                        >Lectura individual</div>
+                        <div className={ bdTec6 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec6") }
+                        >Lectura comentada</div>
+                        <div className={ bdTec7 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec7") }
+                        >Lluvia de ideas</div>
+                        <div className={ bdTec8 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec8") }
+                        >Dramatización</div>
+                        <div className={ bdTec9 ? 'crono_check_label crono_check_label_checked' : 'crono_check_label' } 
+                            onClick={ () => revisaCheck("tec9") }
+                        >Trabajo en equipo</div>
+                  </div>
                 
 
                 <div className='crono_subtlt' >Tiempo:</div>
@@ -352,16 +392,18 @@ const CronogramaFormulario = ( props ) => {
                 />
 
                 <div className='crono_subtlt'>Materiales:</div>
-                <textarea 
-                    name="" 
-                    id="" 
-                    //defaultValue={bdNotas}
-                    className='cronogramasMateriales' 
-                    onBlur={(e)=>{  
-                      //actualizarRegBdSlideCronogramas("notas",e.target.value)                          
-                    }}
-                >   
-                </textarea>
+                  <textarea 
+                      name="" 
+                      id="" 
+                      cols="80" 
+                      defaultValue={bdMateriales}
+                      className='cronogramasMateriales' 
+                      rows="5"
+                      onBlur={(e)=>{  
+                        actualizarRegBdSlideCronogramas("materiales",e.target.value)                          
+                      }}
+                  >   
+                  </textarea>
 
 
                 <div className='crono_subtlt'>Notas:</div>

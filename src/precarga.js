@@ -132,6 +132,29 @@ function precarga() {
                       txt varchar(120),
                       skip varchar(10),                      
                       primary key(id_option,id_proyecto,id_usuario,sesion));`);
+        
+        tx.executeSql(` CREATE TABLE IF NOT EXISTS ObjetivoApr (
+                        id_proyecto int,
+                        id_usuario int,
+                        sesion int,
+                        slide varchar(10),
+                        tipoObj int,
+                        tipoCont int,
+                        temporaqlidad varchar(100),
+                        aprendiz varchar(100),
+                        verbo1 int,
+                        verbo2 int,
+                        verbo3 int,
+                        verbo4 int,
+                        verbo5 int,
+                        verbo6 int,
+                        contenido varchar(200),
+                        finalidad varchar(200),
+                        actividad int,
+                        PRIMARY KEY (id_proyecto, id_usuario, sesion,slide)
+                ); `);
+
+
 
           /**
            * 

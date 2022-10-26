@@ -108,6 +108,21 @@ const Routeo = () => {
      const [slideRetroceder, setSlideRetroceder] = useState('');
      const [seleccionables, setSeleccionables] = useState([]);
 
+     /** Objetivo de aprendizaje */
+     const [modalObjetivoApr, setModalObjetivoApr] = useState(false);
+     const [tipoObj, setTipoObj] = useState('');
+     const [tipoCont, setTipoCont] = useState('');
+     const [temporaqlidad, setTemporaqlidad] = useState('');
+     const [aprendiz, setAprendiz] = useState('');
+     const [verbo1, setVerbo1] = useState('');
+     const [verbo2, setVerbo2] = useState('');
+     const [verbo3, setVerbo3] = useState('');
+     const [verbo4, setVerbo4] = useState('');
+     const [verbo5, setVerbo5] = useState('');
+     const [verbo6, setVerbo6] = useState('');
+     const [contenido, setContenido] = useState('');
+     const [finalidad, setFinalidad] = useState('');
+     const [actividad, setActividad] = useState('');
 
 
      /** Glosario */
@@ -227,7 +242,9 @@ const Routeo = () => {
                               /** Información de gestión de slides */
                               paginacion, setPaginacion,
                               
-                         
+                              /** Objetivo de aprendizaje */
+                              modalObjetivoApr, setModalObjetivoApr,
+
 
                          }}>
                          { dirigir() } 

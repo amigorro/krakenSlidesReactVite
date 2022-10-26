@@ -22,6 +22,11 @@
      position: relative;
 }
 
+.CronogramaCont-desp-tlt{
+     font-weight: 600;
+     font-size: 28px;
+     margin-left: 40px;
+}
 
 .CronogramaCont-desp-cerrar{
      position : absolute;
@@ -52,13 +57,16 @@
 .CronogramaCont-desp-menu-item{
      width: 160px;
      height: 160px;
-     background-color: #115599;
+     background-color: transparent;
      margin: 5px;
      padding: 20px;
      justify-content: center;
      align-items: center;
      display: flex;
      text-align: center;
+     font-size: 20px;
+     border-radius: 5px;
+     border: 2px solid #3ab183;
 }
 
 .CronogramaCont-desp-menu-indicacion{
@@ -69,6 +77,7 @@
      align-items: center;
      margin: 0 auto;
      font-size: 16px;
+     font-style: italic;
 }
 
 /* Clases para el formulario de cronogramas */
@@ -205,10 +214,10 @@
 }
 
 .crono_tlt{
-     font-size: 22px;
-     font-weight: bold;
+     font-size: 28px;     
      color: #FFF;
-     margin: 20px 25px;
+     margin: 20px 40px;
+     font-weight: 600;
 }
 
 .crono_subtlt{
@@ -236,9 +245,8 @@
      align-items: center;
      justify-content: center;
      width: 150px;
-     height: 35px;
-     background-color: #fff; 
-     color: #000;
+     height: 35px;     
+     color: #fff;
      border: 1px solid #445566;
      margin: 5px;
      border-radius: 2.5px;
@@ -246,6 +254,8 @@
 
 .crono_check_label_checked{
      background-color: rgb(63, 202, 168) ;
+     color:rgba(0, 0, 0, 0.849);
+     font-weight: 500;
 }
 
 

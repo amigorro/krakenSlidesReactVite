@@ -1,12 +1,176 @@
 .contObjTematico{
+     width: 100%;
+     height: 100%;     
+     display: flex;
+     align-items: center;
+     justify-content: center;
      position: fixed;
-     top: 0;
-     right: 0;
-     width: 600px;
-     height: 300px;
-     background-color: #898943;
-     z-index: 10000000;
+     top : 28px;
+     left: 0;
+     color:aliceblue;  
+     backdrop-filter: blur(4px);     
 }
+
+.contObjTematico-desp{     
+     height: calc(100vh - 80px - 90px  );
+     width: 1100px;     
+     background-color: #334155;
+     border: 1px solid #e2e8f0;
+     border-radius: 5px;
+     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.849), 0 4px 6px -4px rgb(0 0 0 / 0.8);
+     padding: 25px;
+     position: relative;
+}
+
+
+.contObjTematico-desp-cerrar{
+     position : absolute;
+     top : -10px;
+     right : -5px;
+     width : 30px;
+     height : 30px;
+     border-radius : 50%;
+     background-color : #7f1f1f;
+     color: #FFF;
+     font-size: 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: 2px solid #fff;
+}
+
+.contObjTematico-desp-tlt{
+     font-weight: 600;
+     font-size: 28px;
+     margin-left: 40px;
+}
+
+.contObjTematico-desp-form{
+     max-width: 60% !important;
+     height: 90%;
+     display: flex;     
+     flex-direction: column !important;
+     margin: 25px 10px 0 10px;;     
+     overflow-y: auto;     
+}
+/**  SCROLLBAR */
+.contObjTematico-desp-form::-webkit-scrollbar {
+	width: 6px;
+     margin-left: 5px;
+     border-radius: 10px;
+	background-color: #335539;	
+}
+.contObjTematico-desp-form::-webkit-scrollbar-track{
+	box-shadow: inset 0 0 6px rgba(184, 184, 184, 0.3);
+	background-color: #b9d1f3;
+     border-radius: 0px;
+     margin-left: 5px;	
+}
+.contObjTematico-desp-form::-webkit-scrollbar-thumb{
+	background-color: #031f36;
+	border-radius: 0px;
+     margin-left: 5px;
+     transition: 1s;	
+}
+.contObjTematico-desp-form::-webkit-scrollbar-thumb:hover{
+     background: #3ab183;
+     transition: 1s;	
+}	
+/** FIN SCROLLBAR */
+
+
+.contObjTematico-desp-form-reg{
+     width: 100%;
+     min-height: 50px;
+     display: flex;     
+     align-items: center;    
+     margin: 25px 0 2px 0;      
+}
+
+.contObjTematico-desp-form-reg-tlt{
+     margin-right: 10px;
+     width: 170px;
+     display: flex;
+     justify-content: flex-end;
+     flex-wrap: wrap;
+     text-align: right;     
+}
+
+.contObjTematico-desp-form-regtlt{
+     font-weight: 700;
+     width: 80%;
+     font-size: 18px;
+     text-decoration: underline rgb(119, 119, 119);
+     margin: 45px 0 7px 40px;
+}
+
+.contObjTematico-desp-form-input{
+     height: 30px;
+     min-width: 400px;
+     border: 1px solid #e2e8f0;
+     border-radius: 3px;
+     padding: 5px 15px;
+     font-size: 16px;
+     color: #112641;
+     font-weight: 500;     
+}
+
+.contObjTematico-desp-form-select{
+     height: 30px;     
+     border: 1px solid #e2e8f0;
+     border-radius: 3px;
+     margin-right: 6px;
+     font-size: 14px;
+     color: #112641;
+     font-weight: 500;     
+}
+
+.contenedorSelects{
+     width: 70%;
+     height: 80px;
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: space-around;
+}
+
+.dosColumnas{     
+     width: 100%;
+     height: 94%;
+     display: flex;
+}
+
+.objetivoQuill{
+     width: 100%;     
+     display: flex;    
+     margin: 25px 0 -20px 0;          
+}
+.editorQuill{
+     width: 500px !important;
+}
+
+.txtbajito{
+     margin-left: 4px;
+     color:rgb(131, 166, 158);
+     font-style: italic;
+}
+.disebleOption{
+     font-size: 14px !important;
+     color: #8e8e8e;
+     font-style: italic;
+     font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .radioValCorrect{
      width:30px;
