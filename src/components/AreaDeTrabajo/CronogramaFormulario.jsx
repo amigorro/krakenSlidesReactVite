@@ -221,13 +221,13 @@ const CronogramaFormulario = ( props ) => {
                       }}
                   />
 
-                  <div className='crono_subtlt' >Materiales:</div>
+                  <div className='crono_subtlt'>Materiales:</div>
                   <textarea 
                       name="" 
                       id="" 
                       cols="80" 
                       //defaultValue={bdNotas}
-                      //className='cronogramasNotas' 
+                      className='cronogramasMateriales' 
                       rows="5"
                       onBlur={(e)=>{  
                         //actualizarRegBdSlideCronogramas("notas",e.target.value)                          

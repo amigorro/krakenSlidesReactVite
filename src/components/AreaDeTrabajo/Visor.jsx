@@ -588,7 +588,7 @@ export const OptionMenuVista = (props) => {
                 tx.executeSql('SELECT * FROM MENUS M  JOIN  DATOS_INTRODUCIDOS D ON D.slide = M.skip AND M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideSelected.id], function(tx, results) {
                 txtSlide=results.rows.item(0).nombre_lamina;
                 txtMenu=results.rows.item(0).txt;
-                console.log("txtSlide::::",txtSlide,txtMenu)
+                
                 return(                    
                     <div className='regOpcionMenu' >
                         <div >{txtMenu} - {txtSlide}</div>  
