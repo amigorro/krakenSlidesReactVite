@@ -161,11 +161,26 @@
      font-weight: 500;
 }
 
+.disebleOptionNormal{
+     color:#308989;
+     font-weight: 500;
+}
 
+.vistaPreviaObjetivo{
+     width: 32%;
+     height: 80%;
+     display: flex;
+     flex-direction: column;     
+     margin: 25px auto;
+}
 
-
-
-
+.vistaPreviaObjetivo-concatenado{
+     display: flex;
+     background-color: rgba(23, 247, 232, 0.222);
+     width: 100%;
+     padding: 10px 20px;
+     border-radius: 5px;
+}
 
 
 

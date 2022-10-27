@@ -22,11 +22,24 @@ export const ObjetivoTematico = () => {
      
           /** Objetivo aprendizaje */
           modalObjetivoApr, setModalObjetivoApr,
+          tipoObj, setTipoObj,
+          tipoCont, setTipoCont,
+          temporaqlidad, setTemporaqlidad,
+          aprendiz, setAprendiz,
+          verbo1, setVerbo1,
+          verbo2, setVerbo2,
+          verbo3, setVerbo3,
+          verbo4, setVerbo4,
+          verbo5, setVerbo5,
+          verbo6, setVerbo6,
+          contenido, setContenido,
+          finalidad, setFinalidad,
+          actividad, setActividad,
      
      } = useContext(ContextAreaDeTrabajo);     
 
      /* Opciones Editor Quill */
-     const placeholder = 'Instrucciones';      
+     const placeholder = 'contenido...';      
      const modules = {
      toolbar: [
           ['bold', 'italic', 'underline', 'strike'],
@@ -38,10 +51,98 @@ export const ObjetivoTematico = () => {
 
      useEffect( () =>{
           creaRegistroObjetivo();
+          cargaValoresObjetivos2();
      },[]);
+
+     useEffect( () =>{
+          if (quill) {
+            cargaValoresQuillObjetivo(slideSelected.id) 
+             
+            quill.on('text-change', (delta, oldDelta, source) => {                
+              setContenido(quill.root.innerHTML)        
+              actualizarRegBdSlideObjetivos("contenido",quill.root.innerHTML)
+            });
+          }          
+        }, [quill]  )
+
+     const cargaValoresQuillObjetivo  = (slideId) =>{
+          setContenido('')
+     const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+     db.transaction(function(tx) {
+          tx.executeSql('SELECT * FROM ObjetivoApr WHERE id_usuario = ? AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idUsuario,idProyectoActual,sesion,slideSelected.id], function(tx, results) {
+               console.log("SELECT:"+idProyectoActual,sesion,slideSelected.id)
+               let len = results.rows.length ;
+                                   
+               if(len > 0){                                  
+                    setContenido(results.rows.item(0).contenido) 
+                    quill.clipboard.dangerouslyPasteHTML(results.rows.item(0).contenido);                 
+               }
+          }, null);
+     });
+     }
+
+     const cargaValoresObjetivos2 = (slideId) =>{
+          console.warn('cargaValoresObjetivos2')
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+               console.warn('cargaValoresObjetivos2 - entro en fuction db',idUsuario,idProyectoActual,sesion,slideSelected.id)
+               tx.executeSql('SELECT * FROM ObjetivoApr WHERE id_usuario = ? AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idUsuario,idProyectoActual,sesion,slideSelected.id], function(tx, results) {
+                    
+                    console.warn('cargaValoresObjetivos2 - entro tx')
+                    let len = 0;    
+                    if( results.rows.length ){
+                         len =10;
+                    }
+                    
+                    if(len > 0){                                                                                    
+                         setTipoObj(results.rows.item(0).tipoObj)
+                         setTipoCont(results.rows.item(0).tipoCont)
+                         setTemporaqlidad(results.rows.item(0).temporaqlidad)
+                         setAprendiz(results.rows.item(0).aprendiz)
+                         setVerbo1(results.rows.item(0).verbo1)
+                         setVerbo2(results.rows.item(0).verbo2)
+                         setVerbo3(results.rows.item(0).verbo3)
+                         setVerbo4(results.rows.item(0).verbo4)
+                         setVerbo5(results.rows.item(0).verbo5)
+                         setVerbo6(results.rows.item(0).verbo6)
+                         setContenido(results.rows.item(0).contenido)
+                         setFinalidad(results.rows.item(0).finalidad)
+                         setActividad(results.rows.item(0).actividad)
+                    }
+               }, null);
+          });
+     }
+
+
+
+
 
      const actualizarRegBdSlideObjetivos = async (variable,valor) =>{
           console.log("actualizarRegBdSlideObjetivos",variable,valor)
+          
+          switch (variable) {
+               case "tipoObj":
+                    setTipoObj(valor)
+                    break;
+               case "tipoCont":
+                    setTipoCont(valor)
+                    break;
+               case "temporaqlidad":
+                    setTemporaqlidad(valor)
+                    break;
+               case "aprendiz":
+                    setAprendiz(valor)                    
+                    break;
+               case "finalidad":
+                    setFinalidad(valor)
+                    break;
+               case "actividad":
+                    setActividad(valor)
+                    break;
+          }
+
+
+
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
                tx.executeSql(`UPDATE ObjetivoApr SET ${variable} = ? WHERE id_proyecto = ? AND id_usuario = ? AND sesion = ? AND slide = ?`, [valor,idProyectoActual,idUsuario,sesion,slideSelected.id], function(tx, results) {
@@ -55,21 +156,57 @@ export const ObjetivoTematico = () => {
           switch (variable) {
                case 'verbo1':
                     variablesVerbos = `,verbo2='',verbo3='',verbo4='',verbo5='',verbo6='' `;
+                    setVerbo1(valor);
+                    setVerbo2('');
+                    setVerbo3('');
+                    setVerbo4('');
+                    setVerbo5('');
+                    setVerbo6('');
                     break;
                case 'verbo2':
                     variablesVerbos = `,verbo1='',verbo3='',verbo4='',verbo5='',verbo6='' `;
+                    setVerbo1('');
+                    setVerbo2(valor);
+                    setVerbo3('');
+                    setVerbo4('');
+                    setVerbo5('');
+                    setVerbo6('');
                     break;
                case 'verbo3':
                     variablesVerbos = `,verbo1='',verbo2='',verbo4='',verbo5='',verbo6='' `;
+                    setVerbo1('');
+                    setVerbo2('');
+                    setVerbo3(valor);
+                    setVerbo4('');
+                    setVerbo5('');
+                    setVerbo6('');
                     break;
                case 'verbo4':
                     variablesVerbos = `,verbo1='',verbo2='',verbo3='',verbo5='',verbo6='' `;
+                    setVerbo1('');
+                    setVerbo2('');
+                    setVerbo3('');
+                    setVerbo4(valor);
+                    setVerbo5('');
+                    setVerbo6('');
                     break;
                case 'verbo5':
                     variablesVerbos = `,verbo1='',verbo2='',verbo3='',verbo4='',verbo6='' `;
+                    setVerbo1('');
+                    setVerbo2('');
+                    setVerbo3('');
+                    setVerbo4('');
+                    setVerbo5(valor);
+                    setVerbo6('');
                     break;
                case 'verbo6':
                     variablesVerbos = `,verbo1='',verbo2='',verbo3='',verbo4='',verbo5='' `;
+                    setVerbo1('');
+                    setVerbo2('');
+                    setVerbo3('');
+                    setVerbo4('');
+                    setVerbo5('');
+                    setVerbo6(valor);
                     break;
           }
 
@@ -110,10 +247,14 @@ export const ObjetivoTematico = () => {
                          
                          <div className='contObjTematico-desp-form-reg' >
                               <div className='contObjTematico-desp-form-reg-tlt' > Tipo de objetivo</div>
-                              <select   defaultValue='' 
+                              <select   
                                         onChange={ (e)=> actualizarRegBdSlideObjetivos('tipoObj', e.target.value) } 
-                                        className='contObjTematico-desp-form-select' name="" id="">
-                                   <option value="0" className='disebleOption' disabled  >Seleccione</option>
+                                        className='contObjTematico-desp-form-select' 
+                                        value={tipoObj ? tipoObj : '0'}
+                                        name="" 
+                                        id=""
+                                        >
+                                   <option value="0" className='disebleOption' disabled selected  >Seleccione</option>
                                    <option value="1">General</option>
                                    <option value="2">Particular</option>
                                    <option value="3">Específico / temático</option>
@@ -126,11 +267,12 @@ export const ObjetivoTematico = () => {
                                    className='contObjTematico-desp-form-select' 
                                    onChange={ (e)=> actualizarRegBdSlideObjetivos('tipoCont', e.target.value) } 
                                    name="" 
+                                   value={tipoCont ? tipoCont : '0'}
                                    id="">
-                                   <option value="0" className='disebleOption' disabled selected >Seleccione</option>
-                                   <option value="1">Declarativo</option>
-                                   <option value="2">Procedimental</option>
-                                   <option value="3">Actitudinal</option>
+                                   <option value="0" className='disebleOption' disabled selected  >Seleccione</option>
+                                   <option value="1" >Declarativo</option>
+                                   <option value="2"  >Procedimental</option>
+                                   <option value="3"  >Actitudinal</option>
                               </select>
                          </div>
 
@@ -143,14 +285,17 @@ export const ObjetivoTematico = () => {
                               <input 
                                    className='contObjTematico-desp-form-input' 
                                    type="text" 
-                                   onChange={ (e)=> actualizarRegBdSlideObjetivos('temporaqlidad', e.target.value) } 
+                                   defaultValue={temporaqlidad}
+                                   onChange={ (e)=> setTemporaqlidad(e.target.value) }
+                                   onBlur={ (e)=> actualizarRegBdSlideObjetivos('temporaqlidad', e.target.value) } 
                                    />
                          </div>
                          <div className='contObjTematico-desp-form-reg' >
                               <div className='contObjTematico-desp-form-reg-tlt' >Aprendiz <span className='txtbajito' >¿quién?</span></div>
                               <input 
                                    className='contObjTematico-desp-form-input' 
-                                   type="text" 
+                                   type="text"
+                                   defaultValue={aprendiz} 
                                    onChange={ (e)=> actualizarRegBdSlideObjetivos('aprendiz', e.target.value) } 
                                    />
                          </div>
@@ -160,6 +305,7 @@ export const ObjetivoTematico = () => {
                                              <select 
                                                   className='contObjTematico-desp-form-select' 
                                                   onChange={ (e)=> actualizarRegBdSlideObjetivosVerbos('verbo1', e.target.value) } 
+                                                  value={verbo1 ? verbo1 : '0'}
                                                   name="" 
                                                   id=""
                                                   >
@@ -189,6 +335,7 @@ export const ObjetivoTematico = () => {
                                              <select 
                                                   className='contObjTematico-desp-form-select' 
                                                   onChange={ (e)=> actualizarRegBdSlideObjetivosVerbos('verbo2', e.target.value) } 
+                                                  value={verbo2 ? verbo2 : '0'}
                                                   name="1" 
                                                   id="e"
                                                   >
@@ -214,6 +361,7 @@ export const ObjetivoTematico = () => {
                                              <select 
                                                   className='contObjTematico-desp-form-select' 
                                                   onChange={ (e)=> actualizarRegBdSlideObjetivosVerbos('verbo3', e.target.value) } 
+                                                  value={verbo3 ? verbo3 : '0'}
                                                   name="2" 
                                                   id="e"
                                                   >
@@ -242,6 +390,7 @@ export const ObjetivoTematico = () => {
                                              <select 
                                                   className='contObjTematico-desp-form-select' 
                                                   onChange={ (e)=> actualizarRegBdSlideObjetivosVerbos('verbo4', e.target.value) } 
+                                                  value={verbo4 ? verbo4 : '0'}
                                                   name="3" 
                                                   id="e"
                                                   >
@@ -258,6 +407,7 @@ export const ObjetivoTematico = () => {
                                              <select 
                                                   className='contObjTematico-desp-form-select' 
                                                   onChange={ (e)=> actualizarRegBdSlideObjetivosVerbos('verbo5', e.target.value) } 
+                                                  value={verbo5 ? verbo5 : '0'}
                                                   name="4" 
                                                   id="e"
                                                   >
@@ -272,17 +422,18 @@ export const ObjetivoTematico = () => {
                                              <select 
                                                   className='contObjTematico-desp-form-select' 
                                                   onChange={ (e)=> actualizarRegBdSlideObjetivosVerbos('verbo6', e.target.value) } 
+                                                  value={verbo6 ? verbo6 : '0'}
                                                   name="5" 
                                                   id="e"
                                                   >
                                                   <option value="0" className='disebleOption' disabled  >EVALUACIÓN</option>
-                                                  <option value="solucionará">Solucionará</option>
-                                                  <option value="ideará">Ideará</option>
-                                                  <option value="esquematizará">Esquematizará</option>
-                                                  <option value="inventará">Inventará</option>
-                                                  <option value="improvisará">Improvisará</option>
-                                                  <option value="creará">Creará</option>
-                                                  <option value="diseñará">Diseñará</option>
+                                                  <option value="solucionará"   className='disebleOptionNormal'>Solucionará</option>
+                                                  <option value="ideará"        className='disebleOptionNormal'>Ideará</option>
+                                                  <option value="esquematizará" className='disebleOptionNormal'>Esquematizará</option>
+                                                  <option value="inventará"     className='disebleOptionNormal'>Inventará</option>
+                                                  <option value="improvisará"   className='disebleOptionNormal'>Improvisará</option>
+                                                  <option value="creará"        className='disebleOptionNormal'>Creará</option>
+                                                  <option value="diseñará"      className='disebleOptionNormal'>Diseñará</option>
                                              </select>
                                         </div>
                                    </div>
@@ -293,24 +444,47 @@ export const ObjetivoTematico = () => {
                               </div>
                               <div className='contObjTematico-desp-form-reg' >
                                    <div className='contObjTematico-desp-form-reg-tlt' >Finalidad <span className='txtbajito' >¿cómo? y/o ¿para qué?</span></div>
-                                   <input className='contObjTematico-desp-form-input' type="text" />
+                                   <input 
+                                        className='contObjTematico-desp-form-input' 
+                                        onChange={ (e)=> actualizarRegBdSlideObjetivos('finalidad', e.target.value) } 
+                                        type="text" 
+                                        value={finalidad ? finalidad : ''}
+                                   />
                               </div>
                               <div className='contObjTematico-desp-form-reg' >
                                    <div className='contObjTematico-desp-form-reg-tlt' >Actividad de evaluación</div>
-                                             <select className='contObjTematico-desp-form-select' name="" id="">
-                                                  <option value="0" className='disebleOption' disabled selected >Seleccione</option>
-                                                  <option value="">Prueba</option>
-                                                  <option value="">Examen</option>
-                                                  <option value="">Tarea</option>
-                                                  <option value="">Proyecto</option>
+                                             <select 
+                                                  className='contObjTematico-desp-form-select' 
+                                                  onChange={  (e)=> actualizarRegBdSlideObjetivos('actividad', e.target.value) } 
+                                                  value={actividad ? actividad : '0'}
+                                                  name="" 
+                                                  id=""
+                                             >
+                                                  <option value="0" className='disebleOption' disabled  >Seleccione</option>
+                                                  <option value="prueba">Prueba</option>
+                                                  <option value="examen">Examen</option>
+                                                  <option value="tarea">Tarea</option>
+                                                  <option value="proyecto">Proyecto</option>
                                              </select>
                               </div>
 
 
 
                     </div>
-                    <div>
-                         <div> Texto de prueba... </div>
+                    <div className='vistaPreviaObjetivo' >
+                         
+                         <div className='vistaPreviaObjetivo-concatenado' >  <div dangerouslySetInnerHTML={{__html: 
+                                        (temporaqlidad? temporaqlidad : '' )+" "+
+                                        (aprendiz ? aprendiz:'')+" "+
+                                        (verbo1 ? verbo1 : '')+
+                                        (verbo2 ? verbo2 : '')+
+                                        (verbo3 ? verbo3 : '')+
+                                        (verbo4 ? verbo4 : '')+
+                                        (verbo5 ? verbo5 : '')+
+                                        (verbo6 ? verbo6 : '')+ " "+                                        
+                                        (contenido ? contenido.substring(3, contenido.length-4 ) : " ")  +" "+
+                                        (finalidad ? finalidad : '')  }} ></div> </div>
+                         <br/><br/>
                          <div>Eliminar Objetivo de aprendizaje</div>
                     </div>
                </div>

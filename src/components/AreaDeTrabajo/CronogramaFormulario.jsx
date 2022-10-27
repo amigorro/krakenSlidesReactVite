@@ -439,7 +439,7 @@ const CronogramaFormulario = ( props ) => {
                 }
            }, null);
       });
- }     
+    }     
 
     const cargaValoresCronograma = (slideId) =>{
       const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);

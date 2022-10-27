@@ -124,7 +124,6 @@ const Routeo = () => {
      const [finalidad, setFinalidad] = useState('');
      const [actividad, setActividad] = useState('');
 
-
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
 
@@ -244,7 +243,19 @@ const Routeo = () => {
                               
                               /** Objetivo de aprendizaje */
                               modalObjetivoApr, setModalObjetivoApr,
-
+                              tipoObj, setTipoObj,
+                              tipoCont, setTipoCont,
+                              temporaqlidad, setTemporaqlidad,
+                              aprendiz, setAprendiz,
+                              verbo1, setVerbo1,
+                              verbo2, setVerbo2,
+                              verbo3, setVerbo3,
+                              verbo4, setVerbo4,
+                              verbo5, setVerbo5,
+                              verbo6, setVerbo6,
+                              contenido, setContenido,
+                              finalidad, setFinalidad,
+                              actividad, setActividad,
 
                          }}>
                          { dirigir() } 

@@ -3,6 +3,7 @@ import { motion, AnimatePresence,Reorder, useDragControls  } from 'framer-motion
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { CardNombreSlide } from './CardNombreSlide';
 import { CardIconTipo } from './CardIconTipo';
+import { CardIconObjetivoApr } from './CardIconObjetivoApr';
 
 const variants = {
      hidden: {
@@ -28,6 +29,7 @@ const variants = {
 export const PruebaOrder = () => {
 
      const {
+          idUsuario,
           sesion, setSesion,
           setModulo,
           setEdicion,
@@ -104,6 +106,21 @@ export const PruebaOrder = () => {
                slideAvanzar, setSlideAvanzar,
                slideRetroceder, setSlideRetroceder,
 
+               /** Objetivo temático  */
+               setModalObjetivoApr,
+               tipoObj, setTipoObj,
+               tipoCont, setTipoCont,
+               temporaqlidad, setTemporaqlidad,
+               aprendiz, setAprendiz,
+               verbo1, setVerbo1,
+               verbo2, setVerbo2,
+               verbo3, setVerbo3,
+               verbo4, setVerbo4,
+               verbo5, setVerbo5,
+               verbo6, setVerbo6,
+               contenido, setContenido,
+               finalidad, setFinalidad,
+               actividad, setActividad,
      } = useContext(ContextAreaDeTrabajo);
      
 
@@ -120,6 +137,19 @@ export const PruebaOrder = () => {
           setResp2('')
           setResp3('')
           setListadoOpcionesMenu([''])
+          setTipoObj('')
+          setTipoCont('')
+          setTemporaqlidad('')
+          setAprendiz('')
+          setVerbo1('')
+          setVerbo2('')
+          setVerbo3('')
+          setVerbo4('')
+          setVerbo5('')
+          setVerbo6('')
+          setContenido('')
+          setFinalidad('')
+          setActividad('')
           //setUrlImg1(''), setUrlImg2(''), setUrlImg3(''), setUrlImg4(''), setUrlImg5(''), setUrlImg6(''), setUrlImg7(''), setUrlImg8('')
 
 
@@ -338,7 +368,35 @@ export const PruebaOrder = () => {
                }, null);
           });
      }
-
+     const cargaValoresObjetivos = (slideId) =>{
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+               tx.executeSql('SELECT * FROM ObjetivoApr WHERE id_usuario = ? AND id_proyecto = ? AND sesion = ?  AND id_slide = ?  ', [idUsuario,idProyectoActual,sesion,slideId], function(tx, results) {
+                    setModalObjetivoApr(false)
+                    
+                    let len = 0;    
+                    if( results.rows.length ){
+                         len =10;
+                    }
+                    
+                    if(len > 0){                                                                                    
+                         setTipoObj(results.rows.item(0).tipoObj)
+                         setTipoCont(results.rows.item(0).tipoCont)
+                         setTemporaqlidad(results.rows.item(0).temporaqlidad)
+                         setAprendiz(results.rows.item(0).aprendiz)
+                         setVerbo1(results.rows.item(0).verbo1)
+                         setVerbo2(results.rows.item(0).verbo2)
+                         setVerbo3(results.rows.item(0).verbo3)
+                         setVerbo4(results.rows.item(0).verbo4)
+                         setVerbo5(results.rows.item(0).verbo5)
+                         setVerbo6(results.rows.item(0).verbo6)
+                         setContenido(results.rows.item(0).contenido)
+                         setFinalidad(results.rows.item(0).finalidad)
+                         setActividad(results.rows.item(0).actividad)
+                    }
+               }, null);
+          });
+     }
 
 
      const guardaOrdenSlides = () =>{
@@ -408,7 +466,8 @@ export const PruebaOrder = () => {
                                                        setDespCronograma(false),
                                                        setEdicion(false),                                                      
                                                        cargaValoresSlide(item),
-                                                       cargaValoresCronograma(item)
+                                                       cargaValoresCronograma(item),
+                                                       cargaValoresObjetivos(item)
                                                        
                                                        
                                                        
@@ -434,8 +493,8 @@ export const PruebaOrder = () => {
                                                   <div className='CardCont-Tipo-Info' >
                                                        <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id2={item} /> </div>
                                                        <div className='CardCont-Tipo-Info-icons' >
-                                                            <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>
-                                                            <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-outdent CardCont-ico "></i></div>
+                                                            <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>                                                            
+                                                            <CardIconObjetivoApr id2={item}  />
                                                             <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-message-check CardCont-ico "></i></div>
                                                             <div className='CardCont-Tipo-Info-icons-order idExplode'>{item}</div>
                                                        </div>
