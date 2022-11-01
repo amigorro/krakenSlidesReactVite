@@ -2,6 +2,7 @@ import React, {useEffect,useState, useContext} from 'react'
 import './Visor.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import defa from './../../assets/plantillas/subst/default.png';
+import { VisorObjetivo } from './VisorObjetivo';
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
@@ -40,6 +41,12 @@ const Visor = () => {
           resp1, resp2, resp3,resp4,resp5,resp6,resp7,resp8, 
           valResp1,valResp2,valResp3,valResp4,valResp5,valResp6,valResp7,valResp8,
           listadoOpcionesMenu,setListadoOpcionesMenu,
+
+          /** Bandera para mostrar/ocultar boton objetivos */
+          bntVis_objetivo,
+          bntVis_cronograma, setBntVis_cronograma,
+          bntVis_slide, setBntVis_slide,
+          visorObjetivos, setVisorObjetivos,
     
   } = useContext(ContextAreaDeTrabajo);
 
@@ -544,27 +551,37 @@ const Visor = () => {
 
 
 
-
+  const muestraVisorObjetivo =  ()=> { 
+    setVisorObjetivos(true)
+    console.log('muestraVisorObjetivo')
+  }
 
 
 
 
   return (
     <div className='VisorCont' >      
-        <div className="areaTrabajo-cont-visor-display" >
-              {
-                plantillaSeleccionada ? 
-                  cargaElementosPlantilla()                    
-                :
-                    <div className="areaTrabajo-cont-visor-display-no-plantilla">
-                      <h1>No se ha cargado ninguna plantilla</h1>
+        
+        {
+          visorObjetivos ?
+                    <VisorObjetivo  />
+                    :
+                    <div className="areaTrabajo-cont-visor-display" >
+                          {
+                            plantillaSeleccionada ? 
+                              cargaElementosPlantilla()                    
+                            :
+                                <div className="areaTrabajo-cont-visor-display-no-plantilla">
+                                  <h1>No se ha cargado ninguna plantilla</h1>
+                                </div>
+                          }
                     </div>
-              }
-        </div>
+        }
+
         <div className="areaTrabajo-cont-visor-btns">
           { cv_crono_flag && <div className="areaTrabajo-cont-visor-btns-item"><i className="fa-duotone fa-calendar-check icoGde"></i></div> }
-          
-          <div className="areaTrabajo-cont-visor-btns-item"><i className="fa-duotone fa-outdent icoGde"></i></div>                  
+          { bntVis_objetivo && <div onClick={ () => muestraVisorObjetivo() } className="areaTrabajo-cont-visor-btns-item"><i class="fa-solid fa-apple-whole icoGde"></i></div> }
+          { bntVis_slide && <div className="areaTrabajo-cont-visor-btns-item"><i class="fa-duotone fa-sidebar icoGde"></i></div> }             
         </div>
         <div className="areaTrabajo-cont-visor-msgRev">Mensaje de revisión</div>
       

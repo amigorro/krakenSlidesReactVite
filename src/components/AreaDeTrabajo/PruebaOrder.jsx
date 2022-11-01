@@ -121,6 +121,10 @@ export const PruebaOrder = () => {
                contenido, setContenido,
                finalidad, setFinalidad,
                actividad, setActividad,
+
+               /** nav Visor  */
+               bntVis_objetivo, setBntVis_objetivo,
+
      } = useContext(ContextAreaDeTrabajo);
      
 
@@ -151,7 +155,7 @@ export const PruebaOrder = () => {
           setFinalidad('')
           setActividad('')
           //setUrlImg1(''), setUrlImg2(''), setUrlImg3(''), setUrlImg4(''), setUrlImg5(''), setUrlImg6(''), setUrlImg7(''), setUrlImg8('')
-
+          
 
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
@@ -304,7 +308,7 @@ export const PruebaOrder = () => {
                          /* Cargamos los estados de los slides de tipo Menu */
                          let opciones2 = []
                          if ( results.rows.item(0).tipo_contenido=='Menu' ){  
-                               
+                              
                               tx.executeSql('SELECT * FROM MENUS M LEFT JOIN DATOS_INTRODUCIDOS D ON  M.skip=D.slide WHERE  M.id_proyecto = ? AND M.id_usuario = ? AND M.sesion = ? AND M.slide = ? ', [idProyectoActual,1,sesion,slideId], function(tx, results) {
                                    let len = results.rows.length, i;                                        
                                         for (i = 0; i < len; i++){                          
@@ -369,9 +373,13 @@ export const PruebaOrder = () => {
           });
      }
      const cargaValoresObjetivos = (slideId) =>{
+          console.log("cargando objetivos")
+          setBntVis_objetivo(false)
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
-               tx.executeSql('SELECT * FROM ObjetivoApr WHERE id_usuario = ? AND id_proyecto = ? AND sesion = ?  AND id_slide = ?  ', [idUsuario,idProyectoActual,sesion,slideId], function(tx, results) {
+               console.warn("Entrando a fn DB",idUsuario,idProyectoActual,sesion,slideId)
+               tx.executeSql('SELECT * FROM ObjetivoApr WHERE id_usuario = ? AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [idUsuario,idProyectoActual,sesion,slideId], function(tx, results) {
+                    console.warn("entrando a QRY Objetivos")
                     setModalObjetivoApr(false)
                     
                     let len = 0;    
@@ -393,6 +401,7 @@ export const PruebaOrder = () => {
                          setContenido(results.rows.item(0).contenido)
                          setFinalidad(results.rows.item(0).finalidad)
                          setActividad(results.rows.item(0).actividad)
+                         setBntVis_objetivo(true)
                     }
                }, null);
           });
@@ -493,7 +502,7 @@ export const PruebaOrder = () => {
                                                   <div className='CardCont-Tipo-Info' >
                                                        <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id2={item} /> </div>
                                                        <div className='CardCont-Tipo-Info-icons' >
-                                                            <div className='CardCont-Tipo-Info-icons-ico'><i className='fa-duotone fa-calendar-check CardCont-ico '></i></div>                                                            
+                                                            <div className='CardCont-Tipo-Info-icons-ico'><i class="fa-regular fa-calendar-clock CardCont-ico "></i></div>                                                            
                                                             <CardIconObjetivoApr id2={item}  />
                                                             <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-message-check CardCont-ico "></i></div>
                                                             <div className='CardCont-Tipo-Info-icons-order idExplode'>{item}</div>
