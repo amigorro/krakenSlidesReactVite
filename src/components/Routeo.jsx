@@ -134,7 +134,7 @@ const Routeo = () => {
      const [bntVis_cronograma, setBntVis_cronograma] = useState(false)
      const [bntVis_slide, setBntVis_slide] = useState(false)
      const [visorObjetivos, setVisorObjetivos] = useState(false)
-     
+     const [visorCronograma, setVisorCronograma] = useState(false)
 
 
      const dirigir = ()=>{
@@ -270,6 +270,7 @@ const Routeo = () => {
                               bntVis_cronograma, setBntVis_cronograma,
                               bntVis_slide, setBntVis_slide,
                               visorObjetivos, setVisorObjetivos,
+                              visorCronograma, setVisorCronograma,
 
                          }}>
                          { dirigir() } 

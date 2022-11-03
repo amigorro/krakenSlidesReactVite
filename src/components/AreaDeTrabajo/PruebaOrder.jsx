@@ -123,7 +123,7 @@ export const PruebaOrder = () => {
                actividad, setActividad,
 
                /** nav Visor  */
-               bntVis_objetivo, setBntVis_objetivo,
+               bntVis_objetivo, setBntVis_objetivo,setVisorObjetivos,setBntVis_slide,setVisorCronograma
 
      } = useContext(ContextAreaDeTrabajo);
      
@@ -417,14 +417,14 @@ export const PruebaOrder = () => {
                let props = {};
                let itemId = ''; 
                for(let i = 0; i < items.length; i++){
-                 props = items[i].getBoundingClientRect();
-                 itemId = items[i].id;
-                 console.log('ItemInfo: id = "%s", x = %s ', itemId, i);
+                    props = items[i].getBoundingClientRect();
+                    itemId = items[i].id;
+                    console.log('ItemInfo: id = "%s", x = %s ', itemId, i);
 
                     /**
                      * Guardar en la base de datos el orden de los slides
                      */
-                     
+                    
                          tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [i,idProyectoActual,sesion,itemId], function(tx, results) {
                              // console.log('results', results)
                              /**
@@ -477,8 +477,9 @@ export const PruebaOrder = () => {
                                                        cargaValoresSlide(item),
                                                        cargaValoresCronograma(item),
                                                        cargaValoresObjetivos(item)
-                                                       
-                                                       
+                                                       setVisorObjetivos(false);
+                                                       setVisorCronograma(false);
+                                                       setBntVis_slide(false);
                                                        
                                                        
                                                        slides.map( (slide, index) => {

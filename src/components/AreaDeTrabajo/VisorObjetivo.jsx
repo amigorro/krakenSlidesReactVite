@@ -1,6 +1,6 @@
-import React, {useContext,useState} from 'react'
+import React, {useContext,useState,useEffect} from 'react'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
-
+import './VisorObjetivo.css'
 
 export const VisorObjetivo = () => {
 
@@ -44,8 +44,8 @@ export const VisorObjetivo = () => {
      } = useContext(ContextAreaDeTrabajo);     
 
      useEffect( () =>{
-          setBntVis_slide(true);
-          setVisorObjetivos(false);
+          //setBntVis_slide(true);
+          //setVisorObjetivos(false);
      },[]);
 
 
@@ -54,9 +54,9 @@ export const VisorObjetivo = () => {
 
   return (
      <div className="areaTrabajo-cont-visor-display" >
-               <div>Objetivo de aprendizaje</div>
+               <div className='VisObjTlt' >Objetivo de aprendizaje</div>
                <div className="areaTrabajo-cont-visor-display-no-plantilla">
-                         <div className='vistaPreviaObjetivo-concatenado' >  <div dangerouslySetInnerHTML={{__html: 
+                         <div className='VisObjTxt' >  <div dangerouslySetInnerHTML={{__html: 
                                         (temporaqlidad? temporaqlidad : '' )+" "+
                                         (aprendiz ? aprendiz:'')+" "+
                                         (verbo1 ? verbo1 : '')+
@@ -67,14 +67,14 @@ export const VisorObjetivo = () => {
                                         (verbo6 ? verbo6 : '')+ " "+                                        
                                         (contenido ? contenido.substring(3, contenido.length-4 ) : " ")  +" "+
                                         (finalidad ? finalidad : '')  }} ></div> </div>
-                    <div>
-                         Tipo de objetivo: {tipoObj==3 ? 'Especifico / temático' :  tipoObj==2 ? 'Particular' : tipoObj==1 ? 'General' : ' ' }
+                    <div className='VisObjTipo' >
+                         <strong>Tipo de objetivo:</strong> {tipoObj==3 ? 'Especifico / temático' :  tipoObj==2 ? 'Particular' : tipoObj==1 ? 'General' : ' ' }
                     </div>
-                    <div>
-                         Tipo de contenido: {tipoCont==1 ? 'Declarativo' :  tipoCont==2 ? 'Procedimental' : tipoCont==3 ? 'Actitudinal' : ' ' }
+                    <div className='VisObjTipo'>
+                         <strong>Tipo de contenido:</strong> {tipoCont==1 ? 'Declarativo' :  tipoCont==2 ? 'Procedimental' : tipoCont==3 ? 'Actitudinal' : ' ' }
                     </div>
-                    <div>
-                    Actividad de evaluación: {actividad}
+                    <div className='VisObjTipo'>
+                         <strong>Actividad de evaluación:</strong> <span className='capi'> {actividad}</span>
                     </div>
                </div>
           
