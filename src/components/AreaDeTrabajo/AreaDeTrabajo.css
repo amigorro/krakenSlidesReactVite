@@ -132,13 +132,22 @@
 
 
 .slideSelected{
-     background-color: #1a9b69 !important;
+     /**background-color: #18a574 !important;**/
+     background: rgb(24,165,116);
+     background: linear-gradient(270deg, rgba(24,165,116,1) 0%, rgba(17,24,39,1) 82%, rgba(17,24,39,1) 100%);
 }
 
 .idExplode{
      font-family: 'RobotoBold' !important;
      font-size: 10px !important;
-     color: #595959;
+     color: #39485c;
+     font-weight: 100;
+}
+
+
+.slideSelected .idExplode{
+     color: rgb(244, 244, 244) !important;
+     font-weight: 400;     
 }
 
 

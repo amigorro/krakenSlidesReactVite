@@ -122,13 +122,21 @@ const Routeo = () => {
      const [verbo6, setVerbo6] = useState('');
      const [contenido, setContenido] = useState('');
      const [finalidad, setFinalidad] = useState('');
-     const [actividad, setActividad] = useState('');
+     const [actividad, setActividad] = useState('');     
 
      /** Glosario */
      const [modalGlosario, setModalGlosario] = useState(false)
 
 
-     
+
+     /** botonesVisor slide, cronograma, objetivos */
+     const [bntVis_objetivo, setBntVis_objetivo] = useState(false)
+     const [bntVis_cronograma, setBntVis_cronograma] = useState(false)
+     const [bntVis_slide, setBntVis_slide] = useState(false)
+     const [visorObjetivos, setVisorObjetivos] = useState(false)
+     const [visorCronograma, setVisorCronograma] = useState(false)
+
+
      const dirigir = ()=>{
           
           switch (modulo){
@@ -256,6 +264,13 @@ const Routeo = () => {
                               contenido, setContenido,
                               finalidad, setFinalidad,
                               actividad, setActividad,
+                              
+                              /* Botones nav visor */
+                              bntVis_objetivo, setBntVis_objetivo,
+                              bntVis_cronograma, setBntVis_cronograma,
+                              bntVis_slide, setBntVis_slide,
+                              visorObjetivos, setVisorObjetivos,
+                              visorCronograma, setVisorCronograma,
 
                          }}>
                          { dirigir() } 

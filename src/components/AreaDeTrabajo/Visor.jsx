@@ -2,6 +2,8 @@ import React, {useEffect,useState, useContext} from 'react'
 import './Visor.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import defa from './../../assets/plantillas/subst/default.png';
+import { VisorObjetivo } from './VisorObjetivo';
+import { VisorCronograma } from './VisorCronograma';
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
@@ -40,7 +42,13 @@ const Visor = () => {
           resp1, resp2, resp3,resp4,resp5,resp6,resp7,resp8, 
           valResp1,valResp2,valResp3,valResp4,valResp5,valResp6,valResp7,valResp8,
           listadoOpcionesMenu,setListadoOpcionesMenu,
-    
+
+          /** Bandera para mostrar/ocultar boton objetivos */
+          bntVis_objetivo,setBntVis_objetivo,
+          bntVis_cronograma, setBntVis_cronograma,
+          bntVis_slide, setBntVis_slide,
+          visorObjetivos, setVisorObjetivos,
+          visorCronograma, setVisorCronograma,
   } = useContext(ContextAreaDeTrabajo);
 
 
@@ -544,27 +552,56 @@ const Visor = () => {
 
 
 
+  const muestraVisorObjetivo =  ()=> { 
+    setVisorObjetivos(true);
+    //setBntVis_objetivo(false);
+    setBntVis_slide(true);
+    setVisorCronograma(false);
+    console.log('muestraVisorObjetivo')
+  }
 
+  const muestraSlideAndBtns =  ()=> {
+    setVisorObjetivos(false);
+    setVisorCronograma(false);
+    //setBntVis_objetivo(true);
+    setBntVis_slide(false);
+    console.log('muestraSlideAndBtns')
+  }
 
-
-
+  const muestraVisorCronograma =  ()=> {
+    setVisorObjetivos(false);
+    setVisorCronograma(true);
+    setBntVis_cronograma(false);
+    setBntVis_slide(true);
+    console.log('muestraVisorCronograma')
+  }
 
   return (
     <div className='VisorCont' >      
-        <div className="areaTrabajo-cont-visor-display" >
-              {
-                plantillaSeleccionada ? 
-                  cargaElementosPlantilla()                    
-                :
-                    <div className="areaTrabajo-cont-visor-display-no-plantilla">
-                      <h1>No se ha cargado ninguna plantilla</h1>
+        
+        {
+          visorObjetivos ?
+                    <VisorObjetivo  />
+                    :
+          visorCronograma ?
+                    <VisorCronograma  />
+                    :
+                    <div className="areaTrabajo-cont-visor-display" >
+                          {
+                            plantillaSeleccionada ? 
+                              cargaElementosPlantilla()                    
+                            :
+                                <div className="areaTrabajo-cont-visor-display-no-plantilla">
+                                  <h1>No se ha cargado ninguna plantilla</h1>
+                                </div>
+                          }
                     </div>
-              }
-        </div>
+        }
+
         <div className="areaTrabajo-cont-visor-btns">
-          { cv_crono_flag && <div className="areaTrabajo-cont-visor-btns-item"><i className="fa-duotone fa-calendar-check icoGde"></i></div> }
-          
-          <div className="areaTrabajo-cont-visor-btns-item"><i className="fa-duotone fa-outdent icoGde"></i></div>                  
+          { cv_crono_flag && <div onClick={ () => muestraVisorCronograma() } className="areaTrabajo-cont-visor-btns-item"><i className="fa-duotone fa-calendar-check icoGde"></i></div> }
+          { bntVis_objetivo && <div onClick={ () => muestraVisorObjetivo() } className="areaTrabajo-cont-visor-btns-item"><i class="fa-solid fa-apple-whole icoGde"></i></div> }
+          { bntVis_slide && <div onClick={ () => muestraSlideAndBtns() } className="areaTrabajo-cont-visor-btns-item"><i class="fa-duotone fa-sidebar icoGde"></i></div> }             
         </div>
         <div className="areaTrabajo-cont-visor-msgRev">Mensaje de revisión</div>
       
