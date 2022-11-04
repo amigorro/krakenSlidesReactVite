@@ -179,11 +179,11 @@ const AreaDeTrabajo = () => {
      const getSlidesBD = async () =>{          
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
           db.transaction(function(tx) {
-               tx.executeSql('SELECT * FROM DATOS_INTRODUCIDOS WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ? ORDER BY orden ASC ', [idProyectoActual,sesion], function(tx, results) {
+               tx.executeSql('SELECT D.*, O.contenido, O.tipoObj, O.tipoCont FROM DATOS_INTRODUCIDOS D LEFT JOIN ObjetivoApr O ON D.slide = O.slide  WHERE D.id_usuario = 1 AND D.id_proyecto = ? AND D.sesion = ? ORDER BY D.orden ASC  ', [idProyectoActual,sesion], function(tx, results) {
                     //console.log('results', results)
                     let len = results.rows.length, i;
                     let pry;
-                    
+                    let flagEobj;
                     
                     if(len > 0){
                          let slidesDeLaSesion = []
@@ -195,6 +195,13 @@ const AreaDeTrabajo = () => {
                                    localStorage.removeItem("orden");
                                    
                               }
+
+                              if(results.rows.item(i).tipoObj  && results.rows.item(i).tipoCont && results.rows.item(i).contenido){
+                                   flagEobj=1; 
+                              }else{
+                                   flagEobj=0;                              
+                              }    
+
                               slidesDeLaSesion.push(results.rows.item(i))
                               pry={
                                    id: results.rows.item(i).slide,                                   
@@ -202,6 +209,7 @@ const AreaDeTrabajo = () => {
                                    tipo_contenido: results.rows.item(i).tipo_contenido,
                                    plantilla: results.rows.item(i).plantilla,
                                    orden: i,
+                                   flagEobj: flagEobj,                                   
                               }
                               
                               registrosCard.push(results.rows.item(i).slide)
