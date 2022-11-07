@@ -4,6 +4,7 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { CardNombreSlide } from './CardNombreSlide';
 import { CardIconTipo } from './CardIconTipo';
 import { CardIconObjetivoApr } from './CardIconObjetivoApr';
+import { CardIconCronograma } from './CardIconCronograma';
 
 const variants = {
      hidden: {
@@ -130,7 +131,6 @@ export const PruebaOrder = () => {
 
      useEffect( () =>{            
           guardaOrdenSlides()  
-          //console.error("Se guarda ordeen de los slides")        
      }, [ordenPrueba]  )
 
 
@@ -469,6 +469,8 @@ export const PruebaOrder = () => {
 
      const ImprimeTarjetasOrdenables = () => {
           
+          
+
           return(          <Reorder.Group values={ordenPrueba} onReorder={  setOrdenPrueba  }>
                               { 
                                    ordenPrueba.map( (item, index) => (
@@ -493,7 +495,11 @@ export const PruebaOrder = () => {
                                                        setEdicion(false),                                                      
                                                        cargaValoresSlide(item),
                                                        cargaValoresCronograma(item),
-                                                       cargaValoresObjetivos(item)
+                                                       cargaValoresObjetivos(item),
+                                                       setVisorCronograma(false),
+                                                       setBntVis_slide(false);
+
+                                                       setVisorObjetivos(false);
                                                        
                                                        slides.map( (slide, index) => {
                                                             if(slide.id === item){                    
@@ -516,7 +522,7 @@ export const PruebaOrder = () => {
                                                   <div className='CardCont-Tipo-Info' >
                                                        <div className='CardCont-Tipo-Info-Name' > <CardNombreSlide id2={item} /> </div>
                                                        <div className='CardCont-Tipo-Info-icons' >
-                                                            <div className='CardCont-Tipo-Info-icons-ico'><i class="fa-regular fa-calendar-clock CardCont-ico "></i></div>                                                            
+                                                            <CardIconCronograma id2={item} />
                                                             <CardIconObjetivoApr id2={item}  />
                                                             <div className='CardCont-Tipo-Info-icons-ico'><i className="fa-duotone fa-message-check CardCont-ico "></i></div>
                                                             <div className='CardCont-Tipo-Info-icons-order idExplode'>{item}</div>

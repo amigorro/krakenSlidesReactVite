@@ -21,7 +21,10 @@ const ProyectosActivos = () => {
     const [proyectos, setProyectos] = useState([])
 
     const [proyectoParaTools, setProyectoParaTools] = useState('')
-    const {modulo, setModulo,idProyectoActual, setIdProyectoActual,setSlideSelected,setSesion,modalGlosario, setModalGlosario} = useContext(ContextAreaDeTrabajo);
+    const {
+        modulo, setModulo,idProyectoActual, setIdProyectoActual,setSlideSelected,setSesion,modalGlosario, setModalGlosario,
+        slides, setSlides,setModalBorrarSesion,
+    } = useContext(ContextAreaDeTrabajo);
     
 
     useEffect( () =>{        
@@ -64,7 +67,9 @@ const ProyectosActivos = () => {
         setModulo("AreaTrabajo");
         setIdProyectoActual(id);
         setSlideSelected({});
+        setSlides(['']);
         setSesion()
+        setModalBorrarSesion(false)
         console.log("id proyecto seleccionado: " + id)
         return <Routeo />
     }

@@ -11,7 +11,7 @@ const Routeo = () => {
      const [modulo, setModulo] = useState("MenuPrincipal")
      const [idProyectoActual, setIdProyectoActual] = useState()
      const [idUsuario, setIdUsuario] = useState(1)
-     const [sesion, setSesion] = useState(1)
+     const [sesion, setSesion] = useState()
      const [modalTipoSlide, setModalTipoSlide] = useState(false)
      const [slideSelected, setSlideSelected] = useState({})
      const [slides, setSlides] = useState([])
@@ -136,6 +136,8 @@ const Routeo = () => {
      const [visorObjetivos, setVisorObjetivos] = useState(false)
      const [visorCronograma, setVisorCronograma] = useState(false)
 
+     /** Borrar sesión */
+     const [modalBorrarSesion, setModalBorrarSesion] = useState(false)
 
      const dirigir = ()=>{
           
@@ -271,6 +273,9 @@ const Routeo = () => {
                               bntVis_slide, setBntVis_slide,
                               visorObjetivos, setVisorObjetivos,
                               visorCronograma, setVisorCronograma,
+
+                              /* Borrar sesion */
+                              modalBorrarSesion, setModalBorrarSesion,
 
                          }}>
                          { dirigir() } 

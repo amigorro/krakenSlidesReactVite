@@ -66,6 +66,9 @@ const AreaDeTrabajo = () => {
                     cv_crono_tec7, setCv_crono_tec7,
                     cv_crono_tec8, setCv_crono_tec8,
                     cv_crono_tec9, setCv_crono_tec9,
+
+                    /** Borrar sesion */
+                    modalBorrarSesion, setModalBorrarSesion,
           } = useContext(ContextAreaDeTrabajo);
 
      const [slide, setSlide] = useState(null)
@@ -99,6 +102,7 @@ const AreaDeTrabajo = () => {
 
 
      useEffect( () =>{
+          setOrdenPrueba([])
           getSlides();   
           getSlidesBD();  
      }, [sesion]  )
@@ -107,7 +111,6 @@ const AreaDeTrabajo = () => {
 
 
 
-     
 
 
      const getSesiones = async () =>{
@@ -301,6 +304,16 @@ const AreaDeTrabajo = () => {
      }
      */
 
+     const muestraMensajeBorrarSesion = () =>{
+          
+          sesion ?
+               setModalBorrarSesion(true)
+          :
+               null
+
+     }
+
+
 
 
   return (
@@ -329,45 +342,66 @@ const AreaDeTrabajo = () => {
                                              {
                                                   nuevaSesion ?(
                                                        <div className='addSesionInitial' >
-                                                            <div className='txtAddSesion' >Ingresa el número de sesión</div>
-                                                            <input 
-                                                                 type="number" 
-                                                                 name="addSesion"
-                                                                 className='inputAddSesion'
-                                                                 onKeyUp={ e => esEnter(e)  }                                             
-                                                            />
-                                                            <div
-                                                                 onClick={ () => setNuevaSesion(false) }     
-                                                                 >[ X ]
+                                                            <div className='txtAddSesion' >Ingresa el número de bloque</div>
+                                                            <div className='addSesionInitial-controls' >
+                                                                 <input 
+                                                                      type="number" 
+                                                                      name="addSesion"
+                                                                      className='inputAddSesion'
+                                                                      onKeyUp={ e => esEnter(e)  }                                             
+                                                                 />
+                                                                 <div
+                                                                      onClick={ () => setNuevaSesion(false) }     
+                                                                      className='inputAddSesion-Cancel'
+                                                                      ><i className="fa-solid fa-xmark"></i>
+                                                                 </div>
                                                             </div>
                                                        </div>
                                                   )
                                                   :
                                                   (
-                                                       <>
-                                                       <select  
-                                                            className='ADT_cont-cards-select-inp' 
-                                                            onChange={ (e) => {  
-                                                                 setSesion(e.target.value)  
-                                                                 setSlideSelected({})
-                                                                 setSlides([])
-                                                            } }
-                                                            value={
-                                                                 sesion
-                                                            }
-                                                            >
-                                                            { imprimeSelectSesiones()}
-                                                       </select>
-                                                       <div 
-                                                            className='ADT_cont-cards-select-add'
-                                                            onClick={ () => setNuevaSesion(true) }
-                                                            >
-                                                            <i className="fa-solid fa-circle-plus "></i>
-                                                       </div>
-                                                       <div className='ADT_cont-cards-select-add'>
-                                                            <i className="fa-solid fa-circle-plus "></i>
-                                                       </div>
-                                                       </>
+                                                       !modalBorrarSesion ?
+                                                      
+                                                                 <>
+                                                                      <select  
+                                                                           className='ADT_cont-cards-select-inp' 
+                                                                           onChange={ (e) => {  
+                                                                                setSesion(e.target.value)  
+                                                                                setSlideSelected({})
+                                                                                setSlides([])
+                                                                           } }
+                                                                           value={
+                                                                                sesion
+                                                                           }
+                                                                           >
+                                                                           { imprimeSelectSesiones()}
+                                                                      </select>
+                                                                      <div 
+                                                                           className='ADT_cont-cards-select-add'
+                                                                           onClick={ () => setNuevaSesion(true) }
+                                                                           >
+                                                                           <i className="fa-solid fa-circle-plus "></i>
+                                                                      </div>
+                                                                      <div className={ sesion ? "ADT_cont-cards-select-del" : "ADT_cont-cards-select-del-block" }
+                                                                           onClick={ () => muestraMensajeBorrarSesion() }
+                                                                      >
+                                                                           <i className="fa-solid fa-trash-can"></i>
+                                                                      </div>
+                                                                      </>
+                                                       :
+                                                            <>
+                                                                 <div className='msgConfirmDelSes' >
+                                                                      <div>Seguro de borrar el bloque { sesion } ?</div>
+                                                                      <div className='msgConfirmDelSes-btns' >
+                                                                           <div className='msgConfirmDelSes-btns-Yes' >Sí</div>
+                                                                           <div 
+                                                                                className='msgConfirmDelSes-btns-Nou' 
+                                                                                onClick={ () => setModalBorrarSesion(false) }
+                                                                           >No</div>
+                                                                      </div>
+                                                                 </div>
+                                                            </>
+
                                                   )
                                              }
                                              
