@@ -3,6 +3,7 @@ import './quill.css'
 import { useQuill } from 'react-quilljs';
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { MsgConfirmEliminar } from './CronoCompsForm';
+import {BorrarRegsTabla} from '../helpers/GuardaEnBD';
 
 const CronogramaFormulario = ( props ) => {
 

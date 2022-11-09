@@ -1,7 +1,8 @@
-import React,{useContext,useEffect} from 'react'
+import React,{useContext,useEffect,useState} from 'react'
 import './ObjetivoTematico.css'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import { useQuill } from 'react-quilljs';
+import {BorrarRegsTabla} from '../helpers/GuardaEnBD.jsx'
 
 export const ObjetivoTematico = () => {
 
@@ -37,6 +38,9 @@ export const ObjetivoTematico = () => {
           actividad, setActividad,
      
      } = useContext(ContextAreaDeTrabajo);     
+
+     const [elimObjFlag, setElimObjFlag] = useState(false)
+
 
      /* Opciones Editor Quill */
      const placeholder = 'contenido...';      
@@ -230,6 +234,10 @@ export const ObjetivoTematico = () => {
           });
      }
 
+     const eliminarObjetivoFunciones = async () =>{
+          BorrarRegsTabla(2,slideSelected.id,sesion,idProyectoActual,idUsuario)
+          setModalObjetivoApr(false);  
+     }
 
 
   return (
@@ -485,7 +493,23 @@ export const ObjetivoTematico = () => {
                                         (contenido ? contenido.substring(3, contenido.length-4 ) : " ")  +" "+
                                         (finalidad ? finalidad : '')  }} ></div> </div>
                          <br/><br/>
-                         <div>Eliminar Objetivo de aprendizaje</div>
+                         <div className='btnElimObjetivo' onClick={ ()=>setElimObjFlag(true) } >Eliminar Objetivo de aprendizaje</div>
+                         {
+                              elimObjFlag && 
+                                   <div className='msgElimObj' >
+                                        ¿Confirma eliminar el objetivo de aprendizaje?
+                                        <div className='deplBtnsOnjsMsg' >
+                                             <div 
+                                                  className='btnElimObjetivoSi' 
+                                                  onClick={ 
+                                                       ()=>eliminarObjetivoFunciones()        
+                                                  } 
+                                                  >Eliminar</div>
+                                             <div className='btnElimObjetivoNo' onClick={ ()=>setElimObjFlag(false) } >Cancelar</div>
+                                        </div>
+                                        
+                                   </div>
+                         }
                     </div>
                </div>
 
