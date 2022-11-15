@@ -61,6 +61,7 @@ export const PruebaOrder = () => {
                cv_crono_tec7, setCv_crono_tec7,
                cv_crono_tec8, setCv_crono_tec8,
                cv_crono_tec9, setCv_crono_tec9,
+               confirmEliminarCrono,
 
                slideImg1, setSlideImg1,
                slideImg2, setSlideImg2,
@@ -130,7 +131,8 @@ export const PruebaOrder = () => {
      
 
      useEffect( () =>{            
-          guardaOrdenSlides()  
+          ImprimeTarjetasOrdenables();
+          guardaOrdenSlides()            
      }, [ordenPrueba]  )
 
 

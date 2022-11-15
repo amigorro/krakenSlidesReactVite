@@ -6,14 +6,15 @@ export const CardIconCronograma = ({id2}) => {
      const [iconito, setIconito] = useState(false);
      const {
           idUsuario,idProyectoActual,sesion,slides, 
-          modalGlosario,
+          modalGlosario,          
+          confirmEliminarCrono,
      } = useContext(ContextAreaDeTrabajo);
 
      let icoObj2=<i class="fa-regular fa-calendar-clock CardCont-ico "></i>
 
      useEffect( () =>{
           buscaRegistroEnBD();          
-     },[modalGlosario]);
+     },[confirmEliminarCrono]);
 
      const buscaRegistroEnBD = () => {
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);

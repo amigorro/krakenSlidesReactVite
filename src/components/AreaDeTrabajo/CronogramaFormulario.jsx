@@ -16,6 +16,7 @@ const CronogramaFormulario = ( props ) => {
     tipoCronograma, setTipoCronograma,
     eliminarCrono, setEliminarCrono,
     confirmEliminarCrono, setConfirmEliminarCrono,
+    iconito, setIconito,
   } = useContext(ContextAreaDeTrabajo);
   
   
@@ -477,7 +478,8 @@ const CronogramaFormulario = ( props ) => {
   const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
   db.transaction(function(tx) {
       tx.executeSql(`DELETE FROM TBL_CRONOGRAMA WHERE id_slide = ?  AND sesion = ? AND id_proyecto = ? AND id_usuario = ?  `, [slideSelected.id,sesion,idProyectoActual,idUsuario], function(tx, results) {
-        console.log('results', results)                    
+
+
       }, null);
   });
 }

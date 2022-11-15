@@ -5,6 +5,8 @@ import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 import CronogramaFormulario from './CronogramaFormulario';
 import { ObjetivoTematico } from './ObjetivoTematico';
 import { AvanzarSlide, RetrocederSlide } from './InfoGestionSlidesAvanzarRetro';
+import {BorrarRegsTabla} from '../helpers/GuardaEnBD.jsx'
+
 
 const InfoGestionSlide = () => {
 
@@ -40,6 +42,7 @@ const InfoGestionSlide = () => {
 
      const eliminarSlide = async () =>{ 
           const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          
           db.transaction(function(tx) {
                tx.executeSql(`DELETE FROM DATOS_INTRODUCIDOS WHERE slide = ?  AND sesion = ? AND id_proyecto = ? AND id_usuario = ?  `, [slideSelected.id,sesion,idProyectoActual,idUsuario], function(tx, results) {
                     console.log('results', results)
@@ -47,13 +50,25 @@ const InfoGestionSlide = () => {
                     const nuevosSlidesLocal = slidesLocal.filter((item) => item.id !== slideSelected.id)
                     localStorage.setItem("slidesEnSesion", JSON.stringify(nuevosSlidesLocal))
                     setSlideSelected('')
-                    setSlides(nuevosSlidesLocal)
-                    //setModalTipoSlide(false)
+                    setSlides(nuevosSlidesLocal)                    
                }, null);
           });
+          
+          
+          BorrarRegsTabla(3,slideSelected.id,sesion,idProyectoActual,idUsuario)
+
+          const element = document.getElementsByClassName('slideSelected');
+          element.remove();
+
+
+
      }
 
-
+     const confirmEliminarSlide = () => {
+          if(window.confirm("¿Seguro que quieres eliminar este slide?")){
+               eliminarSlide()
+          }    
+     }
 
 
      const abrirModalCronograma = () => {
@@ -163,7 +178,7 @@ const InfoGestionSlide = () => {
                <div 
                     className="areaTrabajo-cont-gestion-btn btn-gestion btn-eliminarSlide"
                     onClick={()=>{
-                         eliminarSlide()
+                         confirmEliminarSlide()
                     }}
                     >Eliminar Slide
                </div>          

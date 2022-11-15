@@ -254,7 +254,7 @@ export const ObjetivoTematico = () => {
                     <div className='contObjTematico-desp-form' >
                          
                          <div className='contObjTematico-desp-form-reg' >
-                              <div className='contObjTematico-desp-form-reg-tlt' > Tipo de objetivo</div>
+                              <div className='contObjTematico-desp-form-reg-tlt' > Tipo de objetivo</div> 
                               <select   
                                         onChange={ (e)=> actualizarRegBdSlideObjetivos('tipoObj', e.target.value) } 
                                         className='contObjTematico-desp-form-select' 

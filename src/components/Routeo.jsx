@@ -45,6 +45,7 @@ const Routeo = () => {
           const [cv_crono_tec9, setCv_crono_tec9] = useState()
      
      
+     
           /* Elementos de las plantillas */
      const [plnTitulo, setPlnTitulo] = useState('Titulo')
      const [plnTexto1, setPlnTexto1] = useState('Texto 1')
@@ -246,8 +247,7 @@ const Routeo = () => {
                                    slideRetroceder, setSlideRetroceder,
                                    seleccionables, setSeleccionables,
 
-                                   modalGlosario, setModalGlosario,
-                              
+                                   modalGlosario, setModalGlosario,                                   
                               /** Información de gestión de slides */
                               paginacion, setPaginacion,
                               
