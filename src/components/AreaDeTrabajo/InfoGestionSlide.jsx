@@ -6,6 +6,7 @@ import CronogramaFormulario from './CronogramaFormulario';
 import { ObjetivoTematico } from './ObjetivoTematico';
 import { AvanzarSlide, RetrocederSlide } from './InfoGestionSlidesAvanzarRetro';
 import {BorrarRegsTabla} from '../helpers/GuardaEnBD.jsx'
+import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
 
 
 const InfoGestionSlide = () => {
@@ -21,7 +22,7 @@ const InfoGestionSlide = () => {
                despCronograma, setDespCronograma,
                cv_crono_flag,cv_crono_tipo,
                setTipoCronograma,
-
+               setOrdenPrueba,
                /** info Gestión slides: */
                paginacion, setPaginacion,
 
@@ -50,19 +51,94 @@ const InfoGestionSlide = () => {
                     const nuevosSlidesLocal = slidesLocal.filter((item) => item.id !== slideSelected.id)
                     localStorage.setItem("slidesEnSesion", JSON.stringify(nuevosSlidesLocal))
                     setSlideSelected('')
-                    setSlides(nuevosSlidesLocal)                    
+                    setSlides(nuevosSlidesLocal)
+                    getSlidesBD()
                }, null);
           });
           
           
           BorrarRegsTabla(3,slideSelected.id,sesion,idProyectoActual,idUsuario)
 
-          const element = document.getElementsByClassName('slideSelected');
-          element.remove();
-
+        
 
 
      }
+
+
+
+     /**
+      * ? checar si la sacamos a su propio componente
+      */
+      const getSlidesBD = async () =>{          
+          const db = window.openDatabase("KRAKEN-SLIDES-3.2", "1.0", "LTA 1.0", 100000);
+          db.transaction(function(tx) {
+               tx.executeSql('SELECT D.*, O.contenido, O.tipoObj, O.tipoCont FROM DATOS_INTRODUCIDOS D LEFT JOIN ObjetivoApr O ON D.slide = O.slide  WHERE D.id_usuario = 1 AND D.id_proyecto = ? AND D.sesion = ? ORDER BY D.orden ASC  ', [idProyectoActual,sesion], function(tx, results) {
+                    //console.log('results', results)
+                    let len = results.rows.length, i;
+                    let pry;
+                    let flagEobj;
+                    
+                    if(len > 0){
+                         let slidesDeLaSesion = []
+                         let registrosCard = []
+                         setOrdenPrueba([])
+                         for (i = 0; i < len; i++){
+                              if (i==0){
+                                   localStorage.removeItem("slidesEnSesion");
+                                   localStorage.removeItem("orden");
+                                   
+                              }
+
+                              if(results.rows.item(i).tipoObj  && results.rows.item(i).tipoCont && results.rows.item(i).contenido){
+                                   flagEobj=1; 
+                              }else{
+                                   flagEobj=0;                              
+                              }    
+
+                              slidesDeLaSesion.push(results.rows.item(i))
+                              pry={
+                                   id: results.rows.item(i).slide,                                   
+                                   nombre: results.rows.item(i).nombre_lamina,
+                                   tipo_contenido: results.rows.item(i).tipo_contenido,
+                                   plantilla: results.rows.item(i).plantilla,
+                                   orden: i,
+                                   flagEobj: flagEobj,                                   
+                              }
+                              
+                              registrosCard.push(results.rows.item(i).slide)
+                              GuardarEnStorage('slidesEnSesion', pry)
+                              GuardarEnStorage('orden', i)
+                         }
+                         
+                         let slidesAct = JSON.parse(localStorage.getItem("slidesEnSesion"))
+                              setOrdenPrueba(registrosCard)
+                              setSlides(slidesAct)
+                              
+                    }
+               }, null);
+          });
+          
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
      const confirmEliminarSlide = () => {
           if(window.confirm("¿Seguro que quieres eliminar este slide?")){
@@ -142,6 +218,7 @@ const InfoGestionSlide = () => {
                />
           </div>
           <div className="areaTrabajo-cont-gestion-paginacion">
+               {/*
                <div className='objetoControl' >
                     <div  className="areaTrabajo-cont-gestion-paginacion-txt">Paginación:</div>
                     <input  
@@ -151,7 +228,8 @@ const InfoGestionSlide = () => {
                          value={paginacion}
                          onChange={(e)=>{ actualizaPaginacion(e.target.value) }}
                     />
-               </div>
+               </div>*/
+               }
                <div className='objetoControl' >
                     <RetrocederSlide />
                </div>

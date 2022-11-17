@@ -69,6 +69,10 @@ const AreaDeTrabajo = () => {
 
                     /** Borrar sesion */
                     modalBorrarSesion, setModalBorrarSesion,
+
+                    setPaginacion,
+                    setUrlImg1,setUrlImg2,setUrlImg3,setUrlImg4,setUrlImg5,setUrlImg6,setUrlImg7,setUrlImg8,
+                    setSlideTexto1,setSlideTexto2,setSlideTexto3,setSlideTexto4,setSlideTexto5,setSlideTexto6,
           } = useContext(ContextAreaDeTrabajo);
 
      const [slide, setSlide] = useState(null)
@@ -313,7 +317,26 @@ const AreaDeTrabajo = () => {
 
      }
 
+     const limpiaEstadosVisor = () =>{
+          setPaginacion()
 
+          setValPlant_Titulo()
+          setUrlImg1()
+          setUrlImg2()
+          setUrlImg3()
+          setUrlImg4()
+          setUrlImg5()
+          setUrlImg6()
+          setUrlImg7()
+          setUrlImg8()
+
+          setSlideTexto1()
+          setSlideTexto2()
+          setSlideTexto3()
+          setSlideTexto4()
+          setSlideTexto5()
+          setSlideTexto6()
+     }
 
 
   return (
@@ -369,6 +392,7 @@ const AreaDeTrabajo = () => {
                                                                                 setSesion(e.target.value)  
                                                                                 setSlideSelected({})
                                                                                 setSlides([])
+                                                                                limpiaEstadosVisor()
                                                                            } }
                                                                            value={
                                                                                 sesion

@@ -35,7 +35,7 @@
   width: 400px;
   margin: 2vh auto 2vh auto;    
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 

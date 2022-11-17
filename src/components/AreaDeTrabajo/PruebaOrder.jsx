@@ -427,7 +427,7 @@ export const PruebaOrder = () => {
                      * Guardar en la base de datos el orden de los slides
                      */
                     
-                         tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [i,idProyectoActual,sesion,itemId], function(tx, results) {
+                         tx.executeSql('UPDATE DATOS_INTRODUCIDOS SET orden = ?, paginacion = ? WHERE id_usuario = 1 AND id_proyecto = ? AND sesion = ?  AND slide = ?  ', [i,sesion+"."+(i+1),idProyectoActual,sesion,itemId], function(tx, results) {
                              // console.log('results', results)
                              /**
                               * ? Alternativa para mover el scroll a la posición maxima del bottom                             
@@ -444,7 +444,6 @@ export const PruebaOrder = () => {
                console.warn('El elemento: %s NO fue encontrado dentro del HTML listaCardsSlides')
              }
 
-      
      });
      }
 
@@ -470,10 +469,11 @@ export const PruebaOrder = () => {
 
 
      const ImprimeTarjetasOrdenables = () => {
-          
-          
 
-          return(          <Reorder.Group values={ordenPrueba} onReorder={  setOrdenPrueba  }>
+          return(          
+          
+               ordenPrueba ?
+                         <Reorder.Group values={ordenPrueba} onReorder={  setOrdenPrueba  }>
                               { 
                                    ordenPrueba.map( (item, index) => (
                                         <Reorder.Item 
@@ -535,7 +535,8 @@ export const PruebaOrder = () => {
                                    ))
                               }
                     </Reorder.Group>
-                    
+               :
+                    'nada'
           )   
                 
           
