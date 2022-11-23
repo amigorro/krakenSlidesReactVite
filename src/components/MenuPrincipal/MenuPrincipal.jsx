@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useContext,useEffect } from 'react'
 import './Despliegue.css'
 import AppBar from '../AppBar/AppBar';
 import NuevoProyecto from '../Despliegue/NuevoProyecto';
@@ -13,10 +13,25 @@ import {
      Outlet,
      HashRouter
 } from "react-router-dom";
+import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
 
 
 
 const MenuPrincipal = ({setModulo}) => {
+
+
+     /**
+      * ! Ojo, revisar este estado, debería obtener el valor desde el login ya en producción
+      */
+     const {
+          idUsuario,setIdUsuario
+     } = useContext(ContextAreaDeTrabajo);
+
+     useEffect( () =>{
+          setIdUsuario(1);          
+     },[]);
+
+
      return (
           <>
                <AppBar />

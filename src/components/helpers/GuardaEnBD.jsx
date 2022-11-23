@@ -58,7 +58,22 @@ export const BorrarRegsTabla = async (mov,slideSelected,sesion,idProyectoActual,
                          console.log('Objetivo eliminado', results)                         
                     }, null);
                });
-               break;               
+               break;     
+          case (4):
+               // Borrar sesión (Bloque)
+               console.error(`Borrar bloque - sesion:${sesion} Proyecto: ${idProyectoActual} Usuario: ${idUsuario} `)
+               /*
+               db.transaction(function(tx) {
+                    tx.executeSql(`DELETE FROM TBL_CRONOGRAMA WHERE id_slide = ?  AND sesion = ? AND id_proyecto = ? AND id_usuario = ?  `, [slideSelected,sesion,idProyectoActual,idUsuario], function(tx, results) {
+                         console.log('CRONOGRAMA ELIMINAOOOOOOOOOOO')                    
+                    }, null);
+                    
+                    tx.executeSql(`DELETE FROM ObjetivoApr WHERE slide = ?  AND sesion = ? AND id_proyecto = ? AND id_usuario = ?  `, [slideSelected,sesion,idProyectoActual,idUsuario], function(tx, results) {
+                         console.log('Objetivo eliminado', results)                         
+                    }, null);
+               }); 
+               */
+               break;
           
      }
 

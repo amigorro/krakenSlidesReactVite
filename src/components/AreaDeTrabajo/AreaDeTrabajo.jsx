@@ -7,6 +7,7 @@ import InfoGestionSlide from './InfoGestionSlide'
 import CatalogoSlides from './CatalogoSlides'
 import Cronograma from './Cronograma'
 import { GuardarEnStorage } from '../helpers/GuardarEnStorage'
+import {BorrarRegsTabla} from '../helpers/GuardaEnBD'
 
 import Routeo from '../Routeo'
 import { ContextAreaDeTrabajo } from '../../context/ContextAreaDeTrabajo';
@@ -36,7 +37,8 @@ const variants = {
 
 const AreaDeTrabajo = () => {
      
-     const {
+     const {   
+               idUsuario, setIdUsuario,
                sesion, setSesion,
                setModulo,
                setEdicion,
@@ -111,9 +113,7 @@ const AreaDeTrabajo = () => {
           getSlidesBD();  
      }, [sesion]  )
 
-
-
-
+    
 
 
 
@@ -314,8 +314,15 @@ const AreaDeTrabajo = () => {
                setModalBorrarSesion(true)
           :
                null
-
      }
+
+
+     const fnBorrarSesion = () =>{
+          
+          console.log("BORRAR SESION: "+sesion)
+          BorrarRegsTabla(4,slide, idProyectoActual, sesion, idUsuario )
+     }
+
 
      const limpiaEstadosVisor = () =>{
           setPaginacion()
@@ -358,7 +365,7 @@ const AreaDeTrabajo = () => {
                <div id='ADT_contenido' className='grid grid-cols-5  gap-4 w-screen' > 
                     
                     <div className='bg-gray-900   ADT_cont-cards col-start-1 col-span-1 ' >
-                         <div className='ADT_cont-cards-select'>
+                         <div className='ADT_cont-cards-select'> 
                               {
                                    existeSesiones ?
                                         <>
@@ -417,7 +424,10 @@ const AreaDeTrabajo = () => {
                                                                  <div className='msgConfirmDelSes' >
                                                                       <div>Seguro de borrar el bloque { sesion } ?</div>
                                                                       <div className='msgConfirmDelSes-btns' >
-                                                                           <div className='msgConfirmDelSes-btns-Yes' >Sí</div>
+                                                                           <div 
+                                                                                className='msgConfirmDelSes-btns-Yes' 
+                                                                                onClick={ () => fnBorrarSesion() }     
+                                                                           >Sí</div>
                                                                            <div 
                                                                                 className='msgConfirmDelSes-btns-Nou' 
                                                                                 onClick={ () => setModalBorrarSesion(false) }
